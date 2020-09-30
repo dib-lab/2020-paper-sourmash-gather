@@ -1,7 +1,7 @@
 ---
 author-meta:
-- John Doe
-- Jane Roe
+- Luiz Irber
+- C. Titus Brown
 bibliography:
 - content/manual-references.json
 date-meta: '2020-09-30'
@@ -15,13 +15,13 @@ header-includes: '<!--
 
   <meta name="dc.format" content="text/html" />
 
-  <meta name="dc.title" content="Manuscript Title" />
+  <meta name="dc.title" content="sourmash gather is awsum" />
 
-  <meta name="citation_title" content="Manuscript Title" />
+  <meta name="citation_title" content="sourmash gather is awsum" />
 
-  <meta property="og:title" content="Manuscript Title" />
+  <meta property="og:title" content="sourmash gather is awsum" />
 
-  <meta property="twitter:title" content="Manuscript Title" />
+  <meta property="twitter:title" content="sourmash gather is awsum" />
 
   <meta name="dc.date" content="2020-09-30" />
 
@@ -39,21 +39,21 @@ header-includes: '<!--
 
   <meta name="citation_technical_report_institution" content="Manubot" />
 
-  <meta name="citation_author" content="John Doe" />
+  <meta name="citation_author" content="Luiz Irber" />
 
-  <meta name="citation_author_institution" content="Department of Something, University of Whatever" />
+  <meta name="citation_author_institution" content="Graduate Group in Computer Science, UC Davis" />
 
-  <meta name="citation_author_orcid" content="XXXX-XXXX-XXXX-XXXX" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
 
-  <meta name="twitter:creator" content="@johndoe" />
+  <meta name="citation_author_orcid" content="0000-0003-4371-9659" />
 
-  <meta name="citation_author" content="Jane Roe" />
+  <meta name="twitter:creator" content="@luizirber" />
 
-  <meta name="citation_author_institution" content="Department of Something, University of Whatever" />
+  <meta name="citation_author" content="C. Titus Brown" />
 
-  <meta name="citation_author_institution" content="Department of Whatever, University of Something" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
 
-  <meta name="citation_author_orcid" content="XXXX-XXXX-XXXX-XXXX" />
+  <meta name="citation_author_orcid" content="0000-0001-6001-2677" />
 
   <link rel="canonical" href="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -85,15 +85,14 @@ header-includes: '<!--
 
   <!-- end Manubot generated metadata -->'
 keywords:
-- markdown
-- publishing
-- manubot
+- k-mers
+- MinHash
 lang: en-US
 manubot-clear-requests-cache: false
 manubot-output-bibliography: output/references.json
 manubot-output-citekeys: output/citations.tsv
 manubot-requests-cache-path: ci/cache/requests-cache
-title: Manuscript Title
+title: sourmash gather is awsum
 ...
 
 
@@ -103,9 +102,9 @@ title: Manuscript Title
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@6643bf6](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/6643bf6d55c69c608d05e80b29862e94178d107b)
+from [dib-lab/2020-paper-sourmash-gather@11ba52b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/11ba52bc00fada3ea665479c0943f90910ac15a6)
 on September 30, 2020.
 </em></small>
 
@@ -113,25 +112,25 @@ on September 30, 2020.
 
 
 
-+ **John Doe**<br>
++ **Luiz Irber**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+    [0000-0003-4371-9659](https://orcid.org/0000-0003-4371-9659)
     · ![GitHub icon](images/github.svg){.inline_icon}
-    [johndoe](https://github.com/johndoe)
+    [luizirber](https://github.com/luizirber)
     · ![Twitter icon](images/twitter.svg){.inline_icon}
-    [johndoe](https://twitter.com/johndoe)<br>
+    [luizirber](https://twitter.com/luizirber)<br>
   <small>
-     Department of Something, University of Whatever
+     Graduate Group in Computer Science, UC Davis; Department of Population Health and Reproduction, UC Davis
      · Funded by Grant XXXXXXXX
   </small>
 
-+ **Jane Roe**<br>
++ **C. Titus Brown**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+    [0000-0001-6001-2677](https://orcid.org/0000-0001-6001-2677)
     · ![GitHub icon](images/github.svg){.inline_icon}
-    [janeroe](https://github.com/janeroe)<br>
+    [ctb](https://github.com/ctb)<br>
   <small>
-     Department of Something, University of Whatever; Department of Whatever, University of Something
+     Department of Population Health and Reproduction, UC Davis
   </small>
 
 
