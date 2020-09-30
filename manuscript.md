@@ -4,7 +4,7 @@ author-meta:
 - Jane Roe
 bibliography:
 - content/manual-references.json
-date-meta: '2020-07-18'
+date-meta: '2020-09-30'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Manuscript Title" />
 
-  <meta name="dc.date" content="2020-07-18" />
+  <meta name="dc.date" content="2020-09-30" />
 
-  <meta name="citation_publication_date" content="2020-07-18" />
+  <meta name="citation_publication_date" content="2020-09-30" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -55,23 +55,23 @@ header-includes: '<!--
 
   <meta name="citation_author_orcid" content="XXXX-XXXX-XXXX-XXXX" />
 
-  <link rel="canonical" href="https://manubot.github.io/rootstock/" />
+  <link rel="canonical" href="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
 
-  <meta property="og:url" content="https://manubot.github.io/rootstock/" />
+  <meta property="og:url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
 
-  <meta property="twitter:url" content="https://manubot.github.io/rootstock/" />
+  <meta property="twitter:url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
 
-  <meta name="citation_fulltext_html_url" content="https://manubot.github.io/rootstock/" />
+  <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
 
-  <meta name="citation_pdf_url" content="https://manubot.github.io/rootstock/manuscript.pdf" />
+  <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="application/pdf" href="https://manubot.github.io/rootstock/manuscript.pdf" />
+  <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://manubot.github.io/rootstock/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/" />
 
-  <meta name="manubot_html_url_versioned" content="https://manubot.github.io/rootstock/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://manubot.github.io/rootstock/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -103,10 +103,10 @@ title: Manuscript Title
 
 <small><em>
 This manuscript
-([permalink](https://manubot.github.io/rootstock/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/))
 was automatically generated
-from [manubot/rootstock@0964fd7](https://github.com/manubot/rootstock/tree/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc)
-on July 18, 2020.
+from [dib-lab/2020-paper-sourmash-gather@0964fd7](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc)
+on September 30, 2020.
 </em></small>
 
 ## Authors
