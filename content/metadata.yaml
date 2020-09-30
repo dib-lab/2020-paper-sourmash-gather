@@ -1,5 +1,5 @@
 ---
-title: "sourmash gather is awsum"
+title: "Lightweight compositional analysis of metagenomes with sourmash gather"
 keywords:
   - k-mers
   - MinHash

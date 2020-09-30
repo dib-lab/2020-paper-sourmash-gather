@@ -1,4 +1,4 @@
-# Automated scholarly manuscripts on GitHub
+# Lightweight compositional analysis of metagenomes with sourmash gather
 
 <!-- usage note: edit the H1 title above to personalize the manuscript -->
 
@@ -12,8 +12,7 @@
 
 <!-- usage note: edit this section. -->
 
-This repository is a template manuscript (a.k.a. rootstock).
-Actual manuscript instances will clone this repository (see [`SETUP.md`](SETUP.md)) and replace this paragraph with a description of their manuscript.
+Here we describe an extension of MinHash that permits accurate compositional analysis of metagenomes with low memory and disk requirements.
 
 ## Manubot
 
