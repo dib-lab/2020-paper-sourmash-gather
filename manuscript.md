@@ -15,13 +15,13 @@ header-includes: '<!--
 
   <meta name="dc.format" content="text/html" />
 
-  <meta name="dc.title" content="sourmash gather is awsum" />
+  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="citation_title" content="sourmash gather is awsum" />
+  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta property="og:title" content="sourmash gather is awsum" />
+  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta property="twitter:title" content="sourmash gather is awsum" />
+  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
   <meta name="dc.date" content="2020-09-30" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -92,7 +92,7 @@ manubot-clear-requests-cache: false
 manubot-output-bibliography: output/references.json
 manubot-output-citekeys: output/citations.tsv
 manubot-requests-cache-path: ci/cache/requests-cache
-title: sourmash gather is awsum
+title: Lightweight compositional analysis of metagenomes with sourmash gather
 ...
 
 
@@ -102,9 +102,9 @@ title: sourmash gather is awsum
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/11ba52bc00fada3ea665479c0943f90910ac15a6/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@11ba52b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/11ba52bc00fada3ea665479c0943f90910ac15a6)
+from [dib-lab/2020-paper-sourmash-gather@dfca6e9](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/dfca6e992473290f879f70f51180bc4df7c14b0f)
 on September 30, 2020.
 </em></small>
 
@@ -137,303 +137,87 @@ on September 30, 2020.
 
 ## Abstract {.page_break_before}
 
+Here we describe an extension of MinHash that permits accurate compositional analysis of metagenomes with low memory and disk requirements.
 
 
 
-This manuscript is a template (aka "rootstock") for [Manubot](https://manubot.org/ "Manubot"), a tool for writing scholarly manuscripts.
-Use this template as a starting point for your manuscript.
 
-The rest of this document is a full list of formatting elements/features supported by Manubot.
-Compare the input (`.md` files in the `/content` directory) to the output you see below.
 
-## Basic formatting
+# Results
 
-**Bold** __text__
+## Scaled MinHash accurately estimates containment
 
-[Semi-bold text]{.semibold}
+* scaled minhash supports similarity and containment
+* compares well with others
+* supports large-scale sketching of genbank
 
-[Centered text]{.center}
+maybe split into two: definition, and then benchmarking.
 
-[Right-aligned text]{.right}
+second results section would be, "Scaled minhash has good performance..."
 
-*Italic* _text_
+xx How much is missed figure; Poisson calculations?
 
-Combined *italics and __bold__*
+## Scaled MinHash sketches support efficient indexing for large-scale containment queries
 
-~~Strikethrough~~
+Efficient indexing of scaled minhash signatures is cool.
 
-1. Ordered list item
-2. Ordered list item
-    a. Sub-item
-    b. Sub-item
-        i. Sub-sub-item
-3. Ordered list item
-    a. Sub-item
+* hierarchical and inverted indices (SBT and LCA)
+* supports efficient containment and similarity queries
 
-- List item
-- List item
-- List item
+## Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, 'gather'
 
-subscript: H~2~O is a liquid
+Greedy decomposition of metagenome sketches by k-mer containment is accurate
 
-superscript: 2^10^ is 1024.
+Greedy decomposition of metagenomes by k-mer containment (gather) is cool.
 
-[unicode superscripts](https://www.google.com/search?q=superscript+generator)⁰¹²³⁴⁵⁶⁷⁸⁹
+* outline algorithm
+* compare conceptually vs least/lowest common ancestor approaches; combinatorial
+* showcase some examples on synthetic data
 
-[unicode subscripts](https://www.google.com/search?q=superscript+generator)₀₁₂₃₄₅₆₇₈₉
+## Taxonomic profiling based on 'gather' is accurate
 
-A long paragraph of text.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+constituent gather is cool.
 
-Putting each sentence on its own line has numerous benefits with regard to [editing](https://asciidoctor.org/docs/asciidoc-recommended-practices/#one-sentence-per-line) and [version control](https://rhodesmill.org/brandon/2012/one-sentence-per-line/).
+* CAMI results
+* suggests gather/greedy decomposition is pretty good
 
-Line break without starting a new paragraph by putting  
-two spaces at end of line.
+# Discussion
 
-## Document organization
+## Scaled MinHash offers benefits, drawbacks vs regular MinHash
 
-Document section headings:
+Combine theoretical discussion with practical discussion of benefits/drawbacks.
 
-# Heading 1
+## Gather works surprisingly well and matches simple data structures
 
-## Heading 2
+gather is a straightforward algorithm.
 
-### Heading 3
+easy to take advantage of other data structures b/c "just k-mers".
 
-#### Heading 4
+SBT, LCA implementations.
 
-##### Heading 5
+xx can we guess at places where gather would break?
 
-###### Heading 6
+## Taxonomy results are excellent.
 
-### A heading centered on its own printed page{.center .page_center}
+Discuss vs LCA.
 
-<!-- an arbitrary comment. visible in input, but not visible in output. -->
+reference the LCA-has-limits/k-mers saturate paper
 
-Horizontal rule:
+mix and match taxonomies is easy b/c we anchor to genomes.
 
----
+## Algorithm is simple, computational performance is great
 
-`Heading 1`'s are recommended to be reserved for the title of the manuscript.
+Performant implementation in sourmash
 
-`Heading 2`'s are recommended for broad sections such as *Abstract*, *Methods*, *Conclusion*, etc.
+Database types work well
 
-`Heading 3`'s and `Heading 4`'s are recommended for sub-sections.
+"online" approaches
 
-## Links
+Some limitations of gather and database types (equal results can be hard to detect efficiently with current SBT implementation)
 
-Bare URL link: <https://manubot.org>
+## Scaled minhash has limitations vs regular minhash
 
-[Long link with lots of words and stuff and junk and bleep and blah and stuff and other stuff and more stuff yeah](https://manubot.org)
-
-[Link with text](https://manubot.org)
-
-[Link with hover text](https://manubot.org "Manubot Homepage")
-
-[Link by reference][manubot homepage]
-
-[Manubot Homepage]: https://manubot.org
-
-## Citations
-
-Citation by DOI [@doi:10.7554/eLife.32822].
-
-Citation by PubMed Central ID [@pmc:PMC6103790].
-
-Citation by PubMed ID [@pubmed:30718888].
-
-Citation by Wikidata ID [@wikidata:Q56458321].
-
-Citation by ISBN [@isbn:9780262517638].
-
-Citation by URL [@https://greenelab.github.io/meta-review/].
-
-Citation by alias [@deep-review].
-
-Multiple citations can be put inside the same set of brackets [@doi:10.7554/eLife.32822; @deep-review; @isbn:9780262517638].
-Manubot plugins provide easier, more convenient visualization of and navigation between citations [@doi:10.1371/journal.pcbi.1007128; @pubmed:30718888; @pmc:PMC6103790; @deep-review].
-
-Citation tags (i.e. aliases) can be defined in their own paragraphs using Markdown's reference link syntax:
-
-[@deep-review]: doi:10.1098/rsif.2017.0387
-
-## Referencing figures, tables, equations
-
-Figure @fig:square-image
-
-Figure @fig:wide-image
-
-Figure @fig:tall-image
-
-Figure @fig:vector-image
-
-Table @tbl:bowling-scores
-
-Equation @eq:regular-equation
-
-Equation @eq:long-equation
-
-## Quotes and code
-
-> Quoted text
-
-> Quoted block of text
->
-> Two roads diverged in a wood, and I—  
-> I took the one less traveled by,  
-> And that has made all the difference.
-
-Code `in the middle` of normal text, aka `inline code`.
-
-Code block with Python syntax highlighting:
-
-```python
-from manubot.cite.doi import expand_short_doi
-
-def test_expand_short_doi():
-    doi = expand_short_doi("10/c3bp")
-    # a string too long to fit within page:
-    assert doi == "10.25313/2524-2695-2018-3-vliyanie-enhansera-copia-i-insulyatora-gypsy-na-sintez-ernk-modifikatsii-hromatina-i-svyazyvanie-insulyatornyh-belkov-vtransfetsirovannyh-geneticheskih-konstruktsiyah"
-```
-
-Code block with no syntax highlighting:
-
-```
-Exporting HTML manuscript
-Exporting DOCX manuscript
-Exporting PDF manuscript
-```
-
-## Figures
-
-![
-**A square image at actual size and with a bottom caption.**
-Loaded from the latest version of image on GitHub.
-](https://github.com/manubot/resources/raw/15493970f8882fce22bef829619d3fb37a613ba5/test/square.png "Square image"){#fig:square-image}
-
-![
-**An image too wide to fit within page at full size.**
-Loaded from a specific (hashed) version of the image on GitHub.
-](https://github.com/manubot/resources/raw/15493970f8882fce22bef829619d3fb37a613ba5/test/wide.png "Wide image"){#fig:wide-image}
-
-![
-**A tall image with a specified height.**
-Loaded from a specific (hashed) version of the image on GitHub.
-](https://github.com/manubot/resources/raw/15493970f8882fce22bef829619d3fb37a613ba5/test/tall.png "Tall image"){#fig:tall-image height=3in}
-
-![
-**A vector `.svg` image loaded from GitHub.**
-The parameter `sanitize=true` is necessary to properly load SVGs hosted via GitHub URLs.
-White background specified to serve as a backdrop for transparent sections of the image.
-](https://raw.githubusercontent.com/manubot/resources/master/test/vector.svg?sanitize=true "Vector image"){#fig:vector-image height=2.5in .white}
-
-## Tables
-
-| *Bowling Scores* | Jane          | John          | Alice         | Bob           |
-|:-----------------|:-------------:|:-------------:|:-------------:|:-------------:|
-| Game 1 | 150 | 187 | 210 | 105 |
-| Game 2 |  98 | 202 | 197 | 102 |
-| Game 3 | 123 | 180 | 238 | 134 |
-
-Table: A table with a top caption and specified relative column widths.
-{#tbl:bowling-scores}
-
-|         | Digits 1-33                        | Digits 34-66                      | Digits 67-99                      | Ref.                                                        |
-|:--------|:-----------------------------------|:----------------------------------|:----------------------------------|:------------------------------------------------------------|
-| pi      | 3.14159265358979323846264338327950 | 288419716939937510582097494459230 | 781640628620899862803482534211706 | [`piday.org`](https://www.piday.org/million/)               |
-| e       | 2.71828182845904523536028747135266 | 249775724709369995957496696762772 | 407663035354759457138217852516642 | [`nasa.gov`](https://apod.nasa.gov/htmltest/gifcity/e.2mil) |
-
-Table: A table too wide to fit within page.
-{#tbl:constant-digits}
-
-|          | **Colors** <!-- $colspan="2" --> |                      |
-|:--------:|:--------------------------------:|:--------------------:|
-| **Size** | **Text Color**                   | **Background Color** |
-| big      | blue                             | orange               |
-| small    | black                            | white                |
-
-Table: A table with merged cells using the `attributes` plugin.
-{#tbl: merged-cells}
-
-## Equations
-
-A LaTeX equation:
-
-$$\int_0^\infty e^{-x^2} dx=\frac{\sqrt{\pi}}{2}$$ {#eq:regular-equation}
-
-An equation too long to fit within page:
-
-$$x = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9$$ {#eq:long-equation}
-
-## Special
-
-<i class="fas fa-exclamation-triangle"></i> [WARNING]{.semibold} _The following features are only supported and intended for `.html` and `.pdf` exports._
-_Journals are not likely to support them, and they may not display correctly when converted to other formats such as `.docx`._
-
-[Link styled as a button](https://manubot.org "Manubot Homepage"){.button}
-
-Adding arbitrary HTML attributes to an element using Pandoc's attribute syntax:
-
-::: {#some_id_1 .some_class style="background: #ad1457; color: white; margin-left: 40px;" title="a paragraph of text" data-color="white" disabled="true"}
-Manubot Manubot Manubot Manubot Manubot.
-Manubot Manubot Manubot Manubot.
-Manubot Manubot Manubot.
-Manubot Manubot.
-Manubot.
-:::
-
-Adding arbitrary HTML attributes to an element with the Manubot `attributes` plugin (more flexible than Pandoc's method in terms of which elements you can add attributes to):
-
-Manubot Manubot Manubot Manubot Manubot.
-Manubot Manubot Manubot Manubot.
-Manubot Manubot Manubot.
-Manubot Manubot.
-Manubot.
-<!-- $id="element_id" class="some_class" $style="color: #ad1457; margin-left: 40px;" $disabled="true" $title="a paragraph of text" $data-color="red" -->
-
-Available background colors for text, images, code, banners, etc:  
-
-`white`{.white}
-`lightgrey`{.lightgrey}
-`grey`{.grey}
-`darkgrey`{.darkgrey}
-`black`{.black}
-`lightred`{.lightred}
-`lightyellow`{.lightyellow}
-`lightgreen`{.lightgreen}
-`lightblue`{.lightblue}
-`lightpurple`{.lightpurple}
-`red`{.red}
-`orange`{.orange}
-`yellow`{.yellow}
-`green`{.green}
-`blue`{.blue}
-`purple`{.purple}
-
-Using the [Font Awesome](https://fontawesome.com/) icon set:
-
-<!-- include the Font Awesome library, per: https://fontawesome.com/start -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-
-<i class="fas fa-check"></i> <i class="fas fa-question"></i> <i class="fas fa-star"></i> <i class="fas fa-bell"></i> <i class="fas fa-times-circle"></i> <i class="fas fa-ellipsis-h"></i>
-
-[
-<i class="fas fa-scroll fa-lg"></i> **Light Grey Banner**<br>
-useful for *general information* - [manubot.org](https://manubot.org/)
-]{.banner .lightgrey}
-
-[
-<i class="fas fa-info-circle fa-lg"></i> **Blue Banner**<br>
-useful for *important information* - [manubot.org](https://manubot.org/)
-]{.banner .lightblue}
-
-[
-<i class="fas fa-ban fa-lg"></i> **Light Red Banner**<br>
-useful for *warnings* - [manubot.org](https://manubot.org/)
-]{.banner .lightred}
+virus, etc. (could go in first discussion section, but also deserves to be highlighted)
 
 
 ## References {.page_break_before}
