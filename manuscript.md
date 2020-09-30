@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -103,9 +103,9 @@ title: Manuscript Title
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/6643bf6d55c69c608d05e80b29862e94178d107b/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@0964fd7](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/0964fd7ed7fdc1e3b468b5f4f1234d24de0b14fc)
+from [dib-lab/2020-paper-sourmash-gather@6643bf6](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/6643bf6d55c69c608d05e80b29862e94178d107b)
 on September 30, 2020.
 </em></small>
 
