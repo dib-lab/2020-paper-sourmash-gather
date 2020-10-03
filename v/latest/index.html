@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2020-09-30" />
+  <meta name="dcterms.date" content="2020-10-03" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2020-09-30" />
-  <meta name="citation_publication_date" content="2020-09-30" />
+  <meta name="dc.date" content="2020-10-03" />
+  <meta name="citation_publication_date" content="2020-10-03" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/96adfe268dbd458cd8ed87b9e7b349040c1256bc/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/96adfe268dbd458cd8ed87b9e7b349040c1256bc/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/96adfe268dbd458cd8ed87b9e7b349040c1256bc/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/dfca6e992473290f879f70f51180bc4df7c14b0f/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/96adfe268dbd458cd8ed87b9e7b349040c1256bc/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/dfca6e992473290f879f70f51180bc4df7c14b0f">dib-lab/2020-paper-sourmash-gather@dfca6e9</a>
-on September 30, 2020.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/96adfe268dbd458cd8ed87b9e7b349040c1256bc">dib-lab/2020-paper-sourmash-gather@96adfe2</a>
+on October 3, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -97,15 +97,42 @@ Department of Population Health and Reproduction, UC Davis
 <h2 class="page_break_before" id="abstract">Abstract</h2>
 <p>Here we describe an extension of MinHash that permits accurate compositional analysis of metagenomes with low memory and disk requirements.</p>
 <h1 id="results">Results</h1>
-<h2 id="scaled-minhash-accurately-estimates-containment">Scaled MinHash accurately estimates containment</h2>
+<h2 id="scaled-minhash-sketches-support-containment-operations">Scaled MinHash sketches support containment operations</h2>
 <ul>
 <li>scaled minhash supports similarity and containment</li>
+</ul>
+<p>The Scaled MinHash is a mix of MinHash and ModHash.
+From the former it keeps the smallest elements,
+and from the latter it adopts the dynamic size to allow containment estimation.
+Instead of taking <span class="math inline">\(0 \mod m\)</span> elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>,
+a Scaled MinHash uses a parameter <span class="math inline">\(s\)</span> to select a subset of <span class="math inline">\(W\)</span>:
+<span class="math display">\[\mathbf{SCALED}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in W\,\}\]</span>
+where <span class="math inline">\(H\)</span> is the largest possible value in the domain of <span class="math inline">\(h(x)\)</span> and
+<span class="math inline">\(\frac{H}{s}\)</span> is the  value in the Scaled MinHash.</p>
+<p>Given an uniform hash function <span class="math inline">\(h\)</span> and <span class="math inline">\(s=m\)</span>,
+the cardinalities of <span class="math inline">\(\mathbf{SCALED}_s(W)\)</span> and <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> converge for large <span class="math inline">\(\vert W \vert\)</span>.
+The main difference is the range of possible values in the hash space,
+since the Scaled MinHash range is contiguous and the ModHash range is not.
+Figure  shows an example comparing MinHash, ModHash and Scaled MinHash with the same parameter value.</p>
+<h2 id="scaled-minhash-accurately-estimates-containment">Scaled MinHash accurately estimates containment</h2>
+<p>maybe split into two: definition, and then benchmarking.</p>
+<p>second results section would be, “Scaled minhash has good performance…”</p>
+<ul>
 <li>compares well with others</li>
 <li>supports large-scale sketching of genbank</li>
 </ul>
-<p>maybe split into two: definition, and then benchmarking.</p>
-<p>second results section would be, “Scaled minhash has good performance…”</p>
 <p>xx How much is missed figure; Poisson calculations?</p>
+<div id="fig:containment" class="fignos">
+<figure>
+<img src="images/containment.svg" alt="" /><figcaption><span>Figure 1:</span> <strong>Letter-value plot of the
+differences from containment estimate to ground truth (exact).</strong>
+Each method is evaluated for <span class="math inline">\(k=\{21,31,51\}\)</span>,
+except for <code>Mash</code> with <span class="math inline">\(k=51\)</span>,
+since <code>Mash</code> doesn’t support <span class="math inline">\(k&gt;32\)</span>.
+<strong>A</strong>: Using all 68 reference genomes found in previous articles.
+<strong>B</strong>: Excluding low coverage genomes identified in previous articles.</figcaption>
+</figure>
+</div>
 <h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
 <p>Efficient indexing of scaled minhash signatures is cool.</p>
 <ul>
