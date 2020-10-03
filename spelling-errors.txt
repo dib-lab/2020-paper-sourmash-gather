@@ -1,5 +1,6 @@
 benchmarking
 CAMI
+cardinalities
 combinatorial
 compositional
 ctb
@@ -12,7 +13,8 @@ mer
 mers
 metagenome
 metagenomes
-minhash
+MinHash
+ModHash
 Performant
 SBT
 sourmash
