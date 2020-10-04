@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,9 +102,9 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@d256275](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d25627503ee2963164e5310881321faca0c99fbc)
+from [dib-lab/2020-paper-sourmash-gather@2900f68](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d)
 on October 4, 2020.
 </em></small>
 
@@ -1067,6 +1067,15 @@ it is also possible to convert one index into the other.
 
 
 ### Limitations and future directions
+
+From David Koslicki:
+
+In my initial investigation/calculations, it appears that the gotchas are things you’re aware of:
+Lack of sensitivity for small queries
+Potentially large sketch sizes
+And a couple other that I’ve tentatively/mathematically observed:
+The variance of the estimate of C(A,B)=|A\cap B| / |A| appears to also depend on |A\B|, which was somewhat surprising
+The “fixed k-size” problem (which might be able to be overcome with the prefix-lookup data structure, if one sacrifices some accuracy)
 
 _Scaled MinHash_ sketches are fundamentally a subset of the $k$-mer composition of a dataset,
 and so any of the techniques described in [@marchet_data_2019] are potential

@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,9 +67,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d25627503ee2963164e5310881321faca0c99fbc/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d25627503ee2963164e5310881321faca0c99fbc">dib-lab/2020-paper-sourmash-gather@d256275</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d">dib-lab/2020-paper-sourmash-gather@2900f68</a>
 on October 4, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -1054,6 +1054,13 @@ updating and query performance.</p>
 <p>Because both are able to return the original sketch collection,
 it is also possible to convert one index into the other.</p>
 <h3 id="limitations-and-future-directions-1">Limitations and future directions</h3>
+<p>From David Koslicki:</p>
+<p>In my initial investigation/calculations, it appears that the gotchas are things you’re aware of:
+Lack of sensitivity for small queries
+Potentially large sketch sizes
+And a couple other that I’ve tentatively/mathematically observed:
+The variance of the estimate of C(A,B)=|AB| / |A| appears to also depend on |A|, which was somewhat surprising
+The “fixed k-size” problem (which might be able to be overcome with the prefix-lookup data structure, if one sacrifices some accuracy)</p>
 <p><em>Scaled MinHash</em> sketches are fundamentally a subset of the <span class="math inline">\(k\)</span>-mer composition of a dataset,
 and so any of the techniques described in <span class="citation" data-cites="marchet_data_2019">[<span class="citeproc-not-found" data-reference-id="marchet_data_2019"><strong>???</strong></span>]</span> are potential
 candidates for improving current indices or implementing new ones.
