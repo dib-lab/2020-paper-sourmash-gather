@@ -4,7 +4,7 @@ author-meta:
 - C. Titus Brown
 bibliography:
 - content/manual-references.json
-date-meta: '2020-10-04'
+date-meta: '2020-10-05'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="dc.date" content="2020-10-04" />
+  <meta name="dc.date" content="2020-10-05" />
 
-  <meta name="citation_publication_date" content="2020-10-04" />
+  <meta name="citation_publication_date" content="2020-10-05" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/00ef27532387dbba2c360c02bb84dbd8b426f949/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/00ef27532387dbba2c360c02bb84dbd8b426f949/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/00ef27532387dbba2c360c02bb84dbd8b426f949/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,10 +102,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/00ef27532387dbba2c360c02bb84dbd8b426f949/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@2900f68](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/2900f681ba8e15d7f55fcd6e8783d6f79e4ce10d)
-on October 4, 2020.
+from [dib-lab/2020-paper-sourmash-gather@00ef275](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/00ef27532387dbba2c360c02bb84dbd8b426f949)
+on October 5, 2020.
 </em></small>
 
 ## Authors
@@ -145,7 +145,7 @@ Here we describe an extension of MinHash that permits accurate compositional ana
 
 # Introduction
 
-Compositional data analysis is the study of the parts of a whole using relative abundances [@aitchison_statistical_1982].
+Compositional data analysis is the study of the parts of a whole using relative abundances [@doi:10.1111/j.2517-6161.1982.tb01195.x].
 This is a general problem with applications across many scientific fields [@aitchison_compositional_2005],
 and examples in biology include RNA-Seq [@quinn_field_2019-1],
 metatranscriptomics [@macklaim_rna-seq_2018],
@@ -179,86 +179,97 @@ especially in undercharacterized environments such as oceans and soil.
 
 * scaled minhash supports similarity and containment
 
-The Scaled MinHash is a mix of MinHash and ModHash.
-From the former it keeps the smallest elements,
-and from the latter it adopts the dynamic size to allow containment estimation.
-Instead of taking $0 \mod m$ elements like $\mathbf{MOD}_m(W)$,
-a Scaled MinHash uses a parameter $s$ to select a subset of $W$:
-$$\mathbf{SCALED}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in W\,\}$$
-where $H$ is the largest possible value in the domain of $h(x)$ and
-$\frac{H}{s}$ is the \emph{maximum hash} value in the Scaled MinHash.
+We define the Scaled MinHash on an input domain of $k$-mers, $W$, as follows:
 
-Given an uniform hash function $h$ and $s=m$,
-the cardinalities of $\mathbf{SCALED}_s(W)$ and $\mathbf{MOD}_m(W)$ converge for large $\vert W \vert$.
-The main difference is the range of possible values in the hash space,
-since the Scaled MinHash range is contiguous and the ModHash range is not.
-Figure \ref{fig:minhashes} shows an example comparing MinHash, ModHash and Scaled MinHash with the same parameter value.
+$$\mathbf{SCALED}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
+W\,\}$$ where $H$ is the largest possible value in the domain of
+$h(x)$ and $\frac{H}{s}$ is the \emph{maximum hash} value in the
+Scaled MinHash.
 
-## Scaled MinHash accurately estimates containment
+The Scaled MinHash is a mix of MinHash and ModHash (@cite broder).  As
+in the former it keeps the smallest elements, and from the latter it
+adopts the dynamic size to allow containment estimation.  However,
+instead of taking $0 \mod m$ elements like $\mathbf{MOD}_m(W)$, a
+Scaled MinHash uses a parameter $s$ to select a subset of $W$.
 
-maybe split into two: definition, and then benchmarking.
+Given a uniform hash function $h$ and $s=m$, the cardinalities of
+$\mathbf{SCALED}_s(W)$ and $\mathbf{MOD}_m(W)$ converge for large
+$\vert W \vert$.  The main difference is the range of possible values
+in the hash space, since the Scaled MinHash range is contiguous and
+the ModHash range is not.  Figure @ref shows an example
+comparing MinHash, ModHash and Scaled MinHash with the same parameter
+value.
 
-second results section would be, "Scaled minhash has good performance..."
+Intuitively, Scaled MinHash is performing a density sampling at a rate
+of 1 $k$-mer per $s$ k-mers seen.
+
+Scaled MinHash permits Jaccard containment estimation between two data sets
+directly from the sketch ...
+
+A drawback of Scaled MinHash when compared to regular MinHash sketches
+is the size: the MinHash parameter $s$ sets an upper bound on the size
+of the sketch, independently of the size of the original data.  Scaled
+MinHash sketches grow proportionally to the original data cardinality,
+and in the worst case can have up to $\frac{H}{s}$ items.
+
+_Scaled MinHash_ sketches offer a fixed range of possible hash values,
+but with reduced sensitivity for small datasets when using larger $s$
+(scaled) values.  A biological example are viruses: at $s=2000$ many
+viruses are too small to consistently have a hashed value selected by
+the _Scaled MinHash_ approach.  Other _MinHash_ approaches sidestep
+the problem by using hashing and streaming the query dataset (`Mash
+Screen`) or loading the query dataset into an approximate query
+membership data structure (`CMash`) to allow comparisons with the
+variable range of possible hash values, but both solutions require the
+original data or a more limited data representation than _Scaled
+MinHash_.  The consistency of operating in the same data structure
+also allows further methods to be develop using only _Scaled MinHash_
+sketches and their features, especially if large collections of
+_Scaled MinHash_ sketches are available.
+
+Others have also applied the ModHash concept to genomic data; see, for
+example, Durbin's "modimizer"
+[@https://github.com/richarddurbin/modimizer].
+
+We provide two implementations of Scaled MinHash, `smol` and
+`sourmash`.  `smol` is a minimal implementation of _Scaled MinHash_
+developed to demonstrate the method; it does not include many required
+features for working with real biological data, but its smaller code
+base makes it a more readable and concise example of the method.
+`sourmash` [@doi:10.21105/joss.00027] implements features and
+functionality needed for large scale analyses of real data.
+
+## Scaled MinHash accurately estimates containment between sets of different sizes
 
 * compares well with others
 * supports large-scale sketching of genbank
+* How much is missed figure; Poisson calculations?
 
-xx How much is missed figure; Poisson calculations?
+We next compare the _Scaled MinHash_ method implemented in `smol` to
+CMash (_Containment MinHash_) and Mash Screen
+(_Containment Score_) for containment queries in the Shakya dataset
+[@doi:10.1111/1462-2920.12086 ], a synthetic mock metagenomic
+bacterial and archaeal community where the organisms are known.
+Further analyses of low-coverage and contaminant genomes in this data set
+were described in [@awad_evaluating_2017] and [@ondov_mash_2019].
 
-In this section the _Scaled MinHash_ method implemented in `smol`
-is compared to CMash (_Containment MinHash_)
-and Mash Screen (_Containment Score_) for containment queries
-in the Shakya dataset [@shakya_comparative_2013],
-a synthetic mock metagenomic bacterial and archaeal community where the organisms are known,
-including low-coverage and contaminant genomes described in [@awad_evaluating_2017] and [@ondov_mash_2019].
+For _Mash Screen_ the ratio of hashes matched by total hashes is used
+instead of the _Containment Score_, since the latter uses a $k$-mer
+survival process modeled as a Poisson process first introduced in
+[@fan_assembly_2015] and later used in the _Mash distance_
+[@ondov_mash:_2016] and _Containment score_ [@ondov_mash_2019]
+formulations.
 
-`smol` is a minimal implementation of _Scaled MinHash_ for demonstration of the method
-and doesn't include many required features for working with real biological data,
-but its smaller code base makes it a more readable and concise example of the method.
-For _Mash Screen_ the ratio of hashes matched by total hashes is used instead of the _Containment Score_,
-since the latter uses a $k$-mer survival process modeled as a Poisson process
-first introduced in [@fan_assembly_2015] and later used in the _Mash distance_ [@ondov_mash:_2016] and
-_Containment score_ [@ondov_mash_2019] formulations.
-
-Experiments use $k=\{21, 31, 51\}$
-(except for Mash, which only supports $k \le 32$).
-For Mash and CMash they were run with $n=\{1000, 10000\}$
-to evaluate the containment estimates when using larger sketches with sizes
-comparable to the Scaled MinHash sketches with $scaled=1000$.
-The truth set is calculated using an exact $k$-mer counter implemented with a
-_HashSet_ data structure in the Rust programming language [@matsakis_rust_2014].
-
-```{r minhash1000, eval=TRUE, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE, cache=TRUE, out.width="100%", auto_pdf=TRUE, fig.cap='(ref:minhash1000)', fig.show="hold", fig.align="center"}
-knitr::include_graphics('../experiments/smol_gather/figures/containment.pdf')
-```
-
-(ref:minhash1000) Letter-value plot [@hofmann_letter-value_2017] of the
-differences from containment estimate to ground truth (exact).
-Each method is evaluated for $k=\{21,31,51\}$,
-except for `Mash` with $k=51$,
-since `Mash` doesn't support $k>32$.
-**A**: Using all 68 reference genomes found in previous articles.
-**B**: Excluding low coverage genomes identified in previous articles.
-
-All methods are within 1\% of the exact containment on average (Figure \ref{fig:minhash1000} A),
-with `CMash` consistently underestimating the containment for large $k$ and overestimating for
-small $k$.
-`Mash Screen` with $n=10000$ has the smallest difference to ground truth for $k=\{21, 31\}$,
-followed by `smol` with `scaled=1000` and `Mash Screen` with $n=1000$.
-
-In order to evaluate the effect of the low-coverage and contaminant genomes
-previously detected in this dataset,
-(Figure \ref{fig:minhash1000} B) shows results with these genomes removed.
-The number of outliers is greatly reduced,
-with all methods mostly within 1\% absolute difference to the ground truth.
-`CMash` still has some outliers with up to 8\% difference to the ground truth.
-
-<!-- TODO
-  * runtimes?
--->
+Experiments use $k=\{21, 31, 51\}$ (except for Mash, which only
+supports $k \le 32$).  For Mash and CMash they were run with
+$n=\{1000, 10000\}$ to evaluate the containment estimates when using
+larger sketches with sizes comparable to the Scaled MinHash sketches
+with $scaled=1000$.  The truth set is calculated using an exact
+$k$-mer counter implemented with a _HashSet_ data structure in the
+Rust programming language [@matsakis_rust_2014].
 
 ![
-**Letter-value plot of the
+**Letter-value plot [@hofmann_letter-value_2017] of the
 differences from containment estimate to ground truth (exact).**
 Each method is evaluated for $k=\{21,31,51\}$,
 except for `Mash` with $k=51$,
@@ -267,94 +278,92 @@ since `Mash` doesn't support $k>32$.
 **B**: Excluding low coverage genomes identified in previous articles.
 ](images/containment.svg "Containment estimation between smol, CMash, and mash screen"){#fig:containment}
 
-CTB: Where does "Scaled MinHash sketch sizes across GenBank domains" go? (Chp 01 from Luiz thesis)
+All methods are within 1\% of the exact containment on average (Figure
+@fig:minhash1000 A), with `CMash` consistently underestimating
+the containment for large $k$ and overestimating for small $k$.  `Mash
+Screen` with $n=10000$ has the smallest difference to ground truth for
+$k=\{21, 31\}$, followed by `smol` with `scaled=1000` and `Mash
+Screen` with $n=1000$.
 
-A drawback of Scaled MinHash when compared to regular MinHash sketches is the size:
-the MinHash parameter $s$ sets an upper bound on the size of the sketch,
-independently of the size of the original data.
-Scaled MinHash sketches grow proportionally to the original data cardinality,
-and in the worst case can have up to $\frac{H}{s}$ items.
+In order to evaluate the effect of the low-coverage and contaminant
+genomes previously detected in this dataset, (Figure @fig:minhash1000
+B) shows results with these genomes removed.  The number of outliers
+is greatly reduced, with most methods within 1\% absolute
+difference to the ground truth.  `CMash` still has some outliers with
+up to 8\% difference to the ground truth.
 
-_Scaled MinHash_ sketches offer a fixed range of possible hash values,
-but with reduced sensitivity for small datasets when using larger $s$ (scaled) values.
-A biological example are viruses:
-at $s=2000$ many viruses are too small to consistently have a hashed value
-selected by the _Scaled MinHash_ approach.
-Other _MinHash_ approaches sidestep the problem by using hashing and streaming the query dataset (`Mash Screen`)
-or loading the query dataset into an approximate query membership data structure (`CMash`) to allow comparisons
-with the variable range of possible hash values,
-but both solutions require the original data or a more limited data representation than _Scaled MinHash_.
-The consistency of operating in the same data structure also allows further
-methods to be develop using only _Scaled MinHash_ sketches and their features,
-especially if large collections of _Scaled MinHash_ sketches are available.
+CTB:
+
+* runtimes?
+* Where does "Scaled MinHash sketch sizes across GenBank domains"
+go? (Chp 01 from Luiz thesis)
 
 ## Scaled MinHash sketches support efficient indexing for large-scale containment queries
-
-Efficient indexing of scaled minhash signatures is cool.
 
 * hierarchical and inverted indices (SBT and LCA)
 * supports efficient containment and similarity queries
 
+Searching for matches in large collection of datasets is challenging
+when hundreds of thousands of them are available, especially if they
+are partitioned and the data is not all present at the same place, or
+too large to even be stored in a single system.  Efficient methods for
+sequencing datasets use exact $k$-mer matching instead of relying on
+sequence alignment, but sensitivity is reduced since they can't deal
+with sequencing errors and biological variation as well as
+alignment-based methods can.
 
-Searching for matches in large collection of datasets is challenging when hundreds of thousands of them are available,
-especially if they are partitioned and the data is not all present at the same place,
-or too large to even be stored in a single system.
-Efficient methods for sequencing datasets use exact $k$-mer matching instead of relying on sequence alignment,
-but sensitivity is reduced since they can't deal with sequencing errors and biological variation as well as alignment-based methods can.
-
-CTB: Additional points to raise: in-memory representation of sketches may be too big (!!),
-goal here is on disk storage/low minimum memory for "extremely large data" situation.
-Also/in addition, want ability to do incremental loading of things.
-Note we are not talking here about situations where the indices themselves are too big to download,
+CTB: Additional points to raise: in-memory representation of sketches
+may be too big (!!), goal here is on disk storage/low minimum memory
+for "extremely large data" situation.  Also/in addition, want ability
+to do incremental loading of things.  Note we are not talking here
+about situations where the indices themselves are too big to download,
 could maybe include forward pointer to chp4.
 
+Note, in this section we could also include distinction in performance
+between SBT and LCA DB, to whit: large scaled works well with LCA
+(small DB, ~tolerable memory, load all at once, then quite fast) but
+low scaled may work (much) better with SBT.
 
-Note, in this section we could also include distinction in performance between SBT and LCA DB,
-to whit: large scaled works well with LCA (small DB, ~tolerable memory, load all at once, then quite fast)
-but low scaled may work (much) better with SBT.
+`sourmash` [@doi:10.21105/joss.00027] is a software for large-scale
+sequence data comparisons based on MinHash sketches.  Initially
+implementing operations for computing, comparing and plotting distance
+matrices for _MinHash_ sketches, version 2 [@pierce_large-scale_2019]
+introduces _Scaled MinHash_ sketches and indices for this new sketch
+format.  Indices support a common set of operations (insertion,
+search, and returning all signatures are the main ones), allowing them
+to be used interchangeably depending on the use case, performance
+requirements and computational resources available.
 
-`sourmash` [@brown_sourmash:_2016] is a software for large-scale sequence data comparisons based on MinHash sketches.
-Initially implementing operations for computing,
-comparing and plotting distance matrices for _MinHash_ sketches,
-version 2 [@pierce_large-scale_2019] introduces _Scaled MinHash_ sketches
-and indices for this new sketch format.
-Indices support a common set of operations
-(insertion, search, and returning all signatures are the main ones),
-allowing them to be used interchangeably depending on the use case,
-performance requirements and computational resources available.
+The simplest index is the `LinearIndex`, a list of signatures.  Search
+operations are executed sequentially, and insertions append new
+signatures to the end of the list.  Internally, `sourmash` uses
+LinearIndex as the default index for lists of signatures provided in
+the command-line.
 
-The simplest index is the `LinearIndex`,
-a list of signatures.
-Search operations are executed sequentially,
-and insertions append new signatures to the end of the list.
-Internally,
-`sourmash` uses LinearIndex as the default index for lists of
-signatures provided in the command-line.
-
-The _MinHash Bloom Tree_ (_MHBT_) is a variation of the _Sequence Bloom Tree_ (_SBT_)
-that uses Scaled MinHash sketches as leaf nodes instead of Bloom Filters as in
-the SBT.
-The search operation in SBTs is defined as a breadth-first search starting at the root of the tree,
-using a threshold of the original $k$-mers in the query to decide when to prune the search.
-MHBTs use a query Scaled MinHash sketch instead,
-but keep the same search approach.
-The threshold of a query $Q$ approach introduced in [@solomon_fast_2016] is
-equivalent to the containment
-$$C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}$$
-described in [@broder_resemblance_1997],
-where $S$ is a Scaled MinHash sketch.
-For internal nodes $n$ (which are Bloom Filters) the containment of the query Scaled MinHash sketch $Q$ is
-$$C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q \vert}$$
-the same containment score defined in [@koslicki_improving_2019] for the _Containment MinHash_ to _Bloom Filter_ comparison.
+The _MinHash Bloom Tree_ (_MHBT_) is a variation of the _Sequence
+Bloom Tree_ (_SBT_) that uses Scaled MinHash sketches as leaf nodes
+instead of Bloom Filters as in the SBT.  The search operation in SBTs
+is defined as a breadth-first search starting at the root of the tree,
+using a threshold of the original $k$-mers in the query to decide when
+to prune the search.  MHBTs use a query Scaled MinHash sketch instead,
+but keep the same search approach.  The threshold of a query $Q$
+approach introduced in [@solomon_fast_2016] is equivalent to the
+containment $$C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}$$
+described in [@broder_resemblance_1997], where $S$ is a Scaled MinHash
+sketch.  For internal nodes $n$ (which are Bloom Filters) the
+containment of the query Scaled MinHash sketch $Q$ is
+$$C(Q, n) =
+\frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
+\vert}$$
+the same containment score defined in
+[@koslicki_improving_2019] for the _Containment MinHash_ to _Bloom
+Filter_ comparison.
 
 MHBTs support both containment and similarity queries.
 For internal nodes the containment $C(Q,n)$ is used as an upper-bound of the similarity $J(Q, n)$:
-\begin{equation}
-\begin{split}
-  C(Q, n) &\ge J(Q, n) \\
+$$C(Q, n) &\ge J(Q, n) \\
   \frac{\vert Q \cap n \vert }{\vert Q \vert} &\ge \frac{\vert Q \cap n \vert }{\vert Q \cup n \vert}
-\end{split}
-\end{equation}
+  $$
 since $\vert Q \cup n \vert \ge \vert Q \vert$.
 When a leaf node is reached then the similarity $J(Q, S)$ is calculated for the Scaled MinHash sketch $S$
 and declared a match if it is above the threshold $t$.
@@ -362,29 +371,32 @@ Because the upper-bound is being used,
 this can lead to extra nodes being checked,
 but it simplifies implementation and provides better correctness guarantees.
 
-The LCA index in sourmash is an inverted index that stores a mapping from hashes
-in a collection of signatures to a list of IDs for signatures containing the hash.
-Despite the name,
-the list of signature IDs is not collapsed to the lowest common ancestor (as in kraken),
-and is calculated as needed by downstream methods using the taxonomy information
-that is also stored separately in the LCA index.
+The LCA index in sourmash is an inverted index that stores a mapping
+from hashes in a collection of signatures to a list of IDs for
+signatures containing the hash.  Despite the name, the list of
+signature IDs is not collapsed to the lowest common ancestor (as in
+kraken), and is calculated as needed by downstream methods using the
+taxonomy information that is also stored separately in the LCA index.
 
-The mapping from hashes to signature IDs in the LCA index is an implicit representation of the original signatures used to build the index,
-and so returning the signatures is implemented by rebuilding the original signatures on-the-fly.
-Search in an LCA index matches the $k$-mers in the query to the list of signatures IDs containing them,
-using a counter data structure to sort results by number of hashes per signature ID.
-The rebuilt signatures are then returned as matches based on the signature ID,
-with containment or similarity to the query calculated against the rebuilt signatures.
+The mapping from hashes to signature IDs in the LCA index is an
+implicit representation of the original signatures used to build the
+index, and so returning the signatures is implemented by rebuilding
+the original signatures on-the-fly.  Search in an LCA index matches
+the $k$-mers in the query to the list of signatures IDs containing
+them, using a counter data structure to sort results by number of
+hashes per signature ID.  The rebuilt signatures are then returned as
+matches based on the signature ID, with containment or similarity to
+the query calculated against the rebuilt signatures.
 
-mash screen [@ondov_mash_2019] has a similar index,
-but it is constructed on-the-fly using the distinct hashes in a sketch collection as keys,
-and values are counters initially set to zero.
-As the query is processed,
-matching hashes have their counts incremented,
-and after all hashes in the query are processed then all the sketches in the collection are
-checked in the counters to quantify the containment/similarity of each sketch in the query.
-The LCA index uses the opposite approach,
-opting to reconstruct the sketches on-the-fly.
+mash screen [@ondov_mash_2019] has a similar index, but it is
+constructed on-the-fly using the distinct hashes in a sketch
+collection as keys, and values are counters initially set to zero.  As
+the query is processed, matching hashes have their counts incremented,
+and after all hashes in the query are processed then all the sketches
+in the collection are checked in the counters to quantify the
+containment/similarity of each sketch in the query.  The LCA index
+uses the opposite approach, opting to reconstruct the sketches
+on-the-fly.
 
 In order to evaluate MHBT and LCA indices construction a GenBank snapshot from July 18, 2020,
 containing 725,331 assembled genomes (
@@ -397,11 +409,8 @@ was used to measure runtime,
 memory consumption and final index size.
 MHBT indices were built with $scaled=1000$,
 and LCA indices used $scaled=10000$.
-Table \@ref(tab:lca-index) shows the results for the LCA index,
-and Table \@ref(tab:mhbt-index) for the MHBT index.
-
-Table: (\#tab:lca-index) Results for LCA indexing,
-with $scaled=10000$ and $k=21$.
+Table @tbl:lca-index shows the results for the LCA index,
+and Table @tbl:mhbt-index for the MHBT index.
 
 | Domain   | Runtime (s) | Memory (MB)| Size (MB) |
 |:---------|------------:|-----------:|----------:|
@@ -411,9 +420,8 @@ with $scaled=10000$ and $k=21$.
 | Fungi    | 999         |          3 |        65 |
 | Bacteria | 12,717      |        857 |       446 |
 
-Table: (\#tab:mhbt-index) Results for MHBT indexing,
-with $scaled=1000$, $k=21$ and internal nodes (Bloom Filters)
-using 10000 slots for storage.
+Table: Results for LCA indexing, with $scaled=10000$ and
+$k=21$. {#tbl:lca-index}
 
 | Domain   | Runtime (s) | Memory (MB)| Size (MB) |
 |:---------|------------:|-----------:|----------:|
@@ -423,65 +431,69 @@ using 10000 slots for storage.
 | Fungi    | 1,161       | 3,364      | 1,585     |
 | Bacteria | 32,576      | 47,445     | 24,639    |
 
-Index sizes are more affected by the number of genomes inserted than the
-individual _Scaled MinHash_ sizes.
-Despite Protozoan and Fungal _Scaled MinHash_ sketches being larger individually,
-the Bacterial indices are an order of magnitude larger for both indices since
-they contain two orders of magnitude more genomes.
+Table: Results for MHBT indexing,
+with $scaled=1000$, $k=21$ and internal nodes (Bloom Filters)
+using 10000 slots for storage. {#tbl:mhbt-index}
 
-Comparing between LCA and MHBT index sizes must account for their different scaled parameters,
-but as shown in Chapter [1](#chp-scaled) a _Scaled MinHash_ with $scaled=1000$ when downsampled to $scaled=10000$
-is expected to be ten times smaller.
-Even so,
-MHBT indices are more than ten times larger than their LCA counterparts,
-since they store extra caching information
-(the internal nodes)
-to avoid loading all the data to memory during search.
-LCA indices also contain extra data
-(the list of datasets containing a hash),
-but this is lower than the storage requirements for the MHBT internal nodes.
+Index sizes are more affected by the number of genomes inserted than
+the individual _Scaled MinHash_ sizes.  Despite Protozoan and Fungal
+_Scaled MinHash_ sketches being larger individually, the Bacterial
+indices are an order of magnitude larger for both indices since they
+contain two orders of magnitude more genomes.
 
-or the purpose of evaluating the performance characteristics of MHBT and LCA indices when performing searches,
-each of the previously described indices generated from GenBank domains was used
-to execute similarity searches (finding datasets in a collection that are similar to a query)
-using appropriate queries for each domain.
-All queries were selected from the relevant domain and queried against both MHBT ($scaled=1000$) and LCA ($scaled=10000$),
-for $k=21$.
+Comparing between LCA and MHBT index sizes must account for their
+different scaled parameters, but as shown in Chapter [1](#chp-scaled)
+a _Scaled MinHash_ with $scaled=1000$ when downsampled to
+$scaled=10000$ is expected to be ten times smaller.  Even so, MHBT
+indices are more than ten times larger than their LCA counterparts,
+since they store extra caching information (the internal nodes) to
+avoid loading all the data to memory during search.  LCA indices also
+contain extra data (the list of datasets containing a hash), but this
+is lower than the storage requirements for the MHBT internal nodes.
 
-Table: (\#tab:search-runtime) Running time in seconds for similarity search
-using LCA ($scaled=10000$) and MHBT ($scaled=1000$) indices.
+For the purpose of evaluating the performance characteristics of MHBT
+and LCA indices when performing searches, each of the previously
+described indices generated from GenBank domains was used to execute
+similarity searches (finding datasets in a collection that are similar
+to a query) using appropriate queries for each domain.  All queries
+were selected from the relevant domain and queried against both MHBT
+($scaled=1000$) and LCA ($scaled=10000$), for $k=21$.
 
 |           | Viral      | Archaea    | Protozoa   | Fungi        | Bacteria      |
 |:----------|-----------:|-----------:|-----------:|-------------:|--------------:|
 | LCA       | 1.06       | 1.42       | 5.40       | 26.92        | 231.26        |
 | SBT       | 1.32       | 3.77       | 43.51      | 244.77       | 3,185.88      |
 
-Table: (\#tab:search-memory) Memory consumption in megabytes for similarity search
-using LCA ($scaled=10000$) and MHBT ($scaled=1000$) indices.
+Table: Running time in seconds for similarity search using LCA
+($scaled=10000$) and MHBT ($scaled=1000$)
+indices. {#tbl:search-runtime}
+
+Table: Memory consumption in megabytes for similarity search using LCA
+($scaled=10000$) and MHBT ($scaled=1000$)
+indices. {#tbl:search-memory}
 
 |           | Viral   | Archaea | Protozoa | Fungi     | Bacteria      |
 |:----------|--------:|--------:|---------:|----------:|--------------:|
 | LCA       |     223 |     240 |     798  |     3,274 | 20,926        |
 | SBT       |     163 |     125 |     332  |     1,656 | 2,290         |
 
-Table \@ref(tab:search-runtime) shows running time for both indices.
-For small indices (Viral and Archaea) the LCA running time is dominated by loading the index in memory,
-but for larger indices the cost is amortized due to the faster running times.
-This situation is clearer for the Bacteria indices,
-where the LCA search completes in 3 minutes and 51 seconds,
-while the SBT search takes 54 minutes.
+Table @tbl:search-runtime shows running time for both indices.
+For small indices (Viral and Archaea) the LCA running time is
+dominated by loading the index in memory, but for larger indices the
+cost is amortized due to the faster running times.  This situation is
+clearer for the Bacteria indices, where the LCA search completes in 3
+minutes and 51 seconds, while the SBT search takes 54 minutes.
 
-When comparing memory consumption,
-the situation is reversed.
-Table \@ref(tab:search-memory) shows how the LCA index consistently uses twice the memory for all domains,
-but for larger indices like Bacteria it uses as much as 10 times the memory as
-the MHBT index for the same data.
+When comparing memory consumption, the situation is reversed.  Table
+@tbl:search-memory shows how the LCA index consistently uses
+twice the memory for all domains, but for larger indices like Bacteria
+it uses as much as 10 times the memory as the MHBT index for the same
+data.
 
-For both runtime and memory consumption,
-it is worth pointing that the LCA index is a tenth of the data indexed by the MHBT.
-This highlights the trade-off between speed and memory consumption for both approaches,
-especially for larger indices.
-
+For both runtime and memory consumption, it is worth pointing that the
+LCA index is a tenth of the data indexed by the MHBT.  This highlights
+the trade-off between speed and memory consumption for both
+approaches, especially for larger indices.
 
 ## Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, 'gather'
 
