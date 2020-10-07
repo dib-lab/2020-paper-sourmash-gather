@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2020-10-06" />
+  <meta name="dcterms.date" content="2020-10-07" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2020-10-06" />
-  <meta name="citation_publication_date" content="2020-10-06" />
+  <meta name="dc.date" content="2020-10-07" />
+  <meta name="citation_publication_date" content="2020-10-07" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/56ea4576b05c76715b853d9b174ca041e0ec94e2/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/56ea4576b05c76715b853d9b174ca041e0ec94e2/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/56ea4576b05c76715b853d9b174ca041e0ec94e2/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/56ea4576b05c76715b853d9b174ca041e0ec94e2/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/56ea4576b05c76715b853d9b174ca041e0ec94e2">dib-lab/2020-paper-sourmash-gather@56ea457</a>
-on October 6, 2020.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ef4ae5631b1e683fd20305b008e55c7b7b819756">dib-lab/2020-paper-sourmash-gather@ef4ae56</a>
+on October 7, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -250,30 +250,16 @@ could maybe include forward pointer to chp4.</p>
 between SBT and LCA DB, to whit: large scaled works well with LCA
 (small DB, ~tolerable memory, load all at once, then quite fast) but
 low scaled may work (much) better with SBT.</p>
-<p><code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">3</a>]</span> is a software for large-scale
-sequence data comparisons based on MinHash sketches. Initially
-implementing operations for computing, comparing and plotting distance
-matrices for <em>MinHash</em> sketches, version 2 <span class="citation" data-cites="pierce_large-scale_2019">[<span class="citeproc-not-found" data-reference-id="pierce_large-scale_2019"><strong>???</strong></span>]</span>
-introduces <em>Scaled MinHash</em> sketches and indices for this new sketch
-format. Indices support a common set of operations (insertion,
-search, and returning all signatures are the main ones), allowing them
-to be used interchangeably depending on the use case, performance
-requirements and computational resources available.</p>
 <p><em>Scaled MinHash</em> sketches can be stored in any data structure for
 representing the <span class="math inline">\(k\)</span>-mer composition <span class="math inline">\(M\)</span> of a dataset
 <span class="citation" data-cites="marchet_data_2019">[<span class="citeproc-not-found" data-reference-id="marchet_data_2019"><strong>???</strong></span>]</span>, and as a subset of <span class="math inline">\(M\)</span> they can also be indexed
 by approaches for the full <span class="math inline">\(k\)</span>-mer composition. <code>sourmash</code>
-<span class="citation" data-cites="pierce_large-scale_2019">[<span class="citeproc-not-found" data-reference-id="pierce_large-scale_2019"><strong>???</strong></span>]</span> defines the MinHash Bloom Tree (<em>MHBT</em>)
+<span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">3</a>]</span> defines the MinHash Bloom Tree (<em>MHBT</em>)
 index, a <span class="math inline">\(k\)</span>-mer aggregative method with explicit representation of
 datasets based on hierarchical indices and a specialization of the
 Sequence Bloom Tree <span class="citation" data-cites="solomon_fast_2016">[<span class="citeproc-not-found" data-reference-id="solomon_fast_2016"><strong>???</strong></span>]</span>, as well as the <em>LCA</em> index,
 a color-aggregative method with implicit representation of the
 datasets based on inverted indices.</p>
-<p>The simplest index is the <code>LinearIndex</code>, a list of signatures. Search
-operations are executed sequentially, and insertions append new
-signatures to the end of the list. Internally, <code>sourmash</code> uses
-LinearIndex as the default index for lists of signatures provided in
-the command-line.</p>
 <p>The <em>MinHash Bloom Tree</em> (<em>MHBT</em>) is a variation of the <em>Sequence
 Bloom Tree</em> (<em>SBT</em>) that uses Scaled MinHash sketches as leaf nodes
 instead of Bloom Filters as in the SBT. The search operation in SBTs
@@ -286,10 +272,11 @@ containment <span class="math display">\[C(Q, S) = \frac{\vert Q \cap S \vert }{
 described in <span class="citation" data-cites="broder_resemblance_1997">[<span class="citeproc-not-found" data-reference-id="broder_resemblance_1997"><strong>???</strong></span>]</span>, where <span class="math inline">\(S\)</span> is a Scaled MinHash
 sketch. For internal nodes <span class="math inline">\(n\)</span> (which are Bloom Filters) the
 containment of the query Scaled MinHash sketch <span class="math inline">\(Q\)</span> is
-<span class="math display">\[C(Q, n) =
-\frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
-\vert}\]</span>
-the same containment score defined in
+<span class="math display">\[
+C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
+   \vert}
+\]</span>
+as defined by
 <span class="citation" data-cites="koslicki_improving_2019">[<span class="citeproc-not-found" data-reference-id="koslicki_improving_2019"><strong>???</strong></span>]</span> for the <em>Containment MinHash</em> to <em>Bloom
 Filter</em> comparison.</p>
 <p>MHBTs support both containment and similarity queries.
@@ -303,12 +290,12 @@ and declared a match if it is above the threshold <span class="math inline">\(t\
 Because the upper-bound is being used,
 this can lead to extra nodes being checked,
 but it simplifies implementation and provides better correctness guarantees.</p>
-<p>The LCA index in sourmash is an inverted index that stores a mapping
+<p>The LCA index in <code>sourmash</code> is an inverted index that stores a mapping
 from hashes in a collection of signatures to a list of IDs for
 signatures containing the hash. Despite the name, the list of
 signature IDs is not collapsed to the lowest common ancestor (as in
-kraken), and is calculated as needed by downstream methods using the
-taxonomy information that is also stored separately in the LCA index.</p>
+kraken), and is calculated as needed by downstream methods using
+taxonomy information stored separately in the LCA index.</p>
 <p>The mapping from hashes to signature IDs in the LCA index is an
 implicit representation of the original signatures used to build the
 index, and so returning the signatures is implemented by rebuilding
@@ -545,56 +532,19 @@ approaches, especially for larger indices.</p>
 <li>compare conceptually vs least/lowest common ancestor approaches; combinatorial</li>
 <li>showcase some examples on synthetic data</li>
 </ul>
-<p>Methods summarizing taxonomic assignments from sequences in the query
-metagenome to calculate the profile for the community follow a
-bottom-up approach. <code>gather</code> is a new method following a top-down
-approach: starting from the <span class="math inline">\(k\)</span>-mer composition of the query, it
+<p>We define a greedy algorithm, <code>gather</code>, that uses a top-down approach to
+decompose <em>Scaled MinHash</em> sketches into constituent sketches.
+Starting from the <span class="math inline">\(k\)</span>-mer composition of the query, <code>gather</code>
 iteratively finds a match in a collection of datasets with the largest
-<em>containment</em> of the query (most elements in common), and create a new
+<em>containment</em> of the query (most elements in common), and creates a new
 query by <em>removing elements</em> in the match from the original query.
 The process stops when the new query doesn’t have any more matches in
 the collection, or a user-provided minimum detection threshold is
-reached.
+reached.</p>
 <!-- David comment: "I'm surprised this works, since back in 2015
 (Metapalette days) I found removing elements like this caused the
 approach to fall apart when closely-related organisms are in the
-metagenome.)  --> This approach differs from previous methods because
-the co-occurrence of <span class="math inline">\(k\)</span>-mers in a match is considered a strong signal
-that they are coming from the same organism in the original sample,
-and is used instead of the LCA-based methods to resolve ambiguities in
-the taxonomic assignment of a sequence (or its <span class="math inline">\(k\)</span>-mers).</p>
-<p>Any data structure supporting both the <em>containment</em>
-<span class="math inline">\(C(A, B) = \frac{\vert A \cap B \vert }{\vert A \vert}\)</span>
-and <em>remove elements</em> operations can be used as a query with <code>gather</code>.
-For example,
-a <em>set</em> of the <span class="math inline">\(k\)</span>-mer composition of the query supports element removal,
-and calculating containment can be done with regular set operations.
-Approximate membership query (AMQ) sketches like the <em>Counting Quotient Filter</em> <span class="citation" data-cites="pandey_general-purpose_2017">[<span class="citeproc-not-found" data-reference-id="pandey_general-purpose_2017"><strong>???</strong></span>]</span> can also be used,
-with the benefit of reduced storage and memory usage.
-Moreover,
-the collection of datasets can be implemented with any data structure that can do containment comparisons with the query data structure,
-including implicit representations like an inverted index from hashed <span class="math inline">\(k\)</span>-mers to dataset IDs (as detailed in subsection <a href="#inverted-index">2.1.2</a>).</p>
-<!-- TODO crossref with section/subsection is not using all the numbers (only the chapter)... -->
-<p>With <em>Scaled MinHash</em> sketches, the same hash <span class="math inline">\(w&#39;\)</span> will be present in
-sketches for other datasets also containing the <span class="math inline">\(k\)</span>-mer <span class="math inline">\(m\)</span>, as long
-as they have the same parameter <span class="math inline">\(s\)</span> or can be downsampled to the same
-<span class="math inline">\(s\)</span>. This is not guaranteed for regular <em>MinHash</em> sketches, <!-- TODO
-because fixed size explanation --> and is what allows removing
-elements from the <em>Scaled MinHash</em> sketch of a query once a match is
-found. Since the containment of two datasets can also be estimated
-directly from their <em>Scaled MinHash</em> sketches, they are viable data
-structures for <code>gather</code>, especially since they are only a small
-fraction of the original dataset size and easier to store, manipulate
-and share.</p>
-<p>Compared to previous taxonomic profiling methods, <em>Scaled MinHash</em> can
-also be seen as a mix of two other approaches: It uses exact <span class="math inline">\(k\)</span>-mer
-matching and assignment, and the <span class="math inline">\(k\)</span>-mers selected by the MinHashing
-process are equivalent to implicitly-defined markers. It differs from
-previous approaches because only a subset of the <span class="math inline">\(k\)</span>-mer composition
-is used for matching, and traditional gene markers are explicitly
-chosen due to sequence conservation and low mutation rates, while
-MinHashing <span class="math inline">\(k\)</span>-mers generates a randomized, but consistent across
-datasets, set of marker <span class="math inline">\(k\)</span>-mers.</p>
+metagenome.)  -->
 <p>CTB note: gather can be done on exact k-mers as well.</p>
 <p>Algorithm <a href="\ref%7Balg:gather%7D">1</a> describes the <code>gather</code> method using a generic operation
 <code>FindBestContainment</code>.
@@ -602,29 +552,25 @@ An implementation for <code>FindBestContainment</code> for a list of datasets is
 Algorithm <a href="\ref%7Balg:list%7D">2</a>.
 Appendix <a href="#smol-source-code">A</a> has a minimal implementation in the Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<span class="citeproc-not-found" data-reference-id="matsakis_rust_2014"><strong>???</strong></span>]</span> for both algorithms,
 including a <em>Scaled MinHash</em> sketch implementation using a <em>set</em> data structure from the Rust standard library (<code>HashSet</code>).</p>
-<p><code>gather</code> is implemented as a method of the <code>Index</code> abstract base class (ABC) in <code>sourmash</code>.
-This ABC declares methods that any index in <code>sourmash</code> has to implement,
-but each index is allowed to implement it in the most efficient or performant way:</p>
-<ol type="1">
-<li><p>For <code>Linear</code> indices, the <code>FindBestContainment</code> operation is
-implemented as a linear scan over the list of signatures
-(Algorithm <a href="\ref%7Balg:list%7D">2</a>);</p></li>
-<li><p>For <code>MHBT</code> indices, <code>FindBestContainment</code> is implemented as a
-depth-first search that tracks the best containment found, and
-prunes the search if it the current estimated containment in an
-internal node is lower than the current best containment.</p></li>
-<li><p><code>LCA</code> indices can implement <code>gather</code> by building a counter of how
-many hashes of the query are present in each signature, and then
-using the signature with the largest count as a match. As matches
-are found, the count for the hashes in the match are decreased in
-the counter, and then the new signature with the largest count is
-the next match.</p></li>
-</ol>
-<p><code>sourmash gather</code>, the command-line interface that adds further user
-experience improvements to the API level, also allows passing multiple
-indices to be searched, providing incremental support for rerunning
-with additional data without having to recompute, merge or update the
-original databases.</p>
+<p>Any data structure supporting both the <em>containment</em> <span class="math inline">\(C(A, B) = \frac{\vert A \cap B \vert }{\vert A \vert}\)</span> and <em>remove elements</em>
+operations can be used as a query with <code>gather</code>. For example, a <em>set</em>
+of the <span class="math inline">\(k\)</span>-mer composition of the query supports element removal, and
+calculating containment can be done with regular set operations.
+Approximate membership query (AMQ) sketches like the <em>Counting
+Quotient Filter</em> <span class="citation" data-cites="pandey_general-purpose_2017">[<span class="citeproc-not-found" data-reference-id="pandey_general-purpose_2017"><strong>???</strong></span>]</span> can also be used, with
+the benefit of reduced storage and memory usage. Moreover, the
+collection of datasets can be implemented with any data structure that
+can do containment comparisons with the query data structure.</p>
+<!-- TODO crossref with section/subsection is not using all the numbers (only the chapter)... -->
+<p>The <code>gather</code> approach differs from previous methods by considering the
+<em>co-occurrence</em> of <span class="math inline">\(k\)</span>-mers between the query and a database sketch as
+a strong signal that the k-mers originate from that database sketch.</p>
+<p>CTB:</p>
+<ul>
+<li>do we have any benchmarks for gather that don’t rely on taxonomy?</li>
+<li>mention that we do a containment query across the entire database
+for each iteration, so it’s nice to have performant indices</li>
+</ul>
 <h2 id="taxonomic-profiling-based-on-gather-is-accurate">Taxonomic profiling based on ‘gather’ is accurate</h2>
 <ul>
 <li>CAMI results</li>
@@ -637,87 +583,12 @@ taxonomic ID (based on some dataset identifier) and a taxonomic
 lineage (a path from root to taxonomic ID) derived from a specific
 taxonomy. After a lineage is available, each taxonomic rank is
 summarized based on the abundances under it.</p>
-<!-- TODO expand a bit -->
-<!-- TODO: a diagram here, leave the algorithm for the methods section -->
-<!-- Future paper TODO: demonstrate gather on top of other approaches? kraken/mantis/kProcessor? -->
-<p>The Critical Assessment of Metagenome Intepretation (CAMI)
-<span class="citation" data-cites="sczyrba_critical_2017">[<span class="citeproc-not-found" data-reference-id="sczyrba_critical_2017"><strong>???</strong></span>]</span> is a community-driven initiative bringing
-together tool developers and users to create standards for
-reproducibly benchmarking metagenomic methods. Challenges are
-organized around datasets representing microbial communities of
-interest in metagenomics, like marine, high-strain and rhizosphere
-datasets. Sequencing data is generated by CAMISIM
-<span class="citation" data-cites="fritz_camisim_2019">[<span class="citeproc-not-found" data-reference-id="fritz_camisim_2019"><strong>???</strong></span>]</span>, a microbial community and metagenome simulator
-using a gold standard with a known community composition to model
-different aspects (diversity levels, abundances and sequencing
-technologies features) of these datasets.</p>
-<p>Each challenge typically includes three tasks: assembly, taxonomic
-profiling and binning (at taxon or genome levels). Since there is a
-standard output format that tools need to implement, performance
-comparisons can be streamlined. CAMI provides a set of tools for
-computing performance metrics for each group: MetaQUAST for assembly,
-AMBER for binning, and OPAL <span class="citation" data-cites="meyer_assessing_2019">[<span class="citeproc-not-found" data-reference-id="meyer_assessing_2019"><strong>???</strong></span>]</span> for taxonomic
-profiling evaluation.</p>
-<p><code>gather</code> can be used for the taxonomic profiling task, where the goal
-is finding what organisms are present in a metagenome sampled from a
-microbial community, and what are their relative abundances.
-Taxonomic profiling is based on a predetermined taxonomy of known
-organisms, as well as a collection of genomes for each organism. It
-differs from taxonomic classification, where each read or sequence in
-the metagenome is given a taxonomic assignment, and from binning,
-which aims to cluster reads or sequences into bins, possibly
-representing unknown organisms.</p>
-<p>The first set of CAMI challenges happened in 2015 and results were
-published in 2017. Since then more tools were developed and improved,
-as well as reference databases growing in size and diversity.
-Reproducing the running environment used by the original tools is
-challenging, even with all the focus on reproducibility by the
-organizers and community.</p>
-<!--- TODO: bring back later, CAMI II is more interesting and enough for discussing results?
-#### The first set of CAMI challenges
-The initial CAMI challenges [@sczyrba_critical_2017] included three datasets based on genome sequences from
-689 bacterial and archaeal isolates (cultured organisms) and 598 sequences derived from plasmids,
-viruses and other circular elements.
-Each challenge dataset simulates 150-bp paired-end reads with Illumina HighSeq error profiles,
-with varying levels of complexity:
- - _low_, a single 15-Gbp sample with 40 genomes and 20 circular elements;
- - _medium_, two samples with 132 genomes and 100 circular elements, totalling 40-Gbp;
- - _high_, a five-sample time series with 596 genomes and 478 circular elements), totalling 75-Gbp.
-All datasets also simulate realistic characteristics from sequenced metagenomes,
-including species with strain-level diversity,
-presence of viruses, plasmids and other circular elements,
-and genomes covering distinct evolutionary distances,
-with the goal of measuring how these characteristics impact the performance of each method.
--->
-<!-- Urgent TODO: medium and high datasets!  -->
-<!-- TODO: comment results from CAMI low -->
-<!--
-```{r gatherCAMIlowTable, eval=TRUE, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE, cache=TRUE, out.width="100%", auto_pdf=TRUE, fig.cap="CAMI I Low table"}
-knitr::include_graphics('figure/cami_i_low_table.png')
-```
-```{r gatherCAMIlowSpider, eval=TRUE, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE, cache=TRUE, out.width="100%", auto_pdf=TRUE, fig.cap="CAMI I Low spider plot"}
-knitr::include_graphics('figure/cami_i_low_recall_precision.png')
-```
--->
-<!-- TODO
-- low and medium datasets have viruses, which are not in sourmash indices
--->
-<p>The CAMI initiative released new challenges in 2019 (marine,
-high-strain and pathogen detection) and 2020 (rhizosphere), with
-updated processes for submission, evaluation and participation. In
-addition to short-read sequencing data matching Illumina profiles, it
-also includes long-read sequencing data with PacBio and Nanopore
-profiles, allowing further benchmarks and comparisons. CAMI also
-provides a snapshot of the RefSeq reference genomes for building
-specialized databases for each tool, as well with an NCBI Taxonomy to
-minimize differences in taxonomic reports. Since challenges only
-release the gold standard after they are concluded and published,
-results for comparison with new methods are still pending.</p>
-<p>The CAMI II mouse gut metagenome <span class="citation" data-cites="meyer_tutorial_2020">[<span class="citeproc-not-found" data-reference-id="meyer_tutorial_2020"><strong>???</strong></span>]</span> is a toy
-dataset, used for preparing and calibrating tools for other CAMI II
-challenges. Similar to the concluded challenges from CAMI, it
-provides gold standards for expected microbial community composition,
-including presence and relative abundance of organisms. The simulated
+<p>To evaluate the performance of taxonomic profiling, we used the mouse
+gut metagenome dataset <span class="citation" data-cites="meyer_tutorial_2020">[<span class="citeproc-not-found" data-reference-id="meyer_tutorial_2020"><strong>???</strong></span>]</span> from the Critical
+Assessment of Metagenome Intepretation (CAMI)
+<span class="citation" data-cites="sczyrba_critical_2017">[<span class="citeproc-not-found" data-reference-id="sczyrba_critical_2017"><strong>???</strong></span>]</span>, a community-driven initiative for
+reproducibly benchmarking metagenomic methods.
+The simulated
 mouse gut metagenome (<em>MGM</em>) was derived from 791 bacterial and
 archaeal genomes,
 representing 8 phyla,
@@ -730,12 +601,6 @@ and 549 species.
 with 91.8 genomes present on each sample on average.
 Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) sequencing data is available.</p>
-<p>Because the official challenges don’t have gold standards published
-yet, it is currently the only alternative for using the CAMI
-benchmarking tools to evaluate new methods with updated datasets.
-Curated metadata for multiple tools is also available, and users can
-submit their tools for inclusion. All tools currently in the curated
-metadata repository use the short-read samples.</p>
 <div id="fig:spider" class="fignos">
 <figure>
 <img src="images/spider_plot_relative.svg" alt="" /><figcaption><span>Figure 2:</span> Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm.</figcaption>
@@ -1119,11 +984,25 @@ implemented in</p>
 <p>Discuss vs LCA.</p>
 <p>reference the LCA-has-limits/k-mers saturate paper</p>
 <p>mix and match taxonomies is easy b/c we anchor to genomes.</p>
+<p>Compared to previous taxonomic profiling methods, <em>Scaled MinHash</em> can
+also be seen as a mix of two other approaches: It uses exact <span class="math inline">\(k\)</span>-mer
+matching and assignment, and the <span class="math inline">\(k\)</span>-mers selected by the MinHashing
+process are equivalent to implicitly-defined markers. It differs from
+previous approaches because only a subset of the <span class="math inline">\(k\)</span>-mer composition
+is used for matching, and traditional gene markers are explicitly
+chosen due to sequence conservation and low mutation rates, while
+MinHashing <span class="math inline">\(k\)</span>-mers generates a randomized, but consistent across
+datasets, set of marker <span class="math inline">\(k\)</span>-mers.</p>
 <h2 id="algorithm-is-simple-computational-performance-is-great">Algorithm is simple, computational performance is great</h2>
 <p>Performant implementation in sourmasha Python API for data exploration
 and methods prototyping.</p>
 <h2 id="database-types-work-well">Database types work well</h2>
 <p>“online” approaches</p>
+<p><code>sourmash gather</code>, the command-line interface that adds further user
+experience improvements to the API level, also allows passing multiple
+indices to be searched, providing incremental support for rerunning
+with additional data without having to recompute, merge or update the
+original databases.</p>
 <p>Some limitations of gather and database types (equal results can be
 hard to detect efficiently with current SBT implementation)</p>
 <p>The Linear index is appropriate for operations that must check every
