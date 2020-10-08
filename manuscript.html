@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2020-10-07" />
+  <meta name="dcterms.date" content="2020-10-08" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2020-10-07" />
-  <meta name="citation_publication_date" content="2020-10-07" />
+  <meta name="dc.date" content="2020-10-08" />
+  <meta name="citation_publication_date" content="2020-10-08" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e4b195539946e1147b34636b2b5b4448577a82ba/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e4b195539946e1147b34636b2b5b4448577a82ba/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e4b195539946e1147b34636b2b5b4448577a82ba/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ef4ae5631b1e683fd20305b008e55c7b7b819756/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e4b195539946e1147b34636b2b5b4448577a82ba/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ef4ae5631b1e683fd20305b008e55c7b7b819756">dib-lab/2020-paper-sourmash-gather@ef4ae56</a>
-on October 7, 2020.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e4b195539946e1147b34636b2b5b4448577a82ba">dib-lab/2020-paper-sourmash-gather@e4b1955</a>
+on October 8, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -167,13 +167,6 @@ sketches and their features, especially if large collections of
 <p>Others have also applied the ModHash concept to genomic data; see, for
 example, Durbin’s “modimizer”
 <span class="citation" data-cites="8ZKpbGz7">[<a href="#ref-8ZKpbGz7" role="doc-biblioref">2</a>]</span>.</p>
-<p>We provide two implementations of Scaled MinHash, <code>smol</code> and
-<code>sourmash</code>. <code>smol</code> is a minimal implementation of <em>Scaled MinHash</em>
-developed to demonstrate the method; it does not include many required
-features for working with real biological data, but its smaller code
-base makes it a more readable and concise example of the method.
-<code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">3</a>]</span> implements features and
-functionality needed for large scale analyses of real data.</p>
 <h2 id="scaled-minhash-accurately-estimates-containment-between-sets-of-different-sizes">Scaled MinHash accurately estimates containment between sets of different sizes</h2>
 <ul>
 <li>compares well with others</li>
@@ -181,25 +174,12 @@ functionality needed for large scale analyses of real data.</p>
 <li>How much is missed figure; Poisson calculations?</li>
 </ul>
 <p>We next compare the <em>Scaled MinHash</em> method implemented in <code>smol</code> to
-CMash (<em>Containment MinHash</em>) and Mash Screen
-(<em>Containment Score</em>) for containment queries in the Shakya dataset
-<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">4</a>]</span>, a synthetic mock metagenomic
-bacterial and archaeal community where the organisms are known.
-Further analyses of low-coverage and contaminant genomes in this data set
-were described in <span class="citation" data-cites="awad_evaluating_2017">[<span class="citeproc-not-found" data-reference-id="awad_evaluating_2017"><strong>???</strong></span>]</span> and <span class="citation" data-cites="ondov_mash_2019">[<span class="citeproc-not-found" data-reference-id="ondov_mash_2019"><strong>???</strong></span>]</span>.</p>
-<p>For <em>Mash Screen</em> the ratio of hashes matched by total hashes is used
-instead of the <em>Containment Score</em>, since the latter uses a <span class="math inline">\(k\)</span>-mer
-survival process modeled as a Poisson process first introduced in
-<span class="citation" data-cites="fan_assembly_2015">[<span class="citeproc-not-found" data-reference-id="fan_assembly_2015"><strong>???</strong></span>]</span> and later used in the <em>Mash distance</em>
-<span class="citation" data-cites="ondov_mash:_2016">[<span class="citeproc-not-found" data-reference-id="ondov_mash:_2016"><strong>???</strong></span>]</span> and <em>Containment score</em> <span class="citation" data-cites="ondov_mash_2019">[<span class="citeproc-not-found" data-reference-id="ondov_mash_2019"><strong>???</strong></span>]</span>
-formulations.</p>
-<p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
-supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they were run with
-<span class="math inline">\(n=\{1000, 10000\}\)</span> to evaluate the containment estimates when using
-larger sketches with sizes comparable to the Scaled MinHash sketches
-with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
-<span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
-Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<span class="citeproc-not-found" data-reference-id="matsakis_rust_2014"><strong>???</strong></span>]</span>.</p>
+CMash (<em>Containment MinHash</em>) and Mash Screen (<em>Containment Score</em>)
+for containment queries in the Shakya dataset
+<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">3</a>]</span>, a synthetic mock metagenomic
+bacterial and archaeal community where the reference genomes are
+largely known. This data set has been used in several methods evaluations
+<span class="citation" data-cites="awad_evaluating_2017">[<span class="citeproc-not-found" data-reference-id="awad_evaluating_2017"><strong>???</strong></span>]</span>]. (CTB add SPADes etc refs.)</p>
 <div id="fig:containment" class="fignos">
 <figure>
 <img src="images/containment.svg" alt="" /><figcaption><span>Figure 1:</span> <strong>Letter-value plot <span class="citation" data-cites="hofmann_letter-value_2017">[<span class="citeproc-not-found" data-reference-id="hofmann_letter-value_2017"><strong>???</strong></span>]</span> of the
@@ -212,18 +192,20 @@ since <code>Mash</code> doesn’t support <span class="math inline">\(k&gt;32\)<
 </figure>
 </div>
 <p>All methods are within 1% of the exact containment on average (Figure
-?? A), with <code>CMash</code> consistently underestimating
+<a href="#fig:containment">1</a> A), with <code>CMash</code> consistently underestimating
 the containment for large <span class="math inline">\(k\)</span> and overestimating for small <span class="math inline">\(k\)</span>. <code>Mash Screen</code> with <span class="math inline">\(n=10000\)</span> has the smallest difference to ground truth for
 <span class="math inline">\(k=\{21, 31\}\)</span>, followed by <code>smol</code> with <code>scaled=1000</code> and <code>Mash Screen</code> with <span class="math inline">\(n=1000\)</span>.</p>
-<p>In order to evaluate the effect of the low-coverage and contaminant
-genomes previously detected in this dataset, (Figure ??
-B) shows results with these genomes removed. The number of outliers
-is greatly reduced, with most methods within 1% absolute
-difference to the ground truth. <code>CMash</code> still has some outliers with
-up to 8% difference to the ground truth.</p>
-<p>CTB:</p>
+<p>Figure <a href="#fig:containment">1</a> B shows results with low-coverage and
+contaminant genomes (as described in <span class="citation" data-cites="awad_evaluating_2017">[<span class="citeproc-not-found" data-reference-id="awad_evaluating_2017"><strong>???</strong></span>]</span> and
+<span class="citation" data-cites="ondov_mash_2019">[<span class="citeproc-not-found" data-reference-id="ondov_mash_2019"><strong>???</strong></span>]</span>) removed from the database. The number of outliers
+is greatly reduced, with most methods within 1% absolute difference
+to the ground truth. <code>CMash</code> still has some outliers with up to 8%
+difference to the ground truth.</p>
+<p>CTB questions:</p>
 <ul>
 <li>runtimes?</li>
+<li>should we <em>just</em> use (B) benchmark?</li>
+<li>should we add sketch sizes in here more explicitly? e.g. number of hashes kept?</li>
 <li>Where does “Scaled MinHash sketch sizes across GenBank domains”
 go? (Chp 01 from Luiz thesis)</li>
 </ul>
@@ -240,80 +222,27 @@ sequencing datasets use exact <span class="math inline">\(k\)</span>-mer matchin
 sequence alignment, but sensitivity is reduced since they can’t deal
 with sequencing errors and biological variation as well as
 alignment-based methods can.</p>
-<p>CTB: Additional points to raise: in-memory representation of sketches
+<p>CTB: Additional points to raise:</p>
+<ul>
+<li>in-memory representation of sketches
 may be too big (!!), goal here is on disk storage/low minimum memory
-for “extremely large data” situation. Also/in addition, want ability
-to do incremental loading of things. Note we are not talking here
-about situations where the indices themselves are too big to download,
-could maybe include forward pointer to chp4.</p>
-<p>Note, in this section we could also include distinction in performance
+for “extremely large data” situation.</li>
+<li>Also/in addition, want ability
+to do incremental loading of things.</li>
+<li>Note we are not talking here
+about situations where the indices themselves are too big to download.</li>
+<li>in this section we could also include distinction in performance
 between SBT and LCA DB, to whit: large scaled works well with LCA
 (small DB, ~tolerable memory, load all at once, then quite fast) but
-low scaled may work (much) better with SBT.</p>
-<p><em>Scaled MinHash</em> sketches can be stored in any data structure for
-representing the <span class="math inline">\(k\)</span>-mer composition <span class="math inline">\(M\)</span> of a dataset
-<span class="citation" data-cites="marchet_data_2019">[<span class="citeproc-not-found" data-reference-id="marchet_data_2019"><strong>???</strong></span>]</span>, and as a subset of <span class="math inline">\(M\)</span> they can also be indexed
-by approaches for the full <span class="math inline">\(k\)</span>-mer composition. <code>sourmash</code>
-<span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">3</a>]</span> defines the MinHash Bloom Tree (<em>MHBT</em>)
-index, a <span class="math inline">\(k\)</span>-mer aggregative method with explicit representation of
-datasets based on hierarchical indices and a specialization of the
-Sequence Bloom Tree <span class="citation" data-cites="solomon_fast_2016">[<span class="citeproc-not-found" data-reference-id="solomon_fast_2016"><strong>???</strong></span>]</span>, as well as the <em>LCA</em> index,
-a color-aggregative method with implicit representation of the
-datasets based on inverted indices.</p>
-<p>The <em>MinHash Bloom Tree</em> (<em>MHBT</em>) is a variation of the <em>Sequence
-Bloom Tree</em> (<em>SBT</em>) that uses Scaled MinHash sketches as leaf nodes
-instead of Bloom Filters as in the SBT. The search operation in SBTs
-is defined as a breadth-first search starting at the root of the tree,
-using a threshold of the original <span class="math inline">\(k\)</span>-mers in the query to decide when
-to prune the search. MHBTs use a query Scaled MinHash sketch instead,
-but keep the same search approach. The threshold of a query <span class="math inline">\(Q\)</span>
-approach introduced in <span class="citation" data-cites="solomon_fast_2016">[<span class="citeproc-not-found" data-reference-id="solomon_fast_2016"><strong>???</strong></span>]</span> is equivalent to the
-containment <span class="math display">\[C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}\]</span>
-described in <span class="citation" data-cites="broder_resemblance_1997">[<span class="citeproc-not-found" data-reference-id="broder_resemblance_1997"><strong>???</strong></span>]</span>, where <span class="math inline">\(S\)</span> is a Scaled MinHash
-sketch. For internal nodes <span class="math inline">\(n\)</span> (which are Bloom Filters) the
-containment of the query Scaled MinHash sketch <span class="math inline">\(Q\)</span> is
-<span class="math display">\[
-C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
-   \vert}
-\]</span>
-as defined by
-<span class="citation" data-cites="koslicki_improving_2019">[<span class="citeproc-not-found" data-reference-id="koslicki_improving_2019"><strong>???</strong></span>]</span> for the <em>Containment MinHash</em> to <em>Bloom
-Filter</em> comparison.</p>
-<p>MHBTs support both containment and similarity queries.
-For internal nodes the containment <span class="math inline">\(C(Q,n)\)</span> is used as an upper-bound of the similarity <span class="math inline">\(J(Q, n)\)</span>:
-<span class="math display">\[C(Q, n) &amp;\ge J(Q, n) \\
-  \frac{\vert Q \cap n \vert }{\vert Q \vert} \ge \frac{\vert Q \cap n \vert }{\vert Q \cup n \vert}
-  \]</span>
-since <span class="math inline">\(\vert Q \cup n \vert \ge \vert Q \vert\)</span>.
-When a leaf node is reached then the similarity <span class="math inline">\(J(Q, S)\)</span> is calculated for the Scaled MinHash sketch <span class="math inline">\(S\)</span>
-and declared a match if it is above the threshold <span class="math inline">\(t\)</span>.
-Because the upper-bound is being used,
-this can lead to extra nodes being checked,
-but it simplifies implementation and provides better correctness guarantees.</p>
-<p>The LCA index in <code>sourmash</code> is an inverted index that stores a mapping
-from hashes in a collection of signatures to a list of IDs for
-signatures containing the hash. Despite the name, the list of
-signature IDs is not collapsed to the lowest common ancestor (as in
-kraken), and is calculated as needed by downstream methods using
-taxonomy information stored separately in the LCA index.</p>
-<p>The mapping from hashes to signature IDs in the LCA index is an
-implicit representation of the original signatures used to build the
-index, and so returning the signatures is implemented by rebuilding
-the original signatures on-the-fly. Search in an LCA index matches
-the <span class="math inline">\(k\)</span>-mers in the query to the list of signatures IDs containing
-them, using a counter data structure to sort results by number of
-hashes per signature ID. The rebuilt signatures are then returned as
-matches based on the signature ID, with containment or similarity to
-the query calculated against the rebuilt signatures.</p>
-<p>mash screen <span class="citation" data-cites="ondov_mash_2019">[<span class="citeproc-not-found" data-reference-id="ondov_mash_2019"><strong>???</strong></span>]</span> has a similar index, but it is
-constructed on-the-fly using the distinct hashes in a sketch
-collection as keys, and values are counters initially set to zero. As
-the query is processed, matching hashes have their counts incremented,
-and after all hashes in the query are processed then all the sketches
-in the collection are checked in the counters to quantify the
-containment/similarity of each sketch in the query. The LCA index
-uses the opposite approach, opting to reconstruct the sketches
-on-the-fly.</p>
+low scaled may work (much) better with SBT.</li>
+</ul>
+<p>We provide two index data structures for rapid estimation of
+containment in large databases. The first, the MinHash Bloom Tree (MHBT),
+is a specialization of the Sequence Bloom Tree <span class="citation" data-cites="solomon_fast_2016">[<span class="citeproc-not-found" data-reference-id="solomon_fast_2016"><strong>???</strong></span>]</span>,
+and implements a <span class="math inline">\(k\)</span>-mer aggregative method with explicit representation of
+datasets based on hierarchical indices. The second is an
+inverted index into sketches, a color-aggregative method with implicit
+representation of the sketches.</p>
 <p>In order to evaluate MHBT and LCA indices construction a GenBank snapshot from July 18, 2020,
 containing 725,331 assembled genomes (
 5,282 Archaea,
@@ -1111,6 +1040,85 @@ avoiding processing data that is unlikely to return usable results.</p>
 creating a software ecosystem that allow practical applications,
 including taxonomic classification in metagenomes and large scale
 indexing and searching in public genomic databases.</p>
+<h1 id="methods">Methods</h1>
+<h2 id="implementation-of-scaled-minhash">Implementation of Scaled MinHash</h2>
+<p>We provide two implementations of Scaled MinHash, <code>smol</code> and
+<code>sourmash</code>. <code>smol</code> is a minimal implementation of <em>Scaled MinHash</em>
+developed to demonstrate the method; it does not include many required
+features for working with real biological data, but its smaller code
+base makes it a more readable and concise example of the method.
+<code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">4</a>]</span> implements features and
+functionality needed for large scale analyses of real data.</p>
+<h2 id="comparison-between-cmash-mash-screen-and-scaled-minhash.">Comparison between CMash, mash screen, and Scaled MinHash.</h2>
+<p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
+supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they were run with
+<span class="math inline">\(n=\{1000, 10000\}\)</span> to evaluate the containment estimates when using
+larger sketches with sizes comparable to the Scaled MinHash sketches
+with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
+<span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
+Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<span class="citeproc-not-found" data-reference-id="matsakis_rust_2014"><strong>???</strong></span>]</span>.</p>
+<p>For <em>Mash Screen</em> the ratio of hashes matched by total hashes is used
+instead of the <em>Containment Score</em>, since the latter uses a <span class="math inline">\(k\)</span>-mer
+survival process modeled as a Poisson process first introduced in
+<span class="citation" data-cites="fan_assembly_2015">[<span class="citeproc-not-found" data-reference-id="fan_assembly_2015"><strong>???</strong></span>]</span> and later used in the <em>Mash distance</em>
+<span class="citation" data-cites="ondov_mash:_2016">[<span class="citeproc-not-found" data-reference-id="ondov_mash:_2016"><strong>???</strong></span>]</span> and <em>Containment score</em> <span class="citation" data-cites="ondov_mash_2019">[<span class="citeproc-not-found" data-reference-id="ondov_mash_2019"><strong>???</strong></span>]</span>
+formulations.</p>
+<h2 id="mhbt">MHBT</h2>
+<p>The <em>MinHash Bloom Tree</em> (<em>MHBT</em>) is a variation of the <em>Sequence
+Bloom Tree</em> (<em>SBT</em>) that uses Scaled MinHash sketches as leaf nodes
+instead of Bloom Filters as in the SBT. The search operation in SBTs
+is defined as a breadth-first search starting at the root of the tree,
+using a threshold of the original <span class="math inline">\(k\)</span>-mers in the query to decide when
+to prune the search. MHBTs use a query Scaled MinHash sketch instead,
+but keep the same search approach. The threshold of a query <span class="math inline">\(Q\)</span>
+approach introduced in <span class="citation" data-cites="solomon_fast_2016">[<span class="citeproc-not-found" data-reference-id="solomon_fast_2016"><strong>???</strong></span>]</span> is equivalent to the
+containment <span class="math display">\[C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}\]</span>
+described in <span class="citation" data-cites="broder_resemblance_1997">[<span class="citeproc-not-found" data-reference-id="broder_resemblance_1997"><strong>???</strong></span>]</span>, where <span class="math inline">\(S\)</span> is a Scaled MinHash
+sketch. For internal nodes <span class="math inline">\(n\)</span> (which are Bloom Filters) the
+containment of the query Scaled MinHash sketch <span class="math inline">\(Q\)</span> is
+<span class="math display">\[
+C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
+   \vert}
+\]</span>
+as defined by
+<span class="citation" data-cites="koslicki_improving_2019">[<span class="citeproc-not-found" data-reference-id="koslicki_improving_2019"><strong>???</strong></span>]</span> for the <em>Containment MinHash</em> to <em>Bloom
+Filter</em> comparison.</p>
+<p>MHBTs support both containment and similarity queries.
+For internal nodes the containment <span class="math inline">\(C(Q,n)\)</span> is used as an upper-bound of the similarity <span class="math inline">\(J(Q, n)\)</span>:
+<span class="math display">\[C(Q, n) &amp;\ge J(Q, n) \\
+  \frac{\vert Q \cap n \vert }{\vert Q \vert} \ge \frac{\vert Q \cap n \vert }{\vert Q \cup n \vert}
+  \]</span>
+since <span class="math inline">\(\vert Q \cup n \vert \ge \vert Q \vert\)</span>.
+When a leaf node is reached then the similarity <span class="math inline">\(J(Q, S)\)</span> is calculated for the Scaled MinHash sketch <span class="math inline">\(S\)</span>
+and declared a match if it is above the threshold <span class="math inline">\(t\)</span>.
+Because the upper-bound is being used,
+this can lead to extra nodes being checked,
+but it simplifies implementation and provides better correctness guarantees.</p>
+<h2 id="inverted-index">Inverted index</h2>
+<p>The LCA index in <code>sourmash</code> is an inverted index that stores a mapping
+from hashes in a collection of signatures to a list of IDs for
+signatures containing the hash. Despite the name, the list of
+signature IDs is not collapsed to the lowest common ancestor (as in
+kraken), and is calculated as needed by downstream methods using
+taxonomy information stored separately in the LCA index.</p>
+<p>The mapping from hashes to signature IDs in the LCA index is an
+implicit representation of the original signatures used to build the
+index, and so returning the signatures is implemented by rebuilding
+the original signatures on-the-fly. Search in an LCA index matches
+the <span class="math inline">\(k\)</span>-mers in the query to the list of signatures IDs containing
+them, using a counter data structure to sort results by number of
+hashes per signature ID. The rebuilt signatures are then returned as
+matches based on the signature ID, with containment or similarity to
+the query calculated against the rebuilt signatures.</p>
+<p>mash screen <span class="citation" data-cites="ondov_mash_2019">[<span class="citeproc-not-found" data-reference-id="ondov_mash_2019"><strong>???</strong></span>]</span> has a similar index, but it is
+constructed on-the-fly using the distinct hashes in a sketch
+collection as keys, and values are counters initially set to zero. As
+the query is processed, matching hashes have their counts incremented,
+and after all hashes in the query are processed then all the sketches
+in the collection are checked in the counters to quantify the
+containment/similarity of each sketch in the query. The LCA index
+uses the opposite approach, opting to reconstruct the sketches
+on-the-fly.</p>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references hanging-indent" role="doc-bibliography">
@@ -1125,17 +1133,17 @@ DOI: <a href="https://doi.org/10.1111/j.2517-6161.1982.tb01195.x">10.1111/j.2517
 Richard Durbin<br />
 (2020-09-03) <a href="https://github.com/richarddurbin/modimizer">https://github.com/richarddurbin/modimizer</a></p>
 </div>
-<div id="ref-ExvjTLL3">
-<p>3. <strong>sourmash: a library for MinHash sketching of DNA</strong> <br />
-C. Titus Brown, Luiz Irber<br />
-<em>The Journal of Open Source Software</em> (2016-09-14) <a href="https://doi.org/ghdrk5">https://doi.org/ghdrk5</a> <br />
-DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></p>
-</div>
 <div id="ref-9vd6Zfxs">
-<p>4. <strong>Comparative metagenomic and rRNA microbial diversity characterization using archaeal and bacterial synthetic communities</strong> <br />
+<p>3. <strong>Comparative metagenomic and rRNA microbial diversity characterization using archaeal and bacterial synthetic communities</strong> <br />
 Migun Shakya, Christopher Quince, James H. Campbell, Zamin K. Yang, Christopher W. Schadt, Mircea Podar<br />
 <em>Environmental Microbiology</em> (2013-06) <a href="https://doi.org/f42ccr">https://doi.org/f42ccr</a> <br />
 DOI: <a href="https://doi.org/10.1111/1462-2920.12086">10.1111/1462-2920.12086</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/23387867">23387867</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3665634">PMC3665634</a></p>
+</div>
+<div id="ref-ExvjTLL3">
+<p>4. <strong>sourmash: a library for MinHash sketching of DNA</strong> <br />
+C. Titus Brown, Luiz Irber<br />
+<em>The Journal of Open Source Software</em> (2016-09-14) <a href="https://doi.org/ghdrk5">https://doi.org/ghdrk5</a> <br />
+DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></p>
 </div>
 </div>
 <!-- default theme -->
