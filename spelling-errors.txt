@@ -12,9 +12,8 @@ cardinalities
 cardinality
 Chp
 CMash
-colro
 combinatorial
-Compositional
+compositional
 contigs
 CTB
 dataset
@@ -38,7 +37,7 @@ iteratively
 Jaccard
 kbytes
 Koslicki
-Kraken
+kraken
 lca
 Luiz
 luizirber
@@ -49,10 +48,10 @@ metagenomes
 metagenomic
 metagenomics
 MetaPalette
-MetaPhlan
+MetaPhlAn
 MetaPhyler
 metatranscriptomics
-mhbt
+MHBT
 MHBTs
 microbiome
 MinHash
@@ -62,6 +61,7 @@ ModHash
 modimizer
 mOTUs
 multicore
+multimapped
 nucleotides
 NVMe
 ondov
@@ -74,7 +74,8 @@ profilers
 RefSeq
 reproducibility
 reproducibly
-runtime
+revindex
+Runtime
 runtimes
 Ryzen
 SBT
@@ -94,5 +95,7 @@ totalling
 UC
 undercharacterized
 virtualized
+wrt
+wtih
 Xeon
 XXXXXXXX
