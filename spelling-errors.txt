@@ -4,6 +4,7 @@ Archaea
 archaeal
 benchmarking
 binner
+bioinformatically
 broder
 CAMI
 CAMIARKQuikr
@@ -12,8 +13,9 @@ cardinalities
 cardinality
 Chp
 CMash
+colletions
 combinatorial
-compositional
+Compositional
 contigs
 CTB
 dataset
@@ -25,6 +27,7 @@ downsampling
 Durbin’s
 encodings
 evolutionarily
+gbio
 GenBank
 genomic
 HashSet
@@ -37,10 +40,11 @@ iteratively
 Jaccard
 kbytes
 Koslicki
-kraken
-lca
+Kraken
+LCA
 Luiz
 luizirber
+mappable
 mer
 mers
 metagenome
@@ -48,7 +52,7 @@ metagenomes
 metagenomic
 metagenomics
 MetaPalette
-MetaPhlAn
+MetaPhlan
 MetaPhyler
 metatranscriptomics
 MHBT
@@ -67,7 +71,7 @@ NVMe
 ondov
 PacBio
 parallelization
-Performant
+performant
 phylogenetically
 prefilter
 profilers
@@ -75,12 +79,13 @@ RefSeq
 reproducibility
 reproducibly
 revindex
-Runtime
+runtime
 runtimes
 Ryzen
 SBT
 SBTs
 scalability
+sgc
 Shakya
 shareability
 sourmash

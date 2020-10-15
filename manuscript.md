@@ -4,7 +4,7 @@ author-meta:
 - C. Titus Brown
 bibliography:
 - content/manual-references.json
-date-meta: '2020-10-09'
+date-meta: '2020-10-15'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="dc.date" content="2020-10-09" />
+  <meta name="dc.date" content="2020-10-15" />
 
-  <meta name="citation_publication_date" content="2020-10-09" />
+  <meta name="citation_publication_date" content="2020-10-15" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/768bc04bd8842958d8030ef3d43bb27a79c31a48/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/768bc04bd8842958d8030ef3d43bb27a79c31a48/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/768bc04bd8842958d8030ef3d43bb27a79c31a48/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,10 +102,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/768bc04bd8842958d8030ef3d43bb27a79c31a48/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@768bc04](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/768bc04bd8842958d8030ef3d43bb27a79c31a48)
-on October 9, 2020.
+from [dib-lab/2020-paper-sourmash-gather@cfe9b4d](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8)
+on October 15, 2020.
 </em></small>
 
 ## Authors
@@ -497,7 +497,8 @@ against GenBank, and compared the genome containment estimation with
 read mapping. In Figure XXX, we show that gather accurately estimates
 both the multimapped reads and the set of reads that maps uniquely to
 his genome.  (CTB: revisit CMash/mash screen papers here to see how
-they evaluated.)
+they evaluated. Also, maybe mention sgc gbio paper and recovery of new
+genome.)
 
 ## Taxonomic profiling based on 'gather' is accurate
 
@@ -673,6 +674,30 @@ virus, etc. (could go in first discussion section, but also deserves
 to be highlighted)
 
 ## Gather works surprisingly well and matches simple data structures
+
+We next ask, what is a minimal collection of genomes necessary to
+explain the content of a metagenome? This problem can be framed
+bioinformatically as asking, for a given metagenome $M$, what is the
+smallest collection of genomes in the database $D$ to which all mappable
+reads in $M$ will be mapped. That is, it is the smallest collection of
+genomes that explain the observed reads, absent reads for which there is
+no reference genome.
+
+If we treat both $M$ and all the genomes in $D$ as colletions of
+k-mers, this problem can be framed as a set covering problem: find the
+minimum set $\{ G_n \}$ of genomes in $D$ such that the intersection of
+the k-mers in $M$ and the union of k-mers across $\{G_n\}$ equals the
+intersection of k-mers in $M$ with the union of k-mers in $D$.
+
+The gather algorithm implements the greedy min-set-cover solution to this
+problem; this is a a known polynomial-time approximation algorithm.
+
+Taxonomic results suggest that this is a pretty good approach.
+
+Our implementation of gather does not currently select the set of
+smallest genomes, but rather the smallest set of genomes. If there are
+two genomes with equal containment of the k-mers, it is arbitrary as
+to which one is chosen.
 
 gather is a straightforward algorithm for "decomposing" compositional
 data. It can take advantage of efficient data structures for containment
