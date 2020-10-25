@@ -6,17 +6,17 @@ benchmarking
 binner
 bioinformatically
 broder
-CAMI
+cami
 CAMIARKQuikr
 CAMISIM
 cardinalities
 cardinality
 Chp
 CMash
-colletions
 combinatorial
 Compositional
 contigs
+cov
 CTB
 dataset
 datasets
@@ -40,7 +40,7 @@ iteratively
 Jaccard
 kbytes
 Koslicki
-Kraken
+kraken
 LCA
 Luiz
 luizirber
@@ -78,6 +78,7 @@ profilers
 RefSeq
 reproducibility
 reproducibly
+rescaled
 revindex
 runtime
 runtimes
@@ -88,6 +89,7 @@ scalability
 sgc
 Shakya
 shareability
+sherine
 sourmash
 sourmasha
 SSD

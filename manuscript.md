@@ -4,7 +4,7 @@ author-meta:
 - C. Titus Brown
 bibliography:
 - content/manual-references.json
-date-meta: '2020-10-15'
+date-meta: '2020-10-25'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="dc.date" content="2020-10-15" />
+  <meta name="dc.date" content="2020-10-25" />
 
-  <meta name="citation_publication_date" content="2020-10-15" />
+  <meta name="citation_publication_date" content="2020-10-25" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,10 +102,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@cfe9b4d](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/cfe9b4dce49090eaed16aaf6f102a70b3d9cb0f8)
-on October 15, 2020.
+from [dib-lab/2020-paper-sourmash-gather@06dfac5](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/06dfac5bc248b062ff471c0749aa419caa609d9b)
+on October 25, 2020.
 </em></small>
 
 ## Authors
@@ -393,17 +393,27 @@ approaches, especially for larger indices.
 
 ## Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, 'gather'
 
-* compare conceptually vs LCA approaches; combinatorial. do we want to do a benchmark of some kind wrt LCA saturation?
+* compare conceptually vs LCA approaches; combinatorial. do we want to
+  do a benchmark of some kind wrt LCA saturation?
+* CTB: kind of convoluted logic below! We go from "genomes" to "k-mers" to
+  "greedy estimation" to "scaled minhash estimation"
 
-We define a greedy algorithm, `gather`, that uses a top-down approach to
-decompose _Scaled MinHash_ sketches into constituent sketches.
-Starting from the $k$-mer composition of the query, `gather`
-iteratively finds a match in a collection of datasets with the largest
-_containment_ of the query (most elements in common), and creates a new
-query by _removing elements_ in the match from the original query.
-The process stops when the new query doesn't have any more matches in
-the collection, or a user-provided minimum detection threshold is
-reached.
+We can use _Scaled MinHash_ sketches to estimate the minimal collection of
+genomes that serve as a combined reference for a metagenome.  Computationally,
+we frame this problem as follows: for a given metagenome $M$, what is the
+smallest collection of genomes in the database $D$ to which all mappable
+reads in $M$ will be mapped? That is, it is the smallest collection of
+genomes that explain the observed reads, absent reads for which there is
+no reference genome.
+
+If we treat both $M$ and all the genomes in $D$ as collections of
+k-mers, this problem can be framed as a *minimal set covering*
+problem: find the smallest set $\{ G_n \}$ of genomes in $D$ such that
+$$k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} $$
+
+We implement a greedy solution to this problem as follows:
+**(algorithm goes here)**
+This is a known best-polynomial-time solution to min-set-cov.
 
 <!-- David comment: "I'm surprised this works, since back in 2015
 (Metapalette days) I found removing elements like this caused the
@@ -494,11 +504,33 @@ correct genomes and (b) the bits that are unique.
 
 We evaluated `gather`s performance on the Shakya data as used above,
 against GenBank, and compared the genome containment estimation with
-read mapping. In Figure XXX, we show that gather accurately estimates
+read mapping. In Figure @fig:gather, we show that gather accurately estimates
 both the multimapped reads and the set of reads that maps uniquely to
 his genome.  (CTB: revisit CMash/mash screen papers here to see how
 they evaluated. Also, maybe mention sgc gbio paper and recovery of new
 genome.)
+
+![
+**Hash-based decomposition of a metagenome into constituent
+genomes compares well to bases covered by read mapping.** 
+The reference genomes are rank ordered along the x axis based on the largest number of hashes from the metagenome specific to that genome, i.e. by order in gather output; hence the number of hashes classified for each genome (orange dots) is monotonically decreasing.
+The y axis shows absolute number of estimated k-mers classified to this genome (orange) or total number of bases covered in the reference (blue); the numbers have not been rescaled.
+Decreases in mapping (green peaks) occur for genomes which are not
+exact matches to the genomes of the organisms used to build the mock
+community (cite sherine, mash screen).
+](images/gather-podar.svg "gather results for podar"){#fig:gather}
+
+Leftover text:
+
+We define a greedy algorithm, `gather`, that uses a top-down approach to
+decompose _Scaled MinHash_ sketches into constituent sketches.
+Starting from the $k$-mer composition of the query, `gather`
+iteratively finds a match in a collection of datasets with the largest
+_containment_ of the query (most elements in common), and creates a new
+query by _removing elements_ in the match from the original query.
+The process stops when the new query doesn't have any more matches in
+the collection, or a user-provided minimum detection threshold is
+reached.
 
 ## Taxonomic profiling based on 'gather' is accurate
 
@@ -683,11 +715,10 @@ reads in $M$ will be mapped. That is, it is the smallest collection of
 genomes that explain the observed reads, absent reads for which there is
 no reference genome.
 
-If we treat both $M$ and all the genomes in $D$ as colletions of
-k-mers, this problem can be framed as a set covering problem: find the
-minimum set $\{ G_n \}$ of genomes in $D$ such that the intersection of
-the k-mers in $M$ and the union of k-mers across $\{G_n\}$ equals the
-intersection of k-mers in $M$ with the union of k-mers in $D$.
+If we treat both $M$ and all the genomes in $D$ as collections of
+k-mers, this problem can be framed as a minimal set covering problem: find the
+smallest set $\{ G_n \}$ of genomes in $D$ such that
+$$k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} $$
 
 The gather algorithm implements the greedy min-set-cover solution to this
 problem; this is a a known polynomial-time approximation algorithm.
@@ -698,6 +729,12 @@ Our implementation of gather does not currently select the set of
 smallest genomes, but rather the smallest set of genomes. If there are
 two genomes with equal containment of the k-mers, it is arbitrary as
 to which one is chosen.
+
+Note that here we are providing one approach / approximation (Scaled
+MinHash containment) with one shingling approach (k-mers) to tackle
+metagenome composition for mapping and taxonomy. The min-set-cover
+approach could be used with exact containment, and/or with other
+shingling approaches.
 
 gather is a straightforward algorithm for "decomposing" compositional
 data. It can take advantage of efficient data structures for containment
