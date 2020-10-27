@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2020-10-25" />
+  <meta name="dcterms.date" content="2020-10-27" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2020-10-25" />
-  <meta name="citation_publication_date" content="2020-10-25" />
+  <meta name="dc.date" content="2020-10-27" />
+  <meta name="citation_publication_date" content="2020-10-27" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/06dfac5bc248b062ff471c0749aa419caa609d9b">dib-lab/2020-paper-sourmash-gather@06dfac5</a>
-on October 25, 2020.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/8011aba1bd08650ff2c37bb2546015800ba4121a">dib-lab/2020-paper-sourmash-gather@8011aba</a>
+on October 27, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -95,8 +95,51 @@ Department of Population Health and Reproduction, UC Davis
 </small></p></li>
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
-<p>Here we describe an extension of MinHash that permits accurate compositional analysis of metagenomes with low memory and disk requirements.</p>
+<p>The accurate assignment of genomes and taxonomy to microbiome samples
+is a significant challenge in microbiome studies. Here
+we describe <em>Scaled MinHash</em>, an extension of MinHash sketching that
+permits rapid and accurate compositional analysis of shotgun
+metagenome data sets using k-mers. We implement this approach in the
+sourmash software, and provide database indexing implementations that
+support large-scale Jaccard similarity and containment searches across
+all available reference genomes. We next frame the problem of shotgun
+metagenome compositional analysis as a min-set-cover challenge and
+implement a greedy approximate solution in sourmash using <em>Scaled
+MinHash</em>. We show that this approach finds the minimal collection of
+reference genomes necessary to map all possible metagenome reads, and
+provides a lightweight and precise method for taxonomic classification
+of metagenome content. sourmash is freely available under the BSD
+3-Clause license at github.com/dib-lab/sourmash/.</p>
 <h1 id="introduction">Introduction</h1>
+<p>Shotgun metagenomics measures the sequence content of microbial communities.</p>
+<p>Compositional analysis of shotgun metagenome samples addresses the
+question of what reference genomes should be used for functional
+and taxononomic interpretation of metagenome content.</p>
+<p>Below, we describe a lightweight approach to compositional analysis of
+shotgun metagenome samples using a k-mer based approach.</p>
+<p>We first define <em>Scaled MinHash</em>, an extension of MinHash sketching
+that supports lightweight containment estimation for metagenome
+datasets using a hash-based k-mer downsampling approach; the tradeoff
+is that sketch sizes are unbounded. We implement <em>Scaled MinHash</em> in
+Python and Rust, and show that it is competitive in accuracy with
+other containment estimation approaches. We further provide efficient
+indexed database implementations that support similarity and containment
+search across hundreds of thousands of reference genomes.</p>
+<p>We next frame reference-based metagenome content analysis as a
+min-set-cov problem, in which we seek the <em>minimum</em> number of genomes
+in the reference database necessary to cover the known content of a
+metagenome. We implement a known best-polynomial-time greedy
+approximate to the min-set-cov problem using <em>Scaled MinHash</em>, and
+show that it is recovers a minimum set of genomes to which all of the
+identifiable reads in the metagenome map.</p>
+<p>Finally, we implement a simple taxonomic classification approach on
+top of min-set-cov, in which we transfer the taxonomy of the genomes
+from the set cover to the metagenome. We show that this permits
+precise and lightweight classification of metagenome content across
+all taxonomic levels.</p>
+<p>CTB: do we want to mention the stable hash system of Scaled MinHash
+for unknowns in this paper, or save it for MAGsearch paper/other stuff?</p>
+<p>Leftover text:</p>
 <p>Compositional data analysis is the study of the parts of a whole using relative abundances <span class="citation" data-cites="y3BKxnQb">[<a href="#ref-y3BKxnQb" role="doc-biblioref">1</a>]</span>.
 This is a general problem with applications across many scientific fields <span class="citation" data-cites="aitchison_compositional_2005">[<span class="citeproc-not-found" data-reference-id="aitchison_compositional_2005"><strong>???</strong></span>]</span>,
 and examples in biology include RNA-Seq <span class="citation" data-cites="quinn_field_2019-1">[<span class="citeproc-not-found" data-reference-id="quinn_field_2019-1"><strong>???</strong></span>]</span>,
@@ -436,6 +479,8 @@ data.</p>
 LCA index is a tenth of the data indexed by the MHBT. This highlights
 the trade-off between speed and memory consumption for both
 approaches, especially for larger indices.</p>
+<p>Notes:
+* new genomes can be added quickly to SBT.</p>
 <h2 id="metagenome-sketches-can-be-accurately-decomposed-into-constituent-genomes-by-a-greedy-algorithm-gather">Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, ‘gather’</h2>
 <ul>
 <li>compare conceptually vs LCA approaches; combinatorial. do we want to
@@ -510,6 +555,9 @@ query by <em>removing elements</em> in the match from the original query.
 The process stops when the new query doesn’t have any more matches in
 the collection, or a user-provided minimum detection threshold is
 reached.</p>
+<p>Note –
+* multiple databases can be searched all at once.
+* public and private databases supported</p>
 <h2 id="taxonomic-profiling-based-on-gather-is-accurate">Taxonomic profiling based on ‘gather’ is accurate</h2>
 <ul>
 <li>CAMI results</li>
@@ -674,6 +722,8 @@ viruses; this benefits <code>sourmash</code> because viral <em>Scaled MinHash</e
 sketches are usually not well supported for containment estimation,
 since viral sequences require small scaled values to have enough
 hashes to be reliable.</p>
+<p>Notes:
+* private database, private taxonomies are esaily supported without reindexing.</p>
 <h1 id="discussion">Discussion</h1>
 <h2 id="scaled-minhash-offers-benefits-drawbacks-vs-regular-minhash">Scaled MinHash offers benefits, drawbacks vs regular MinHash</h2>
 <p>TODO: add abundance tracking in to either methods or results; gather bench?</p>
@@ -730,9 +780,9 @@ to be highlighted)</p>
 explain the content of a metagenome? This problem can be framed
 bioinformatically as asking, for a given metagenome <span class="math inline">\(M\)</span>, what is the
 smallest collection of genomes in the database <span class="math inline">\(D\)</span> to which all mappable
-reads in <span class="math inline">\(M\)</span> will be mapped. That is, it is the smallest collection of
+reads in <span class="math inline">\(M\)</span> will be mapped. That is, what is the smallest collection of
 genomes that explain the observed reads, absent reads for which there is
-no reference genome.</p>
+no reference genome?</p>
 <p>If we treat both <span class="math inline">\(M\)</span> and all the genomes in <span class="math inline">\(D\)</span> as collections of
 k-mers, this problem can be framed as a minimal set covering problem: find the
 smallest set <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that

@@ -4,7 +4,7 @@ author-meta:
 - C. Titus Brown
 bibliography:
 - content/manual-references.json
-date-meta: '2020-10-25'
+date-meta: '2020-10-27'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="dc.date" content="2020-10-25" />
+  <meta name="dc.date" content="2020-10-27" />
 
-  <meta name="citation_publication_date" content="2020-10-25" />
+  <meta name="citation_publication_date" content="2020-10-27" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,10 +102,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/06dfac5bc248b062ff471c0749aa419caa609d9b/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@06dfac5](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/06dfac5bc248b062ff471c0749aa419caa609d9b)
-on October 25, 2020.
+from [dib-lab/2020-paper-sourmash-gather@8011aba](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/8011aba1bd08650ff2c37bb2546015800ba4121a)
+on October 27, 2020.
 </em></small>
 
 ## Authors
@@ -137,13 +137,61 @@ on October 25, 2020.
 
 ## Abstract {.page_break_before}
 
-Here we describe an extension of MinHash that permits accurate compositional analysis of metagenomes with low memory and disk requirements.
-
-
-
+The accurate assignment of genomes and taxonomy to microbiome samples
+is a significant challenge in microbiome studies. Here
+we describe _Scaled MinHash_, an extension of MinHash sketching that
+permits rapid and accurate compositional analysis of shotgun
+metagenome data sets using k-mers.  We implement this approach in the
+sourmash software, and provide database indexing implementations that
+support large-scale Jaccard similarity and containment searches across
+all available reference genomes. We next frame the problem of shotgun
+metagenome compositional analysis as a min-set-cover challenge and
+implement a greedy approximate solution in sourmash using _Scaled
+MinHash_. We show that this approach finds the minimal collection of
+reference genomes necessary to map all possible metagenome reads, and
+provides a lightweight and precise method for taxonomic classification
+of metagenome content.  sourmash is freely available under the BSD
+3-Clause license at github.com/dib-lab/sourmash/.
 
 
 # Introduction
+
+Shotgun metagenomics measures the sequence content of microbial communities.
+
+Compositional analysis of shotgun metagenome samples addresses the
+question of what reference genomes should be used for functional
+and taxononomic interpretation of metagenome content.
+
+Below, we describe a lightweight approach to compositional analysis of
+shotgun metagenome samples using a k-mer based approach.
+
+We first define _Scaled MinHash_, an extension of MinHash sketching
+that supports lightweight containment estimation for metagenome
+datasets using a hash-based k-mer downsampling approach; the tradeoff
+is that sketch sizes are unbounded.  We implement _Scaled MinHash_ in
+Python and Rust, and show that it is competitive in accuracy with
+other containment estimation approaches.  We further provide efficient
+indexed database implementations that support similarity and containment
+search across hundreds of thousands of reference genomes.
+
+We next frame reference-based metagenome content analysis as a
+min-set-cov problem, in which we seek the _minimum_ number of genomes
+in the reference database necessary to cover the known content of a
+metagenome.  We implement a known best-polynomial-time greedy
+approximate to the min-set-cov problem using _Scaled MinHash_, and
+show that it is recovers a minimum set of genomes to which all of the
+identifiable reads in the metagenome map.
+
+Finally, we implement a simple taxonomic classification approach on
+top of min-set-cov, in which we transfer the taxonomy of the genomes
+from the set cover to the metagenome. We show that this permits
+precise and lightweight classification of metagenome content across
+all taxonomic levels.
+
+CTB: do we want to mention the stable hash system of Scaled MinHash
+for unknowns in this paper, or save it for MAGsearch paper/other stuff?
+
+Leftover text:
 
 Compositional data analysis is the study of the parts of a whole using relative abundances [@doi:10.1111/j.2517-6161.1982.tb01195.x].
 This is a general problem with applications across many scientific fields [@aitchison_compositional_2005],
@@ -391,6 +439,9 @@ LCA index is a tenth of the data indexed by the MHBT.  This highlights
 the trade-off between speed and memory consumption for both
 approaches, especially for larger indices.
 
+Notes:
+* new genomes can be added quickly to SBT.
+
 ## Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, 'gather'
 
 * compare conceptually vs LCA approaches; combinatorial. do we want to
@@ -532,6 +583,10 @@ The process stops when the new query doesn't have any more matches in
 the collection, or a user-provided minimum detection threshold is
 reached.
 
+Note --
+* multiple databases can be searched all at once.
+* public and private databases supported
+
 ## Taxonomic profiling based on 'gather' is accurate
 
 * CAMI results
@@ -642,6 +697,10 @@ sketches are usually not well supported for containment estimation,
 since viral sequences require small scaled values to have enough
 hashes to be reliable.
 
+Notes:
+* private database, private taxonomies are esaily supported without reindexing.
+
+
 # Discussion
 
 ## Scaled MinHash offers benefits, drawbacks vs regular MinHash
@@ -711,9 +770,9 @@ We next ask, what is a minimal collection of genomes necessary to
 explain the content of a metagenome? This problem can be framed
 bioinformatically as asking, for a given metagenome $M$, what is the
 smallest collection of genomes in the database $D$ to which all mappable
-reads in $M$ will be mapped. That is, it is the smallest collection of
+reads in $M$ will be mapped. That is, what is the smallest collection of
 genomes that explain the observed reads, absent reads for which there is
-no reference genome.
+no reference genome?
 
 If we treat both $M$ and all the genomes in $D$ as collections of
 k-mers, this problem can be framed as a minimal set covering problem: find the
@@ -1089,6 +1148,8 @@ biological problems like taxonomic profiling, described in Chapter
 shareability of biological sequencing data, described in Chapter
 [5](#chp-decentralizing).
 
+
+
 # Conclusion
 
 _Scaled MinHash_ sketches are simple to implement and analyze, with
@@ -1111,6 +1172,8 @@ _Scaled MinHash_ sketches are effective basic building blocks for
 creating a software ecosystem that allow practical applications,
 including taxonomic classification in metagenomes and large scale
 indexing and searching in public genomic databases.
+
+
 
 # Methods
 

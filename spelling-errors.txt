@@ -26,6 +26,7 @@ downsampled
 downsampling
 Durbin’s
 encodings
+esaily
 evolutionarily
 gbio
 GenBank
@@ -41,9 +42,10 @@ Jaccard
 kbytes
 Koslicki
 kraken
-LCA
+lca
 Luiz
 luizirber
+MAGsearch
 mappable
 mer
 mers
@@ -52,7 +54,7 @@ metagenomes
 metagenomic
 metagenomics
 MetaPalette
-MetaPhlan
+MetaPhlAn
 MetaPhyler
 metatranscriptomics
 MHBT
@@ -71,11 +73,12 @@ NVMe
 ondov
 PacBio
 parallelization
-performant
+Performant
 phylogenetically
 prefilter
 profilers
 RefSeq
+reindexing
 reproducibility
 reproducibly
 rescaled
@@ -95,10 +98,12 @@ sourmasha
 SSD
 subsample
 subsetting
+taxononomic
 taxons
 TIPP
 TODO
 totalling
+tradeoff
 UC
 undercharacterized
 virtualized
