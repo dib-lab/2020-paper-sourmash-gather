@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2020-10-27" />
+  <meta name="dcterms.date" content="2020-10-28" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2020-10-27" />
-  <meta name="citation_publication_date" content="2020-10-27" />
+  <meta name="dc.date" content="2020-10-28" />
+  <meta name="citation_publication_date" content="2020-10-28" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8011aba1bd08650ff2c37bb2546015800ba4121a/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/8011aba1bd08650ff2c37bb2546015800ba4121a">dib-lab/2020-paper-sourmash-gather@8011aba</a>
-on October 27, 2020.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/744e2b3846814dd1116ff4e03731f370049e59c5">dib-lab/2020-paper-sourmash-gather@744e2b3</a>
+on October 28, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -96,20 +96,21 @@ Department of Population Health and Reproduction, UC Davis
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
 <p>The accurate assignment of genomes and taxonomy to microbiome samples
-is a significant challenge in microbiome studies. Here
-we describe <em>Scaled MinHash</em>, an extension of MinHash sketching that
-permits rapid and accurate compositional analysis of shotgun
-metagenome data sets using k-mers. We implement this approach in the
-sourmash software, and provide database indexing implementations that
-support large-scale Jaccard similarity and containment searches across
-all available reference genomes. We next frame the problem of shotgun
+is a significant challenge in microbiome studies. Here we describe
+<em>Scaled MinHash</em>, an extension of MinHash sketching that permits rapid
+and accurate compositional analysis of shotgun metagenome data sets
+using k-mers. We implement this approach in the sourmash software,
+together with database indexing implementations that support
+large-scale Jaccard similarity and containment searches across all
+available reference genomes. We next frame the problem of shotgun
 metagenome compositional analysis as a min-set-cover challenge and
 implement a greedy approximate solution in sourmash using <em>Scaled
 MinHash</em>. We show that this approach finds the minimal collection of
-reference genomes necessary to map all possible metagenome reads, and
-provides a lightweight and precise method for taxonomic classification
-of metagenome content. sourmash is freely available under the BSD
-3-Clause license at github.com/dib-lab/sourmash/.</p>
+genomes necessary to serve as a reference for all mappable metagenome
+reads, and can be extended to provide a lightweight and precise method
+for taxonomic classification of metagenome content. sourmash is
+freely available under the BSD 3-Clause license at
+github.com/dib-lab/sourmash/.</p>
 <h1 id="introduction">Introduction</h1>
 <p>Shotgun metagenomics measures the sequence content of microbial communities.</p>
 <p>Compositional analysis of shotgun metagenome samples addresses the
@@ -130,54 +131,26 @@ min-set-cov problem, in which we seek the <em>minimum</em> number of genomes
 in the reference database necessary to cover the known content of a
 metagenome. We implement a known best-polynomial-time greedy
 approximate to the min-set-cov problem using <em>Scaled MinHash</em>, and
-show that it is recovers a minimum set of genomes to which all of the
-identifiable reads in the metagenome map.</p>
+show that it is recovers a minimum set of reference genomes for the mappable
+reads in a metagenome.</p>
 <p>Finally, we implement a simple taxonomic classification approach on
 top of min-set-cov, in which we transfer the taxonomy of the genomes
 from the set cover to the metagenome. We show that this permits
 precise and lightweight classification of metagenome content across
 all taxonomic levels.</p>
-<p>CTB: do we want to mention the stable hash system of Scaled MinHash
-for unknowns in this paper, or save it for MAGsearch paper/other stuff?</p>
-<p>Leftover text:</p>
-<p>Compositional data analysis is the study of the parts of a whole using relative abundances <span class="citation" data-cites="y3BKxnQb">[<a href="#ref-y3BKxnQb" role="doc-biblioref">1</a>]</span>.
-This is a general problem with applications across many scientific fields <span class="citation" data-cites="aitchison_compositional_2005">[<span class="citeproc-not-found" data-reference-id="aitchison_compositional_2005"><strong>???</strong></span>]</span>,
-and examples in biology include RNA-Seq <span class="citation" data-cites="quinn_field_2019-1">[<span class="citeproc-not-found" data-reference-id="quinn_field_2019-1"><strong>???</strong></span>]</span>,
-metatranscriptomics <span class="citation" data-cites="macklaim_rna-seq_2018">[<span class="citeproc-not-found" data-reference-id="macklaim_rna-seq_2018"><strong>???</strong></span>]</span>,
-microbiome and metagenomics <span class="citation" data-cites="li_microbiome_2015">[<span class="citeproc-not-found" data-reference-id="li_microbiome_2015"><strong>???</strong></span>]</span>.
-Taxonomic profiling is a particular instance of this general problem
-with the goal of finding the identity and relative abundance of microbial community elements
-at a specific taxonomic rank (species, genus, family),
-especially in metagenomic samples <span class="citation" data-cites="sczyrba_critical_2017">[<span class="citeproc-not-found" data-reference-id="sczyrba_critical_2017"><strong>???</strong></span>]</span>.</p>
-<p>Existing taxonomic profilers use different methods to solve this problem,
-including aligning sequences to a reference database <span class="citation" data-cites="huson_megan_2016">[<span class="citeproc-not-found" data-reference-id="huson_megan_2016"><strong>???</strong></span>]</span>,
-using marker genes derived from known organisms from reference databases <span class="citation" data-cites="segata_metagenomic_2012">[<span class="citeproc-not-found" data-reference-id="segata_metagenomic_2012"><strong>???</strong></span>]</span>
-or coupled with unknown organisms clustered from metagenomes <span class="citation" data-cites="milanese_microbial_2019">[<span class="citeproc-not-found" data-reference-id="milanese_microbial_2019"><strong>???</strong></span>]</span>,
-and exact <span class="math inline">\(k\)</span>-mer matching using fixed <span class="math inline">\(k\)</span> and lowest common ancestor (LCA) for resolving
-<span class="math inline">\(k\)</span>-mer assignments matching multiple taxons from a reference database
-<span class="citation" data-cites="wood_kraken:_2014">[<span class="citeproc-not-found" data-reference-id="wood_kraken:_2014"><strong>???</strong></span>]</span> or variable <span class="math inline">\(k\)</span> and assigning multiple taxons per sequence,
-with an option to reduce it further to the LCA <span class="citation" data-cites="kim_centrifuge_2016">[<span class="citeproc-not-found" data-reference-id="kim_centrifuge_2016"><strong>???</strong></span>]</span>.</p>
-<p>Once each sequence (from raw reads or assembled contigs) has a taxonomic assignment,
-<!-- David comment: "Not all profiles classify sequences. See Focus, Quikr, Metalign, Metapalette, etc" -->
-these methods resolve the final identity and abundance for each member of the community by summarizing the assignments to a specific taxonomic rank,
-Taxonomic profiling is fundamentally limited by the availability of reference datasets to be used for assignments,
-and reporting what percentage of the sample is unassigned is important to assess results,
-especially in undercharacterized environments such as oceans and soil.</p>
 <h1 id="results">Results</h1>
 <h2 id="scaled-minhash-sketches-support-containment-operations">Scaled MinHash sketches support containment operations</h2>
-<ul>
-<li>scaled minhash supports similarity and containment</li>
-</ul>
 <p>We define the Scaled MinHash on an input domain of <span class="math inline">\(k\)</span>-mers, <span class="math inline">\(W\)</span>, as follows:</p>
 <p><span class="math display">\[\mathbf{SCALED}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
 W\,\}\]</span> where <span class="math inline">\(H\)</span> is the largest possible value in the domain of
 <span class="math inline">\(h(x)\)</span> and <span class="math inline">\(\frac{H}{s}\)</span> is the  value in the
 Scaled MinHash.</p>
-<p>The Scaled MinHash is a mix of MinHash and ModHash (<span class="citation" data-cites="cite">[<span class="citeproc-not-found" data-reference-id="cite"><strong>???</strong></span>]</span> broder). As
-in the former it keeps the smallest elements, and from the latter it
-adopts the dynamic size to allow containment estimation. However,
-instead of taking <span class="math inline">\(0 \mod m\)</span> elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a
-Scaled MinHash uses a parameter <span class="math inline">\(s\)</span> to select a subset of <span class="math inline">\(W\)</span>.</p>
+<p>The Scaled MinHash is a mix of MinHash and ModHash
+<span class="citation" data-cites="AX7zdKKw">[<a href="#ref-AX7zdKKw" role="doc-biblioref">1</a>]</span>. From the former it keeps the
+smallest elements, while taking the dynamic size from the latter to
+allow containment estimation. However, instead of taking <span class="math inline">\(0 \mod m\)</span>
+elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a Scaled MinHash uses a parameter
+<span class="math inline">\(s\)</span> to select a subset of <span class="math inline">\(W\)</span>.</p>
 <p>Given a uniform hash function <span class="math inline">\(h\)</span> and <span class="math inline">\(s=m\)</span>, the cardinalities of
 <span class="math inline">\(\mathbf{SCALED}_s(W)\)</span> and <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> converge for large
 <span class="math inline">\(\vert W \vert\)</span>. The main difference is the range of possible values
@@ -188,7 +161,7 @@ value.</p>
 <p>Intuitively, Scaled MinHash is performing a density sampling at a rate
 of 1 <span class="math inline">\(k\)</span>-mer per <span class="math inline">\(s\)</span> k-mers seen.</p>
 <p>Scaled MinHash permits Jaccard containment estimation between two data sets
-directly from the sketch …</p>
+directly from the sketch.</p>
 <p>A drawback of Scaled MinHash when compared to regular MinHash sketches
 is the size: the MinHash parameter <span class="math inline">\(s\)</span> sets an upper bound on the size
 of the sketch, independently of the size of the original data. Scaled
@@ -210,6 +183,37 @@ sketches and their features, especially if large collections of
 <p>Others have also applied the ModHash concept to genomic data; see, for
 example, Durbin’s “modimizer”
 <span class="citation" data-cites="8ZKpbGz7">[<a href="#ref-8ZKpbGz7" role="doc-biblioref">2</a>]</span>.</p>
+<p>CTB leftover: Most of these operations are also possible with MinHash
+and ModHash, with caveats. One example of these operations is
+: the contiguous value range for Scaled MinHash
+sketches allow deriving <span class="math inline">\(\mathbf{SCALED}_{s&#39;}(W)\)</span> sketches for any <span class="math inline">\(s&#39; \ge s\)</span> using only <span class="math inline">\(\mathbf{SCALED}_{s}(W)\)</span>. MinHash and ModHash can
+also support this operation, as long as <span class="math inline">\(n&#39; \le n\)</span> and <span class="math inline">\(m&#39;\)</span> is a
+multiple of <span class="math inline">\(m\)</span>.</p>
+<p>Because Scaled MinHash sketches collect any value below a threshold
+this also guarantees that once a value is selected it is never
+discarded. This is useful in streaming contexts: any operations that
+used a previously selected value can be cached and updated with new
+arriving values. <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> has similar properties, but this
+is not the case for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, since after <span class="math inline">\(n\)</span> values are
+selected any displacement caused by new data can invalidate previous
+calculations.</p>
+<p>Abundance tracking is another extension to MinHash sketches, keeping a
+count of how many times a value appeared in the original data. This
+allows filtering for low-abundance values, as implemented in Finch
+<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>, another MinHash sketching software for genomics.
+Filtering values that only appeared once was implemented before in
+Mash by using a Bloom Filter and only adding values after they were
+seen once, with later versions also implementing an extra counter
+array to keep track of counts for each value in the MinHash.</p>
+<p>TODO: discuss here how abundance tracking in MinHash is not “correct”,
+because it is not a proper weighted subsample of the data?
+Note that Scaled MinHash is a proper weighted subsample.</p>
+<p>Other operations are adding and subtracting hash values from a Scaled
+MinHash sketch, allowing post-processing and filtering. Although
+possible for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, in practice this requires
+oversampling (using a larger <span class="math inline">\(n\)</span>) to account for possibly having less
+than <span class="math inline">\(n\)</span> values after filtering (the approach taken by Finch
+<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>).</p>
 <h2 id="scaled-minhash-accurately-estimates-containment-between-sets-of-different-sizes">Scaled MinHash accurately estimates containment between sets of different sizes</h2>
 <ul>
 <li>compares well with others</li>
@@ -725,71 +729,48 @@ hashes to be reliable.</p>
 <p>Notes:
 * private database, private taxonomies are esaily supported without reindexing.</p>
 <h1 id="discussion">Discussion</h1>
-<h2 id="scaled-minhash-offers-benefits-drawbacks-vs-regular-minhash">Scaled MinHash offers benefits, drawbacks vs regular MinHash</h2>
-<p>TODO: add abundance tracking in to either methods or results; gather bench?</p>
+<h2 id="scaled-minhash-provides-efficient-compositional-queries-for-large-data-sets.">Scaled MinHash provides efficient compositional queries for large data sets.</h2>
 <p><em>Scaled MinHash</em> is an implementation of ModHash using concepts from
-MinHashing. <em>Scaled MinHash</em> sketches support a variety of options
-that are convenient for compositional queries - most specifically,
-containment, but also guarantees on hash occurrence, streaming, hash
-removal, abundance tracking, and downsampling. Importantly, <em>Scaled
-MinHash</em> sketches can be generated once for large data sets and then used
-for containment searches after that, unlike CMash and mash screen.</p>
-<p>In exchange for these features, <em>Scaled MinHash</em> sketches have limited
-sensitivity for small queries and are bounded in size by H/s, which
-is usually quite large - so, practically speaking, they grow unbounded
-wtih the input size.</p>
-<p>Once a Scaled MinHash is calculated there are many operation that can
-be applied without depending on the original data, saving storage
-space and allowing scaling analysis to thousands of datasets. Most of
-these operations are also possible with MinHash and ModHash, with
-caveats. One example of these operations is : the
-contiguous value range for Scaled MinHash sketches allow deriving
-<span class="math inline">\(\mathbf{SCALED}_{s&#39;}(W)\)</span> sketches for any <span class="math inline">\(s&#39; \ge s\)</span> using only
-<span class="math inline">\(\mathbf{SCALED}_{s}(W)\)</span>. MinHash and ModHash can also support this
-operation, as long as <span class="math inline">\(n&#39; \le n\)</span> and <span class="math inline">\(m&#39;\)</span> is a multiple of <span class="math inline">\(m\)</span>.</p>
-<p>Because Scaled MinHash sketches collect any value below a threshold
-this also guarantees that once a value is selected it is never
-discarded. This is useful in streaming contexts: any operations that
-used a previously selected value can be cached and updated with new
-arriving values. <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> has similar properties, but this
-is not the case for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, since after <span class="math inline">\(n\)</span> values are
-selected any displacement caused by new data can invalidate previous
-calculations.</p>
-<p>Abundance tracking is another extension to MinHash sketches, keeping a
-count of how many times a value appeared in the original data. This
-allows filtering for low-abundance values, as implemented in Finch
-<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>, another MinHash sketching software for genomics.
-Filtering values that only appeared once was implemented before in
-Mash by using a Bloom Filter and only adding values after they were
-seen once, with later versions also implementing an extra counter
-array to keep track of counts for each value in the MinHash.</p>
-<p>TODO: discuss here how abundance tracking in MinHash is not “correct”,
-because it is not a proper weighted subsample of the data?
-Note that Scaled MinHash is a proper weighted subsample.</p>
-<p>Other operations are adding and subtracting hash values from a Scaled
-MinHash sketch, allowing post-processing and filtering. Although
-possible for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, in practice this requires
-oversampling (using a larger <span class="math inline">\(n\)</span>) to account for possibly having less
-than <span class="math inline">\(n\)</span> values after filtering (the approach taken by Finch
-<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>).</p>
-<h3 id="scaled-minhash-has-limitations-vs-regular-minhash">Scaled minhash has limitations vs regular minhash</h3>
-<p>virus, etc. (could go in first discussion section, but also deserves
-to be highlighted)</p>
-<h2 id="gather-works-surprisingly-well-and-matches-simple-data-structures">Gather works surprisingly well and matches simple data structures</h2>
-<p>We next ask, what is a minimal collection of genomes necessary to
-explain the content of a metagenome? This problem can be framed
-bioinformatically as asking, for a given metagenome <span class="math inline">\(M\)</span>, what is the
-smallest collection of genomes in the database <span class="math inline">\(D\)</span> to which all mappable
-reads in <span class="math inline">\(M\)</span> will be mapped. That is, what is the smallest collection of
-genomes that explain the observed reads, absent reads for which there is
-no reference genome?</p>
-<p>If we treat both <span class="math inline">\(M\)</span> and all the genomes in <span class="math inline">\(D\)</span> as collections of
-k-mers, this problem can be framed as a minimal set covering problem: find the
-smallest set <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that
-<span class="math display">\[k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} \]</span></p>
-<p>The gather algorithm implements the greedy min-set-cover solution to this
-problem; this is a a known polynomial-time approximation algorithm.</p>
-<p>Taxonomic results suggest that this is a pretty good approach.</p>
+MinHashing. <em>Scaled MinHash</em> sketches support a variety of features
+that are convenient for compositional queries, including containment,
+hash removal, abundance tracking, and downsampling of sketches to
+lower scaled values. (CTB: mention streaming, hash occurrence guarantees?) In
+exchange, <em>Scaled MinHash</em> sketches have limited sensitivity for small
+queries and are only bounded in size by H/s, which is usually quite
+large – practically speaking, <em>Scaled MinHash</em> sketches are
+unbounded wtih the input size.</p>
+<p>Once a Scaled MinHash is calculated there are many operations that can
+be applied without depending on the original data, thus serving as a
+compressed index into content.</p>
+<p>In exchange for these many conveniences, <em>Scaled MinHash</em> sketches have
+limited sensitivity on small data sets. (More here.)</p>
+<h2 id="min-set-cov-supports-accurate-compositional-analysis-of-metagenomes.">min-set-cov supports accurate compositional analysis of metagenomes.</h2>
+<p>Many metagenome content analysis questions use the reference genoems
+present in the metagenome as proxies for the metagenome content
+itself. Above, we frame the computational challenge of discovering
+the appropriate reference genomes as a min-set-cov problem, in which
+we seek the <em>minimum</em> set of reference genomes necessary to account
+for mappable reads. We further show that this can be resolved
+efficiently for real-world data sets using a greedy algorithm together
+with <em>Scaled MinHash</em> and large-scale containment search of GenBank.</p>
+<p>Our comparison of hash-based estimation of containment to mapping
+results in Figure <a href="#fig:gather">2</a> shows that this approach is reasonably
+accurate proxy for systematic mapping. In particular, hash-based
+estimation of containment closely matches actual mapping.</p>
+<p>One confounding factor is that for real metagenomes, exact reference
+strains are not usually present in the database. In Figure
+??, this manifests in two ways. First, there is a systematic
+mismatch between the hash content and the mapping content, because
+mapping software is more permissive in the face of small variants than
+k-mer matching, which relies on exact matches. Moreover, many of the
+genomes to the right in the plot are from the same species but different
+<em>strains</em> as the genomes to the left, suggesting that strain-specific
+portions of the reference are being utilized for matching. In reality,
+there will usually be a different mixture of strains in the metagenome
+than in the reference database. Approaches such as spacegraphcats may
+help resolve this by building new references, yada.</p>
+<p>Note: gather can also be applied to private databases.</p>
+<p>Leftover text:</p>
 <p>Our implementation of gather does not currently select the set of
 smallest genomes, but rather the smallest set of genomes. If there are
 two genomes with equal containment of the k-mers, it is arbitrary as
@@ -799,58 +780,40 @@ MinHash containment) with one shingling approach (k-mers) to tackle
 metagenome composition for mapping and taxonomy. The min-set-cover
 approach could be used with exact containment, and/or with other
 shingling approaches.</p>
-<p>gather is a straightforward algorithm for “decomposing” compositional
-data. It can take advantage of efficient data structures for containment
-because it’s “just” k-mers.</p>
-<p><code>gather</code> is a new method for decomposing datasets into its components
-that outperforms current method when using synthetic datasets with
-known composition. By leveraging <em>Scaled MinHash</em> sketches and
-efficient indexing data structures it can scale the number of
-reference datasets used by over an order of magnitude when compared to
-existing methods.</p>
-<p>The <code>gather</code> approach differs from previous methods by considering the
-<em>co-occurrence</em> of <span class="math inline">\(k\)</span>-mers between the query and a database sketch as
-a strong signal that the k-mers originate from that database sketch.</p>
-<p>xx can we guess at places where gather would break?</p>
-<p>Other containment estimation methods such as
-<em>CMash</em> <span class="citation" data-cites="koslicki_improving_2019">[<span class="citeproc-not-found" data-reference-id="koslicki_improving_2019"><strong>???</strong></span>]</span> and <em>mash screen</em> <span class="citation" data-cites="ondov_mash_2019">[<span class="citeproc-not-found" data-reference-id="ondov_mash_2019"><strong>???</strong></span>]</span>,
-can also implement <code>gather</code>.
-<!-- David comment: "CMash does kinda, but uses unique k-mers instead
-of removing matches like gather does. CMash commit
-https://github.com/dkoslicki/CMash/commit/de7bdd6fa --> Running a
-search requires access to the original dataset (<em>mash screen</em>) for the
-query, or a Bloom Filter derived from the original dataset (<em>CMash</em>),
-and when the collection of reference sketches is updated the Bloom
-Filter from <em>CMash</em> can be reused, but <em>mash screen</em> needs access to
-the original dataset again.</p>
-<p>(Maybe already covered above, or maybe should be moved to “gather can
-be applied to all the data”?)
-Since <em>Scaled MinHash</em> sketches allow using the sketch directly for
-<code>gather</code>, which are a fraction of the original data in size and also
-allow enumerating all the elements, an operation not possible with
-Bloom Filters, they can be stored and reused for large collections of
-sequencing datasets, including public databases like the Sequence Read
-Archive <span class="citation" data-cites="leinonen_sequence_2011">[<span class="citeproc-not-found" data-reference-id="leinonen_sequence_2011"><strong>???</strong></span>]</span>. A service that calculate these
-<em>Scaled MinHash</em> sketches and make them available can improve
-discoverability of these large collections, as well as support future
-use cases derived from other <em>Scaled MinHash</em> features.</p>
-<h2 id="taxonomy-results-are-excellent.">Taxonomy results are excellent.</h2>
-<p>Discuss vs LCA/saturation, slash reference the LCA-has-limits/k-mers
-saturate paper</p>
-<p>Mix and match taxonomies is easy b/c we anchor to genomes.</p>
-<p>Compared to previous taxonomic profiling methods, <em>Scaled MinHash</em> can
-also be seen as a mix of two other approaches: It uses exact <span class="math inline">\(k\)</span>-mer
-matching and assignment, and the <span class="math inline">\(k\)</span>-mers selected by the MinHashing
-process are equivalent to implicitly-defined markers. It differs from
-previous approaches because only a subset of the <span class="math inline">\(k\)</span>-mer composition
-is used for matching, and traditional gene markers are explicitly
-chosen due to sequence conservation and low mutation rates, while
-MinHashing <span class="math inline">\(k\)</span>-mers generates a randomized, but consistent across
-datasets, set of marker <span class="math inline">\(k\)</span>-mers.</p>
+<p>xx can we guess at places where gather would break? One is equivalent
+containment/different genome sizes.</p>
+<h2 id="min-set-cov-supports-accurate-taxonomic-classification-of-metagenome-content">min-set-cov supports accurate taxonomic classification of metagenome content</h2>
+<p>Once the min-set-cov approach has identified reference genomes, we can
+build a taxonomic classifier for metagenome content by simply
+reporting the taxonomies of the constitutent genomes. Our initial
+taxonomic benchmarking show that this approach is competitive for all
+metrics across all taxonomic levels.</p>
+<p>This approach avoids the taxonomic saturation problem for large
+databases associated with many other k-mer based methods (Kraken,
+etc.). As long as every genome in the database possesses a distinct
+combination of k-mers, the min-set-cov approach can disambiguate
+reference genomes based on this combination. In practice, our use of
+<em>Scaled MinHash</em> k-mer/hash sampling will limit the resolution of our
+technique for very closely related genomes, because distinct hashes
+will not be chosen for them.</p>
+<p>One convenient feature of this approach to taxonomic analysis is that
+new or changed taxonomies can be readily incorporated by assigning
+them directly to genome identifiers; the majority of the compute is
+involved in finding the reference genomes, which can then be given
+assignments in different taxonomic frameworks as needed. For example,
+sourmash already supports GTDB natively, and will also support the
+emerging LINS framework. sourmash can also readily incorporate the
+frequent updates to the NCBI taxonomy without requiring expensive
+reanalysis of the primary metagenome data or even redoing the
+min-set-cov computation.</p>
+<p>Finally, as with the underlying min-set-cov algorithm, it is
+straightforward to support taxonomic analysis using custom databases
+and/or custom taxonomies.</p>
 <h2 id="algorithm-is-simple-computational-performance-is-great">Algorithm is simple, computational performance is great</h2>
+<p>sourmash software is awesome.</p>
+<h3 id="gather-can-be-applied-to-all-the-data.">Gather can be applied to all the data.</h3>
 <p>Performant implementation in sourmasha Python API for data exploration
 and methods prototyping.</p>
-<h3 id="gather-can-be-applied-to-all-the-data.">Gather can be applied to all the data.</h3>
 <!-- Scaling to large collections of references -->
 <p>Taxonomic
 profiling is fundamentally limited by the availability of reference
@@ -872,36 +835,8 @@ the need to merge, update or reprocess databases when new datasets
 are available. A new database with the new datasets can be
 constructed and queried together with previous ones.</p></li>
 </ul>
-<!-- TODO to make this point I need more info about the other
-databases used...  I don't think they were calculated from the refseq
-snapshot https://github.com/CAMI-challenge/data/issues/2 These aspects
-allowed the `sourmash` database to be include the largest number of
-reference datasets of all methods compared, -->
-<!-- dependency on taxonomic assignments -->
-<p>Taxonomic profiling in <code>sourmash</code> is implemented as an extra step on
-top of <code>gather</code> results. Because these steps are independent of the
-dataset assignment that <code>gather</code> generates, updates to the taxonomy
-don’t require re-executing <code>gather</code>, since the taxonomic information
-can be derived from the same dataset identifier (but potentially with
-a new associated taxonomic ID). This allows using new taxonomies
-derived from the same underlying datasets <span class="citation" data-cites="parks_standardized_2018">[<span class="citeproc-not-found" data-reference-id="parks_standardized_2018"><strong>???</strong></span>]</span>,
-as well as updates to the original taxonomy used before.</p>
-<!-- Benchmarking -->
-<p>Despite improvements to standardization and
-reproducibility of previous analysis, benchmarking taxonomic profiling
-tools is still challenging, since tools can generate their reference
-databases from multiple sources and choosing only one source can bias
-or make it impossible to evaluate them properly. This is especially
-true for real metagenomic datasets derived from samples collected from
-soil and marine environments, where the number of unknown organisms is
-frequently larger than those contained in reference databases. With
-the advent of metagenome-assembled genomes (MAGs) there are more
-resources available for usage as reference datasets, even if they are
-usually incomplete or draft quality. <code>sourmash</code> is well positioned to
-include these new references to taxonomic profiling given the minimal
-requirements (a <em>Scaled MinHash</em> sketch of the original dataset) and
-support for indexing hundreds of thousands of datasets.</p>
 <h3 id="limitations-of-gather">Limitations of gather</h3>
+<p>(For <em>Scaled MinHash</em>, <code>gather</code>, and taxonomy. Move where? Conclusions?)</p>
 <p><code>gather</code> as implemented in <code>sourmash</code> has the same limitations as
 <em>Scaled MinHash</em> sketches, including reduced sensitivity to small
 genomes/sequences such as viruses. <em>Scaled MinHash</em> sketches don’t
@@ -934,126 +869,6 @@ Both the multiple match as well as the abundance counts issues can benefit from
 existing solutions taken by other methods,
 like the <em>species score</em> (for disambiguation) and <em>Expectation-Maximization</em> (for abundance analysis)
 approaches from Centrifuge <span class="citation" data-cites="kim_centrifuge_2016">[<span class="citeproc-not-found" data-reference-id="kim_centrifuge_2016"><strong>???</strong></span>]</span>.</p>
-<h3 id="future-directions-for-gather">Future directions for gather</h3>
-<p>In this chapter <code>gather</code> is described in terms of taxonomic profiling
-of metagenomes. That is one application of the algorithm, but it can
-applied to other biological problems too. If the query is a genome
-instead of a metagenome, <code>gather</code> can be used to detect possible
-contamination in the assembled genome by using a collection of genomes
-and removing the query genome from it (if it is present). This allows
-finding matches that contain the query genome and evaluating if they
-agree at specific taxonomic rank, and in case of large divergence (two
-different phyla are found, for example) it is likely to indicative
-that the query genome contains sequences from different organisms.
-This is especially useful for quality control and validation of
-metagenome-assembled genomes (MAGs), genomes assembled from reads
-binned and clustered from metagenomes, as well as a verification
-during submission of new assembled genomes to public genomic databases
-like GenBank.</p>
-<p>Improvements to the calculation of <em>Scaled MinHash</em> sketches can also
-improve the taxonomic profiling use case. Exact <span class="math inline">\(k\)</span>-mer matching is
-limited in phylogenetically distant organisms, since small nucleotide
-differences lead to distinct <span class="math inline">\(k\)</span>-mers, breaking homology
-assumptions. <!-- TODO verify/cite? --> Different approaches for
-converting the datasets into a set to be hashed (<em>shingling</em>) than
-computing the nucleotide <span class="math inline">\(k\)</span>-mer composition, such as spaced <span class="math inline">\(k\)</span>-mers
-<span class="citation" data-cites="leimeister_fast_2014">[<span class="citeproc-not-found" data-reference-id="leimeister_fast_2014"><strong>???</strong></span>]</span> and minimizers <span class="citation" data-cites="roberts_reducing_2004">[<span class="citeproc-not-found" data-reference-id="roberts_reducing_2004"><strong>???</strong></span>]</span> and
-alternative encodings for the nucleotides using 6-frame translation to
-amino acid <span class="citation" data-cites="gish_identification_1993">[<span class="citeproc-not-found" data-reference-id="gish_identification_1993"><strong>???</strong></span>]</span> or other reduced alphabets
-<span class="citation" data-cites="peterson_reduced_2009">[<span class="citeproc-not-found" data-reference-id="peterson_reduced_2009"><strong>???</strong></span>]</span>, can allow comparisons on longer evolutionary
-distances and so improve taxonomic profiling by increasing the
-sensitivity of the containment estimation. These improvements don’t
-fundamentally change the <code>gather</code> method, since it would still be
-based on the same <em>containment</em> and <em>remove element</em> operations, but
-show how <code>gather</code> works as a more general method that can leverage
-characteristics from different building blocks and explore new or
-improved use cases.</p>
-<p><code>gather</code> is a new method for decomposing datasets into its components
-with application in biological sequencing data analysis (taxonomic
-profiling) that can scale to hundreds of thousands of reference
-datasets with computational resources requirements that are accessible
-to a large number of users when used in conjunction with <em>Scaled
-MinHash</em> sketches and efficient indices such as <em>LCA</em> and <em>MHBT</em>. It
-outperforms current methods in community-develop benchmarks, and opens
-the way for new methods that explore a top-down approach for profiling
-microbial communities, including further refinements that can resolve
-larger evolutionary distances and also speed up the method
-computationally.</p>
-<h3 id="xxx-sbt-and-lca-indices">XXX SBT and LCA indices</h3>
-<p><em>Scaled MinHash</em> sketches are fundamentally a subset of the <span class="math inline">\(k\)</span>-mer
-composition of a dataset, and so any of the techniques described in
-<span class="citation" data-cites="marchet_data_2019">[<span class="citeproc-not-found" data-reference-id="marchet_data_2019"><strong>???</strong></span>]</span> are potential candidates for improving current
-indices or implementing new ones. The MHBT index can be improved by
-using more efficient representations for the internal nodes
-<span class="citation" data-cites="solomon_improved_2017">[<span class="citeproc-not-found" data-reference-id="solomon_improved_2017"><strong>???</strong></span>]</span> and constructing the MHBT by clustering
-<span class="citation" data-cites="harris_improved_2018">[<span class="citeproc-not-found" data-reference-id="harris_improved_2018"><strong>???</strong></span>]</span>, and the LCA index can use more efficient
-storage of the list of signatures IDs by representing the list as
-colors <span class="citation" data-cites="pandey_mantis:_2018">[<span class="citeproc-not-found" data-reference-id="pandey_mantis:_2018"><strong>???</strong></span>]</span>. The memory consumption of the LCA
-index can also be tackled by implementing it in external memory using
-memory-mapped files, letting the operating system cache and unload
-pages as needed.</p>
-<p>Current indices are also single-threaded, and don’t benefit from
-multicore systems. Both indices can be used in parallel by loading as
-read-only and sharing for multiple searches, but is is also possible
-to explore parallelization for single queries by partitioning the LCA
-and assigning each partition to a thread, as well as using a
-work-stealing thread pool for expanding the search frontier in the
-MHBT in parallel. In any case, the current implementations serve as a
-baseline for future scalability and can be used to guide optimization
-and avoid extraneous overhead and common failings of such projects
-<span class="citation" data-cites="mcsherry_scalability_2015">[<span class="citeproc-not-found" data-reference-id="mcsherry_scalability_2015"><strong>???</strong></span>]</span>.</p>
-<h3 id="database-types-work-well">Database types work well</h3>
-<p>“online” approaches</p>
-<p><code>sourmash gather</code>, the command-line interface that adds further user
-experience improvements to the API level, also allows passing multiple
-indices to be searched, providing incremental support for rerunning
-with additional data without having to recompute, merge or update the
-original databases.</p>
-<p>Some limitations of gather and database types (equal results can be
-hard to detect efficiently with current SBT implementation)</p>
-<p>The Linear index is appropriate for operations that must check every
-signature, since it doesn’t have any indexing overhead. An example is
-building a distance matrix for comparing signatures all-against-all.
-Search operations greatly benefit from extra indexing structure. The
-MHBT index and <span class="math inline">\(k\)</span>-mer aggregative methods in general are appropriate
-for searches with query thresholds, like searching for similarity or
-containment of a query in a collection of datasets. The LCA index and
-color aggregative methods are appropriate for querying which datasets
-contain a specific query <span class="math inline">\(k\)</span>-mer.</p>
-<p>As implemented in sourmash, the MHBT index is more memory efficient
-because the data can stay in external memory and only the tree
-structure for the index need to be loaded in main memory, and data for
-the datasets and internal nodes can be loaded and unloaded on demand.
-The LCA index must be loaded in main memory before it can be used, but
-once it is loaded it is faster, especially for operations that need to
-summarize <span class="math inline">\(k\)</span>-mer assignments or require repeated searches.</p>
-<p>Due to these characteristics, and if memory usage is not a concern,
-then the LCA index is the most appropriate choice since it is faster.
-The MHBT index is currently recommended for situations where memory is
-limited, such as with smaller scaled values (<span class="math inline">\(s\le2000\)</span>) that increase
-the size of signatures, or when there are a large number (hundreds of
-thousands or more) of datasets to index.</p>
-<h3 id="converting-between-indices">Converting between indices</h3>
-<p>Both MHBT and LCA index can recover the original sketch collection.
-In the MHBT case, it outputs all the leaf nodes. In the LCA index, it
-reconstruct each sketch from the hash-to-dataset-ID mapping. This
-allows trade-offs between storage efficiency, distribution, updating
-and query performance.</p>
-<p>Because both are able to return the original sketch collection, it is
-also possible to convert one index into the other.</p>
-<h3 id="gather-conclusion">gather Conclusion</h3>
-<p><em>Scaled MinHash</em> sketches allow scaling analysis to thousands of
-datasets, but efficiently searching and sharing them can benefit from
-data structures that index and optimize these use cases. This chapter
-introduces an index abstraction that can be trivially implementing
-using a list of sketches (<em>Linear index</em>) and more advanced
-implementations based on inverted indices (<em>LCA index</em>) and
-hierarchical indices (<em>MHBT</em>) providing options for fast and
-memory-efficient operations, as well as making it easier to share and
-analyze collections of sketches. All these functionalities are
-implemented in sourmash.</p>
-<h2 id="limitations-and-future-directions">Limitations and future directions</h2>
-<p>(For <em>Scaled MinHash</em>, <code>gather</code>, and taxonomy. Move where? Conclusions?)</p>
 <p>(From David Koslicki)
 Gotchas:</p>
 <ul>
@@ -1067,47 +882,14 @@ also depend on |A|, which was somewhat surprising</li>
 <li>The “fixed k-size” problem (which might be able to be overcome with
 the prefix-lookup data structure, if one sacrifices some accuracy)</li>
 </ul>
-<p><em>Scaled MinHash</em> sketches are fundamentally a subset of the <span class="math inline">\(k\)</span>-mer
-composition of a dataset, and so any of the techniques described in
-<span class="citation" data-cites="marchet_data_2019">[<span class="citeproc-not-found" data-reference-id="marchet_data_2019"><strong>???</strong></span>]</span> are potential candidates for improving current
-indices or implementing new ones. The MHBT index can be improved by
-using more efficient representations for the internal nodes
-<span class="citation" data-cites="solomon_improved_2017">[<span class="citeproc-not-found" data-reference-id="solomon_improved_2017"><strong>???</strong></span>]</span> and constructing the MHBT by clustering
-<span class="citation" data-cites="harris_improved_2018">[<span class="citeproc-not-found" data-reference-id="harris_improved_2018"><strong>???</strong></span>]</span>, and the LCA index can use more efficient
-storage of the list of signatures IDs by representing the list as
-colors <span class="citation" data-cites="pandey_mantis:_2018">[<span class="citeproc-not-found" data-reference-id="pandey_mantis:_2018"><strong>???</strong></span>]</span>. The memory consumption of the LCA
-index can also be tackled by implementing it in external memory using
-memory-mapped files, letting the operating system cache and unload
-pages as needed.</p>
-<p>Current indices are also single-threaded, and don’t benefit from
-multicore systems. Both indices can be used in parallel by loading as
-read-only and sharing for multiple searches, but is is also possible
-to explore parallelization for single queries by partitioning the LCA
-and assigning each partition to a thread, as well as using a
-work-stealing thread pool for expanding the search frontier in the
-MHBT in parallel. In any case, the current implementations serve as a
-baseline for future scalability and can be used to guide optimization
-and avoid extraneous overhead and common failings of such projects
-<span class="citation" data-cites="mcsherry_scalability_2015">[<span class="citeproc-not-found" data-reference-id="mcsherry_scalability_2015"><strong>???</strong></span>]</span>.</p>
-<p><em>Scaled MinHash</em> sketches allow scaling analysis to thousands of
-datasets, but efficiently searching and sharing them can benefit from
-data structures that index and optimize these use cases. This chapter
-introduces an index abstraction that can be trivially implementing
-using a list of sketches (<em>Linear index</em>) and more advanced
-implementations based on inverted indices (<em>LCA index</em>) and
-hierarchical indices (<em>MHBT</em>) providing options for fast and
-memory-efficient operations, as well as making it easier to share and
-analyze collections of sketches. All these functionalities are
-implemented in <code>sourmash</code>, a software package exposing these features
-as a command-line program as well as a Python API for data exploration
-and methods prototyping.</p>
-<p>These indices also serve as another set of building blocks for
-constructing more advanced methods for solving other relevant
-biological problems like taxonomic profiling, described in Chapter
-<a href="#chp-gather">3</a>, and approaches for increasing the resilience and
-shareability of biological sequencing data, described in Chapter
-<a href="#chp-decentralizing">5</a>.</p>
 <h1 id="conclusion">Conclusion</h1>
+<ul>
+<li>scaled min hash is powerful, with well defined limitations.</li>
+<li>gather is awesome and convenient.</li>
+<li>taxonomy is awesome and overcomes limitations of many current approaches.</li>
+<li>sourmash is robust software that provides a practically usable implementation of these ideas.</li>
+<li>future directions…</li>
+</ul>
 <p><em>Scaled MinHash</em> sketches are simple to implement and analyze, with
 consistent guarantees for the range of values and subsetting
 properties when applied to datasets. Containment and similarity
@@ -1208,11 +990,11 @@ on-the-fly.</p>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references hanging-indent" role="doc-bibliography">
-<div id="ref-y3BKxnQb">
-<p>1. <strong>The Statistical Analysis of Compositional Data</strong> <br />
-J. Aitchison<br />
-<em>Journal of the Royal Statistical Society: Series B (Methodological)</em> (1982-01) <a href="https://doi.org/gfs7gn">https://doi.org/gfs7gn</a> <br />
-DOI: <a href="https://doi.org/10.1111/j.2517-6161.1982.tb01195.x">10.1111/j.2517-6161.1982.tb01195.x</a></p>
+<div id="ref-AX7zdKKw">
+<p>1. <strong>On the resemblance and containment of documents</strong> <br />
+A. Z. Broder<br />
+<em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-23) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <br />
+DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></p>
 </div>
 <div id="ref-8ZKpbGz7">
 <p>2. <strong>richarddurbin/modimizer</strong> <br />
