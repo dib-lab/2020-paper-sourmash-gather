@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2020-10-28" />
+  <meta name="dcterms.date" content="2020-10-29" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2020-10-28" />
-  <meta name="citation_publication_date" content="2020-10-28" />
+  <meta name="dc.date" content="2020-10-29" />
+  <meta name="citation_publication_date" content="2020-10-29" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/744e2b3846814dd1116ff4e03731f370049e59c5/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/744e2b3846814dd1116ff4e03731f370049e59c5">dib-lab/2020-paper-sourmash-gather@744e2b3</a>
-on October 28, 2020.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/0d18b9014f300c238a5fbd6535b5cc601c9d0daa">dib-lab/2020-paper-sourmash-gather@0d18b90</a>
+on October 29, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -100,14 +100,14 @@ is a significant challenge in microbiome studies. Here we describe
 <em>Scaled MinHash</em>, an extension of MinHash sketching that permits rapid
 and accurate compositional analysis of shotgun metagenome data sets
 using k-mers. We implement this approach in the sourmash software,
-together with database indexing implementations that support
-large-scale Jaccard similarity and containment searches across all
-available reference genomes. We next frame the problem of shotgun
+together with database indices that support
+large-scale Jaccard containment searches across all
+available reference genomes. We then approach shotgun
 metagenome compositional analysis as a min-set-cover challenge and
-implement a greedy approximate solution in sourmash using <em>Scaled
-MinHash</em>. We show that this approach finds the minimal collection of
-genomes necessary to serve as a reference for all mappable metagenome
-reads, and can be extended to provide a lightweight and precise method
+implement a greedy approximate solution using <em>Scaled
+MinHash</em>. We show that this solution finds the minimal collection of
+genomes needed to serve as a reference for all mappable metagenome
+reads, and extend it to provide a lightweight and precise method
 for taxonomic classification of metagenome content. sourmash is
 freely available under the BSD 3-Clause license at
 github.com/dib-lab/sourmash/.</p>
@@ -117,11 +117,10 @@ github.com/dib-lab/sourmash/.</p>
 question of what reference genomes should be used for functional
 and taxononomic interpretation of metagenome content.</p>
 <p>Below, we describe a lightweight approach to compositional analysis of
-shotgun metagenome samples using a k-mer based approach.</p>
+shotgun metagenome samples using k-mer hashing.</p>
 <p>We first define <em>Scaled MinHash</em>, an extension of MinHash sketching
 that supports lightweight containment estimation for metagenome
-datasets using a hash-based k-mer downsampling approach; the tradeoff
-is that sketch sizes are unbounded. We implement <em>Scaled MinHash</em> in
+datasets. We implement <em>Scaled MinHash</em> in
 Python and Rust, and show that it is competitive in accuracy with
 other containment estimation approaches. We further provide efficient
 indexed database implementations that support similarity and containment
@@ -129,7 +128,7 @@ search across hundreds of thousands of reference genomes.</p>
 <p>We next frame reference-based metagenome content analysis as a
 min-set-cov problem, in which we seek the <em>minimum</em> number of genomes
 in the reference database necessary to cover the known content of a
-metagenome. We implement a known best-polynomial-time greedy
+metagenome. We implement the known best-polynomial-time greedy
 approximate to the min-set-cov problem using <em>Scaled MinHash</em>, and
 show that it is recovers a minimum set of reference genomes for the mappable
 reads in a metagenome.</p>
@@ -737,35 +736,37 @@ hash removal, abundance tracking, and downsampling of sketches to
 lower scaled values. (CTB: mention streaming, hash occurrence guarantees?) In
 exchange, <em>Scaled MinHash</em> sketches have limited sensitivity for small
 queries and are only bounded in size by H/s, which is usually quite
-large – practically speaking, <em>Scaled MinHash</em> sketches are
-unbounded wtih the input size.</p>
-<p>Once a Scaled MinHash is calculated there are many operations that can
-be applied without depending on the original data, thus serving as a
-compressed index into content.</p>
+large.</p>
+<p>Once a Scaled MinHash is calculated, the original data does not need
+to be revisited during searches. This allows sketches to serve as a
+distributable compressed index for sequence content. Moreover, because
+these sketches are collections of hashes, existing k-mer indexing
+approaches can be applied to the sketches to provide fast database
+search.</p>
 <p>In exchange for these many conveniences, <em>Scaled MinHash</em> sketches have
 limited sensitivity on small data sets. (More here.)</p>
 <h2 id="min-set-cov-supports-accurate-compositional-analysis-of-metagenomes.">min-set-cov supports accurate compositional analysis of metagenomes.</h2>
-<p>Many metagenome content analysis questions use the reference genoems
-present in the metagenome as proxies for the metagenome content
-itself. Above, we frame the computational challenge of discovering
-the appropriate reference genomes as a min-set-cov problem, in which
-we seek the <em>minimum</em> set of reference genomes necessary to account
-for mappable reads. We further show that this can be resolved
-efficiently for real-world data sets using a greedy algorithm together
-with <em>Scaled MinHash</em> and large-scale containment search of GenBank.</p>
+<p>Many metagenome content analysis approaches use reference genomes to
+interpret metagenome content. Here, we frame the computational
+challenge of discovering the appropriate reference genomes for a set
+of metagenome reads as a min-set-cov problem, in which we seek the
+<em>minimum</em> set of reference genomes necessary to account for all
+mappable reads. We show that this can be resolved efficiently for
+real-world data sets using a greedy algorithm together with <em>Scaled
+MinHash</em> and large-scale containment search of GenBank.</p>
 <p>Our comparison of hash-based estimation of containment to mapping
-results in Figure <a href="#fig:gather">2</a> shows that this approach is reasonably
-accurate proxy for systematic mapping. In particular, hash-based
-estimation of containment closely matches actual mapping.</p>
+results in Figure <a href="#fig:gather">2</a> shows that this approach is an accurate
+proxy for systematic mapping. In particular, hash-based estimation of
+containment closely matches actual read mapping performance.</p>
 <p>One confounding factor is that for real metagenomes, exact reference
-strains are not usually present in the database. In Figure
-??, this manifests in two ways. First, there is a systematic
-mismatch between the hash content and the mapping content, because
+strains are not usually present in the database. This manifests in two
+ways in Figure ??. First, there is a systematic mismatch
+between the hash content and the mapping content (green line), because
 mapping software is more permissive in the face of small variants than
-k-mer matching, which relies on exact matches. Moreover, many of the
-genomes to the right in the plot are from the same species but different
-<em>strains</em> as the genomes to the left, suggesting that strain-specific
-portions of the reference are being utilized for matching. In reality,
+k-mer-based exact matching. Moreover, many of the lower rank genomes
+in the plot are from the same species but different <em>strains</em> as the
+higher ranked genomes, suggesting that strain-specific portions of the
+reference are being utilized for matching at lower ranks. In reality,
 there will usually be a different mixture of strains in the metagenome
 than in the reference database. Approaches such as spacegraphcats may
 help resolve this by building new references, yada.</p>
@@ -788,53 +789,45 @@ build a taxonomic classifier for metagenome content by simply
 reporting the taxonomies of the constitutent genomes. Our initial
 taxonomic benchmarking show that this approach is competitive for all
 metrics across all taxonomic levels.</p>
-<p>This approach avoids the taxonomic saturation problem for large
-databases associated with many other k-mer based methods (Kraken,
-etc.). As long as every genome in the database possesses a distinct
-combination of k-mers, the min-set-cov approach can disambiguate
-reference genomes based on this combination. In practice, our use of
-<em>Scaled MinHash</em> k-mer/hash sampling will limit the resolution of our
-technique for very closely related genomes, because distinct hashes
-will not be chosen for them.</p>
+<p>This approach does not result in the taxonomic saturation caused by
+the increasing size of large reference databases associated with many
+other k-mer based methods (Kraken, etc.). As long as every genome in
+the database possesses a distinct combination of k-mers, the
+min-set-cov approach can disambiguate reference genomes based on this
+combination. In practice, our use of <em>Scaled MinHash</em> k-mer/hash
+sampling will limit the resolution of our technique for very closely
+related genomes, because distinct hashes will not be chosen for them.</p>
 <p>One convenient feature of this approach to taxonomic analysis is that
 new or changed taxonomies can be readily incorporated by assigning
 them directly to genome identifiers; the majority of the compute is
-involved in finding the reference genomes, which can then be given
-assignments in different taxonomic frameworks as needed. For example,
-sourmash already supports GTDB natively, and will also support the
-emerging LINS framework. sourmash can also readily incorporate the
-frequent updates to the NCBI taxonomy without requiring expensive
-reanalysis of the primary metagenome data or even redoing the
-min-set-cov computation.</p>
+involved in finding the reference genomes, which can have assignments
+in different taxonomic frameworks. For example, sourmash already
+supports GTDB natively, and will also support the emerging LINS
+framework. sourmash can also readily incorporate updates to
+taxonomies, e.g. frequent updates to the NCBI taxonomy, without
+requiring expensive reanalysis of the primary metagenome data or even
+redoing the min-set-cov computation.</p>
 <p>Finally, as with the underlying min-set-cov algorithm, it is
 straightforward to support taxonomic analysis using custom databases
-and/or custom taxonomies.</p>
+and/or custom taxonomic assignments; sourmash already supports this
+natively.</p>
 <h2 id="algorithm-is-simple-computational-performance-is-great">Algorithm is simple, computational performance is great</h2>
-<p>sourmash software is awesome.</p>
-<h3 id="gather-can-be-applied-to-all-the-data.">Gather can be applied to all the data.</h3>
-<p>Performant implementation in sourmasha Python API for data exploration
-and methods prototyping.</p>
-<!-- Scaling to large collections of references -->
-<p>Taxonomic
-profiling is fundamentally limited by the availability of reference
-datasets, even if new reference datasets can be derived from
+<p>The algorithms underlying both <em>Scaled MinHash</em> and the greedy
+min-set-cov solution are simple to describe and straightforward to
+implement. This increases the likelihood of correct implementation,
+provides opportunities for independent optimization of data structures,
+and simplifies interoperability between different implementations.</p>
+<p>We provide two implementations with this paper: sourmash, a fully
+supported open source implementation with command-line, Python and
+Rust APIs; and smol, a much shorter Rust implementation for
+demonstration purposes.</p>
+<h2 id="sourmash-supports-large-scale-data-analysis">sourmash supports large scale data analysis</h2>
+<p>Taxonomic profiling is fundamentally limited by the availability of
+reference datasets, even if new reference datasets can be derived from
 clustering possible organisms based on sequence data in metagenomes
-<span class="citation" data-cites="milanese_microbial_2019">[<span class="citeproc-not-found" data-reference-id="milanese_microbial_2019"><strong>???</strong></span>]</span>. <code>gather</code> as implemented in <code>sourmash</code> is
-a method that can scale to increasingly larger collections of datasets
-due to multiple reasons:</p>
-<ul>
-<li><p>containment and similarity estimation with <em>Scaled MinHash</em>
-sketches has lower computational requirements than alignment over
-all reads of a dataset;</p></li>
-<li><p>since <em>Scaled MinHash</em> sketches use a subset of the <span class="math inline">\(k\)</span>-mer
-composition, they also scale better than full <span class="math inline">\(k\)</span>-mer composition
-representations, requiring less space and reducing the number of
-elements to be computed;</p></li>
-<li><p>querying multiple databases can be done independently, avoiding
-the need to merge, update or reprocess databases when new datasets
-are available. A new database with the new datasets can be
-constructed and queried together with previous ones.</p></li>
-</ul>
+<span class="citation" data-cites="milanese_microbial_2019">[<span class="citeproc-not-found" data-reference-id="milanese_microbial_2019"><strong>???</strong></span>]</span>. The sourmash project provides large scale
+databases for NCBI and GTDB taxonomies, and supports search of all
+available genomes.</p>
 <h3 id="limitations-of-gather">Limitations of gather</h3>
 <p>(For <em>Scaled MinHash</em>, <code>gather</code>, and taxonomy. Move where? Conclusions?)</p>
 <p><code>gather</code> as implemented in <code>sourmash</code> has the same limitations as
