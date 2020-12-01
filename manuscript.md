@@ -4,7 +4,7 @@ author-meta:
 - C. Titus Brown
 bibliography:
 - content/manual-references.json
-date-meta: '2020-10-29'
+date-meta: '2020-12-01'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="dc.date" content="2020-10-29" />
+  <meta name="dc.date" content="2020-12-01" />
 
-  <meta name="citation_publication_date" content="2020-10-29" />
+  <meta name="citation_publication_date" content="2020-12-01" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,10 +102,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@0d18b90](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/0d18b9014f300c238a5fbd6535b5cc601c9d0daa)
-on October 29, 2020.
+from [dib-lab/2020-paper-sourmash-gather@67ec73e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/67ec73e6c9e7048705d008bf57ce5314c92e265b)
+on December 1, 2020.
 </em></small>
 
 ## Authors

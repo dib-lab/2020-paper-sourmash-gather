@@ -5,7 +5,7 @@ Archaea
 archaeal
 benchmarking
 binner
-cami
+CAMI
 CAMIARKQuikr
 CAMISIM
 cardinalities
@@ -16,7 +16,7 @@ combinatorial
 compositional
 constitutent
 cov
-ctb
+CTB
 dataset
 datasets
 DDR
@@ -40,7 +40,7 @@ iteratively
 Jaccard
 kbytes
 Koslicki
-Kraken
+kraken
 lca
 LINS
 Luiz
@@ -48,7 +48,7 @@ luizirber
 mappable
 mer
 mers
-metagenome
+Metagenome
 metagenomes
 metagenomic
 metagenomics
@@ -58,7 +58,7 @@ MetaPhyler
 mhbt
 MHBTs
 microbiome
-minhash
+MinHash
 MinHashing
 ModHash
 modimizer
