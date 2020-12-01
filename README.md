@@ -1,7 +1,7 @@
 # Output directory containing the formatted manuscript
 
 The [`gh-pages`](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/gh-pages) branch hosts the contents of this directory at <https://dib-lab.github.io/2020-paper-sourmash-gather/>.
-The permalink for this webpage version is <https://dib-lab.github.io/2020-paper-sourmash-gather/v/0d18b9014f300c238a5fbd6535b5cc601c9d0daa/>.
+The permalink for this webpage version is <https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/>.
 To redirect to the permalink for the latest manuscript version at anytime, use the link <https://dib-lab.github.io/2020-paper-sourmash-gather/v/freeze/>.
 
 ## Files
@@ -35,4 +35,4 @@ Verifying timestamps with the `ots verify` command requires running a local bitc
 ## Source
 
 The manuscripts in this directory were built from
-[`0d18b9014f300c238a5fbd6535b5cc601c9d0daa`](https://github.com/dib-lab/2020-paper-sourmash-gather/commit/0d18b9014f300c238a5fbd6535b5cc601c9d0daa).
+[`67ec73e6c9e7048705d008bf57ce5314c92e265b`](https://github.com/dib-lab/2020-paper-sourmash-gather/commit/67ec73e6c9e7048705d008bf57ce5314c92e265b).
