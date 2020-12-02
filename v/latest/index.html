@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2020-12-01" />
+  <meta name="dcterms.date" content="2020-12-02" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2020-12-01" />
-  <meta name="citation_publication_date" content="2020-12-01" />
+  <meta name="dc.date" content="2020-12-02" />
+  <meta name="citation_publication_date" content="2020-12-02" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/67ec73e6c9e7048705d008bf57ce5314c92e265b">dib-lab/2020-paper-sourmash-gather@67ec73e</a>
-on December 1, 2020.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/8cb33cfbf83184ed88c7e805a3c6673215342b63">dib-lab/2020-paper-sourmash-gather@8cb33cf</a>
+on December 2, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -95,21 +95,19 @@ Department of Population Health and Reproduction, UC Davis
 </small></p></li>
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
-<p>The accurate assignment of genomes and taxonomy to microbiome samples
-is a significant challenge in microbiome studies. Here we describe
+<p>The accurate assignment of genomes and taxonomy to metagenome data is
+a significant challenge in microbiome studies. Here we describe
 <em>Scaled MinHash</em>, an extension of MinHash sketching that permits rapid
 and accurate compositional analysis of shotgun metagenome data sets
 using k-mers. We implement this approach in the sourmash software,
-together with database indices that support
-large-scale Jaccard containment searches across all
-available reference genomes. We then approach shotgun
-metagenome compositional analysis as a min-set-cover challenge and
-implement a greedy approximate solution using <em>Scaled
-MinHash</em>. We show that this solution finds the minimal collection of
-genomes needed to serve as a reference for all mappable metagenome
-reads, and extend it to provide a lightweight and precise method
-for taxonomic classification of metagenome content. sourmash is
-freely available under the BSD 3-Clause license at
+which supports large-scale Jaccard containment searches across all
+700,000 currently available microbial reference genomes. We then approach
+shotgun metagenome compositional analysis as a min-set-cover problem,
+i.e. as a problem of finding the minimal collection of reference
+genomes for a metagenome. We implement a greedy approximate solution
+using <em>Scaled MinHash</em> and show that this is also a lightweight and
+precise method for taxonomic classification of metagenome content.
+sourmash is available as open source under the BSD 3-Clause license at
 github.com/dib-lab/sourmash/.</p>
 <h1 id="introduction">Introduction</h1>
 <p>Shotgun metagenomics measures the sequence content of microbial communities.</p>
@@ -992,7 +990,7 @@ DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.66
 <div id="ref-8ZKpbGz7">
 <p>2. <strong>richarddurbin/modimizer</strong> <br />
 Richard Durbin<br />
-(2020-11-24) <a href="https://github.com/richarddurbin/modimizer">https://github.com/richarddurbin/modimizer</a></p>
+(2020-12-01) <a href="https://github.com/richarddurbin/modimizer">https://github.com/richarddurbin/modimizer</a></p>
 </div>
 <div id="ref-9vd6Zfxs">
 <p>3. <strong>Comparative metagenomic and rRNA microbial diversity characterization using archaeal and bacterial synthetic communities</strong> <br />
