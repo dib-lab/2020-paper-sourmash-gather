@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/18779c7c637a913d5bf443e08df8c2b2d4a0b2fb/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/18779c7c637a913d5bf443e08df8c2b2d4a0b2fb/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/18779c7c637a913d5bf443e08df8c2b2d4a0b2fb/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,9 +67,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/18779c7c637a913d5bf443e08df8c2b2d4a0b2fb/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/8cb33cfbf83184ed88c7e805a3c6673215342b63">dib-lab/2020-paper-sourmash-gather@8cb33cf</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/18779c7c637a913d5bf443e08df8c2b2d4a0b2fb">dib-lab/2020-paper-sourmash-gather@18779c7</a>
 on December 2, 2020.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -101,13 +101,14 @@ a significant challenge in microbiome studies. Here we describe
 and accurate compositional analysis of shotgun metagenome data sets
 using k-mers. We implement this approach in the sourmash software,
 which supports large-scale Jaccard containment searches across all
-700,000 currently available microbial reference genomes. We then approach
-shotgun metagenome compositional analysis as a min-set-cover problem,
-i.e. as a problem of finding the minimal collection of reference
-genomes for a metagenome. We implement a greedy approximate solution
-using <em>Scaled MinHash</em> and show that this is also a lightweight and
-precise method for taxonomic classification of metagenome content.
-sourmash is available as open source under the BSD 3-Clause license at
+700,000 currently available microbial reference genomes. We then
+approach shotgun metagenome compositional analysis as a min-set-cover
+problem, i.e. as a problem of finding the minimal collection of
+reference genomes for a metagenome. We implement a greedy approximate
+solution using <em>Scaled MinHash</em>. Finally, we show that by linking
+genomes to their taxonomy, we can provide a lightweight and precise
+method for taxonomic classification of metagenome content. sourmash
+is available as open source under the BSD 3-Clause license at
 github.com/dib-lab/sourmash/.</p>
 <h1 id="introduction">Introduction</h1>
 <p>Shotgun metagenomics measures the sequence content of microbial communities.</p>
@@ -118,25 +119,23 @@ and taxononomic interpretation of metagenome content.</p>
 shotgun metagenome samples using k-mer hashing.</p>
 <p>We first define <em>Scaled MinHash</em>, an extension of MinHash sketching
 that supports lightweight containment estimation for metagenome
-datasets. We implement <em>Scaled MinHash</em> in
-Python and Rust, and show that it is competitive in accuracy with
-other containment estimation approaches. We further provide efficient
-indexed database implementations that support similarity and containment
-search across hundreds of thousands of reference genomes.</p>
+datasets using k-mers. We implement <em>Scaled MinHash</em> in Python and
+Rust, and show that it is competitive in accuracy with other
+containment estimation approaches.</p>
 <p>We next frame reference-based metagenome content analysis as a
 min-set-cov problem, in which we seek the <em>minimum</em> number of genomes
 in the reference database necessary to cover the known content of a
-metagenome. We implement the known best-polynomial-time greedy
-approximate to the min-set-cov problem using <em>Scaled MinHash</em>, and
-show that it is recovers a minimum set of reference genomes for the mappable
-reads in a metagenome.</p>
+metagenome. We implement a best-polynomial-time greedy approximation
+to the min-set-cov problem using <em>Scaled MinHash</em>, and show that it is
+recovers a minimum set of reference genomes for the mappable reads in
+a metagenome.</p>
 <p>Finally, we implement a simple taxonomic classification approach on
 top of min-set-cov, in which we transfer the taxonomy of the genomes
 from the set cover to the metagenome. We show that this permits
 precise and lightweight classification of metagenome content across
 all taxonomic levels.</p>
 <h1 id="results">Results</h1>
-<h2 id="scaled-minhash-sketches-support-containment-operations">Scaled MinHash sketches support containment operations</h2>
+<h2 id="scaled-minhash-sketches-support-accurate-containment-operations">Scaled MinHash sketches support accurate containment operations</h2>
 <p>We define the Scaled MinHash on an input domain of <span class="math inline">\(k\)</span>-mers, <span class="math inline">\(W\)</span>, as follows:</p>
 <p><span class="math display">\[\mathbf{SCALED}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
 W\,\}\]</span> where <span class="math inline">\(H\)</span> is the largest possible value in the domain of
@@ -148,6 +147,13 @@ smallest elements, while taking the dynamic size from the latter to
 allow containment estimation. However, instead of taking <span class="math inline">\(0 \mod m\)</span>
 elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a Scaled MinHash uses a parameter
 <span class="math inline">\(s\)</span> to select a subset of <span class="math inline">\(W\)</span>.</p>
+<p>(Theoretical analysis of accuracy goes HERE.)</p>
+<p>What I think are the key points from David’s work:</p>
+<ul>
+<li>approximation formula (eqn 13 from overleaf)</li>
+<li>for queries into large sets (large <span class="math inline">\(|A|\)</span>), bias factor is low.</li>
+<li>refer to appendix for derivation.</li>
+</ul>
 <p>Given a uniform hash function <span class="math inline">\(h\)</span> and <span class="math inline">\(s=m\)</span>, the cardinalities of
 <span class="math inline">\(\mathbf{SCALED}_s(W)\)</span> and <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> converge for large
 <span class="math inline">\(\vert W \vert\)</span>. The main difference is the range of possible values
@@ -155,72 +161,16 @@ in the hash space, since the Scaled MinHash range is contiguous and
 the ModHash range is not. Figure <span class="citation" data-cites="ref">[<span class="citeproc-not-found" data-reference-id="ref"><strong>???</strong></span>]</span> shows an example
 comparing MinHash, ModHash and Scaled MinHash with the same parameter
 value.</p>
-<p>Intuitively, Scaled MinHash is performing a density sampling at a rate
-of 1 <span class="math inline">\(k\)</span>-mer per <span class="math inline">\(s\)</span> k-mers seen.</p>
-<p>Scaled MinHash permits Jaccard containment estimation between two data sets
-directly from the sketch.</p>
-<p>A drawback of Scaled MinHash when compared to regular MinHash sketches
-is the size: the MinHash parameter <span class="math inline">\(s\)</span> sets an upper bound on the size
-of the sketch, independently of the size of the original data. Scaled
-MinHash sketches grow proportionally to the original data cardinality,
-and in the worst case can have up to <span class="math inline">\(\frac{H}{s}\)</span> items.</p>
-<p><em>Scaled MinHash</em> sketches offer a fixed range of possible hash values,
-but with reduced sensitivity for small datasets when using larger <span class="math inline">\(s\)</span>
-(scaled) values. A biological example are viruses: at <span class="math inline">\(s=2000\)</span> many
-viruses are too small to consistently have a hashed value selected by
-the <em>Scaled MinHash</em> approach. Other <em>MinHash</em> approaches sidestep
-the problem by using hashing and streaming the query dataset (<code>Mash Screen</code>) or loading the query dataset into an approximate query
-membership data structure (<code>CMash</code>) to allow comparisons with the
-variable range of possible hash values, but both solutions require the
-original data or a more limited data representation than <em>Scaled
-MinHash</em>. The consistency of operating in the same data structure
-also allows further methods to be develop using only <em>Scaled MinHash</em>
-sketches and their features, especially if large collections of
-<em>Scaled MinHash</em> sketches are available.</p>
-<p>Others have also applied the ModHash concept to genomic data; see, for
-example, Durbin’s “modimizer”
-<span class="citation" data-cites="8ZKpbGz7">[<a href="#ref-8ZKpbGz7" role="doc-biblioref">2</a>]</span>.</p>
-<p>CTB leftover: Most of these operations are also possible with MinHash
-and ModHash, with caveats. One example of these operations is
-: the contiguous value range for Scaled MinHash
-sketches allow deriving <span class="math inline">\(\mathbf{SCALED}_{s&#39;}(W)\)</span> sketches for any <span class="math inline">\(s&#39; \ge s\)</span> using only <span class="math inline">\(\mathbf{SCALED}_{s}(W)\)</span>. MinHash and ModHash can
-also support this operation, as long as <span class="math inline">\(n&#39; \le n\)</span> and <span class="math inline">\(m&#39;\)</span> is a
-multiple of <span class="math inline">\(m\)</span>.</p>
-<p>Because Scaled MinHash sketches collect any value below a threshold
-this also guarantees that once a value is selected it is never
-discarded. This is useful in streaming contexts: any operations that
-used a previously selected value can be cached and updated with new
-arriving values. <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> has similar properties, but this
-is not the case for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, since after <span class="math inline">\(n\)</span> values are
-selected any displacement caused by new data can invalidate previous
-calculations.</p>
-<p>Abundance tracking is another extension to MinHash sketches, keeping a
-count of how many times a value appeared in the original data. This
-allows filtering for low-abundance values, as implemented in Finch
-<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>, another MinHash sketching software for genomics.
-Filtering values that only appeared once was implemented before in
-Mash by using a Bloom Filter and only adding values after they were
-seen once, with later versions also implementing an extra counter
-array to keep track of counts for each value in the MinHash.</p>
-<p>TODO: discuss here how abundance tracking in MinHash is not “correct”,
-because it is not a proper weighted subsample of the data?
-Note that Scaled MinHash is a proper weighted subsample.</p>
-<p>Other operations are adding and subtracting hash values from a Scaled
-MinHash sketch, allowing post-processing and filtering. Although
-possible for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, in practice this requires
-oversampling (using a larger <span class="math inline">\(n\)</span>) to account for possibly having less
-than <span class="math inline">\(n\)</span> values after filtering (the approach taken by Finch
-<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>).</p>
 <h2 id="scaled-minhash-accurately-estimates-containment-between-sets-of-different-sizes">Scaled MinHash accurately estimates containment between sets of different sizes</h2>
 <ul>
 <li>compares well with others</li>
 <li>supports large-scale sketching of genbank</li>
-<li>How much is missed figure; Poisson calculations?</li>
+<li>How much is missed figure; Poisson calculations? =&gt; appendix?</li>
 </ul>
 <p>We next compare the <em>Scaled MinHash</em> method implemented in <code>smol</code> to
 CMash (<em>Containment MinHash</em>) and Mash Screen (<em>Containment Score</em>)
 for containment queries in the Shakya dataset
-<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">3</a>]</span>, a synthetic mock metagenomic
+<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">2</a>]</span>, a synthetic mock metagenomic
 bacterial and archaeal community where the reference genomes are
 largely known. This data set has been used in several methods evaluations
 <span class="citation" data-cites="awad_evaluating_2017">[<span class="citeproc-not-found" data-reference-id="awad_evaluating_2017"><strong>???</strong></span>]</span>]. (CTB add SPADes etc refs.)</p>
@@ -247,266 +197,58 @@ to the ground truth. <code>CMash</code> still has some outliers with up to 8%
 difference to the ground truth.</p>
 <p>CTB questions:</p>
 <ul>
-<li>runtimes?</li>
 <li>should we <em>just</em> use (B) benchmark?</li>
 <li>should we add sketch sizes in here more explicitly? e.g. number of hashes kept?</li>
-<li>Where does “Scaled MinHash sketch sizes across GenBank domains”
-go? (Chp 01 from Luiz thesis)</li>
 </ul>
-<h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
-<p>CTB: Additional points to raise:</p>
-<ul>
-<li>in-memory representation of sketches
-may be too big (!!), goal here is on disk storage/low minimum memory
-for “extremely large data” situation.</li>
-<li>Also/in addition, want ability
-to do incremental loading of things.</li>
-<li>Note we are not talking here
-about situations where the indices themselves are too big to download.</li>
-<li>I think rename LCA to revindex. Or make up a new name.</li>
-</ul>
-<p>We provide two index data structures for rapid estimation of
-containment in large databases. The first, the MinHash Bloom Tree (MHBT),
-is a specialization of the Sequence Bloom Tree <span class="citation" data-cites="solomon_fast_2016">[<span class="citeproc-not-found" data-reference-id="solomon_fast_2016"><strong>???</strong></span>]</span>,
-and implements a <span class="math inline">\(k\)</span>-mer aggregative method with explicit representation of
-datasets based on hierarchical indices. The second is LCA, an
-inverted index into sketches, a color-aggregative method with implicit
-representation of the sketches.</p>
-<p>We evaluated the MHBT and LCA databases by constructing and searching
-a GenBank snapshot from July 18, 2020,
-containing 725,331 assembled genomes (
-5,282 Archaea,
-673,414 Bacteria,
-6,601 Fungi
-933 Protozoa and
-39,101 Viral). <!-- TODO add total data size here? need to calculate... -->
-MHBT indices were built with <span class="math inline">\(scaled=1000\)</span>,
-and LCA indices used <span class="math inline">\(scaled=10000\)</span>.
-Table <a href="#tbl:lca-index">1</a> shows the indexing results for the LCA index,
-and Table <a href="#tbl:mhbt-index">2</a> for the MHBT index.</p>
-<div id="tbl:lca-index" class="tablenos">
-<table>
-<caption><span>Table 1:</span> Results for LCA indexing, with <span class="math inline">\(scaled=10000\)</span> and
-<span class="math inline">\(k=21\)</span>. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Domain</th>
-<th style="text-align: right;">Runtime (s)</th>
-<th style="text-align: right;">Memory (MB)</th>
-<th style="text-align: right;">Size (MB)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Viral</td>
-<td style="text-align: right;">57</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Archaea</td>
-<td style="text-align: right;">58</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Protozoa</td>
-<td style="text-align: right;">231</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Fungi</td>
-<td style="text-align: right;">999</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bacteria</td>
-<td style="text-align: right;">12,717</td>
-<td style="text-align: right;">857</td>
-<td style="text-align: right;">446</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl:mhbt-index" class="tablenos">
-<table>
-<caption><span>Table 2:</span> Results for MHBT indexing,
-with <span class="math inline">\(scaled=1000\)</span>, <span class="math inline">\(k=21\)</span> and internal nodes (Bloom Filters)
-using 10000 slots for storage. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Domain</th>
-<th style="text-align: right;">Runtime (s)</th>
-<th style="text-align: right;">Memory (MB)</th>
-<th style="text-align: right;">Size (MB)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Viral</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">326</td>
-<td style="text-align: right;">77</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Archaea</td>
-<td style="text-align: right;">111</td>
-<td style="text-align: right;">217</td>
-<td style="text-align: right;">100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Protozoa</td>
-<td style="text-align: right;">206</td>
-<td style="text-align: right;">753</td>
-<td style="text-align: right;">302</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Fungi</td>
-<td style="text-align: right;">1,161</td>
-<td style="text-align: right;">3,364</td>
-<td style="text-align: right;">1,585</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bacteria</td>
-<td style="text-align: right;">32,576</td>
-<td style="text-align: right;">47,445</td>
-<td style="text-align: right;">24,639</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Index sizes are more affected by the number of genomes inserted than
-the individual <em>Scaled MinHash</em> sizes. Despite Protozoan and Fungal
-<em>Scaled MinHash</em> sketches being larger individually, the Bacterial
-indices are an order of magnitude larger for both indices since they
-contain two orders of magnitude more genomes.</p>
-<p>Comparing between LCA and MHBT index sizes must account for their
-different scaled parameters, but as shown in Chapter <a href="#chp-scaled">1</a>
-a <em>Scaled MinHash</em> with <span class="math inline">\(scaled=1000\)</span> when downsampled to
-<span class="math inline">\(scaled=10000\)</span> is expected to be ten times smaller. Even so, MHBT
-indices are more than ten times larger than their LCA counterparts,
-since they store extra caching information (the internal nodes) to
-avoid loading all the data to memory during search. LCA indices also
-contain extra data (the list of datasets containing a hash), but this
-is lower than the storage requirements for the MHBT internal nodes.</p>
-<p>We next executed similarity searches on each database using
-appropriate queries for each domain. All queries were selected from
-the relevant domain and queried against both MHBT (<span class="math inline">\(scaled=1000\)</span>) and
-LCA (<span class="math inline">\(scaled=10000\)</span>), for <span class="math inline">\(k=21\)</span>.</p>
-<div id="tbl:search-runtime" class="tablenos">
-<table>
-<caption><span>Table 3:</span> Running time in seconds for similarity search using LCA
-(<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
-indices. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Viral</th>
-<th style="text-align: right;">Archaea</th>
-<th style="text-align: right;">Protozoa</th>
-<th style="text-align: right;">Fungi</th>
-<th style="text-align: right;">Bacteria</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">LCA</td>
-<td style="text-align: right;">1.06</td>
-<td style="text-align: right;">1.42</td>
-<td style="text-align: right;">5.40</td>
-<td style="text-align: right;">26.92</td>
-<td style="text-align: right;">231.26</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SBT</td>
-<td style="text-align: right;">1.32</td>
-<td style="text-align: right;">3.77</td>
-<td style="text-align: right;">43.51</td>
-<td style="text-align: right;">244.77</td>
-<td style="text-align: right;">3,185.88</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl:search-memory" class="tablenos">
-<table>
-<caption><span>Table 4:</span> Memory consumption in megabytes for similarity search using LCA
-(<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
-indices. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Viral</th>
-<th style="text-align: right;">Archaea</th>
-<th style="text-align: right;">Protozoa</th>
-<th style="text-align: right;">Fungi</th>
-<th style="text-align: right;">Bacteria</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">LCA</td>
-<td style="text-align: right;">223</td>
-<td style="text-align: right;">240</td>
-<td style="text-align: right;">798</td>
-<td style="text-align: right;">3,274</td>
-<td style="text-align: right;">20,926</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SBT</td>
-<td style="text-align: right;">163</td>
-<td style="text-align: right;">125</td>
-<td style="text-align: right;">332</td>
-<td style="text-align: right;">1,656</td>
-<td style="text-align: right;">2,290</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Table <a href="#tbl:search-runtime">3</a> shows running time for both indices.
-For small indices (Viral and Archaea) the LCA running time is
-dominated by loading the index in memory, but for larger indices the
-cost is amortized due to the faster running times. This situation is
-clearer for the Bacteria indices, where the LCA search completes in 3
-minutes and 51 seconds, while the SBT search takes 54 minutes.</p>
-<p>When comparing memory consumption, the situation is reversed. Table
-<a href="#tbl:search-memory">4</a> shows how the LCA index consistently uses
-twice the memory for all domains, but for larger indices like Bacteria
-it uses as much as 10 times the memory as the MHBT index for the same
-data.</p>
-<p>For both runtime and memory consumption, it is worth pointing that the
-LCA index is a tenth of the data indexed by the MHBT. This highlights
-the trade-off between speed and memory consumption for both
-approaches, especially for larger indices.</p>
-<p>Notes:
-* new genomes can be added quickly to SBT.</p>
+<h2 id="scaled-minhash-sketches-support-many-convenient-operations.">Scaled MinHash sketches support many convenient operations.</h2>
+<p>Scaled MinHash supports many convenient operations that minimize
+the need to reprocess the original data, which can be important for
+genomics applications.</p>
+<p>Because Scaled MinHash sketches collect any value below a threshold
+this also guarantees that once a value is selected it is never
+discarded. This is useful in streaming contexts: any operations that
+used a previously selected value can be cached and updated with new
+arriving values. <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> has similar properties, but this
+is not the case for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, since after <span class="math inline">\(n\)</span> values are
+selected any displacement caused by new data can invalidate previous
+calculations.</p>
+<p>Other operations are adding and subtracting hash values from a Scaled
+MinHash sketch, allowing post-processing and filtering. Although
+possible for <span class="math inline">\(\mathbf{MIN}_n(W)\)</span>, in practice this requires
+oversampling (using a larger <span class="math inline">\(n\)</span>) to account for possibly having less
+than <span class="math inline">\(n\)</span> values after filtering (the approach taken by Finch
+<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>).</p>
+<p>Another useful operation is <em>downsampling</em>: the contiguous
+value range for Scaled MinHash sketches allow deriving
+<span class="math inline">\(\mathbf{SCALED}_{s&#39;}(W)\)</span> sketches for any <span class="math inline">\(s&#39; \ge s\)</span> using only
+<span class="math inline">\(\mathbf{SCALED}_{s}(W)\)</span>. MinHash and ModHash can also support this
+operation, as long as <span class="math inline">\(n&#39; \le n\)</span> and <span class="math inline">\(m&#39;\)</span> is a multiple of <span class="math inline">\(m\)</span>.</p>
+<p>Abundance filtering is another extension to MinHash sketches, keeping a
+count of how many times a value appeared in the original data. This
+allows filtering for low-abundance values, as implemented in Finch
+<span class="citation" data-cites="bovee_finch:_2018">[<span class="citeproc-not-found" data-reference-id="bovee_finch:_2018"><strong>???</strong></span>]</span>, another MinHash sketching software for genomics.
+Filtering values that only appeared once was implemented before in
+Mash by using a Bloom Filter and only adding values after they were
+seen once, with later versions also implementing an extra counter
+array to keep track of counts for each value in the MinHash.</p>
 <h2 id="metagenome-sketches-can-be-accurately-decomposed-into-constituent-genomes-by-a-greedy-algorithm-gather">Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, ‘gather’</h2>
 <ul>
-<li>compare conceptually vs LCA approaches; combinatorial. do we want to
-do a benchmark of some kind wrt LCA saturation?</li>
 <li>CTB: kind of convoluted logic below! We go from “genomes” to “k-mers” to
 “greedy estimation” to “scaled minhash estimation”</li>
 </ul>
 <p>We can use <em>Scaled MinHash</em> sketches to estimate the minimal collection of
 genomes that serve as a combined reference for a metagenome. Computationally,
 we frame this problem as follows: for a given metagenome <span class="math inline">\(M\)</span>, what is the
-smallest collection of genomes in the database <span class="math inline">\(D\)</span> to which all mappable
-reads in <span class="math inline">\(M\)</span> will be mapped? That is, it is the smallest collection of
-genomes that explain the observed reads, absent reads for which there is
-no reference genome.</p>
+smallest collection of genomes in the database <span class="math inline">\(D\)</span> which contain all of
+the k-mers shared between <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? That is, what is the smallest collection
+of genomes that can “explain” the observed k-mers in the metagenome?</p>
 <p>If we treat both <span class="math inline">\(M\)</span> and all the genomes in <span class="math inline">\(D\)</span> as collections of
 k-mers, this problem can be framed as a <em>minimal set covering</em>
 problem: find the smallest set <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that
 <span class="math display">\[k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} \]</span></p>
 <p>We implement a greedy solution to this problem as follows:
-<strong>(algorithm goes here)</strong>
+<strong>(brief algorithm goes here)</strong>
 This is a known best-polynomial-time solution to min-set-cov.</p>
-<!-- David comment: "I'm surprised this works, since back in 2015
-(Metapalette days) I found removing elements like this caused the
-approach to fall apart when closely-related organisms are in the
-metagenome.)  -->
 <p>Algorithm <a href="\ref%7Balg:gather%7D">1</a> describes the <code>gather</code> method using a generic operation
 <code>FindBestContainment</code>.
 An implementation for <code>FindBestContainment</code> for a list of datasets is presented in
@@ -525,9 +267,11 @@ can be important to have performant containment searches, since
 <p>Since <em>Scaled MinHash</em> supports both containment estimation and
 element removal, we implemented <code>gather</code> on top of <em>Scaled MinHash</em>
 and evaluated its performance in finding the number of reads that
-should map to genomes in a database. CTB: circle back around to talk
-about what the point of gather is: The value is in finding (a) the
-correct genomes and (b) the bits that are unique.</p>
+should map to genomes in a database.</p>
+<p>Connect to mappability: …mappable
+reads in <span class="math inline">\(M\)</span> will be mapped? That is, it is the smallest collection of
+genomes that explain the observed reads, absent reads for which there is
+no reference genome.</p>
 <p>We evaluated <code>gather</code>s performance on the Shakya data as used above,
 against GenBank, and compared the genome containment estimation with
 read mapping. In Figure <a href="#fig:gather">2</a>, we show that gather accurately estimates
@@ -546,29 +290,18 @@ exact matches to the genomes of the organisms used to build the mock
 community (cite sherine, mash screen).</figcaption>
 </figure>
 </div>
-<p>Leftover text:</p>
-<p>We define a greedy algorithm, <code>gather</code>, that uses a top-down approach to
-decompose <em>Scaled MinHash</em> sketches into constituent sketches.
-Starting from the <span class="math inline">\(k\)</span>-mer composition of the query, <code>gather</code>
-iteratively finds a match in a collection of datasets with the largest
-<em>containment</em> of the query (most elements in common), and creates a new
-query by <em>removing elements</em> in the match from the original query.
-The process stops when the new query doesn’t have any more matches in
-the collection, or a user-provided minimum detection threshold is
-reached.</p>
-<p>Note –
-* multiple databases can be searched all at once.
-* public and private databases supported</p>
+<ul>
+<li>compare conceptually vs LCA approaches; combinatorial. do we want to
+do a benchmark of some kind wrt LCA saturation?</li>
+</ul>
 <h2 id="taxonomic-profiling-based-on-gather-is-accurate">Taxonomic profiling based on ‘gather’ is accurate</h2>
 <ul>
 <li>CAMI results</li>
 <li>suggests gather/greedy decomposition is pretty good</li>
 </ul>
-<p>Taxonomic profiling in <code>sourmash</code> is built as an extra step on top of
-the <code>gather</code> algorithm. <code>gather</code> returns assignments to a dataset in
-a collection, and based on that assignment the extra step associates a
-taxonomic ID and lineage with that genome. Lineages are then summarized
-at each taxonomic rank for all of the taxonomies in that data set.</p>
+<p>We implement a lightweight taxonomic profiling method on top of gather
+by directly transferring the taxonomies for the discovered genomes into
+the profile. Lineages can then be summarized at each taxonomic rank.</p>
 <p>To evaluate the performance of taxonomic profiling, we used the mouse
 gut metagenome dataset <span class="citation" data-cites="meyer_tutorial_2020">[<span class="citeproc-not-found" data-reference-id="meyer_tutorial_2020"><strong>???</strong></span>]</span> from the Critical
 Assessment of Metagenome Intepretation (CAMI)
@@ -618,7 +351,7 @@ a specific taxonomic rank),
 the highest number of true positives and the lowest number of false positives.</p>
 <div id="tbl:gather-cami2" class="tablenos">
 <table>
-<caption><span>Table 5:</span> Updated Supplementary Table 12 from <span class="citation" data-cites="meyer_tutorial_2020">[<span class="citeproc-not-found" data-reference-id="meyer_tutorial_2020"><strong>???</strong></span>]</span>.
+<caption><span>Table 1:</span> Updated Supplementary Table 12 from <span class="citation" data-cites="meyer_tutorial_2020">[<span class="citeproc-not-found" data-reference-id="meyer_tutorial_2020"><strong>???</strong></span>]</span>.
 Elapsed (wall clock) time (h:mm) and maximum resident set size
 (kbytes) of taxonomic profiling methods on the 64 short read samples
 of the CAMI II mouse gut data set. The best results are shown in
@@ -706,7 +439,7 @@ minutes for 64 samples. MetaPhlan 2.9.21 was also executed in the
 same machine, a workstation with an AMD Ryzen 9 3900X 12-Core CPU
 running at 3.80 GHz, 64 GB DDR4 2133 MHz of RAM and loading data from
 an NVMe SSD, in order to compare to previously reported times in Table
-<a href="#tbl:gather-cami2">5</a>. MetaPhlan took 11 hours and
+<a href="#tbl:gather-cami2">1</a>. MetaPhlan took 11 hours and
 25 minutes to run for all samples, compared to 18 hours and 44 minutes
 previously reported, and correcting the <code>sourmash</code> running time by
 this factor it would likely take 16 hours and 41 minutes in the
@@ -724,7 +457,7 @@ sketches are usually not well supported for containment estimation,
 since viral sequences require small scaled values to have enough
 hashes to be reliable.</p>
 <p>Notes:
-* private database, private taxonomies are esaily supported without reindexing.</p>
+* private database, private taxonomies are easily supported without reindexing.</p>
 <h1 id="discussion">Discussion</h1>
 <h2 id="scaled-minhash-provides-efficient-compositional-queries-for-large-data-sets.">Scaled MinHash provides efficient compositional queries for large data sets.</h2>
 <p><em>Scaled MinHash</em> is an implementation of ModHash using concepts from
@@ -742,7 +475,30 @@ these sketches are collections of hashes, existing k-mer indexing
 approaches can be applied to the sketches to provide fast database
 search.</p>
 <p>In exchange for these many conveniences, <em>Scaled MinHash</em> sketches have
-limited sensitivity on small data sets. (More here.)</p>
+limited sensitivity on small data sets. (More here.)
+<em>Scaled MinHash</em> sketches offer a fixed range of possible hash values,
+but with reduced sensitivity for small datasets when using larger <span class="math inline">\(s\)</span>
+(scaled) values. A biological example are viruses: at <span class="math inline">\(s=2000\)</span> many
+viruses are too small to consistently have a hashed value selected by
+the <em>Scaled MinHash</em> approach. Other <em>MinHash</em> approaches sidestep
+the problem by using hashing and streaming the query dataset (<code>Mash Screen</code>) or loading the query dataset into an approximate query
+membership data structure (<code>CMash</code>) to allow comparisons with the
+variable range of possible hash values, but both solutions require the
+original data or a more limited data representation than <em>Scaled
+MinHash</em>. The consistency of operating in the same data structure
+also allows further methods to be develop using only <em>Scaled MinHash</em>
+sketches and their features, especially if large collections of
+<em>Scaled MinHash</em> sketches are available.</p>
+<p>Another drawback of Scaled MinHash when compared to regular MinHash sketches
+is the size: the MinHash parameter <span class="math inline">\(s\)</span> sets an upper bound on the size
+of the sketch, independently of the size of the original data. Scaled
+MinHash sketches grow proportionally to the original data cardinality,
+and in the worst case can have up to <span class="math inline">\(\frac{H}{s}\)</span> items.</p>
+<p>Intuitively, Scaled MinHash is performing a density sampling at a rate
+of 1 <span class="math inline">\(k\)</span>-mer per <span class="math inline">\(s\)</span> k-mers seen.</p>
+<p>Others have also applied the ModHash concept to genomic data; see, for
+example, Durbin’s “modimizer”
+<span class="citation" data-cites="8ZKpbGz7">[<a href="#ref-8ZKpbGz7" role="doc-biblioref">3</a>]</span>.</p>
 <h2 id="min-set-cov-supports-accurate-compositional-analysis-of-metagenomes.">min-set-cov supports accurate compositional analysis of metagenomes.</h2>
 <p>Many metagenome content analysis approaches use reference genomes to
 interpret metagenome content. Here, we frame the computational
@@ -987,16 +743,16 @@ A. Z. Broder<br />
 <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-23) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <br />
 DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></p>
 </div>
-<div id="ref-8ZKpbGz7">
-<p>2. <strong>richarddurbin/modimizer</strong> <br />
-Richard Durbin<br />
-(2020-12-01) <a href="https://github.com/richarddurbin/modimizer">https://github.com/richarddurbin/modimizer</a></p>
-</div>
 <div id="ref-9vd6Zfxs">
-<p>3. <strong>Comparative metagenomic and rRNA microbial diversity characterization using archaeal and bacterial synthetic communities</strong> <br />
+<p>2. <strong>Comparative metagenomic and rRNA microbial diversity characterization using archaeal and bacterial synthetic communities</strong> <br />
 Migun Shakya, Christopher Quince, James H. Campbell, Zamin K. Yang, Christopher W. Schadt, Mircea Podar<br />
 <em>Environmental Microbiology</em> (2013-06) <a href="https://doi.org/f42ccr">https://doi.org/f42ccr</a> <br />
 DOI: <a href="https://doi.org/10.1111/1462-2920.12086">10.1111/1462-2920.12086</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/23387867">23387867</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3665634">PMC3665634</a></p>
+</div>
+<div id="ref-8ZKpbGz7">
+<p>3. <strong>richarddurbin/modimizer</strong> <br />
+Richard Durbin<br />
+(2020-12-01) <a href="https://github.com/richarddurbin/modimizer">https://github.com/richarddurbin/modimizer</a></p>
 </div>
 <div id="ref-ExvjTLL3">
 <p>4. <strong>sourmash: a library for MinHash sketching of DNA</strong> <br />
@@ -1005,6 +761,235 @@ C. Titus Brown, Luiz Irber<br />
 DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></p>
 </div>
 </div>
+<h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
+<p>CTB: Additional points to raise:</p>
+<ul>
+<li>in-memory representation of sketches
+may be too big (!!), goal here is on disk storage/low minimum memory
+for “extremely large data” situation.</li>
+<li>Also/in addition, want ability
+to do incremental loading of things.</li>
+<li>Note we are not talking here
+about situations where the indices themselves are too big to download.</li>
+<li>I think rename LCA to revindex. Or make up a new name.</li>
+</ul>
+<p>We provide two index data structures for rapid estimation of
+containment in large databases. The first, the MinHash Bloom Tree (MHBT),
+is a specialization of the Sequence Bloom Tree <span class="citation" data-cites="solomon_fast_2016">[<span class="citeproc-not-found" data-reference-id="solomon_fast_2016"><strong>???</strong></span>]</span>,
+and implements a <span class="math inline">\(k\)</span>-mer aggregative method with explicit representation of
+datasets based on hierarchical indices. The second is LCA, an
+inverted index into sketches, a color-aggregative method with implicit
+representation of the sketches.</p>
+<p>We evaluated the MHBT and LCA databases by constructing and searching
+a GenBank snapshot from July 18, 2020,
+containing 725,331 assembled genomes (
+5,282 Archaea,
+673,414 Bacteria,
+6,601 Fungi
+933 Protozoa and
+39,101 Viral). <!-- TODO add total data size here? need to calculate... -->
+MHBT indices were built with <span class="math inline">\(scaled=1000\)</span>,
+and LCA indices used <span class="math inline">\(scaled=10000\)</span>.
+Table <a href="#tbl:lca-index">2</a> shows the indexing results for the LCA index,
+and Table <a href="#tbl:mhbt-index">3</a> for the MHBT index.</p>
+<div id="tbl:lca-index" class="tablenos">
+<table>
+<caption><span>Table 2:</span> Results for LCA indexing, with <span class="math inline">\(scaled=10000\)</span> and
+<span class="math inline">\(k=21\)</span>. </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Domain</th>
+<th style="text-align: right;">Runtime (s)</th>
+<th style="text-align: right;">Memory (MB)</th>
+<th style="text-align: right;">Size (MB)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Viral</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Archaea</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Protozoa</td>
+<td style="text-align: right;">231</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fungi</td>
+<td style="text-align: right;">999</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bacteria</td>
+<td style="text-align: right;">12,717</td>
+<td style="text-align: right;">857</td>
+<td style="text-align: right;">446</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl:mhbt-index" class="tablenos">
+<table>
+<caption><span>Table 3:</span> Results for MHBT indexing,
+with <span class="math inline">\(scaled=1000\)</span>, <span class="math inline">\(k=21\)</span> and internal nodes (Bloom Filters)
+using 10000 slots for storage. </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Domain</th>
+<th style="text-align: right;">Runtime (s)</th>
+<th style="text-align: right;">Memory (MB)</th>
+<th style="text-align: right;">Size (MB)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Viral</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">77</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Archaea</td>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Protozoa</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">753</td>
+<td style="text-align: right;">302</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fungi</td>
+<td style="text-align: right;">1,161</td>
+<td style="text-align: right;">3,364</td>
+<td style="text-align: right;">1,585</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bacteria</td>
+<td style="text-align: right;">32,576</td>
+<td style="text-align: right;">47,445</td>
+<td style="text-align: right;">24,639</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Index sizes are more affected by the number of genomes inserted than
+the individual <em>Scaled MinHash</em> sizes. Despite Protozoan and Fungal
+<em>Scaled MinHash</em> sketches being larger individually, the Bacterial
+indices are an order of magnitude larger for both indices since they
+contain two orders of magnitude more genomes.</p>
+<p>Comparing between LCA and MHBT index sizes must account for their
+different scaled parameters, but as shown in Chapter <a href="#chp-scaled">1</a>
+a <em>Scaled MinHash</em> with <span class="math inline">\(scaled=1000\)</span> when downsampled to
+<span class="math inline">\(scaled=10000\)</span> is expected to be ten times smaller. Even so, MHBT
+indices are more than ten times larger than their LCA counterparts,
+since they store extra caching information (the internal nodes) to
+avoid loading all the data to memory during search. LCA indices also
+contain extra data (the list of datasets containing a hash), but this
+is lower than the storage requirements for the MHBT internal nodes.</p>
+<p>We next executed similarity searches on each database using
+appropriate queries for each domain. All queries were selected from
+the relevant domain and queried against both MHBT (<span class="math inline">\(scaled=1000\)</span>) and
+LCA (<span class="math inline">\(scaled=10000\)</span>), for <span class="math inline">\(k=21\)</span>.</p>
+<div id="tbl:search-runtime" class="tablenos">
+<table>
+<caption><span>Table 4:</span> Running time in seconds for similarity search using LCA
+(<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
+indices. </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Viral</th>
+<th style="text-align: right;">Archaea</th>
+<th style="text-align: right;">Protozoa</th>
+<th style="text-align: right;">Fungi</th>
+<th style="text-align: right;">Bacteria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LCA</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">1.42</td>
+<td style="text-align: right;">5.40</td>
+<td style="text-align: right;">26.92</td>
+<td style="text-align: right;">231.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SBT</td>
+<td style="text-align: right;">1.32</td>
+<td style="text-align: right;">3.77</td>
+<td style="text-align: right;">43.51</td>
+<td style="text-align: right;">244.77</td>
+<td style="text-align: right;">3,185.88</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl:search-memory" class="tablenos">
+<table>
+<caption><span>Table 5:</span> Memory consumption in megabytes for similarity search using LCA
+(<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
+indices. </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Viral</th>
+<th style="text-align: right;">Archaea</th>
+<th style="text-align: right;">Protozoa</th>
+<th style="text-align: right;">Fungi</th>
+<th style="text-align: right;">Bacteria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LCA</td>
+<td style="text-align: right;">223</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">798</td>
+<td style="text-align: right;">3,274</td>
+<td style="text-align: right;">20,926</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SBT</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">125</td>
+<td style="text-align: right;">332</td>
+<td style="text-align: right;">1,656</td>
+<td style="text-align: right;">2,290</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Table <a href="#tbl:search-runtime">4</a> shows running time for both indices.
+For small indices (Viral and Archaea) the LCA running time is
+dominated by loading the index in memory, but for larger indices the
+cost is amortized due to the faster running times. This situation is
+clearer for the Bacteria indices, where the LCA search completes in 3
+minutes and 51 seconds, while the SBT search takes 54 minutes.</p>
+<p>When comparing memory consumption, the situation is reversed. Table
+<a href="#tbl:search-memory">5</a> shows how the LCA index consistently uses
+twice the memory for all domains, but for larger indices like Bacteria
+it uses as much as 10 times the memory as the MHBT index for the same
+data.</p>
+<p>For both runtime and memory consumption, it is worth pointing that the
+LCA index is a tenth of the data indexed by the MHBT. This highlights
+the trade-off between speed and memory consumption for both
+approaches, especially for larger indices.</p>
+<p>Notes:
+* new genomes can be added quickly to SBT.</p>
 <!-- default theme -->
 
 <style>
