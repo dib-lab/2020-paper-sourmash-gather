@@ -4,7 +4,7 @@ author-meta:
 - C. Titus Brown
 bibliography:
 - content/manual-references.json
-date-meta: '2020-12-01'
+date-meta: '2020-12-02'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="dc.date" content="2020-12-01" />
+  <meta name="dc.date" content="2020-12-02" />
 
-  <meta name="citation_publication_date" content="2020-12-01" />
+  <meta name="citation_publication_date" content="2020-12-02" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,10 +102,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@67ec73e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/67ec73e6c9e7048705d008bf57ce5314c92e265b)
-on December 1, 2020.
+from [dib-lab/2020-paper-sourmash-gather@8cb33cf](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/8cb33cfbf83184ed88c7e805a3c6673215342b63)
+on December 2, 2020.
 </em></small>
 
 ## Authors
@@ -137,21 +137,19 @@ on December 1, 2020.
 
 ## Abstract {.page_break_before}
 
-The accurate assignment of genomes and taxonomy to microbiome samples
-is a significant challenge in microbiome studies. Here we describe
+The accurate assignment of genomes and taxonomy to metagenome data is
+a significant challenge in microbiome studies. Here we describe
 _Scaled MinHash_, an extension of MinHash sketching that permits rapid
 and accurate compositional analysis of shotgun metagenome data sets
 using k-mers.  We implement this approach in the sourmash software,
-together with database indices that support
-large-scale Jaccard containment searches across all
-available reference genomes. We then approach shotgun
-metagenome compositional analysis as a min-set-cover challenge and
-implement a greedy approximate solution using _Scaled
-MinHash_. We show that this solution finds the minimal collection of
-genomes needed to serve as a reference for all mappable metagenome
-reads, and extend it to provide a lightweight and precise method
-for taxonomic classification of metagenome content.  sourmash is
-freely available under the BSD 3-Clause license at
+which supports large-scale Jaccard containment searches across all
+700,000 currently available microbial reference genomes.  We then approach
+shotgun metagenome compositional analysis as a min-set-cover problem,
+i.e. as a problem of finding the minimal collection of reference
+genomes for a metagenome.  We implement a greedy approximate solution
+using _Scaled MinHash_ and show that this is also a lightweight and
+precise method for taxonomic classification of metagenome content.
+sourmash is available as open source under the BSD 3-Clause license at
 github.com/dib-lab/sourmash/.
 
 

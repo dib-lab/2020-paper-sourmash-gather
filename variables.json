@@ -6,12 +6,12 @@
       "MinHash"
     ],
     "lang": "en-US",
-    "date-meta": "2020-12-01",
+    "date-meta": "2020-12-02",
     "author-meta": [
       "Luiz Irber",
       "C. Titus Brown"
     ],
-    "header-includes": "<!--\nManubot generated metadata rendered from header-includes-template.html.\nSuggest improvements at https://github.com/manubot/manubot/blob/master/manubot/process/header-includes-template.html\n-->\n<meta name=\"dc.format\" content=\"text/html\" />\n<meta name=\"dc.title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta name=\"citation_title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta property=\"og:title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta property=\"twitter:title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta name=\"dc.date\" content=\"2020-12-01\" />\n<meta name=\"citation_publication_date\" content=\"2020-12-01\" />\n<meta name=\"dc.language\" content=\"en-US\" />\n<meta name=\"citation_language\" content=\"en-US\" />\n<meta name=\"dc.relation.ispartof\" content=\"Manubot\" />\n<meta name=\"dc.publisher\" content=\"Manubot\" />\n<meta name=\"citation_journal_title\" content=\"Manubot\" />\n<meta name=\"citation_technical_report_institution\" content=\"Manubot\" />\n<meta name=\"citation_author\" content=\"Luiz Irber\" />\n<meta name=\"citation_author_institution\" content=\"Graduate Group in Computer Science, UC Davis\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0003-4371-9659\" />\n<meta name=\"twitter:creator\" content=\"@luizirber\" />\n<meta name=\"citation_author\" content=\"C. Titus Brown\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0001-6001-2677\" />\n<link rel=\"canonical\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"og:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"twitter:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_fulltext_html_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_pdf_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"application/pdf\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"text/html\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/\" />\n<meta name=\"manubot_html_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/\" />\n<meta name=\"manubot_pdf_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/manuscript.pdf\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"twitter:card\" content=\"summary_large_image\" />\n<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"https://manubot.org/favicon-192x192.png\" />\n<link rel=\"mask-icon\" href=\"https://manubot.org/safari-pinned-tab.svg\" color=\"#ad1457\" />\n<meta name=\"theme-color\" content=\"#ad1457\" />\n<!-- end Manubot generated metadata -->",
+    "header-includes": "<!--\nManubot generated metadata rendered from header-includes-template.html.\nSuggest improvements at https://github.com/manubot/manubot/blob/master/manubot/process/header-includes-template.html\n-->\n<meta name=\"dc.format\" content=\"text/html\" />\n<meta name=\"dc.title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta name=\"citation_title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta property=\"og:title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta property=\"twitter:title\" content=\"Lightweight compositional analysis of metagenomes with sourmash gather\" />\n<meta name=\"dc.date\" content=\"2020-12-02\" />\n<meta name=\"citation_publication_date\" content=\"2020-12-02\" />\n<meta name=\"dc.language\" content=\"en-US\" />\n<meta name=\"citation_language\" content=\"en-US\" />\n<meta name=\"dc.relation.ispartof\" content=\"Manubot\" />\n<meta name=\"dc.publisher\" content=\"Manubot\" />\n<meta name=\"citation_journal_title\" content=\"Manubot\" />\n<meta name=\"citation_technical_report_institution\" content=\"Manubot\" />\n<meta name=\"citation_author\" content=\"Luiz Irber\" />\n<meta name=\"citation_author_institution\" content=\"Graduate Group in Computer Science, UC Davis\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0003-4371-9659\" />\n<meta name=\"twitter:creator\" content=\"@luizirber\" />\n<meta name=\"citation_author\" content=\"C. Titus Brown\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0001-6001-2677\" />\n<link rel=\"canonical\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"og:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"twitter:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_fulltext_html_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_pdf_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"application/pdf\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"text/html\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/\" />\n<meta name=\"manubot_html_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/\" />\n<meta name=\"manubot_pdf_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/manuscript.pdf\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"twitter:card\" content=\"summary_large_image\" />\n<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"https://manubot.org/favicon-192x192.png\" />\n<link rel=\"mask-icon\" href=\"https://manubot.org/safari-pinned-tab.svg\" color=\"#ad1457\" />\n<meta name=\"theme-color\" content=\"#ad1457\" />\n<!-- end Manubot generated metadata -->",
     "bibliography": [
       "content/manual-references.json"
     ],
@@ -21,7 +21,7 @@
     "manubot-clear-requests-cache": false
   },
   "manubot": {
-    "date": "December 1, 2020",
+    "date": "December 2, 2020",
     "authors": [
       {
         "github": "luizirber",
@@ -71,19 +71,19 @@
       "repo_slug": "dib-lab/2020-paper-sourmash-gather",
       "repo_owner": "dib-lab",
       "repo_name": "2020-paper-sourmash-gather",
-      "commit": "67ec73e6c9e7048705d008bf57ce5314c92e265b",
-      "triggering_commit": "67ec73e6c9e7048705d008bf57ce5314c92e265b",
-      "build_url": "https://github.com/dib-lab/2020-paper-sourmash-gather/commit/67ec73e6c9e7048705d008bf57ce5314c92e265b/checks",
+      "commit": "8cb33cfbf83184ed88c7e805a3c6673215342b63",
+      "triggering_commit": "8cb33cfbf83184ed88c7e805a3c6673215342b63",
+      "build_url": "https://github.com/dib-lab/2020-paper-sourmash-gather/commit/8cb33cfbf83184ed88c7e805a3c6673215342b63/checks",
       "job_url": "https://github.com/dib-lab/2020-paper-sourmash-gather/runs/run3"
     },
     "html_url": "https://dib-lab.github.io/2020-paper-sourmash-gather/",
     "pdf_url": "https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf",
-    "html_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/",
-    "pdf_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/67ec73e6c9e7048705d008bf57ce5314c92e265b/manuscript.pdf",
+    "html_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/",
+    "pdf_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/8cb33cfbf83184ed88c7e805a3c6673215342b63/manuscript.pdf",
     "manubot_version": "0.4.1",
     "rootstock_commit": "97b294802ffcd39071b6e5b8ab59f60faf4be118",
     "manuscript_stats": {
-      "word_count": 6386
+      "word_count": 6381
     }
   }
 }
