@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-01-05" />
+  <meta name="dcterms.date" content="2021-01-06" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-01-05" />
-  <meta name="citation_publication_date" content="2021-01-05" />
+  <meta name="dc.date" content="2021-01-06" />
+  <meta name="citation_publication_date" content="2021-01-06" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -51,9 +51,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c667ffc4dfc6b04d69e66d09f43915a45d184f43">dib-lab/2020-paper-sourmash-gather@c667ffc</a>
-on January 5, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/706d3f20fd7764d393d87ca80ce2415f239ad89c">dib-lab/2020-paper-sourmash-gather@706d3f2</a>
+on January 6, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -96,17 +96,18 @@ Department of Population Health and Reproduction, UC Davis
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
 <p>The accurate assignment of genomes and taxonomy to metagenome data is
-a significant challenge in microbiome studies. Here we describe
-<em>Scaled MinHash</em>, an extension of MinHash k-mer sketching that permits
+an important method underlying many microbiome studies. Here we describe
+a new k-mer sketching technique,
+<em>Scaled MinHash</em>, an extension of MinHash. <em>Scaled MinHash</em> permits
 rapid and accurate compositional analysis of shotgun metagenome data
 sets. We implement this approach in the sourmash software, in order to
 support large-scale Jaccard containment searches across all 700,000
-currently available microbial reference genomes. We then approach
+currently available microbial reference genomes. We then frame
 shotgun metagenome compositional analysis as a min-set-cover problem,
 i.e. as a problem of finding the minimal collection of reference
 genomes for a metagenome. We implement a greedy approximate solution
 using <em>Scaled MinHash</em>. Finally, we show that by linking genomes to
-their taxonomy, we can provide a lightweight and precise method for
+their taxonomic lineages, we can provide a lightweight and precise method for
 taxonomic classification of metagenome content. sourmash is available
 as open source under the BSD 3-Clause license at
 github.com/dib-lab/sourmash/.</p>
@@ -130,11 +131,11 @@ Rust, and show that it is competitive in accuracy with other
 containment estimation approaches.</p>
 <p>We next frame reference-based metagenome content analysis as a
 min-set-cov problem, in which we seek the <em>minimum</em> number of genomes
-in the reference database necessary to cover the known content of a
-metagenome. We implement a best-polynomial-time greedy approximation
-to the min-set-cov problem using <em>Scaled MinHash</em>, and show that it
-recovers a minimum set of reference genomes for the mappable reads in
-a metagenome.</p>
+in the reference database necessary to cover the identifiable genomic
+content of a metagenome. We implement a best-polynomial-time greedy
+approximation to the min-set-cov problem using <em>Scaled MinHash</em>, and
+show that it recovers a minimum set of reference genomes for the
+mappable reads in a metagenome.</p>
 <p>Finally, we implement a simple taxonomic classification approach on
 top of min-set-cov, in which we transfer the taxonomy of the genomes
 from the set cover to the metagenome. We show that this permits
@@ -151,7 +152,7 @@ Scaled MinHash.</p>
 <span class="citation" data-cites="AX7zdKKw">[<a href="#ref-AX7zdKKw" role="doc-biblioref">1</a>]</span>. It keeps the selection of the
 smallest elements from MinHash, while using the dynamic size from
 ModHash to allow containment estimation. However, instead of taking
-<span class="math inline">\(0 \mod m\)</span> elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a Scaled MinHash uses a
+<span class="math inline">\(0 \mod m\)</span> elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a Scaled MinHash uses the
 parameter <span class="math inline">\(s\)</span> to select a subset of <span class="math inline">\(W\)</span>.</p>
 <p>Scaled MinHash supports containment estimation with high accuracy and
 low bias. (Analytic work from David HERE.)</p>
@@ -202,39 +203,65 @@ difference to the ground truth.</p>
 <li>compares well with others</li>
 <li>How much is missed figure; Poisson calculations? =&gt; appendix?</li>
 </ul>
-<h2 id="metagenome-sketches-can-be-accurately-decomposed-into-constituent-genomes-by-a-greedy-algorithm-gather">Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, ‘gather’</h2>
+<h2 id="reference-genomes-can-be-selected-for-a-metagenome-using-a-simple-greedy-algorithm">Reference genomes can be selected for a metagenome using a simple greedy algorithm</h2>
 <p>We next ask: what is the smallest collection of genomes in a database
-that should be used as a reference for a metagenome?</p>
-<p>Using k-mers, this question can be framed as follows: for a given
-metagenome <span class="math inline">\(M\)</span> and a reference database <span class="math inline">\(D\)</span>, what is the minimal
+that should be used as a reference for k-mer based analysis of a
+metagenome? This question can be framed formally as follows: for a
+given metagenome <span class="math inline">\(M\)</span> and a reference database <span class="math inline">\(D\)</span>, what is the minimal
 collection of genomes in <span class="math inline">\(D\)</span> which contain all of the k-mers in the
-intersection of <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? That is, find the smallest set <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that <span class="math display">\[k(M) \cap k(D) = \bigcup_n \{ k(M)
-\cap k(G_n) \} \]</span></p>
+intersection of <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? That is, we wish to find the smallest set
+<span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that <span class="math display">\[k(M) \cap k(D) = \bigcup_n
+\{ k(M) \cap k(G_n) \} \]</span></p>
 <p>This is equivalent to the <em>minimal set covering</em> problem, for which
-there is a polynomial-time approximation (cite).</p>
+there is a polynomial-time approximation (cite). (Provide algorithm here.)</p>
 <p>For very large databases such as GenBank (which contains over 700,000
-microbial genomes as of January 2021), doing this for full genomes is
-expensive. Because the algorithm above depends on containment
-operations, we can implement an approximation using Scaled MinHash
-sketches.</p>
-<p>The results on two metagenomes, podar (used above) and p88mo11, an
-IBD data set, are shown in figure XXX.</p>
+microbial genomes as of January 2021), this is computationally prohibitive
+to do exactly. (Estimate total number of k-mers in genbank!) We therefore implemented the algorithm using <em>Scaled MinHash</em>
+sketches to estimate containment.</p>
+<p>The results on two metagenomes, podar (used above) and p88mo11, an IBD
+data set, are shown in figure XXX. (Should we add environmental,
+e.g. hu-s1?)</p>
+<div id="fig:gather0" class="fignos">
+<figure>
+<img src="images/gathergram-SRR606249.hashes.svg" alt="" /><figcaption><span>Figure 2:</span> <strong>Hash-based decomposition of a metagenome into constituent genomes</strong>
+Each figure shows a rank ordering of the genomes chosen as likely
+reference genomes, based on the maximum containment approach used by
+our min-set-cov implementation. The Y is labeled with the name of the
+genome (per NCBI), and the red circles indicates the number of
+remaining k-mers (estimated with <em>Scaled MinHash</em>) shared between each
+genome and the metagenome. The green x indicate the total number of k-mers
+shared between each genome and the metagenome, including those already
+assigned at previous ranks. (A) Gathergram for mock metagenome from Shakya
+et al. (B) Gathergram for iHMP data set p880mo11. (C) Gathergram for
+oil well data set hu-s1.</figcaption>
+</figure>
+</div>
+<p>Figure <a href="#fig:gather0">2</a> shows the results of this algorithm applied to three
+metagenomes - one mock, one iHMP, and one environmental. The monotonically
+decreasing assignments are as expected from the algorithm, which is greedy.</p>
+<p>Note that by using max containment, we are estimating which k-mers belong to
+the genome combinatorially. This is opposed to the way LCA approaches work.</p>
+<p>ZZ total numbers of genomes are identified.</p>
+<p>XX and YY percent of metagenomes are identified.</p>
+<p>Overlapping portions of genomes are identified.</p>
+<p>TODO:</p>
 <ul>
+<li>Provide summaries of % k-mers identified, etc.</li>
 <li>compare conceptually vs LCA approaches; combinatorial. do we want to
 do a benchmark of some kind wrt LCA saturation?</li>
 </ul>
-<p>We evaluated <code>gather</code>s performance on the Shakya data as used above,
-against GenBank, and compared the genome containment estimation with
-read mapping.</p>
 <p>CTB: do we want to do this with all k-mers, not just scaled minhash?</p>
 <h2 id="k-mer-foo-approximates-mappability">K-mer foo approximates mappability</h2>
 <p>(this could be before, or after taxonomic validation?)</p>
+<p>We evaluated <code>gather</code>s performance on the Shakya data as used above,
+against GenBank, and compared the genome containment estimation with
+read mapping.</p>
 <p>K-mers have been widely used to approximate mapping. …</p>
 <p>We implement a mapping version of gather, in which we map all metagenome reads
 to all the genomes identified by gather, and then iteratively subtract the
 reads that mapped to the gather results in the order specified by gather
 and remap them. This lets us compare gather results to mapping results.</p>
-<p>Figure <a href="#fig:gather">2</a> shows that mapping results do approximate gather results.
+<p>Figure <a href="#fig:gather">3</a> shows that mapping results do approximate gather results.
 However, they do so better for synthetic communities than for real
 communities, especially as gather rank increases. This is because in
 synthetic communities the reference genomes are closer to the actual
@@ -272,7 +299,7 @@ they evaluated. Also, maybe mention sgc gbio paper and recovery of new
 genome.)</p>
 <div id="fig:gather" class="fignos">
 <figure>
-<img src="images/gather-podar.svg" alt="" /><figcaption><span>Figure 2:</span> <strong>Hash-based decomposition of a metagenome into constituent
+<img src="images/gather-podar.svg" alt="" /><figcaption><span>Figure 3:</span> <strong>Hash-based decomposition of a metagenome into constituent
 genomes compares well to bases covered by read mapping.</strong>
 The reference genomes are rank ordered along the x axis based on the largest number of hashes from the metagenome specific to that genome, i.e. by order in gather output; hence the number of hashes classified for each genome (orange dots) is monotonically decreasing.
 The y axis shows absolute number of estimated k-mers classified to this genome (orange) or total number of bases covered in the reference (blue); the numbers have not been rescaled.
@@ -309,20 +336,20 @@ Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) sequencing data is available.</p>
 <div id="fig:spider" class="fignos">
 <figure>
-<img src="images/spider_plot_relative.svg" alt="" /><figcaption><span>Figure 3:</span> Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm.</figcaption>
+<img src="images/spider_plot_relative.svg" alt="" /><figcaption><span>Figure 4:</span> Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm.</figcaption>
 </figure>
 </div>
 <div id="fig:ranks" class="fignos">
 <figure>
-<img src="images/ranks_by_tool.svg" alt="" /><figcaption><span>Figure 4:</span> Performance per method at all major taxonomic ranks, with the shaded bands showing the standard deviation of a metric. In <strong>a</strong> and <strong>b</strong>, completeness, purity, and L1 norm error range between 0 and 1. The L1 norm error is normalized to this range and is also known as Bray-Curtis distance. The higher the completeness and purity, and the lower the L1 norm, the better the profiling performance.</figcaption>
+<img src="images/ranks_by_tool.svg" alt="" /><figcaption><span>Figure 5:</span> Performance per method at all major taxonomic ranks, with the shaded bands showing the standard deviation of a metric. In <strong>a</strong> and <strong>b</strong>, completeness, purity, and L1 norm error range between 0 and 1. The L1 norm error is normalized to this range and is also known as Bray-Curtis distance. The higher the completeness and purity, and the lower the L1 norm, the better the profiling performance.</figcaption>
 </figure>
 </div>
 <div id="fig:scores" class="fignos">
 <figure>
-<img src="images/scores.svg" alt="" /><figcaption><span>Figure 5:</span> Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks. For score calculation, all metrics were weighted equally.</figcaption>
+<img src="images/scores.svg" alt="" /><figcaption><span>Figure 6:</span> Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks. For score calculation, all metrics were weighted equally.</figcaption>
 </figure>
 </div>
-<p>Figure <a href="#fig:spider">3</a>, <a href="#fig:ranks">4</a>, <a href="#fig:scores">5</a> is an updated version of Figure 6 from <span class="citation" data-cites="meyer_tutorial_2020">[<span class="citeproc-not-found" data-reference-id="meyer_tutorial_2020"><strong>???</strong></span>]</span> including <code>sourmash</code>,
+<p>Figure <a href="#fig:spider">4</a>, <a href="#fig:ranks">5</a>, <a href="#fig:scores">6</a> is an updated version of Figure 6 from <span class="citation" data-cites="meyer_tutorial_2020">[<span class="citeproc-not-found" data-reference-id="meyer_tutorial_2020"><strong>???</strong></span>]</span> including <code>sourmash</code>,
 comparing 10 different methods for taxonomic profiling and their characteristics at each taxonomic rank.
 While previous methods show reduced completeness,
 the ratio of taxa correctly identified in the ground truth,
@@ -533,7 +560,7 @@ mappable reads. We show that this can be resolved efficiently for
 real-world data sets using a greedy algorithm together with <em>Scaled
 MinHash</em> and large-scale containment search of GenBank.</p>
 <p>Our comparison of hash-based estimation of containment to mapping
-results in Figure <a href="#fig:gather">2</a> shows that this approach is an accurate
+results in Figure <a href="#fig:gather">3</a> shows that this approach is an accurate
 proxy for systematic mapping. In particular, hash-based estimation of
 containment closely matches actual read mapping performance.</p>
 <p>One confounding factor is that for real metagenomes, exact reference

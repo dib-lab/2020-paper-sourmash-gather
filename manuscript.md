@@ -4,7 +4,7 @@ author-meta:
 - C. Titus Brown
 bibliography:
 - content/manual-references.json
-date-meta: '2021-01-05'
+date-meta: '2021-01-06'
 header-includes: '<!--
 
   Manubot generated metadata rendered from header-includes-template.html.
@@ -23,9 +23,9 @@ header-includes: '<!--
 
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
 
-  <meta name="dc.date" content="2021-01-05" />
+  <meta name="dc.date" content="2021-01-06" />
 
-  <meta name="citation_publication_date" content="2021-01-05" />
+  <meta name="citation_publication_date" content="2021-01-06" />
 
   <meta name="dc.language" content="en-US" />
 
@@ -67,11 +67,11 @@ header-includes: '<!--
 
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
 
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/" />
 
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/" />
 
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/manuscript.pdf" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/manuscript.pdf" />
 
   <meta property="og:type" content="article" />
 
@@ -102,10 +102,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c667ffc4dfc6b04d69e66d09f43915a45d184f43/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@c667ffc](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c667ffc4dfc6b04d69e66d09f43915a45d184f43)
-on January 5, 2021.
+from [dib-lab/2020-paper-sourmash-gather@706d3f2](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/706d3f20fd7764d393d87ca80ce2415f239ad89c)
+on January 6, 2021.
 </em></small>
 
 ## Authors
@@ -138,17 +138,18 @@ on January 5, 2021.
 ## Abstract {.page_break_before}
 
 The accurate assignment of genomes and taxonomy to metagenome data is
-a significant challenge in microbiome studies. Here we describe
-_Scaled MinHash_, an extension of MinHash k-mer sketching that permits
+an important method underlying many microbiome studies. Here we describe
+a new k-mer sketching technique,
+_Scaled MinHash_, an extension of MinHash. _Scaled MinHash_ permits
 rapid and accurate compositional analysis of shotgun metagenome data
 sets.  We implement this approach in the sourmash software, in order to
 support large-scale Jaccard containment searches across all 700,000
-currently available microbial reference genomes.  We then approach
+currently available microbial reference genomes.  We then frame
 shotgun metagenome compositional analysis as a min-set-cover problem,
 i.e. as a problem of finding the minimal collection of reference
 genomes for a metagenome. We implement a greedy approximate solution
 using _Scaled MinHash_. Finally, we show that by linking genomes to
-their taxonomy, we can provide a lightweight and precise method for
+their taxonomic lineages, we can provide a lightweight and precise method for
 taxonomic classification of metagenome content.  sourmash is available
 as open source under the BSD 3-Clause license at
 github.com/dib-lab/sourmash/.
@@ -180,11 +181,11 @@ containment estimation approaches.
 
 We next frame reference-based metagenome content analysis as a
 min-set-cov problem, in which we seek the _minimum_ number of genomes
-in the reference database necessary to cover the known content of a
-metagenome.  We implement a best-polynomial-time greedy approximation
-to the min-set-cov problem using _Scaled MinHash_, and show that it
-recovers a minimum set of reference genomes for the mappable reads in
-a metagenome.
+in the reference database necessary to cover the identifiable genomic
+content of a metagenome.  We implement a best-polynomial-time greedy
+approximation to the min-set-cov problem using _Scaled MinHash_, and
+show that it recovers a minimum set of reference genomes for the
+mappable reads in a metagenome.
 
 Finally, we implement a simple taxonomic classification approach on
 top of min-set-cov, in which we transfer the taxonomy of the genomes
@@ -208,7 +209,7 @@ The Scaled MinHash is a mix of MinHash and ModHash
 [@doi:10.1109/SEQUEN.1997.666900].  It keeps the selection of the
 smallest elements from MinHash, while using the dynamic size from
 ModHash to allow containment estimation.  However, instead of taking
-$0 \mod m$ elements like $\mathbf{MOD}_m(W)$, a Scaled MinHash uses a
+$0 \mod m$ elements like $\mathbf{MOD}_m(W)$, a Scaled MinHash uses the
 parameter $s$ to select a subset of $W$.
 
 Scaled MinHash supports containment estimation with high accuracy and
@@ -266,42 +267,71 @@ CTB questions:
 * compares well with others
 * How much is missed figure; Poisson calculations? => appendix?
 
-## Metagenome sketches can be accurately decomposed into constituent genomes by a greedy algorithm, 'gather'
+## Reference genomes can be selected for a metagenome using a simple greedy algorithm
 
 We next ask: what is the smallest collection of genomes in a database
-that should be used as a reference for a metagenome?
-
-Using k-mers, this question can be framed as follows: for a given
-metagenome $M$ and a reference database $D$, what is the minimal
+that should be used as a reference for k-mer based analysis of a
+metagenome?  This question can be framed formally as follows: for a
+given metagenome $M$ and a reference database $D$, what is the minimal
 collection of genomes in $D$ which contain all of the k-mers in the
-intersection of $D$ and $M$? That is, find the smallest set $\{ G_n
-\}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n \{ k(M)
-\cap k(G_n) \} $$
+intersection of $D$ and $M$? That is, we wish to find the smallest set
+$\{ G_n \}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n
+\{ k(M) \cap k(G_n) \} $$
 
 This is equivalent to the *minimal set covering* problem, for which
-there is a polynomial-time approximation (cite).
+there is a polynomial-time approximation (cite).  (Provide algorithm here.)
 
 For very large databases such as GenBank (which contains over 700,000
-microbial genomes as of January 2021), doing this for full genomes is
-expensive. Because the algorithm above depends on containment
-operations, we can implement an approximation using Scaled MinHash
-sketches.
+microbial genomes as of January 2021), this is computationally prohibitive
+to do exactly. (Estimate total number of k-mers in genbank!) We therefore implemented the algorithm using _Scaled MinHash_
+sketches to estimate containment.
 
-The results on two metagenomes, podar (used above) and p88mo11, an
-IBD data set, are shown in figure XXX.
+The results on two metagenomes, podar (used above) and p88mo11, an IBD
+data set, are shown in figure XXX. (Should we add environmental,
+e.g. hu-s1?)
 
+![
+**Hash-based decomposition of a metagenome into constituent genomes**
+Each figure shows a rank ordering of the genomes chosen as likely
+reference genomes, based on the maximum containment approach used by
+our min-set-cov implementation. The Y is labeled with the name of the
+genome (per NCBI), and the red circles indicates the number of
+remaining k-mers (estimated with _Scaled MinHash_) shared between each
+genome and the metagenome. The green x indicate the total number of k-mers
+shared between each genome and the metagenome, including those already
+assigned at previous ranks. (A) Gathergram for mock metagenome from Shakya
+et al. (B) Gathergram for iHMP data set p880mo11. (C) Gathergram for 
+oil well data set hu-s1.
+](images/gathergram-SRR606249.hashes.svg "gather hash results for podar"){#fig:gather0}
+
+Figure @fig:gather0 shows the results of this algorithm applied to three
+metagenomes - one mock, one iHMP, and one environmental. The monotonically
+decreasing assignments are as expected from the algorithm, which is greedy.
+
+Note that by using max containment, we are estimating which k-mers belong to
+the genome combinatorially.  This is opposed to the way LCA approaches work.
+
+ZZ total numbers of genomes are identified.
+
+XX and YY percent of metagenomes are identified.
+
+Overlapping portions of genomes are identified.
+
+TODO:
+
+* Provide summaries of % k-mers identified, etc.
 * compare conceptually vs LCA approaches; combinatorial. do we want to
   do a benchmark of some kind wrt LCA saturation?
-
-We evaluated `gather`s performance on the Shakya data as used above,
-against GenBank, and compared the genome containment estimation with
-read mapping.
 
 CTB: do we want to do this with all k-mers, not just scaled minhash?
 
 ## K-mer foo approximates mappability
 
 (this could be before, or after taxonomic validation?)
+
+We evaluated `gather`s performance on the Shakya data as used above,
+against GenBank, and compared the genome containment estimation with
+read mapping.
 
 K-mers have been widely used to approximate mapping. ...
 

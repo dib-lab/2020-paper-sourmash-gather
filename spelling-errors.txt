@@ -12,10 +12,11 @@ cardinalities
 cardinality
 CMash
 combinatorial
+combinatorially
 Compositional
 constitutent
 cov
-CTB
+ctb
 dataset
 datasets
 DDR
@@ -25,6 +26,7 @@ downsampling
 Durbin’s
 eqn
 evolutionarily
+Gathergram
 gbio
 GenBank
 genomic
@@ -32,7 +34,9 @@ gnavus
 GTDB
 HashSet
 hh
+hu
 IBD
+iHMP
 Illumina
 Intepretation
 interoperability
@@ -41,7 +45,7 @@ iteratively
 Jaccard
 kbytes
 Koslicki
-kraken
+Kraken
 LCA
 LINS
 Luiz
@@ -50,14 +54,14 @@ mappability
 mappable
 mer
 mers
-metagenome
+Metagenome
 metagenomes
 metagenomic
 metagenomics
 MetaPalette
 MetaPhlAn
 MetaPhyler
-MHBT
+mhbt
 MHBTs
 microbiome
 MinHash
@@ -80,7 +84,7 @@ reindexing
 reproducibly
 rescaled
 revindex
-Runtime
+runtime
 Ryzen
 SBT
 SBTs
@@ -94,6 +98,7 @@ SSD
 subsetting
 taxononomic
 TIPP
+TODO
 totalling
 UC
 virtualized
@@ -102,3 +107,5 @@ Xeon
 XXXXXXXX
 XYZ
 yada
+YY
+ZZ
