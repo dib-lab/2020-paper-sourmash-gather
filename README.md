@@ -1,19 +1,18 @@
-# Automated scholarly manuscripts on GitHub
+# Lightweight compositional analysis of metagenomes with sourmash gather
 
 <!-- usage note: edit the H1 title above to personalize the manuscript -->
 
-[![HTML Manuscript](https://img.shields.io/badge/manuscript-HTML-blue.svg)](https://manubot.github.io/rootstock/)
-[![PDF Manuscript](https://img.shields.io/badge/manuscript-PDF-blue.svg)](https://manubot.github.io/rootstock/manuscript.pdf)
-[![GitHub Actions Status](https://github.com/manubot/rootstock/workflows/Manubot/badge.svg)](https://github.com/manubot/rootstock/actions)
-[![Travis Build Status](https://travis-ci.com/manubot/rootstock.svg?branch=main)](https://travis-ci.com/manubot/rootstock)
+[![HTML Manuscript](https://img.shields.io/badge/manuscript-HTML-blue.svg)](https://dib-lab.github.io/2020-paper-sourmash-gather/)
+[![PDF Manuscript](https://img.shields.io/badge/manuscript-PDF-blue.svg)](https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf)
+[![GitHub Actions Status](https://github.com/dib-lab/2020-paper-sourmash-gather/workflows/Manubot/badge.svg)](https://github.com/dib-lab/2020-paper-sourmash-gather/actions)
+[![Travis Build Status](https://travis-ci.com/dib-lab/2020-paper-sourmash-gather.svg?branch=master)](https://travis-ci.com/dib-lab/2020-paper-sourmash-gather)
 <!-- usage note: delete CI badges above for services not used by your manuscript -->
 
 ## Manuscript description
 
 <!-- usage note: edit this section. -->
 
-This repository is a template manuscript (a.k.a. rootstock).
-Actual manuscript instances will clone this repository (see [`SETUP.md`](SETUP.md)) and replace this paragraph with a description of their manuscript.
+Here we describe an extension of MinHash that permits accurate compositional analysis of metagenomes with low memory and disk requirements.
 
 ## Manubot
 
@@ -82,8 +81,8 @@ If your pull request build fails, see the CI logs for the cause of failure and r
 When a commit to the `main` branch occurs (for example, when a pull request is merged), CI builds the manuscript and writes the results to the [`gh-pages`](https://github.com/manubot/rootstock/tree/gh-pages) and [`output`](https://github.com/manubot/rootstock/tree/output) branches.
 The `gh-pages` branch uses [GitHub Pages](https://pages.github.com/) to host the following URLs:
 
-+ **HTML manuscript** at https://manubot.github.io/rootstock/
-+ **PDF manuscript** at https://manubot.github.io/rootstock/manuscript.pdf
++ **HTML manuscript** at https://dib-lab.github.io/2020-paper-sourmash-gather/
++ **PDF manuscript** at https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf
 
 For continuous integration configuration details, see [`.github/workflows/manubot.yaml`](.github/workflows/manubot.yaml) if using GitHub Actions or [`.travis.yml`](.travis.yml) if using Travis CI.
 
@@ -98,7 +97,7 @@ We encourage users to openly license their manuscripts, which is the default as 
 [![License: CC0 1.0](https://img.shields.io/badge/License%20Parts-CC0%201.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 Except when noted otherwise, the entirety of this repository is licensed under a CC BY 4.0 License ([`LICENSE.md`](LICENSE.md)), which allows reuse with attribution.
-Please attribute by linking to https://github.com/manubot/rootstock.
+Please attribute by linking to https://github.com/dib-lab/2020-paper-sourmash-gather.
 
 Since CC BY is not ideal for code and data, certain repository components are also released under the CC0 1.0 public domain dedication ([`LICENSE-CC0.md`](LICENSE-CC0.md)).
 All files matched by the following glob patterns are dual licensed under CC BY 4.0 and CC0 1.0:
@@ -118,4 +117,4 @@ All other files are only available under CC BY 4.0, including:
 + `*.pdf`
 + `*.docx`
 
-Please open [an issue](https://github.com/manubot/rootstock/issues) for any question related to licensing.
+Please open [an issue](https://github.com/dib-lab/2020-paper-sourmash-gather/issues) for any question related to licensing.
