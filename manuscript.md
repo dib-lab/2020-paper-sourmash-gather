@@ -1,98 +1,60 @@
 ---
-author-meta:
-- Luiz Irber
-- C. Titus Brown
-bibliography:
-- content/manual-references.json
-date-meta: '2021-01-06'
-header-includes: '<!--
-
-  Manubot generated metadata rendered from header-includes-template.html.
-
-  Suggest improvements at https://github.com/manubot/manubot/blob/master/manubot/process/header-includes-template.html
-
-  -->
-
-  <meta name="dc.format" content="text/html" />
-
-  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-
-  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-
-  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-
-  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-
-  <meta name="dc.date" content="2021-01-06" />
-
-  <meta name="citation_publication_date" content="2021-01-06" />
-
-  <meta name="dc.language" content="en-US" />
-
-  <meta name="citation_language" content="en-US" />
-
-  <meta name="dc.relation.ispartof" content="Manubot" />
-
-  <meta name="dc.publisher" content="Manubot" />
-
-  <meta name="citation_journal_title" content="Manubot" />
-
-  <meta name="citation_technical_report_institution" content="Manubot" />
-
-  <meta name="citation_author" content="Luiz Irber" />
-
-  <meta name="citation_author_institution" content="Graduate Group in Computer Science, UC Davis" />
-
-  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
-
-  <meta name="citation_author_orcid" content="0000-0003-4371-9659" />
-
-  <meta name="twitter:creator" content="@luizirber" />
-
-  <meta name="citation_author" content="C. Titus Brown" />
-
-  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
-
-  <meta name="citation_author_orcid" content="0000-0001-6001-2677" />
-
-  <link rel="canonical" href="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
-
-  <meta property="og:url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
-
-  <meta property="twitter:url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
-
-  <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
-
-  <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-
-  <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/" />
-
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/" />
-
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/manuscript.pdf" />
-
-  <meta property="og:type" content="article" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-
-  <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
-
-  <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
-
-  <meta name="theme-color" content="#ad1457" />
-
-  <!-- end Manubot generated metadata -->'
+title: Lightweight compositional analysis of metagenomes with sourmash gather
 keywords:
 - k-mers
 - MinHash
 lang: en-US
-manubot-clear-requests-cache: false
+date-meta: '2021-01-11'
+author-meta:
+- Luiz Irber
+- C. Titus Brown
+header-includes: |-
+  <!--
+  Manubot generated metadata rendered from header-includes-template.html.
+  Suggest improvements at https://github.com/manubot/manubot/blob/main/manubot/process/header-includes-template.html
+  -->
+  <meta name="dc.format" content="text/html" />
+  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
+  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
+  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
+  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
+  <meta name="dc.date" content="2021-01-11" />
+  <meta name="citation_publication_date" content="2021-01-11" />
+  <meta name="dc.language" content="en-US" />
+  <meta name="citation_language" content="en-US" />
+  <meta name="dc.relation.ispartof" content="Manubot" />
+  <meta name="dc.publisher" content="Manubot" />
+  <meta name="citation_journal_title" content="Manubot" />
+  <meta name="citation_technical_report_institution" content="Manubot" />
+  <meta name="citation_author" content="Luiz Irber" />
+  <meta name="citation_author_institution" content="Graduate Group in Computer Science, UC Davis" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
+  <meta name="citation_author_orcid" content="0000-0003-4371-9659" />
+  <meta name="twitter:creator" content="@luizirber" />
+  <meta name="citation_author" content="C. Titus Brown" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
+  <meta name="citation_author_orcid" content="0000-0001-6001-2677" />
+  <link rel="canonical" href="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
+  <meta property="og:url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
+  <meta property="twitter:url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
+  <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
+  <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
+  <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3b68a362bb35837f4e4bcb97c74a1c2ee53a58a3/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3b68a362bb35837f4e4bcb97c74a1c2ee53a58a3/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3b68a362bb35837f4e4bcb97c74a1c2ee53a58a3/manuscript.pdf" />
+  <meta property="og:type" content="article" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
+  <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
+  <meta name="theme-color" content="#ad1457" />
+  <!-- end Manubot generated metadata -->
+bibliography:
+- content/manual-references.json
 manubot-output-bibliography: output/references.json
 manubot-output-citekeys: output/citations.tsv
 manubot-requests-cache-path: ci/cache/requests-cache
-title: Lightweight compositional analysis of metagenomes with sourmash gather
+manubot-clear-requests-cache: false
 ...
 
 
@@ -102,10 +64,10 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/706d3f20fd7764d393d87ca80ce2415f239ad89c/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/3b68a362bb35837f4e4bcb97c74a1c2ee53a58a3/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@706d3f2](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/706d3f20fd7764d393d87ca80ce2415f239ad89c)
-on January 6, 2021.
+from [dib-lab/2020-paper-sourmash-gather@3b68a36](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/3b68a362bb35837f4e4bcb97c74a1c2ee53a58a3)
+on January 11, 2021.
 </em></small>
 
 ## Authors
