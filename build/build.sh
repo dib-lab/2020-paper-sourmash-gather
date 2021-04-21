@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 ## build.sh: compile manuscript outputs from content using Manubot and Pandoc
 
