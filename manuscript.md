@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-04-23'
+date-meta: '2021-05-10'
 author-meta:
 - Luiz Irber
 - C. Titus Brown
@@ -18,8 +18,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-04-23" />
-  <meta name="citation_publication_date" content="2021-04-23" />
+  <meta name="dc.date" content="2021-05-10" />
+  <meta name="citation_publication_date" content="2021-05-10" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/915c8b0f00c4befe4ec1c66dcc77b0e343918f92/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/915c8b0f00c4befe4ec1c66dcc77b0e343918f92/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/915c8b0f00c4befe4ec1c66dcc77b0e343918f92/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/10c8d4ef16250a4ca2f0dc754ba51c66f8314e6f/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/10c8d4ef16250a4ca2f0dc754ba51c66f8314e6f/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/10c8d4ef16250a4ca2f0dc754ba51c66f8314e6f/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,10 +64,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/915c8b0f00c4befe4ec1c66dcc77b0e343918f92/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/10c8d4ef16250a4ca2f0dc754ba51c66f8314e6f/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@915c8b0](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/915c8b0f00c4befe4ec1c66dcc77b0e343918f92)
-on April 23, 2021.
+from [dib-lab/2020-paper-sourmash-gather@10c8d4e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/10c8d4ef16250a4ca2f0dc754ba51c66f8314e6f)
+on May 10, 2021.
 </em></small>
 
 ## Authors
@@ -242,11 +242,11 @@ intersection of $D$ and $M$? That is, we wish to find the smallest set
 $\{ G_n \}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n
 \{ k(M) \cap k(G_n) \} $$
 
-This is equivalent to the *minimal set covering* problem, for which
+This is the *minimal set covering* problem, for which
 there is a polynomial-time approximation (cite).  (Provide algorithm here.)
 
-For very large databases such as GenBank (which contains over 700,000
-microbial genomes as of January 2021), this is computationally prohibitive
+For very large reference databases such as GenBank (which contains over 700,000
+microbial genomes as of January 2021) and GTDB (XXX genomes in release XYZ), this is computationally prohibitive
 to do exactly. (Estimate total number of k-mers in genbank!) We therefore implemented the algorithm using _Scaled MinHash_
 sketches to estimate containment.
 
@@ -274,14 +274,45 @@ k-mers were all shite. Species analysis confirms etc. etc.
 Overlapping portions of genomes are identified like so (track down the
 overlaps!)
 
-Section notes:
+Overlapping portions of genomes are identified. (Statistics of # k-mers, etc?)
 
-* Provide summaries of % k-mers identified, etc.
-* compare conceptually vs LCA approaches; combinatorial. do we want to
-  do a benchmark of some kind wrt LCA saturation? "Note that by using
-  max containment, we are estimating which k-mers belong to the genome
-  combinatorially.  This is opposed to the way LCA approaches work."
-* CTB: do we want to do this with all k-mers, not just scaled minhash? Or not.
+This min-set-cov approach for assigning genomes to metagenomes using
+k-mers differs substantially from extant k-mer and mapping-based
+approaches.  LCA-based approaches such as Kraken assign taxonomy to
+k-mers based on taxonomic lineages in a database, and then use the
+resulting database of annotated k-mers to assign taxonomy to
+individual reads or the metagenome in bulk. Mapping- and
+homology-based approaches such as Diamond or @@@ use read mapping to
+genomes or read alignment to gene sequences to assign taxonomy and
+function. In contrast to the greedy min-set-cov approach described
+here, which looks at the entire collection of reads/k-mers and assigns
+them in aggregate to the best genome match, these approaches typically
+focus on individual k-mers or reads.  It is not clear what the
+implications of this is for taxonomy or function; we evaluate the
+effects on taxonomy assignment below.
+
+Another big advantage of the min-set-cov approach is its focus on
+building a parsimonious list from complete genome databases. While
+most extant approaches create a short, curated list of genomes, with
+Scaled MinHash and sourmash awesomeness, it is now straightforward to
+routinely search millions of genomes and boil them down to mere dozens
+of genomes of relevance to a particular metagenome, following which
+more compute-intensive approaches can be used for detailed
+analysis. Of course large genome databases may suffer from problems of
+contamination etc etc but at least this approach gives us the option.
+
+TODO:
+
+* Provide summaries of % k-mers identified/matched, etc.
+* CTB: do we want to do this with all k-mers, not just scaled minhash? Or not. ralstonia or something? (the one taylor suggested.)
+  
+For discussion section:
+
+* LCA is tied to taxonomy, not directly to genomes
+* LCA saturates as database sizes grow - more k-mers get pulled up
+* in contrast here, we identify combinatorial collections of k-mers in a greedy fashion. this basically means that we pull high-rank/multi-genome k-mers into the largest collection of genome-specific k-mers; we need to evaluate the consequences of this (and do so in the taxonomy seciotn, below).
+* also note: LCA chooses discriminatory k-mers in advance, and when databases are updated they must also be updated; here we don't need to do that. We also don't need to a step of assigning taxonomy to k-mers.
+* it is not clear how important this is comptuationally in terms of efficiency, given the tradeoffs of the min set cov algorithm, but it should be mentioned.
 
 ## K-mer decomposition of metagenomes approximates read mappability
 
@@ -293,6 +324,9 @@ gather, in which we map all metagenome reads to all the genomes
 identified by gather, and then iteratively subtract the reads that
 mapped to the gather results in the order specified by gather and
 remap them.
+
+(CTB note: could also calculate this with mapping, but not against ALL
+genomes, only against those already found with gather.)
 
 Figure @fig:gather shows that mapping results generally correspond to gather
 results.  However, they match more closely for synthetic communities
@@ -465,111 +499,125 @@ Notes:
 
 ## Scaled MinHash provides efficient compositional queries for large data sets.
 
-_Scaled MinHash_ is an implementation of ModHash using concepts from
-MinHashing. _Scaled MinHash_ sketches support a variety of features
-that are convenient for compositional queries, including containment,
-hash removal, abundance tracking, and downsampling of sketches to
-lower scaled values. (CTB: mention streaming, hash occurrence guarantees?)  In
-exchange, _Scaled MinHash_ sketches have limited sensitivity for small
-queries and are only bounded in size by H/s, which is usually quite
-large.
-
-Once a Scaled MinHash is calculated, the original data does not need
-to be revisited during searches.  This allows sketches to serve as a
-distributable compressed index for sequence content. Moreover, because
-these sketches are collections of hashes, existing k-mer indexing
-approaches can be applied to the sketches to provide fast database
-search.
-
-In exchange for these many conveniences, _Scaled MinHash_ sketches have
-limited sensitivity on small data sets.  (More here.)
-_Scaled MinHash_ sketches offer a fixed range of possible hash values,
-but with reduced sensitivity for small datasets when using larger $s$
-(scaled) values.  A biological example are viruses: at $s=2000$ many
-viruses are too small to consistently have a hashed value selected by
-the _Scaled MinHash_ approach.  Other _MinHash_ approaches sidestep
-the problem by using hashing and streaming the query dataset (`Mash
-Screen`) or loading the query dataset into an approximate query
-membership data structure (`CMash`) to allow comparisons with the
-variable range of possible hash values, but both solutions require the
-original data or a more limited data representation than _Scaled
-MinHash_.  The consistency of operating in the same data structure
-also allows further methods to be develop using only _Scaled MinHash_
-sketches and their features, especially if large collections of
-_Scaled MinHash_ sketches are available.
-
-Another drawback of Scaled MinHash when compared to regular MinHash sketches
-is the size: the MinHash parameter $s$ sets an upper bound on the size
-of the sketch, independently of the size of the original data.  Scaled
-MinHash sketches grow proportionally to the original data cardinality,
-and in the worst case can have up to $\frac{H}{s}$ items.
-
-Intuitively, Scaled MinHash is performing a density sampling at a rate
-of 1 $k$-mer per $s$ k-mers seen.
-
-Others have also applied the ModHash concept to genomic data; see, for
-example, Durbin's "modimizer"
+_Scaled MinHash_ is an implementation of ModHash that uses the bottom
+hashing concept from MinHash: all elements in the set to be sketched
+are hashed, and any hash below a certain fixed boundary value are
+kept. This fixed boundary value is determined by the desired accuracy
+for the sketch representation. Unlike MinHash, _Scaled MinHash_
+supports containment analysis between sets of very different sizes,
+and here we demonstrate that it can be used efficiently and
+effectively for compositional analysis of shotgun metagenome data sets
+with k-mers. In particular, _Scaled MinHash_ is competitive in
+accuracy with extant MinHash-based techniques for containment
+analysis, while also supporting Jaccard similarity.  Footnote: We note
+that others have also applied the ModHash concept to genomic data;
+see, for example, Durbin's "modimizer"
 [@https://github.com/richarddurbin/modimizer].
 
-## Scaled MinHash sketches support many convenient operations.
+Intuitively, Scaled MinHash performs a density sampling at a rate of 1
+$k$-mer per $s$ distinct k-mers seen, where $s$ is the size of the
+hash space divided by the boundary value used in creating the
+sketch. This is a kind of lossy compression with a compression ratio
+of $s$: that is, for typical values of $s$ used here ($s =
+1000$), data sets are reduced in size 1000-fold.
 
-Scaled MinHash supports many convenient operations that minimize
-the need to reprocess the original data, which can be important for
-genomics applications.
+No hash is ever removed from a Scaled MinHash during
+construction; while this means that sketches grow proportionally to
+the number of distinct k-mers in the sampled data set, they also
+support many operations without needing to revisit the original data
+set. This is in contrast to MinHash, which requires auxiliary data
+structures for many operations - most especially, containment
+operations (cite CMash and mash screen).  Thus Scaled MinHash
+sketches serve as distributed compressed indices for the original
+content for a much broader range of operations than MinHash.
 
-Because Scaled MinHash sketches collect any value below a threshold
-this also guarantees that once a value is selected it is never
-discarded.  This is useful in streaming contexts: any operations that
-used a previously selected value can be cached and updated with new
-arriving values.  $\mathbf{MOD}_m(W)$ has similar properties, but this
-is not the case for $\mathbf{MIN}_n(W)$, since after $n$ values are
-selected any displacement caused by new data can invalidate previous
-calculations.
+Because _Scaled MinHash_ sketches collect all hash values below a
+fixed threshold, they support streaming analysis of sketches: any
+operations that used a previously selected value can be cached and
+updated with newly arriving values.  ModHash has similar
+properties, but this is not the case for MinHash, since
+after $n$ values are selected any displacement caused by new data can
+invalidate previous calculations.
 
 Scaled MinHash also directly supports the addition and subtraction of
-hash values from a sketch, allowing post-processing and filtering.
-Although possible for $\mathbf{MIN}_n(W)$, in practice this requires
+hash values from a sketch, allowing post-processing and filtering without
+revisiting the original data set. This includes unions and intersections.
+Although possible for MinHash, in practice this requires
 oversampling (using a larger $n$) to account for possibly having less
 than $n$ values after filtering (the approach taken by Finch
 [@bovee_finch:_2018]).
 
-Another useful operation is *downsampling*: the contiguous
-value range for Scaled MinHash sketches allow deriving
-$\mathbf{SCALED}_{s'}(W)$ sketches for any $s' \ge s$ using only
-$\mathbf{SCALED}_{s}(W)$.  MinHash and ModHash can also support this
-operation, as long as $n' \le n$ and $m'$ is a multiple of $m$.
-Note also that Scaled MinHash and regular MinHash can be converted
-between each other in certain situations.
+Another useful operation available on _Scaled MinHash_ is
+*downsampling*: the contiguous value range for Scaled MinHash sketches
+allow deriving $\mathbf{SCALED}_{s'}(W)$ sketches for any $s' \ge s$
+using only $\mathbf{SCALED}_{s}(W)$.  MinHash and ModHash can also
+support this operation in limited circumstances, when $n' \le n$
+and $m'$ is a multiple of $m$.  Note also that Scaled MinHash and
+regular MinHash sketches can be converted between each other when compatible
+hashing schemes are used, and when (insert math here about boundary
+values etc.)
 
 Abundance filtering is another extension to MinHash sketches, keeping
-a count of how many times a value appeared in the original data.  This
-allows filtering for low-abundance values, as implemented in Finch
+a count of how many times a value appears in the original data.  This
+allows removing low-abundance values, as implemented in Finch
 [@bovee_finch:_2018], another MinHash sketching software for genomics.
-Filtering values that only appeared once was implemented before in
+Filtering values that only appear once was implemented in
 Mash by using a Bloom Filter and only adding values after they were
 seen once, with later versions also implementing an extra counter
 array to keep track of counts for each value in the MinHash.  These
 operations can be done in Scaled MinHash without auxiliary data
 structures.
 
+In exchange for these many conveniences, _Scaled MinHash_ sketches
+have limited sensitivity for small data sets (data set size
+approx. $s$) and are only bounded in size by H/s, which is typically
+quite large.  This limited sensitivity may affect the sensitivity of
+gene- and viral genome-sized queries, but at $s=1000$ we see
+comparable accuracy and sketch size
+to MinHash for bacterial genome comparisons.
+
+(CTB: maybe remove below:)
+
+The consistency of operating in the same data structure also allows
+further methods to be develop using only _Scaled MinHash_ sketches and
+their features, especially if large collections of _Scaled MinHash_
+sketches are available.  Because Scaled MinHash are collections of
+hashes, existing k-mer indexing approaches can be applied to the
+sketches to provide fast database search of these indices.
+
 ## min-set-cov supports accurate compositional analysis of metagenomes.
 
 Many metagenome content analysis approaches use reference genomes to
 interpret metagenome content.  Here, we frame the computational
 challenge of discovering the appropriate reference genomes for a set
-of metagenome reads as a min-set-cov problem, in which we seek the
-*minimum* set of reference genomes necessary to account for all
-mappable reads. We show that this can be resolved efficiently for
-real-world data sets using a greedy algorithm together with _Scaled
-MinHash_ and large-scale containment search of GenBank.
+of metagenome reads as a min-set-cov problem, in which we seek a
+*minimum* set of reference genomes necessary to account for all k-mers
+shared between the metagenome and the reference database. We show that
+this can be resolved efficiently for real-world data sets using a
+greedy algorithm; using _Scaled MinHash_, we provide an approach
+that scales to 700,000 genomes on current hardware.
+
+The development of a parsimonious list of relevant genomes
+is convenient in the age of large reference databases with many
+redundant genomes.
+
+Unlike Kraken-type approaches, min-set-cov analysis is not tied to
+taxonomic assignment of genomes; this leads to both computational
+efficiency in making downstream taxonomic assignments (see discussion below)
+as well as providing robustness in the face of changing taxonomy.
+
+The greedy algorithm used to determine the minimal list of genomes
+also lends itself to incremental update with new genomes and supports
+the use of private databases.
 
 Our comparison of hash-based estimation of containment to mapping
 results in Figure @fig:gather shows that this approach is an accurate
 proxy for systematic mapping.  In particular, hash-based estimation of
 containment closely matches actual read mapping performance.
 
-One confounding factor is that for real metagenomes, exact reference
-strains are not usually present in the database. This manifests in two
+This approach is very dependent on the database. In particular, 
+in many cases the exact reference strains present in the metagenome
+will not be present in the database. This manifests in two
 ways in Figure @fig:minhash. First, there is a systematic mismatch
 between the hash content and the mapping content (green line), because
 mapping software is more permissive in the face of small variants than
@@ -579,9 +627,9 @@ higher ranked genomes, suggesting that strain-specific portions of the
 reference are being utilized for matching at lower ranks. In reality,
 there will usually be a different mixture of strains in the metagenome
 than in the reference database. Approaches such as spacegraphcats may
-help resolve this by building new references, yada.
+help resolve this by adapting old references. @cite.
 
-Note: gather can also be applied to private databases.
+Mention weighted cover cc David?
 
 Leftover text:
 
