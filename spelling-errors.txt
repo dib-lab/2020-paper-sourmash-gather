@@ -12,11 +12,11 @@ CAMISIM
 cardinalities
 CMash
 combinatorial
-compositional
+Compositional
 comptuationally
 constitutent
 cov
-CTB
+ctb
 dataset
 datasets
 DDR
@@ -26,7 +26,7 @@ Durbin’s
 eqn
 evolutionarily
 gbio
-GenBank
+genbank
 genomic
 gnavus
 GTDB
@@ -35,12 +35,11 @@ hh
 Illumina
 Intepretation
 Irber
-iteratively
 Jaccard
 kbytes
 Koslicki
 Kraken
-LCA
+lca
 LINS
 lossy
 Luiz
@@ -56,10 +55,10 @@ metagenomics
 MetaPalette
 MetaPhlan
 MetaPhyler
-mhbt
+MHBT
 MHBTs
 microbiome
-MinHash
+minhash
 minimap
 ModHash
 modimizer
@@ -69,6 +68,7 @@ NCBI
 NVMe
 PacBio
 pangenome
+parsominous
 performant
 prefilter
 profilers
