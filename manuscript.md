@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/10717b22d9cc9180de80f32feddc4b01e76f1620/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/10717b22d9cc9180de80f32feddc4b01e76f1620/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/10717b22d9cc9180de80f32feddc4b01e76f1620/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,9 +64,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/10717b22d9cc9180de80f32feddc4b01e76f1620/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@10717b2](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/10717b22d9cc9180de80f32feddc4b01e76f1620)
+from [dib-lab/2020-paper-sourmash-gather@be1bd68](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e)
 on October 12, 2021.
 </em></small>
 
@@ -75,11 +75,11 @@ on October 12, 2021.
 
 
 + **Luiz Irber**<br>
-    ![ORCID icon](images/orcid.svg){.inline_icon}
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
     [0000-0003-4371-9659](https://orcid.org/0000-0003-4371-9659)
-    · ![GitHub icon](images/github.svg){.inline_icon}
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
     [luizirber](https://github.com/luizirber)
-    · ![Twitter icon](images/twitter.svg){.inline_icon}
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
     [luizirber](https://twitter.com/luizirber)<br>
   <small>
      Graduate Group in Computer Science, UC Davis; Department of Population Health and Reproduction, UC Davis
@@ -87,9 +87,9 @@ on October 12, 2021.
   </small>
 
 + **C. Titus Brown**<br>
-    ![ORCID icon](images/orcid.svg){.inline_icon}
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
     [0000-0001-6001-2677](https://orcid.org/0000-0001-6001-2677)
-    · ![GitHub icon](images/github.svg){.inline_icon}
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
     [ctb](https://github.com/ctb)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis

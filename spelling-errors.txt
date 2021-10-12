@@ -16,7 +16,7 @@ Compositional
 comptuationally
 constitutent
 cov
-ctb
+CTB
 dataset
 datasets
 DDR
@@ -26,7 +26,7 @@ Durbin’s
 eqn
 evolutionarily
 gbio
-genbank
+GenBank
 genomic
 gnavus
 GTDB
@@ -58,7 +58,7 @@ MetaPhyler
 MHBT
 MHBTs
 microbiome
-minhash
+MinHash
 minimap
 ModHash
 modimizer
