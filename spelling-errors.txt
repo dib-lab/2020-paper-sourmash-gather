@@ -6,7 +6,7 @@ archaeal
 awad
 benchmarking
 binner
-CAMI
+cami
 CAMIARKQuikr
 CAMISIM
 cardinalities
@@ -26,12 +26,15 @@ Durbin’s
 eqn
 evolutionarily
 gbio
-GenBank
+genbank
+genoes
 genomic
 gnavus
 GTDB
 HashSet
 hh
+hu
+iHMP
 Illumina
 Intepretation
 Irber
@@ -48,7 +51,7 @@ mappability
 mappable
 mer
 mers
-metagenome
+Metagenome
 metagenomes
 metagenomic
 metagenomics
@@ -58,7 +61,7 @@ MetaPhyler
 MHBT
 MHBTs
 microbiome
-MinHash
+minhash
 minimap
 ModHash
 modimizer
@@ -66,10 +69,13 @@ mOTUs
 natively
 NCBI
 NVMe
+ov
 PacBio
 pangenome
 parsominous
 performant
+podar
+prefetch
 prefilter
 profilers
 ralstonia
@@ -90,6 +96,7 @@ shite
 smol
 sourmash
 spacegraphcats
+SRR
 SSD
 subsetting
 taxononomic
@@ -102,3 +109,4 @@ virtualized
 Xeon
 XXXXXXXX
 XYZ
+zymo

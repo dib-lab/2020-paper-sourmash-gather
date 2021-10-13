@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-10-12'
+date-meta: '2021-10-13'
 author-meta:
 - Luiz Irber
 - C. Titus Brown
@@ -18,8 +18,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-12" />
-  <meta name="citation_publication_date" content="2021-10-12" />
+  <meta name="dc.date" content="2021-10-13" />
+  <meta name="citation_publication_date" content="2021-10-13" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,10 +64,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@be1bd68](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e)
-on October 12, 2021.
+from [dib-lab/2020-paper-sourmash-gather@fd8d86a](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/fd8d86a0c007c7cb54c413745d53d76001bbc48c)
+on October 13, 2021.
 </em></small>
 
 ## Authors
@@ -190,7 +190,7 @@ the ModHash range is not.  This permits a variety of convenient
 operations on the sketches, including iterative downsampling of Scaled
 MinHash sketches as well as conversion to MinHash sketches.
 
-## Scaled MinHash accurately estimates containment between sets of different sizes
+## A Scaled MinHash implementation accurately estimates containment between sets of different sizes
 
 We compare the _Scaled MinHash_ method to CMash (_Containment
 MinHash_) [@doi:10.1101/184150] and Mash Screen (_Containment Score_)
@@ -224,6 +224,10 @@ is greatly reduced, with most methods within 1\% absolute difference
 to the ground truth.  `CMash` still has some outliers with up to 8\%
 difference to the ground truth.
 
+CTB todo:
+* just use (B) benchmark
+* use sourmash, not smol
+
 CTB questions:
 
 * should we _just_ use (B) benchmark?
@@ -231,11 +235,11 @@ CTB questions:
 * compares well with others
 * How much is missed figure; Poisson calculations? => appendix?
 
-## Reference genomes can be selected for a metagenome using a simple greedy algorithm
+## A minimum metagenome cover can be efficiently selected from a large database
 
 We next ask: what is the smallest collection of genomes in a database
-that should be used as a reference for k-mer based analysis of a
-metagenome?  This question can be framed formally as follows: for a
+that contains all of the known k-mers in a metagenome?
+Formally, for a
 given metagenome $M$ and a reference database $D$, what is the minimum
 collection of genomes in $D$ which contain all of the k-mers in the
 intersection of $D$ and $M$? That is, we wish to find the smallest set
@@ -245,10 +249,50 @@ $\{ G_n \}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n
 This is the *minimum set covering* problem, for which
 there is a polynomial-time approximation (cite).  (Provide algorithm here.)
 
-For very large reference databases such as GenBank (which contains over 700,000
-microbial genomes as of January 2021) and GTDB (XXX genomes in release XYZ), this is computationally prohibitive
-to do exactly. (Estimate total number of k-mers in genbank!) We therefore implemented the algorithm using _Scaled MinHash_
-sketches to estimate containment.
+For very large reference databases such as GenBank (which contains
+over 700,000 microbial genomes as of January 2021) and GTDB (XXX
+genomes in release XYZ), this is computationally challenging to do
+exactly. (Estimate total number of k-mers in genbank!) We therefore
+implemented the algorithm using _Scaled MinHash_ sketches to estimate
+containment, and used an overlap threshold of 100,000 k-mers in order
+to eliminate genomes with only small overlaps (see Methods).
+
+| data set | genomes >= 100k overlap | min-set-cov |
+| -------- | -------- | -------- |
+| zymo mock (SRR12324253) | 405,839 | 19 |
+| podar mock (SRR606249) | 5800 | 74 |
+| p8808mo11 (iHMP)  | 96,423     | 99     |
+| hu-s1 oil well (SRR1976948) | 1235 | 135 |
+
+Table: metagenomes and min-set-cov. {#tbl:genbank-cover}
+
+In Table @tbl:genbank-cover, we show the results of running min-set-ov
+for four metagenomes against genbank - two mock communities (cite
+cite), one human microbiome data set from iHMP (cite), and one oil
+well (cite).  Our implementation provides estimates for both the
+*total* number of genomes with substantial overlap to a query genome,
+and a *minimum list* of genomes that account for k-mers with overlap
+in the query metagenome (see Methods - prefetch and gather).
+
+We can see that there are many genomes with large overlaps, due to the
+redundancy of the database. For example, the zymo mock contains a Salmonella
+genome, and there are over 200,000 Salmonella genomes that match to it in
+Genbank. Likewise, the iHMP dataset contains many XYZ.  Since neither
+the podar mock nor the oil well community contain genomes from species with
+massive representation in genbank, they have many fewer overlaps.
+
+However, regardless of the number of genome with overlap, the
+estimated _minimum_ collection of genoes is always much smaller. In the
+cases where the metagenome is mostly identified, this is because of
+database redundancy: e.g. in the case of the
+zymo mock, the min-set-cov algorithm chooses only one Salmonella
+genome from the 200,000+ available. However, in the case of the oil well
+sample, much of the sample is unknown, highlighting that this is of course
+a reference dependent approach.
+
+CTB: mention correspondence with depth of sequencing, as well.
+
+CTB: add k-mer overlap statistics to table?
 
 ![
 **K-mer decomposition of a metagenome into constituent genomes.**
@@ -263,6 +307,8 @@ shared between each genome and the metagenome, including those already
 assigned at previous ranks.
 ](images/gathergram-SRR606249.hashes.svg "gather hash results for podar"){#fig:gather0}
 
+
+
 Figure @fig:gather0 shows the results of this algorithm applied to the
 synthetic metagenome from Shakya et al.  Of the 700,000+ genomes in
 GenBank, 73 were selected by the min-set cov algorithm, and they
@@ -276,38 +322,11 @@ overlaps!)
 
 Overlapping portions of genomes are identified. (Statistics of # k-mers, etc?)
 
-This min-set-cov approach for assigning genomes to metagenomes using
-k-mers differs substantially from extant k-mer and mapping-based
-approaches.  LCA-based approaches such as Kraken assign taxonomy to
-individual k-mers based on taxonomic lineages in a database, and then use the
-resulting database of annotated k-mers to assign taxonomy to
-individual reads or the bulk metagenome. Mapping- and
-homology-based approaches such as Diamond or @@@ use read mapping to
-genomes or read alignment to gene sequences to assign taxonomy and
-function. These approaches typically focus on individual k-mers or reads,
-in contrast to the greedy min-set-cov approach described here, which
-looks at the entire collection of reads/k-mers and assigns
-them in aggregate to the best genome match.
-<!-- It is not clear what the
-implications of this is for taxonomy or function; we evaluate the
-effects on taxonomy assignment below.
--->
-
 TODO:
 
 * Provide summaries of % k-mers identified/matched, etc.
 * CTB: do we want to do this with all k-mers, not just scaled minhash? Or not. ralstonia or something? (the one taylor suggested.)
   
-For discussion section:
-
-* LCA is tied to taxonomy, not directly to genomes
-* LCA saturates as database sizes grow - more k-mers get pulled up
-* in contrast here, we identify combinatorial collections of k-mers in a greedy fashion. this basically means that we pull high-rank/multi-genome k-mers into the largest collection of genome-specific k-mers; we need to evaluate the consequences of this (and do so in the taxonomy seciotn, below).
-* also note: LCA chooses discriminatory k-mers in advance, and when databases are updated they must also be updated; here we don't need to do that. We also don't need to a step of assigning taxonomy to k-mers.
-* it is not clear how important this is comptuationally in terms of efficiency, given the tradeoffs of the min set cov algorithm, but it should be mentioned.
-
-CTB: do we talk about massive simplification viz salmonella?
-
 ## K-mer decomposition of metagenomes approximates read mappability
 
 K-mers have been widely used to approximate mapping (citations).  To
@@ -607,6 +626,31 @@ more compute-intensive approaches can be used for detailed
 analysis. Of course large genome databases may suffer from problems of
 contamination etc etc but at least this approach gives us the option.
 (CTB refactor)
+
+This min-set-cov approach for assigning genomes to metagenomes using
+k-mers differs substantially from extant k-mer and mapping-based
+approaches.  LCA-based approaches such as Kraken assign taxonomy to
+individual k-mers based on taxonomic lineages in a database, and then use the
+resulting database of annotated k-mers to assign taxonomy to
+individual reads or the bulk metagenome. Mapping- and
+homology-based approaches such as Diamond or @@@ use read mapping to
+genomes or read alignment to gene sequences to assign taxonomy and
+function. These approaches typically focus on individual k-mers or reads,
+in contrast to the greedy min-set-cov approach described here, which
+looks at the entire collection of reads/k-mers and assigns
+them in aggregate to the best genome match.
+<!-- It is not clear what the
+implications of this is for taxonomy or function; we evaluate the
+effects on taxonomy assignment below.
+-->
+
+For discussion section:
+
+* LCA is tied to taxonomy, not directly to genomes
+* LCA saturates as database sizes grow - more k-mers get pulled up
+* in contrast here, we identify combinatorial collections of k-mers in a greedy fashion. this basically means that we pull high-rank/multi-genome k-mers into the largest collection of genome-specific k-mers; we need to evaluate the consequences of this (and do so in the taxonomy seciotn, below).
+* also note: LCA chooses discriminatory k-mers in advance, and when databases are updated they must also be updated; here we don't need to do that. We also don't need to a step of assigning taxonomy to k-mers.
+* it is not clear how important this is comptuationally in terms of efficiency, given the tradeoffs of the min set cov algorithm, but it should be mentioned.
 
 Unlike Kraken-type approaches, min-set-cov analysis is not tied to
 taxonomic assignment of genomes; this leads to both computational

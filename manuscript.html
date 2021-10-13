@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-10-12" />
+  <meta name="dcterms.date" content="2021-10-13" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -48,8 +48,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-12" />
-  <meta name="citation_publication_date" content="2021-10-12" />
+  <meta name="dc.date" content="2021-10-13" />
+  <meta name="citation_publication_date" content="2021-10-13" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -70,9 +70,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -86,10 +86,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/fd8d86a0c007c7cb54c413745d53d76001bbc48c/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/be1bd6843e2825e5883c8c654a6ef4a6dd9c593e">dib-lab/2020-paper-sourmash-gather@be1bd68</a>
-on October 12, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/fd8d86a0c007c7cb54c413745d53d76001bbc48c">dib-lab/2020-paper-sourmash-gather@fd8d86a</a>
+on October 13, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -188,7 +188,7 @@ in the hash space, since the Scaled MinHash range is contiguous and
 the ModHash range is not. This permits a variety of convenient
 operations on the sketches, including iterative downsampling of Scaled
 MinHash sketches as well as conversion to MinHash sketches.</p>
-<h2 id="scaled-minhash-accurately-estimates-containment-between-sets-of-different-sizes">Scaled MinHash accurately estimates containment between sets of different sizes</h2>
+<h2 id="a-scaled-minhash-implementation-accurately-estimates-containment-between-sets-of-different-sizes">A Scaled MinHash implementation accurately estimates containment between sets of different sizes</h2>
 <p>We compare the <em>Scaled MinHash</em> method to CMash (<em>Containment
 MinHash</em>) <span class="citation" data-cites="jxLvWK4U">[<a href="#ref-jxLvWK4U" role="doc-biblioref">2</a>]</span> and Mash Screen (<em>Containment Score</em>)
 <span class="citation" data-cites="19AP1jyqE">[<a href="#ref-19AP1jyqE" role="doc-biblioref">3</a>]</span> for containment queries in the
@@ -217,6 +217,9 @@ contaminant genomes (as described in <span class="citation" data-cites="awad_eva
 is greatly reduced, with most methods within 1% absolute difference
 to the ground truth. <code>CMash</code> still has some outliers with up to 8%
 difference to the ground truth.</p>
+<p>CTB todo:
+* just use (B) benchmark
+* use sourmash, not smol</p>
 <p>CTB questions:</p>
 <ul>
 <li>should we <em>just</em> use (B) benchmark?</li>
@@ -224,10 +227,10 @@ difference to the ground truth.</p>
 <li>compares well with others</li>
 <li>How much is missed figure; Poisson calculations? =&gt; appendix?</li>
 </ul>
-<h2 id="reference-genomes-can-be-selected-for-a-metagenome-using-a-simple-greedy-algorithm">Reference genomes can be selected for a metagenome using a simple greedy algorithm</h2>
+<h2 id="a-minimum-metagenome-cover-can-be-efficiently-selected-from-a-large-database">A minimum metagenome cover can be efficiently selected from a large database</h2>
 <p>We next ask: what is the smallest collection of genomes in a database
-that should be used as a reference for k-mer based analysis of a
-metagenome? This question can be framed formally as follows: for a
+that contains all of the known k-mers in a metagenome?
+Formally, for a
 given metagenome <span class="math inline">\(M\)</span> and a reference database <span class="math inline">\(D\)</span>, what is the minimum
 collection of genomes in <span class="math inline">\(D\)</span> which contain all of the k-mers in the
 intersection of <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? That is, we wish to find the smallest set
@@ -235,10 +238,70 @@ intersection of <span class="math inline">\(D\)</span> and <span class="math inl
 \{ k(M) \cap k(G_n) \} \]</span></p>
 <p>This is the <em>minimum set covering</em> problem, for which
 there is a polynomial-time approximation (cite). (Provide algorithm here.)</p>
-<p>For very large reference databases such as GenBank (which contains over 700,000
-microbial genomes as of January 2021) and GTDB (XXX genomes in release XYZ), this is computationally prohibitive
-to do exactly. (Estimate total number of k-mers in genbank!) We therefore implemented the algorithm using <em>Scaled MinHash</em>
-sketches to estimate containment.</p>
+<p>For very large reference databases such as GenBank (which contains
+over 700,000 microbial genomes as of January 2021) and GTDB (XXX
+genomes in release XYZ), this is computationally challenging to do
+exactly. (Estimate total number of k-mers in genbank!) We therefore
+implemented the algorithm using <em>Scaled MinHash</em> sketches to estimate
+containment, and used an overlap threshold of 100,000 k-mers in order
+to eliminate genomes with only small overlaps (see Methods).</p>
+<div id="tbl:genbank-cover" class="tablenos">
+<table id="tbl:genbank-cover">
+<caption><span>Table 1:</span> metagenomes and min-set-cov. </caption>
+<thead>
+<tr class="header">
+<th>data set</th>
+<th>genomes &gt;= 100k overlap</th>
+<th>min-set-cov</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>zymo mock (SRR12324253)</td>
+<td>405,839</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td>podar mock (SRR606249)</td>
+<td>5800</td>
+<td>74</td>
+</tr>
+<tr class="odd">
+<td>p8808mo11 (iHMP)</td>
+<td>96,423</td>
+<td>99</td>
+</tr>
+<tr class="even">
+<td>hu-s1 oil well (SRR1976948)</td>
+<td>1235</td>
+<td>135</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In Table <a href="#tbl:genbank-cover">1</a>, we show the results of running min-set-ov
+for four metagenomes against genbank - two mock communities (cite
+cite), one human microbiome data set from iHMP (cite), and one oil
+well (cite). Our implementation provides estimates for both the
+<em>total</em> number of genomes with substantial overlap to a query genome,
+and a <em>minimum list</em> of genomes that account for k-mers with overlap
+in the query metagenome (see Methods - prefetch and gather).</p>
+<p>We can see that there are many genomes with large overlaps, due to the
+redundancy of the database. For example, the zymo mock contains a Salmonella
+genome, and there are over 200,000 Salmonella genomes that match to it in
+Genbank. Likewise, the iHMP dataset contains many XYZ. Since neither
+the podar mock nor the oil well community contain genomes from species with
+massive representation in genbank, they have many fewer overlaps.</p>
+<p>However, regardless of the number of genome with overlap, the
+estimated <em>minimum</em> collection of genoes is always much smaller. In the
+cases where the metagenome is mostly identified, this is because of
+database redundancy: e.g. in the case of the
+zymo mock, the min-set-cov algorithm chooses only one Salmonella
+genome from the 200,000+ available. However, in the case of the oil well
+sample, much of the sample is unknown, highlighting that this is of course
+a reference dependent approach.</p>
+<p>CTB: mention correspondence with depth of sequencing, as well.</p>
+<p>CTB: add k-mer overlap statistics to table?</p>
 <div id="fig:gather0" class="fignos">
 <figure>
 <img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by best match first for 30 genomes from the minimum set cover of the synthetic metagenome from Shakya et al., calculated with 700,000 GenBank genomes. The Y axis is labeled with the name of the genome (per NCBI), and the red circles indicates the number of remaining k-mers (estimated with Scaled MinHash) shared between each genome and the metagenome. The green x symbols indicate the total number of k-mers shared between each genome and the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
@@ -263,36 +326,11 @@ k-mers were all shite. Species analysis confirms etc. etc.</p>
 <p>Overlapping portions of genomes are identified like so (track down the
 overlaps!)</p>
 <p>Overlapping portions of genomes are identified. (Statistics of # k-mers, etc?)</p>
-<p>This min-set-cov approach for assigning genomes to metagenomes using
-k-mers differs substantially from extant k-mer and mapping-based
-approaches. LCA-based approaches such as Kraken assign taxonomy to
-individual k-mers based on taxonomic lineages in a database, and then use the
-resulting database of annotated k-mers to assign taxonomy to
-individual reads or the bulk metagenome. Mapping- and
-homology-based approaches such as Diamond or @@@ use read mapping to
-genomes or read alignment to gene sequences to assign taxonomy and
-function. These approaches typically focus on individual k-mers or reads,
-in contrast to the greedy min-set-cov approach described here, which
-looks at the entire collection of reads/k-mers and assigns
-them in aggregate to the best genome match.
-<!-- It is not clear what the
-implications of this is for taxonomy or function; we evaluate the
-effects on taxonomy assignment below.
---></p>
 <p>TODO:</p>
 <ul>
 <li>Provide summaries of % k-mers identified/matched, etc.</li>
 <li>CTB: do we want to do this with all k-mers, not just scaled minhash? Or not. ralstonia or something? (the one taylor suggested.)</li>
 </ul>
-<p>For discussion section:</p>
-<ul>
-<li>LCA is tied to taxonomy, not directly to genomes</li>
-<li>LCA saturates as database sizes grow - more k-mers get pulled up</li>
-<li>in contrast here, we identify combinatorial collections of k-mers in a greedy fashion. this basically means that we pull high-rank/multi-genome k-mers into the largest collection of genome-specific k-mers; we need to evaluate the consequences of this (and do so in the taxonomy seciotn, below).</li>
-<li>also note: LCA chooses discriminatory k-mers in advance, and when databases are updated they must also be updated; here we don’t need to do that. We also don’t need to a step of assigning taxonomy to k-mers.</li>
-<li>it is not clear how important this is comptuationally in terms of efficiency, given the tradeoffs of the min set cov algorithm, but it should be mentioned.</li>
-</ul>
-<p>CTB: do we talk about massive simplification viz salmonella?</p>
 <h2 id="k-mer-decomposition-of-metagenomes-approximates-read-mappability">K-mer decomposition of metagenomes approximates read mappability</h2>
 <p>K-mers have been widely used to approximate mapping (citations). To
 evaluate the accuracy of our k-mer based min-set-cov approach, we
@@ -409,7 +447,7 @@ a specific taxonomic rank),
 the highest number of true positives and the lowest number of false positives.</p>
 <div id="tbl:gather-cami2" class="tablenos">
 <table id="tbl:gather-cami2">
-<caption><span>Table 1:</span> Updated Supplementary Table 12 from <span class="citation" data-cites="meyer_tutorial_2020">[<a href="#ref-meyer_tutorial_2020" role="doc-biblioref"><strong>meyer_tutorial_2020?</strong></a>]</span>.
+<caption><span>Table 2:</span> Updated Supplementary Table 12 from <span class="citation" data-cites="meyer_tutorial_2020">[<a href="#ref-meyer_tutorial_2020" role="doc-biblioref"><strong>meyer_tutorial_2020?</strong></a>]</span>.
 Elapsed (wall clock) time (h:mm) and maximum resident set size
 (kbytes) of taxonomic profiling methods on the 64 short read samples
 of the CAMI II mouse gut data set. The best results are shown in
@@ -497,7 +535,7 @@ minutes for 64 samples. MetaPhlan 2.9.21 was also executed in the
 same machine, a workstation with an AMD Ryzen 9 3900X 12-Core CPU
 running at 3.80 GHz, 64 GB DDR4 2133 MHz of RAM and loading data from
 an NVMe SSD, in order to compare to previously reported times in Table
-<a href="#tbl:gather-cami2">1</a>. MetaPhlan took 11 hours and
+<a href="#tbl:gather-cami2">2</a>. MetaPhlan took 11 hours and
 25 minutes to run for all samples, compared to 18 hours and 44 minutes
 previously reported, and correcting the <code>sourmash</code> running time by
 this factor it would likely take 16 hours and 41 minutes in the
@@ -620,6 +658,30 @@ more compute-intensive approaches can be used for detailed
 analysis. Of course large genome databases may suffer from problems of
 contamination etc etc but at least this approach gives us the option.
 (CTB refactor)</p>
+<p>This min-set-cov approach for assigning genomes to metagenomes using
+k-mers differs substantially from extant k-mer and mapping-based
+approaches. LCA-based approaches such as Kraken assign taxonomy to
+individual k-mers based on taxonomic lineages in a database, and then use the
+resulting database of annotated k-mers to assign taxonomy to
+individual reads or the bulk metagenome. Mapping- and
+homology-based approaches such as Diamond or @@@ use read mapping to
+genomes or read alignment to gene sequences to assign taxonomy and
+function. These approaches typically focus on individual k-mers or reads,
+in contrast to the greedy min-set-cov approach described here, which
+looks at the entire collection of reads/k-mers and assigns
+them in aggregate to the best genome match.
+<!-- It is not clear what the
+implications of this is for taxonomy or function; we evaluate the
+effects on taxonomy assignment below.
+--></p>
+<p>For discussion section:</p>
+<ul>
+<li>LCA is tied to taxonomy, not directly to genomes</li>
+<li>LCA saturates as database sizes grow - more k-mers get pulled up</li>
+<li>in contrast here, we identify combinatorial collections of k-mers in a greedy fashion. this basically means that we pull high-rank/multi-genome k-mers into the largest collection of genome-specific k-mers; we need to evaluate the consequences of this (and do so in the taxonomy seciotn, below).</li>
+<li>also note: LCA chooses discriminatory k-mers in advance, and when databases are updated they must also be updated; here we don’t need to do that. We also don’t need to a step of assigning taxonomy to k-mers.</li>
+<li>it is not clear how important this is comptuationally in terms of efficiency, given the tradeoffs of the min set cov algorithm, but it should be mentioned.</li>
+</ul>
 <p>Unlike Kraken-type approaches, min-set-cov analysis is not tied to
 taxonomic assignment of genomes; this leads to both computational
 efficiency in making downstream taxonomic assignments (see discussion below)
@@ -869,7 +931,7 @@ on-the-fly.</p>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
 <div id="ref-AX7zdKKw" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-23) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
+<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-22) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
 </div>
 <div id="ref-jxLvWK4U" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">2. </div><div class="csl-right-inline"><strong>IMPROVING MIN HASH VIA THE CONTAINMENT INDEX WITH APPLICATIONS TO METAGENOMIC ANALYSIS</strong> <div class="csl-block">David Koslicki, Hooman Zabeti</div> <em>Cold Spring Harbor Laboratory</em> (2017-09-04) <a href="https://doi.org/ghvn6z">https://doi.org/ghvn6z</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/184150">10.1101/184150</a></div></div>
@@ -925,11 +987,11 @@ containing 725,331 assembled genomes (
 39,101 Viral). <!-- TODO add total data size here? need to calculate... -->
 MHBT indices were built with <span class="math inline">\(scaled=1000\)</span>,
 and LCA indices used <span class="math inline">\(scaled=10000\)</span>.
-Table <a href="#tbl:lca-index">2</a> shows the indexing results for the LCA index,
-and Table <a href="#tbl:mhbt-index">3</a> for the MHBT index.</p>
+Table <a href="#tbl:lca-index">3</a> shows the indexing results for the LCA index,
+and Table <a href="#tbl:mhbt-index">4</a> for the MHBT index.</p>
 <div id="tbl:lca-index" class="tablenos">
 <table id="tbl:lca-index">
-<caption><span>Table 2:</span> Results for LCA indexing, with <span class="math inline">\(scaled=10000\)</span> and
+<caption><span>Table 3:</span> Results for LCA indexing, with <span class="math inline">\(scaled=10000\)</span> and
 <span class="math inline">\(k=21\)</span>. </caption>
 <thead>
 <tr class="header">
@@ -975,7 +1037,7 @@ and Table <a href="#tbl:mhbt-index">3</a> for the MHBT index.</p>
 </div>
 <div id="tbl:mhbt-index" class="tablenos">
 <table id="tbl:mhbt-index">
-<caption><span>Table 3:</span> Results for MHBT indexing,
+<caption><span>Table 4:</span> Results for MHBT indexing,
 with <span class="math inline">\(scaled=1000\)</span>, <span class="math inline">\(k=21\)</span> and internal nodes (Bloom Filters)
 using 10000 slots for storage. </caption>
 <thead>
@@ -1040,7 +1102,7 @@ the relevant domain and queried against both MHBT (<span class="math inline">\(s
 LCA (<span class="math inline">\(scaled=10000\)</span>), for <span class="math inline">\(k=21\)</span>.</p>
 <div id="tbl:search-runtime" class="tablenos">
 <table id="tbl:search-runtime">
-<caption><span>Table 4:</span> Running time in seconds for similarity search using LCA
+<caption><span>Table 5:</span> Running time in seconds for similarity search using LCA
 (<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
 indices. </caption>
 <thead>
@@ -1075,7 +1137,7 @@ indices. </caption>
 </div>
 <div id="tbl:search-memory" class="tablenos">
 <table id="tbl:search-memory">
-<caption><span>Table 5:</span> Memory consumption in megabytes for similarity search using LCA
+<caption><span>Table 6:</span> Memory consumption in megabytes for similarity search using LCA
 (<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
 indices. </caption>
 <thead>
@@ -1108,14 +1170,14 @@ indices. </caption>
 </tbody>
 </table>
 </div>
-<p>Table <a href="#tbl:search-runtime">4</a> shows running time for both indices.
+<p>Table <a href="#tbl:search-runtime">5</a> shows running time for both indices.
 For small indices (Viral and Archaea) the LCA running time is
 dominated by loading the index in memory, but for larger indices the
 cost is amortized due to the faster running times. This situation is
 clearer for the Bacteria indices, where the LCA search completes in 3
 minutes and 51 seconds, while the SBT search takes 54 minutes.</p>
 <p>When comparing memory consumption, the situation is reversed. Table
-<a href="#tbl:search-memory">5</a> shows how the LCA index consistently uses
+<a href="#tbl:search-memory">6</a> shows how the LCA index consistently uses
 twice the memory for all domains, but for larger indices like Bacteria
 it uses as much as 10 times the memory as the MHBT index for the same
 data.</p>
