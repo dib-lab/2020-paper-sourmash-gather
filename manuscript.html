@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-10-14" />
+  <meta name="dcterms.date" content="2021-10-15" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -48,8 +48,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-14" />
-  <meta name="citation_publication_date" content="2021-10-14" />
+  <meta name="dc.date" content="2021-10-15" />
+  <meta name="citation_publication_date" content="2021-10-15" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -70,9 +70,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -86,10 +86,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/6694f388b1240c219c340ba54c030d234980c3d9">dib-lab/2020-paper-sourmash-gather@6694f38</a>
-on October 14, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/41e052e7eb46fa0e1b21f7b21e3c8f055a517813">dib-lab/2020-paper-sourmash-gather@41e052e</a>
+on October 15, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -314,6 +314,49 @@ as well as the ones found by mash screen, etc. etc. The unidentified
 k-mers were all shite. Species analysis confirms etc. etc.</p>
 <p>CTB: mention correspondence with depth of sequencing, as well.</p>
 <p>CTB: add k-mer overlap statistics to table?</p>
+<h2 id="the-greedy-min-set-cov-algorithm-progressively-classifies-the-known-k-mers">The greedy min-set-cov algorithm progressively classifies the known k-mers</h2>
+<p>The approximate algorithm used above iteratively subtracts k-mers
+belonging to the genome with the highest containment count from the metagenome.
+This results in a progressive classification of the known k-mers in the
+metagenome to specific genomes. The resulting rank ordered list of genomes
+can be informative.</p>
+<p>Where reference genomes are mostly contained within the metagenome,
+typical of high-coverage mock communities or communities from which
+binned genome collections were built, high-rank matches will be
+ordered by the size of the genome (Figure XXX, top). Lower rank matches reflect
+situations where portions of reference genomes are either not
+represented in a metagenome, or there is substantial strain overlap
+between reference genomes; in the latter case, the core genome content will
+be “claimed” by the earlier match, and content specific to the strain genome
+will be represented by late matches (Figure XXX, bottom; compare …).</p>
+<p>Interestingly, the rank-ordered genome classification plot for the
+iHMP “real” metagenome with a high overall classification rate
+contains a long tail of strain remnants, while the two mock
+communities and the real oil-well community do not (Figure XYZ). For
+the mock communities this is understandable, because these communities
+were constructed from a low diversity set of known genomes. The
+difference between the iHMP and environmental metagenome
+classification curves may be because the oil-well community matches
+mainly consist of genomes recovered from this specific metagenome,
+while the iHMP community is matching to a much larger set of possible
+references (see Table <a href="#tbl:genbank-cover">1</a>, colum X).</p>
+<p>(CTB: matched plot of % genome covered by mapped reads, and ranking)</p>
+<div id="fig:gather0" class="fignos">
+<figure>
+<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by best match first for 30 genomes from the minimum set cover of the synthetic metagenome from Shakya et al., calculated with 700,000 GenBank genomes. The Y axis is labeled with the name of the genome (per NCBI), and the red circles indicates the number of remaining k-mers (estimated with Scaled MinHash) shared between each genome and the metagenome. The green x symbols indicate the total number of k-mers shared between each genome and the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
+A rank ordering by best match first for 30 genomes from the minimum set cover
+of the synthetic
+metagenome from Shakya et al., calculated with 700,000 GenBank genomes.
+The Y axis is labeled with the name of the
+genome (per NCBI), and the red circles indicates the number of
+remaining k-mers (estimated with <em>Scaled MinHash</em>) shared between each
+genome and the metagenome. The green x symbols indicate the total number of k-mers
+shared between each genome and the metagenome, including those already
+assigned at previous ranks.</figcaption>
+</figure>
+</div>
+<p>Figure <a href="#fig:gather0">2</a> shows the results of this algorithm applied to the
+synthetic metagenome from Shakya et al.</p>
 <h2 id="minimum-metagenome-covers-can-accurately-estimate-taxonomic-composition">Minimum metagenome covers can accurately estimate taxonomic composition</h2>
 <ul>
 <li>CAMI results</li>
@@ -350,20 +393,20 @@ the metagenome taxonomy.</p>
 in the section before this.)</p>
 <div id="fig:spider" class="fignos">
 <figure>
-<img src="images/spider_plot_relative.svg" alt="Figure 2: Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm." /><figcaption aria-hidden="true"><span>Figure 2:</span> Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm.</figcaption>
+<img src="images/spider_plot_relative.svg" alt="Figure 3: Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm." /><figcaption aria-hidden="true"><span>Figure 3:</span> Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm.</figcaption>
 </figure>
 </div>
 <div id="fig:ranks" class="fignos">
 <figure>
-<img src="images/ranks_by_tool.svg" alt="Figure 3: Performance per method at all major taxonomic ranks, with the shaded bands showing the standard deviation of a metric. In a and b, completeness, purity, and L1 norm error range between 0 and 1. The L1 norm error is normalized to this range and is also known as Bray-Curtis distance. The higher the completeness and purity, and the lower the L1 norm, the better the profiling performance." /><figcaption aria-hidden="true"><span>Figure 3:</span> Performance per method at all major taxonomic ranks, with the shaded bands showing the standard deviation of a metric. In <strong>a</strong> and <strong>b</strong>, completeness, purity, and L1 norm error range between 0 and 1. The L1 norm error is normalized to this range and is also known as Bray-Curtis distance. The higher the completeness and purity, and the lower the L1 norm, the better the profiling performance.</figcaption>
+<img src="images/ranks_by_tool.svg" alt="Figure 4: Performance per method at all major taxonomic ranks, with the shaded bands showing the standard deviation of a metric. In a and b, completeness, purity, and L1 norm error range between 0 and 1. The L1 norm error is normalized to this range and is also known as Bray-Curtis distance. The higher the completeness and purity, and the lower the L1 norm, the better the profiling performance." /><figcaption aria-hidden="true"><span>Figure 4:</span> Performance per method at all major taxonomic ranks, with the shaded bands showing the standard deviation of a metric. In <strong>a</strong> and <strong>b</strong>, completeness, purity, and L1 norm error range between 0 and 1. The L1 norm error is normalized to this range and is also known as Bray-Curtis distance. The higher the completeness and purity, and the lower the L1 norm, the better the profiling performance.</figcaption>
 </figure>
 </div>
 <div id="fig:scores" class="fignos">
 <figure>
-<img src="images/scores.svg" alt="Figure 4: Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks. For score calculation, all metrics were weighted equally." /><figcaption aria-hidden="true"><span>Figure 4:</span> Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks. For score calculation, all metrics were weighted equally.</figcaption>
+<img src="images/scores.svg" alt="Figure 5: Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks. For score calculation, all metrics were weighted equally." /><figcaption aria-hidden="true"><span>Figure 5:</span> Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks. For score calculation, all metrics were weighted equally.</figcaption>
 </figure>
 </div>
-<p>Figure <a href="#fig:spider">2</a>, <a href="#fig:ranks">3</a>, <a href="#fig:scores">4</a> is an updated version of Figure 6 from <span class="citation" data-cites="meyer_tutorial_2020">[<a href="#ref-meyer_tutorial_2020" role="doc-biblioref"><strong>meyer_tutorial_2020?</strong></a>]</span> including <code>sourmash</code>,
+<p>Figure <a href="#fig:spider">3</a>, <a href="#fig:ranks">4</a>, <a href="#fig:scores">5</a> is an updated version of Figure 6 from <span class="citation" data-cites="meyer_tutorial_2020">[<a href="#ref-meyer_tutorial_2020" role="doc-biblioref"><strong>meyer_tutorial_2020?</strong></a>]</span> including <code>sourmash</code>,
 comparing 10 different methods for taxonomic profiling and their characteristics at each taxonomic rank.
 While previous methods show reduced completeness,
 the ratio of taxa correctly identified in the ground truth,
@@ -500,22 +543,6 @@ be used for mapping. We therefore developed a hybrid selection and
 mapping pipeline that first rank-orders the minimum metagenome cover
 by k-mer containment and then iteratively maps reads to those
 candidate genomes.</p>
-<div id="fig:gather0" class="fignos">
-<figure>
-<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 5: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by best match first for 30 genomes from the minimum set cover of the synthetic metagenome from Shakya et al., calculated with 700,000 GenBank genomes. The Y axis is labeled with the name of the genome (per NCBI), and the red circles indicates the number of remaining k-mers (estimated with Scaled MinHash) shared between each genome and the metagenome. The green x symbols indicate the total number of k-mers shared between each genome and the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 5:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
-A rank ordering by best match first for 30 genomes from the minimum set cover
-of the synthetic
-metagenome from Shakya et al., calculated with 700,000 GenBank genomes.
-The Y axis is labeled with the name of the
-genome (per NCBI), and the red circles indicates the number of
-remaining k-mers (estimated with <em>Scaled MinHash</em>) shared between each
-genome and the metagenome. The green x symbols indicate the total number of k-mers
-shared between each genome and the metagenome, including those already
-assigned at previous ranks.</figcaption>
-</figure>
-</div>
-<p>Figure <a href="#fig:gather0">5</a> shows the results of this algorithm applied to the
-synthetic metagenome from Shakya et al.</p>
 <p>CTB: add mapping to this figure.</p>
 <p>Overlapping portions of genomes are identified like so (track down the
 overlaps!)</p>
@@ -959,7 +986,7 @@ on-the-fly.</p>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
 <div id="ref-AX7zdKKw" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-22) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
+<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-23) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
 </div>
 <div id="ref-jxLvWK4U" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">2. </div><div class="csl-right-inline"><strong>IMPROVING MIN HASH VIA THE CONTAINMENT INDEX WITH APPLICATIONS TO METAGENOMIC ANALYSIS</strong> <div class="csl-block">David Koslicki, Hooman Zabeti</div> <em>Cold Spring Harbor Laboratory</em> (2017-09-04) <a href="https://doi.org/ghvn6z">https://doi.org/ghvn6z</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/184150">10.1101/184150</a></div></div>

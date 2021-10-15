@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-10-14'
+date-meta: '2021-10-15'
 author-meta:
 - Luiz Irber
 - C. Titus Brown
@@ -18,8 +18,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-14" />
-  <meta name="citation_publication_date" content="2021-10-14" />
+  <meta name="dc.date" content="2021-10-15" />
+  <meta name="citation_publication_date" content="2021-10-15" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,10 +64,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/6694f388b1240c219c340ba54c030d234980c3d9/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@6694f38](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/6694f388b1240c219c340ba54c030d234980c3d9)
-on October 14, 2021.
+from [dib-lab/2020-paper-sourmash-gather@41e052e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/41e052e7eb46fa0e1b21f7b21e3c8f055a517813)
+on October 15, 2021.
 </em></small>
 
 ## Authors
@@ -308,6 +308,54 @@ CTB: mention correspondence with depth of sequencing, as well.
 
 CTB: add k-mer overlap statistics to table?
 
+## The greedy min-set-cov algorithm progressively classifies the known k-mers
+
+The approximate algorithm used above iteratively subtracts k-mers
+belonging to the genome with the highest containment count from the metagenome.
+This results in a progressive classification of the known k-mers in the
+metagenome to specific genomes. The resulting rank ordered list of genomes
+can be informative.
+
+Where reference genomes are mostly contained within the metagenome,
+typical of high-coverage mock communities or communities from which
+binned genome collections were built, high-rank matches will be
+ordered by the size of the genome (Figure XXX, top). Lower rank matches reflect
+situations where portions of reference genomes are either not
+represented in a metagenome, or there is substantial strain overlap
+between reference genomes; in the latter case, the core genome content will
+be "claimed" by the earlier match, and content specific to the strain genome
+will be represented by late matches (Figure XXX, bottom; compare ...).
+
+Interestingly, the rank-ordered genome classification plot for the
+iHMP "real" metagenome with a high overall classification rate
+contains a long tail of strain remnants, while the two mock
+communities and the real oil-well community do not (Figure XYZ).  For
+the mock communities this is understandable, because these communities
+were constructed from a low diversity set of known genomes. The
+difference between the iHMP and environmental metagenome
+classification curves may be because the oil-well community matches
+mainly consist of genomes recovered from this specific metagenome,
+while the iHMP community is matching to a much larger set of possible
+references (see Table @tbl:genbank-cover, colum X).
+
+(CTB: matched plot of % genome covered by mapped reads, and ranking)
+
+![
+**K-mer decomposition of a metagenome into constituent genomes.**
+A rank ordering by best match first for 30 genomes from the minimum set cover
+of the synthetic
+metagenome from Shakya et al., calculated with 700,000 GenBank genomes.
+The Y axis is labeled with the name of the
+genome (per NCBI), and the red circles indicates the number of
+remaining k-mers (estimated with _Scaled MinHash_) shared between each
+genome and the metagenome. The green x symbols indicate the total number of k-mers
+shared between each genome and the metagenome, including those already
+assigned at previous ranks.
+](images/gathergram-SRR606249.hashes.svg "gather hash results for podar"){#fig:gather0}
+
+Figure @fig:gather0 shows the results of this algorithm applied to the
+synthetic metagenome from Shakya et al.
+
 ## Minimum metagenome covers can accurately estimate taxonomic composition
 
 * CAMI results
@@ -445,22 +493,6 @@ be used for mapping.  We therefore developed a hybrid selection and
 mapping pipeline that first rank-orders the minimum metagenome cover
 by k-mer containment and then iteratively maps reads to those
 candidate genomes.
-
-![
-**K-mer decomposition of a metagenome into constituent genomes.**
-A rank ordering by best match first for 30 genomes from the minimum set cover
-of the synthetic
-metagenome from Shakya et al., calculated with 700,000 GenBank genomes.
-The Y axis is labeled with the name of the
-genome (per NCBI), and the red circles indicates the number of
-remaining k-mers (estimated with _Scaled MinHash_) shared between each
-genome and the metagenome. The green x symbols indicate the total number of k-mers
-shared between each genome and the metagenome, including those already
-assigned at previous ranks.
-](images/gathergram-SRR606249.hashes.svg "gather hash results for podar"){#fig:gather0}
-
-Figure @fig:gather0 shows the results of this algorithm applied to the
-synthetic metagenome from Shakya et al.
 
 CTB: add mapping to this figure.
 
