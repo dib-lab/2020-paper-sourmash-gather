@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-10-15'
+date-meta: '2021-10-16'
 author-meta:
 - Luiz Irber
 - C. Titus Brown
@@ -18,8 +18,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-15" />
-  <meta name="citation_publication_date" content="2021-10-15" />
+  <meta name="dc.date" content="2021-10-16" />
+  <meta name="citation_publication_date" content="2021-10-16" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,10 +64,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/41e052e7eb46fa0e1b21f7b21e3c8f055a517813/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@41e052e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/41e052e7eb46fa0e1b21f7b21e3c8f055a517813)
-on October 15, 2021.
+from [dib-lab/2020-paper-sourmash-gather@d2fe359](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d2fe3598adb283869f2d392663364cbb59d89b55)
+on October 16, 2021.
 </em></small>
 
 ## Authors
@@ -310,35 +310,24 @@ CTB: add k-mer overlap statistics to table?
 
 ## The greedy min-set-cov algorithm progressively classifies the known k-mers
 
-The approximate algorithm used above iteratively subtracts k-mers
-belonging to the genome with the highest containment count from the metagenome.
-This results in a progressive classification of the known k-mers in the
-metagenome to specific genomes. The resulting rank ordered list of genomes
-can be informative.
+The greedy algorithm we use to calculate the metagenome cover
+iteratively subtracts k-mers belonging to the genome that has the
+highest containment count from the metagenome.  This results in a
+progressive classification of the known k-mers in the metagenome to
+specific genomes. The resulting rank ordered list of genomes can be
+informative.
 
-Where reference genomes are mostly contained within the metagenome,
-typical of high-coverage mock communities or communities from which
-binned genome collections were built, high-rank matches will be
-ordered by the size of the genome (Figure XXX, top). Lower rank matches reflect
-situations where portions of reference genomes are either not
-represented in a metagenome, or there is substantial strain overlap
-between reference genomes; in the latter case, the core genome content will
-be "claimed" by the earlier match, and content specific to the strain genome
-will be represented by late matches (Figure XXX, bottom; compare ...).
-
-Interestingly, the rank-ordered genome classification plot for the
-iHMP "real" metagenome with a high overall classification rate
-contains a long tail of strain remnants, while the two mock
-communities and the real oil-well community do not (Figure XYZ).  For
-the mock communities this is understandable, because these communities
-were constructed from a low diversity set of known genomes. The
-difference between the iHMP and environmental metagenome
-classification curves may be because the oil-well community matches
-mainly consist of genomes recovered from this specific metagenome,
-while the iHMP community is matching to a much larger set of possible
-references (see Table @tbl:genbank-cover, colum X).
-
-(CTB: matched plot of % genome covered by mapped reads, and ranking)
+In Figure @fig:gather0, we show the decomposition of the mock
+metagenome from Shakya et al., 2014, into constitutent genome matches.
+The high rank (early) matches reflect large and/or mostly-covered
+genomes with high containment, while later matches reflect smaller
+genomes, lower-covered genomes, and/or genomes with substantial
+overlap with earlier matches. In the case where there are overlaps
+between genomes, common genome content will be "claimed" by higher
+rank matches and only content specific to the later genome will be
+represented in the later match (Figure @fig:gather0, bottom; compare
+...; Also compare green and red).  (CTB: matched plot of % genome
+covered by mapped reads, and ranking)
 
 ![
 **K-mer decomposition of a metagenome into constituent genomes.**
@@ -352,9 +341,6 @@ genome and the metagenome. The green x symbols indicate the total number of k-me
 shared between each genome and the metagenome, including those already
 assigned at previous ranks.
 ](images/gathergram-SRR606249.hashes.svg "gather hash results for podar"){#fig:gather0}
-
-Figure @fig:gather0 shows the results of this algorithm applied to the
-synthetic metagenome from Shakya et al.
 
 ## Minimum metagenome covers can accurately estimate taxonomic composition
 
@@ -383,31 +369,31 @@ Since min-set-cov yields only a collection of genomes rather than a
 species list, we developed an approach for extracting a taxonomic
 profile from the minimum set cover. We implemented the following
 procedure for taxonomic profiling: first, we take the known species
-designation for each genome from the NCBI taxonomy. Then, we use
-the rank-ordering from the greedy min-set-cov decomposition algorithm to
-calculate the fraction of the genome remaining in the metagenome after
-k-mers belonging to higher-rank genomes have been removed. We use this
-fraction to weight the contribution of the species designation towards
-the metagenome taxonomy.
-
-(CTB: maybe we need the rank-order decomposition based on k-mers to be
-in the section before this.)
+designation for each genome from the NCBI taxonomy. Then, for each
+genome match, we calculate the fraction of the genome remaining in the
+metagenome after k-mers belonging to higher-rank genomes have been
+removed. We use this fraction to weight the contribution of the
+genome's species designation towards the metagenome taxonomy. This
+produce an estimate of that species' contribution that is normalized
+by the genome size.
 
 ![
 Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm.
 ](images/spider_plot_relative.svg){#fig:spider}
 
+<!--
 ![
 Performance per method at all major taxonomic ranks, with the shaded bands showing the standard deviation of a metric.  In **a** and **b**, completeness, purity, and L1 norm error range between 0 and 1.  The L1 norm error is normalized to this range and is also known as Bray-Curtis distance.  The higher the completeness and purity, and the lower the L1 norm, the better the profiling performance.
 ](images/ranks_by_tool.svg){#fig:ranks}
+-->
 
 ![
 Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks.  For score calculation, all metrics were weighted equally.
 ](images/scores.svg){#fig:scores}
 
 
-Figure @fig:spider, @fig:ranks, @fig:scores is an updated version of Figure 6 from [@meyer_tutorial_2020] including `sourmash`,
-comparing 10 different methods for taxonomic profiling and their characteristics at each taxonomic rank. 
+In Figures @fig:spider and @fig:scores we show an updated version of Figure 6 from [@meyer_tutorial_2020] that includes our method, implemented in the `sourmash` software. Here we
+compare 10 different methods for taxonomic profiling and their characteristics at each taxonomic rank. 
 While previous methods show reduced completeness,
 the ratio of taxa correctly identified in the ground truth,
 below the genus level,
@@ -421,6 +407,7 @@ and 97\% for unfiltered results.
 a specific taxonomic rank),
 the highest number of true positives and the lowest number of false positives.
 
+<!--
 | Taxonomic binner                | Time (hh:mm) | Memory (kbytes) |
 |:--------------------------------|-------------:|----------------:|
 | MetaPhlAn 2.9.21                | 18:44        | 5,139,172       |
@@ -473,10 +460,11 @@ sketches are usually not well supported for containment estimation,
 since viral sequences require small scaled values to have enough
 hashes to be reliable.
 
+-->
+
 Notes:
 
 * private database, private taxonomies are easily supported without reindexing.
-
 
 ## Minimum metagenome covers provide representative genomes for mapping
 
