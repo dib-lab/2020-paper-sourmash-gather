@@ -1,4 +1,5 @@
 aggregative
+alg
 AMQ
 APIs
 Archaea
@@ -24,8 +25,7 @@ Durbin’s
 eqn
 evolutionarily
 gbio
-genbank
-genoes
+Genbank
 genomic
 gnavus
 GTDB
@@ -37,7 +37,7 @@ Irber
 iteratively
 Jaccard
 Koslicki
-Kraken
+kraken
 LCA
 LINS
 lossy
