@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6a046fc08135ed0450ea5a71be4aa0f87a63cc65/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6a046fc08135ed0450ea5a71be4aa0f87a63cc65/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6a046fc08135ed0450ea5a71be4aa0f87a63cc65/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,9 +64,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d2fe3598adb283869f2d392663364cbb59d89b55/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/6a046fc08135ed0450ea5a71be4aa0f87a63cc65/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@d2fe359](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d2fe3598adb283869f2d392663364cbb59d89b55)
+from [dib-lab/2020-paper-sourmash-gather@6a046fc](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/6a046fc08135ed0450ea5a71be4aa0f87a63cc65)
 on October 16, 2021.
 </em></small>
 
@@ -475,45 +475,33 @@ works also. Or, what if the end game _is_ mapping?*
 
 Mapping metagenome reads to representative genomes is an intermediate
 goal in many microbiome analysis pipelines, but mapping approaches
-struggle with large, redundant databases. One use case for a minimum
+struggle with large, redundant databases.  One use case for a minimum
 metagenome cover is to select a small set of representative genomes to
 be used for mapping.  We therefore developed a hybrid selection and
-mapping pipeline that first rank-orders the minimum metagenome cover
-by k-mer containment and then iteratively maps reads to those
-candidate genomes.
+mapping pipeline that uses the rank-ordered min-set-cov results to
+iteratively map reads to candidate genomes.  Importantly, reads are
+assigned only to the highest-ranked genome to which they map.
 
-CTB: add mapping to this figure.
-
-Overlapping portions of genomes are identified like so (track down the
+CTB: Overlapping portions of genomes are identified like so (track down the
 overlaps!)
 
-Overlapping portions of genomes are identified. (Statistics of # k-mers, etc?)
+CTB: Overlapping portions of genomes are identified. (Statistics of # k-mers, etc?)
 
-TODO:
-
-* Provide summaries of % k-mers identified/matched, etc.
-* CTB: do we want to do this with all k-mers, not just scaled minhash? Or not. ralstonia or something? (the one taylor suggested.)
+CTB: do we want to do this with all k-mers, not just scaled minhash? Or not. r gnavus or something? (the one taylor suggested.)
   
-K-mers have been widely used to approximate mapping (citations).  To
-evaluate the accuracy of our k-mer based min-set-cov approach, we
-identified the ranked set of matching genomes for each of three
-metagenomes, and then mapped the metagenome reads to the matching
-genomes with minimap.  We then identified reads that mapped to
-multiple genomes and assigned them to the best-ranked matching
-genome. This can be viewed as a mapping-based version of min-set-cov.
-
 (CTB note: could also calculate this with mapping, but not against ALL
 genomes, only against those already found with gather. This highlights the
 utility of k-mers, since the mapping based approach could not be used
 against all genomes.)
 
-Figure @fig:gather shows that mapping results generally correspond to gather
-results.  However, they match more closely for synthetic communities
-than for real communities, especially as gather rank increases.  This
-is likely because in synthetic communities the reference genomes are
-closer to the actual content of the metagenome, while in real
-metagenomes we are mapping to imperfect references.
-CTB: do this for all four?
+Figure @fig:gather shows that for the mock community from Shakya et
+al., the k-mer based estimates of metagenome composition align closely
+with the number of bases covered by mapped reads.  (...) This suggests
+that the k-mer based min-set-cov approach effectively selects reference
+genomes for metagenome read mapping, when closely matched reference
+genomes are available.
+
+CTB: do this for all four metagenomes?
 
 In particular, both the remnant k-mer and the remnant mappings
 decrease substantially with increased gather rank.  This is because at
