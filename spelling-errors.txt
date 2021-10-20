@@ -25,7 +25,7 @@ Durbin’s
 eqn
 evolutionarily
 gbio
-Genbank
+genbank
 genomic
 gnavus
 GTDB
@@ -37,8 +37,8 @@ Irber
 iteratively
 Jaccard
 Koslicki
-kraken
-LCA
+Kraken
+lca
 LINS
 lossy
 Luiz

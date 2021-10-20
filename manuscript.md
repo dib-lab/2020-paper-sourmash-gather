@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-10-16'
+date-meta: '2021-10-20'
 author-meta:
 - Luiz Irber
 - C. Titus Brown
@@ -18,8 +18,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-16" />
-  <meta name="citation_publication_date" content="2021-10-16" />
+  <meta name="dc.date" content="2021-10-20" />
+  <meta name="citation_publication_date" content="2021-10-20" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1c391f95a8b71ce82757024538292306f667610/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1c391f95a8b71ce82757024538292306f667610/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1c391f95a8b71ce82757024538292306f667610/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,10 +64,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1c391f95a8b71ce82757024538292306f667610/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@a1c391f](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a1c391f95a8b71ce82757024538292306f667610)
-on October 16, 2021.
+from [dib-lab/2020-paper-sourmash-gather@e274fba](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e274fbab3aa59e6b9e2b43100abbd13301773c4f)
+on October 20, 2021.
 </em></small>
 
 ## Authors
@@ -206,31 +206,24 @@ used in several methods evaluations
 differences from containment estimate to ground truth (exact).**
 Each method is evaluated for $k=\{21,31,51\}$,
 except for `Mash` with $k=51$, which is unsupported.
-**A**: Using all 68 reference genomes found in previous articles.
-**B**: Excluding low coverage genomes identified in previous articles.
 ](images/containment.svg "Containment estimation between smol, CMash, and mash screen"){#fig:containment}
 
+Figure @fig:containment shows results with low-coverage and
+contaminant genomes (as described in [@awad_evaluating_2017] and
+[@ondov_mash_2019]) removed from the database.
 All methods are within 1\% of the exact containment on average (Figure
-@fig:containment A), with `CMash` consistently underestimating
+@fig:containment), with `CMash` consistently underestimating
 the containment for large $k$ and overestimating for small $k$.  `Mash
 Screen` with $n=10000$ has the smallest difference to ground truth for
 $k=\{21, 31\}$, followed by `smol` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
 
-Figure @fig:containment B shows results with low-coverage and
-contaminant genomes (as described in [@awad_evaluating_2017] and
-[@ondov_mash_2019]) removed from the database.  The number of outliers
-is greatly reduced, with most methods within 1\% absolute difference
-to the ground truth.  `CMash` still has some outliers with up to 8\%
-difference to the ground truth.
-
 CTB todo:
-* just use (B) benchmark
+
 * use sourmash, not smol
 
 CTB questions:
 
-* should we _just_ use (B) benchmark?
 * should we add sketch sizes in here more explicitly? e.g. number of hashes kept?
 * compares well with others
 * How much is missed figure; Poisson calculations? => appendix?
@@ -255,16 +248,18 @@ the metagenome (ref alg above).  This results in a progressive
 classification of the known k-mers in the metagenome to specific
 genomes, in rank order of number of contained hashes.
 
-In Figure @fig:gather0, we show an example decomposition of the mock
+In Figure @fig:gather0, we show such an iterative decomposition of the mock
 metagenome from Shakya et al., 2014, into constituent genome matches.
 The high rank (early) matches reflect large and/or mostly-covered
 genomes with high containment, while later matches reflect smaller
 genomes, lower-covered genomes, and/or genomes with substantial
-overlap with earlier matches. In the case where there are overlaps
-between genomes, common genome content will be "claimed" by higher
+overlap with earlier matches. Where there are overlaps
+between genomes, common genome content is "claimed" by higher
 rank matches and only content specific to the later genome will be
 represented in the later match (Figure @fig:gather0, bottom; compare
-...; Also compare green and red).  (CTB: matched plot of % genome
+...; Also compare green and red).
+
+(CTB: matched plot of % genome
 covered by mapped reads, and ranking)
 
 ![
