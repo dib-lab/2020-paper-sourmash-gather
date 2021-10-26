@@ -7,13 +7,14 @@ Archaea
 archaeal
 Asssessment
 awad
+baltica
 benchmarking
 CAMI
 CAMISIM
 cardinalities
 CMash
 combinatorial
-compositional
+Compositional
 comptuationally
 constitutent
 cov
@@ -26,7 +27,7 @@ Durbin’s
 eqn
 evolutionarily
 gbio
-genbank
+Genbank
 genomic
 gnavus
 GTDB
@@ -39,7 +40,7 @@ iteratively
 Jaccard
 Koslicki
 Kraken
-lca
+LCA
 LINS
 lossy
 Luiz
@@ -78,6 +79,7 @@ seciotn
 sgc
 Shakya
 sherine
+Shewanella
 shite
 smol
 sourmash
