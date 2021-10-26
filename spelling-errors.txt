@@ -55,7 +55,7 @@ metagenomics
 MHBT
 MHBTs
 microbiome
-minhash
+MinHash
 ModHash
 modimizer
 natively
