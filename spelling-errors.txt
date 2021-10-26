@@ -14,7 +14,7 @@ CAMISIM
 cardinalities
 CMash
 combinatorial
-Compositional
+compositional
 comptuationally
 constitutent
 cov
@@ -27,7 +27,7 @@ Durbin’s
 eqn
 evolutionarily
 gbio
-Genbank
+genbank
 genomic
 gnavus
 GTDB
@@ -40,7 +40,7 @@ iteratively
 Jaccard
 Koslicki
 Kraken
-LCA
+lca
 LINS
 lossy
 Luiz

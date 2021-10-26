@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4484a3ec716dbdbbddf73a03fc15d363e6bdcdb6/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4484a3ec716dbdbbddf73a03fc15d363e6bdcdb6/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4484a3ec716dbdbbddf73a03fc15d363e6bdcdb6/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d400e581763eb115d1b417128ea2d71a52178148/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d400e581763eb115d1b417128ea2d71a52178148/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d400e581763eb115d1b417128ea2d71a52178148/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,9 +64,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/4484a3ec716dbdbbddf73a03fc15d363e6bdcdb6/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d400e581763eb115d1b417128ea2d71a52178148/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@4484a3e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/4484a3ec716dbdbbddf73a03fc15d363e6bdcdb6)
+from [dib-lab/2020-paper-sourmash-gather@d400e58](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d400e581763eb115d1b417128ea2d71a52178148)
 on October 26, 2021.
 </em></small>
 
@@ -259,9 +259,11 @@ rank matches and only k-mer content specific to the later genome is
 used to identify the lower rank matches. For example, two strains of
 *Shewanella baltica* present in the mock metagenome in Figure
 @fig:gather0 have appproximately 50% overlap in k-mer content, and
-these shared k-mers are claimed by *Shewanella baltica* OS223.
-(compare *Shewanella baltica* OS223, rank 8, with *Shewanella
-baltica* OS185, rank 33).
+these shared k-mers are claimed by *Shewanella baltica* OS223 (compare
+*Shewanella baltica* OS223, rank 8, with *Shewanella baltica* OS185,
+rank 33; the difference between the red circles and green triangles
+for *S. baltica* OS185 represents the k-mers claimed by *S. baltica
+OS223).
 
 For this mock metagenome, 205m (54.8%) of 375m k-mers were found in
 genbank.  The remaining 169m (45.2%) k-mers had no matches, and
