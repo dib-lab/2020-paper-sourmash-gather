@@ -1,6 +1,361 @@
 [
   {
     "type": "article-journal",
+    "id": "lsbnKJf8",
+    "author": [
+      {
+        "family": "Sczyrba",
+        "given": "Alexander"
+      },
+      {
+        "family": "Hofmann",
+        "given": "Peter"
+      },
+      {
+        "family": "Belmann",
+        "given": "Peter"
+      },
+      {
+        "family": "Koslicki",
+        "given": "David"
+      },
+      {
+        "family": "Janssen",
+        "given": "Stefan"
+      },
+      {
+        "family": "Dröge",
+        "given": "Johannes"
+      },
+      {
+        "family": "Gregor",
+        "given": "Ivan"
+      },
+      {
+        "family": "Majda",
+        "given": "Stephan"
+      },
+      {
+        "family": "Fiedler",
+        "given": "Jessika"
+      },
+      {
+        "family": "Dahms",
+        "given": "Eik"
+      },
+      {
+        "family": "Bremges",
+        "given": "Andreas"
+      },
+      {
+        "family": "Fritz",
+        "given": "Adrian"
+      },
+      {
+        "family": "Garrido-Oter",
+        "given": "Ruben"
+      },
+      {
+        "family": "Jørgensen",
+        "given": "Tue Sparholt"
+      },
+      {
+        "family": "Shapiro",
+        "given": "Nicole"
+      },
+      {
+        "family": "Blood",
+        "given": "Philip D"
+      },
+      {
+        "family": "Gurevich",
+        "given": "Alexey"
+      },
+      {
+        "family": "Bai",
+        "given": "Yang"
+      },
+      {
+        "family": "Turaev",
+        "given": "Dmitrij"
+      },
+      {
+        "family": "DeMaere",
+        "given": "Matthew Z"
+      },
+      {
+        "family": "Chikhi",
+        "given": "Rayan"
+      },
+      {
+        "family": "Nagarajan",
+        "given": "Niranjan"
+      },
+      {
+        "family": "Quince",
+        "given": "Christopher"
+      },
+      {
+        "family": "Meyer",
+        "given": "Fernando"
+      },
+      {
+        "family": "Balvočiūtė",
+        "given": "Monika"
+      },
+      {
+        "family": "Hansen",
+        "given": "Lars Hestbjerg"
+      },
+      {
+        "family": "Sørensen",
+        "given": "Søren J"
+      },
+      {
+        "family": "Chia",
+        "given": "Burton K H"
+      },
+      {
+        "family": "Denis",
+        "given": "Bertrand"
+      },
+      {
+        "family": "Froula",
+        "given": "Jeff L"
+      },
+      {
+        "family": "Wang",
+        "given": "Zhong"
+      },
+      {
+        "family": "Egan",
+        "given": "Robert"
+      },
+      {
+        "family": "Don Kang",
+        "given": "Dongwan"
+      },
+      {
+        "family": "Cook",
+        "given": "Jeffrey J"
+      },
+      {
+        "family": "Deltel",
+        "given": "Charles"
+      },
+      {
+        "family": "Beckstette",
+        "given": "Michael"
+      },
+      {
+        "family": "Lemaitre",
+        "given": "Claire"
+      },
+      {
+        "family": "Peterlongo",
+        "given": "Pierre"
+      },
+      {
+        "family": "Rizk",
+        "given": "Guillaume"
+      },
+      {
+        "family": "Lavenier",
+        "given": "Dominique"
+      },
+      {
+        "family": "Wu",
+        "given": "Yu-Wei"
+      },
+      {
+        "family": "Singer",
+        "given": "Steven W"
+      },
+      {
+        "family": "Jain",
+        "given": "Chirag"
+      },
+      {
+        "family": "Strous",
+        "given": "Marc"
+      },
+      {
+        "family": "Klingenberg",
+        "given": "Heiner"
+      },
+      {
+        "family": "Meinicke",
+        "given": "Peter"
+      },
+      {
+        "family": "Barton",
+        "given": "Michael D"
+      },
+      {
+        "family": "Lingner",
+        "given": "Thomas"
+      },
+      {
+        "family": "Lin",
+        "given": "Hsin-Hung"
+      },
+      {
+        "family": "Liao",
+        "given": "Yu-Chieh"
+      },
+      {
+        "family": "Silva",
+        "given": "Genivaldo Gueiros Z"
+      },
+      {
+        "family": "Cuevas",
+        "given": "Daniel A"
+      },
+      {
+        "family": "Edwards",
+        "given": "Robert A"
+      },
+      {
+        "family": "Saha",
+        "given": "Surya"
+      },
+      {
+        "family": "Piro",
+        "given": "Vitor C"
+      },
+      {
+        "family": "Renard",
+        "given": "Bernhard Y"
+      },
+      {
+        "family": "Pop",
+        "given": "Mihai"
+      },
+      {
+        "family": "Klenk",
+        "given": "Hans-Peter"
+      },
+      {
+        "family": "Göker",
+        "given": "Markus"
+      },
+      {
+        "family": "Kyrpides",
+        "given": "Nikos C"
+      },
+      {
+        "family": "Woyke",
+        "given": "Tanja"
+      },
+      {
+        "family": "Vorholt",
+        "given": "Julia A"
+      },
+      {
+        "family": "Schulze-Lefert",
+        "given": "Paul"
+      },
+      {
+        "family": "Rubin",
+        "given": "Edward M"
+      },
+      {
+        "family": "Darling",
+        "given": "Aaron E"
+      },
+      {
+        "family": "Rattei",
+        "given": "Thomas"
+      },
+      {
+        "family": "McHardy",
+        "given": "Alice C"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          10,
+          2
+        ]
+      ]
+    },
+    "container-title": "Nature Methods",
+    "DOI": "10.1038/nmeth.4458",
+    "volume": "14",
+    "issue": "11",
+    "page": "1063-1071",
+    "publisher": "Springer Science and Business Media LLC",
+    "title": "Critical Assessment of Metagenome Interpretation—a benchmark of metagenomics software",
+    "URL": "https://doi.org/gbzspt",
+    "PMCID": "PMC5903868",
+    "PMID": "28967888",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1038/nmeth.4458"
+  },
+  {
+    "type": "article-journal",
+    "id": "hWQhTndz",
+    "author": [
+      {
+        "family": "Meyer",
+        "given": "Fernando"
+      },
+      {
+        "family": "Lesker",
+        "given": "Till-Robin"
+      },
+      {
+        "family": "Koslicki",
+        "given": "David"
+      },
+      {
+        "family": "Fritz",
+        "given": "Adrian"
+      },
+      {
+        "family": "Gurevich",
+        "given": "Alexey"
+      },
+      {
+        "family": "Darling",
+        "given": "Aaron E."
+      },
+      {
+        "family": "Sczyrba",
+        "given": "Alexander"
+      },
+      {
+        "family": "Bremges",
+        "given": "Andreas"
+      },
+      {
+        "family": "McHardy",
+        "given": "Alice C."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          3,
+          1
+        ]
+      ]
+    },
+    "container-title": "Nature Protocols",
+    "DOI": "10.1038/s41596-020-00480-3",
+    "volume": "16",
+    "issue": "4",
+    "page": "1785-1801",
+    "publisher": "Springer Science and Business Media LLC",
+    "title": "Tutorial: assessing metagenomics software with the CAMI benchmarking toolkit",
+    "URL": "https://doi.org/gh77rh",
+    "PMID": "33649565",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1038/s41596-020-00480-3"
+  },
+  {
+    "type": "article-journal",
     "id": "TmjXG9kb",
     "author": [
       {
@@ -166,7 +521,7 @@
         [
           2002,
           11,
-          23
+          22
         ]
       ]
     },
@@ -327,7 +682,7 @@
         [
           "2021",
           10,
-          20
+          26
         ]
       ]
     },

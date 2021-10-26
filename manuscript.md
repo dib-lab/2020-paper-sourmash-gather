@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-10-20'
+date-meta: '2021-10-26'
 author-meta:
 - Luiz Irber
 - C. Titus Brown
@@ -18,8 +18,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-20" />
-  <meta name="citation_publication_date" content="2021-10-20" />
+  <meta name="dc.date" content="2021-10-26" />
+  <meta name="citation_publication_date" content="2021-10-26" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2f6371a93ac59fd50ce35f3a4533c10a48047613/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2f6371a93ac59fd50ce35f3a4533c10a48047613/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2f6371a93ac59fd50ce35f3a4533c10a48047613/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,10 +64,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/e274fbab3aa59e6b9e2b43100abbd13301773c4f/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/2f6371a93ac59fd50ce35f3a4533c10a48047613/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@e274fba](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e274fbab3aa59e6b9e2b43100abbd13301773c4f)
-on October 20, 2021.
+from [dib-lab/2020-paper-sourmash-gather@2f6371a](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/2f6371a93ac59fd50ce35f3a4533c10a48047613)
+on October 26, 2021.
 </em></small>
 
 ## Authors
@@ -248,40 +248,54 @@ the metagenome (ref alg above).  This results in a progressive
 classification of the known k-mers in the metagenome to specific
 genomes, in rank order of number of contained hashes.
 
-In Figure @fig:gather0, we show such an iterative decomposition of the mock
-metagenome from Shakya et al., 2014, into constituent genome matches.
-The high rank (early) matches reflect large and/or mostly-covered
-genomes with high containment, while later matches reflect smaller
-genomes, lower-covered genomes, and/or genomes with substantial
-overlap with earlier matches. Where there are overlaps
-between genomes, common genome content is "claimed" by higher
-rank matches and only content specific to the later genome will be
-represented in the later match (Figure @fig:gather0, bottom; compare
-...; Also compare green and red).
+In Figure @fig:gather0, we show the results of this iterative
+decomposition of the mock metagenome from Shakya et al., 2014, into
+constituent genome matches.  The high rank (early) matches reflect
+large and/or mostly-covered genomes with high containment, while later
+matches reflect smaller genomes, lower-covered genomes, and/or genomes
+with substantial overlap with earlier matches. Where there are
+overlaps between genomes, common genome content is "claimed" by higher
+rank matches and only content specific to the later genome is
+represented in lower rank matches. For example, two strains of {\em
+Shewanella baltica} present in the mock metagenome in Figure
+@fig:gather0 have appproximately 50% overlap in k-mer content, and
+these shared k-mers are claimed by {\em Shewanella baltica} OS223.
+(compare {\em Shewanella baltica} OS223, rank 8, with {\em Shewanella
+baltica,} OS185, rank 33).
 
-(CTB: matched plot of % genome
-covered by mapped reads, and ranking)
+For this mock metagenome, 205m (54.8%) of 375m k-mers were found in
+genbank.  The remaining 169m (45.2%) k-mers had no matches, and
+represent either error k-mers from sequencing or unknown k-mers from
+real community members.
 
 ![
 **K-mer decomposition of a metagenome into constituent genomes.**
-A rank ordering by best match first for 30 genomes from the minimum set cover
-of the synthetic
-metagenome from Shakya et al., calculated with 700,000 GenBank genomes.
-The Y axis is labeled with the name of the
-genome (per NCBI), and the red circles indicates the number of
-remaining k-mers (estimated with _Scaled MinHash_) shared between each
-genome and the metagenome. The green x symbols indicate the total number of k-mers
-shared between each genome and the metagenome, including those already
-assigned at previous ranks.
-](images/gathergram-SRR606249.hashes.svg "gather hash results for podar"){#fig:gather0}
+
+A rank ordering for the first 36 genomes from the minimum set cover
+of the synthetic metagenome from Shakya et al., calculated with 700,000
+GenBank genomes. The Y axis is labeled with the NCBI-designed name of the
+genome.
+
+In the left plot, the X axis represents the estimated number of k-mers shared
+between each genome and the metagenome. The red circles indicate the number
+of remaining k-mers at that rank, while the green triangle symbols indicate
+the total number of k-mers, including those already assigned at previous ranks.
+
+In the right plot, the X axis represents the estimated k-mer coverage of that
+genome.  The red circles indicate the coverage with the remaining k-mers at
+that rank, while the green triangle symbols indicate total coverage with all
+k-mers in the metagenome, including those already assigned at previous ranks.
+
+](images/gathergram-SRR606249.hashes.svg "minimum set cover for podar"){#fig:gather0}
 
 ## Minimum metagenome covers can accurately estimate taxonomic composition
 
 We evaluated the accuracy of min-set-cov for metagenome decomposition
 by using benchmarks from the Critical Asssessment of Metagenome
-Interpretation (CAMI) [@sczyrba_critical_2017], a community-driven
+Interpretation (CAMI) [@doi:10.1038/nmeth.4458], a community-driven
 initiative for reproducibly benchmarking metagenomic methods.  We used
-the mouse gut metagenome dataset [@meyer_tutorial_2020], in which a simulated
+the mouse gut metagenome dataset [@doi:10.1038/s41596-020-00480-3],
+in which a simulated
 mouse gut metagenome (_MGM_) was derived from 791 bacterial and
 archaeal genomes,
 representing 8 phyla,
@@ -294,18 +308,19 @@ and 549 species.
 with 91.8 genomes present on each sample on average.
 Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
+(CTB: check citations / content of latest actual CAMI pub.)
 
 Since min-set-cov yields only a collection of genomes rather than a
-species list, we developed an approach for extracting a taxonomic
-profile from the minimum set cover. We implemented the following
-procedure for taxonomic profiling: first, we take the known species
-designation for each genome from the NCBI taxonomy. Then, for each
-genome match, we calculate the fraction of the genome remaining in the
+species list, we implemented the following procedure for generating a
+taxonomic profile for a given metagenome cover: for each genome match,
+we use the species designation in the NCBI taxonomy for that
+genome. Then, we calculate the fraction of the genome remaining in the
 metagenome after k-mers belonging to higher-rank genomes have been
-removed. We use this fraction to weight the contribution of the
-genome's species designation towards the metagenome taxonomy. This
-produce an estimate of that species' contribution that is normalized
-by the genome size.
+removed (red circles in @fig:gather0 (a)). We use this fraction to
+weight the contribution of the genome's species designation towards
+the metagenome taxonomy. This produces an estimate of that species'
+taxonomic contribution to the metagenome, normalized by the genome
+size.
 
 ![
 Comparison per taxonomic rank of methods in terms of completeness, purity (1% filtered), and L1 norm.

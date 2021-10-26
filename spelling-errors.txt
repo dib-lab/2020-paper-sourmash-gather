@@ -2,6 +2,7 @@ aggregative
 alg
 AMQ
 APIs
+appproximately
 Archaea
 archaeal
 Asssessment
@@ -37,7 +38,7 @@ Irber
 iteratively
 Jaccard
 Koslicki
-Kraken
+kraken
 lca
 LINS
 lossy
@@ -54,7 +55,7 @@ metagenomics
 MHBT
 MHBTs
 microbiome
-MinHash
+minhash
 ModHash
 modimizer
 natively
