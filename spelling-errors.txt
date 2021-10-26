@@ -38,7 +38,7 @@ Irber
 iteratively
 Jaccard
 Koslicki
-kraken
+Kraken
 lca
 LINS
 lossy

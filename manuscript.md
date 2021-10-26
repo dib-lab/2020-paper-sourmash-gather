@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e7a29844cd9b98fe8c6a3e59b3b56ecd3458f71f/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e7a29844cd9b98fe8c6a3e59b3b56ecd3458f71f/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e7a29844cd9b98fe8c6a3e59b3b56ecd3458f71f/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2b132e2fed4e3312865d201843cd9f0c7baaf2b7/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2b132e2fed4e3312865d201843cd9f0c7baaf2b7/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/2b132e2fed4e3312865d201843cd9f0c7baaf2b7/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,9 +64,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/e7a29844cd9b98fe8c6a3e59b3b56ecd3458f71f/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/2b132e2fed4e3312865d201843cd9f0c7baaf2b7/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@e7a2984](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e7a29844cd9b98fe8c6a3e59b3b56ecd3458f71f)
+from [dib-lab/2020-paper-sourmash-gather@2b132e2](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/2b132e2fed4e3312865d201843cd9f0c7baaf2b7)
 on October 26, 2021.
 </em></small>
 
@@ -270,22 +270,18 @@ real community members.
 
 ![
 **K-mer decomposition of a metagenome into constituent genomes.**
-
 A rank ordering for the first 36 genomes from the minimum set cover
 of the synthetic metagenome from Shakya et al., calculated with 700,000
 GenBank genomes. The Y axis is labeled with the NCBI-designed name of the
 genome.
-
 In the left plot, the X axis represents the estimated number of k-mers shared
 between each genome and the metagenome. The red circles indicate the number
 of remaining k-mers at that rank, while the green triangle symbols indicate
 the total number of k-mers, including those already assigned at previous ranks.
-
 In the right plot, the X axis represents the estimated k-mer coverage of that
 genome.  The red circles indicate the coverage with the remaining k-mers at
 that rank, while the green triangle symbols indicate total coverage with all
 k-mers in the metagenome, including those already assigned at previous ranks.
-
 ](images/gathergram-SRR606249.hashes.svg "minimum set cover for podar"){#fig:gather0}
 
 ## Minimum metagenome covers can accurately estimate taxonomic composition
