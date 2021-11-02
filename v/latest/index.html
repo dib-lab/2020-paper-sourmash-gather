@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Luiz Irber" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-10-29" />
+  <meta name="dcterms.date" content="2021-11-02" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -48,8 +48,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-10-29" />
-  <meta name="citation_publication_date" content="2021-10-29" />
+  <meta name="dc.date" content="2021-11-02" />
+  <meta name="citation_publication_date" content="2021-11-02" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -70,9 +70,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4e66936566376ca98f943c82688ad19133b8683e/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4e66936566376ca98f943c82688ad19133b8683e/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4e66936566376ca98f943c82688ad19133b8683e/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -86,10 +86,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4e66936566376ca98f943c82688ad19133b8683e/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/4e66936566376ca98f943c82688ad19133b8683e">dib-lab/2020-paper-sourmash-gather@4e66936</a>
-on October 29, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b">dib-lab/2020-paper-sourmash-gather@e359fe6</a>
+on November 2, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -114,21 +114,22 @@ Department of Population Health and Reproduction, UC Davis
 </small></p></li>
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
-<p>The assignment of genomes and taxonomy to metagenome data underlies
+<p>The interpretation of metagenome data
+The assignment of genomes and taxonomy to metagenome data underlies
 many microbiome studies. Here we describe two algorithms for
 compositional analysis of metagenome sequencing data. We first develop
 a sketching technique, <em>Scaled MinHash</em>, that
-supports Jaccard containment estimation.
+supports Jaccard containment estimation between sets of different size.
 We implement <em>Scaled MinHash</em> in the sourmash software and demonstrate
 large-scale containment searches of metagenomes using all 700,000 currently
 available microbial reference genomes.
 We next frame shotgun
 metagenome compositional analysis in terms of min-set-cover, i.e. as
 the problem of finding a minimum collection of reference genomes
-that “cover” the known portion of a metagenome. We implement a greedy
+that “cover” the known k-mers in a metagenome. We implement a greedy
 approximate solution using <em>Scaled MinHash</em> sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
-Finally, we show that the minimum set cover can be used to for read
+Finally, we show that the minimum set cover can be used for accurate read
 mapping.
 sourmash is available as open source under the
 BSD 3-Clause license at github.com/dib-lab/sourmash/.</p>
@@ -141,12 +142,13 @@ taxononomic interpretation of metagenome content.</p>
 <p>The substantial increase in the number of available reference genomes
 presents a significant practical obstacle to comprehensive
 compositional analyses.</p>
-<p>Here, we describe a lightweight approach to compositional analysis of
-shotgun metagenome data. Our approach tackles the selection of
-appropriate reference genomes and provides a computationally efficient
-method for taxonomic classification of metagenome data.</p>
+<p>Here, we describe a lightweight and scalable approach to compositional
+analysis of shotgun metagenome data. Our approach tackles the
+selection of appropriate reference genomes and provides a
+computationally efficient method for taxonomic classification of
+metagenome data.</p>
 <p>We first define <em>Scaled MinHash</em>, an extension of MinHash sketching
-that supports lightweight containment estimation for metagenome
+that supports containment estimation for metagenome
 datasets using k-mers. We implement <em>Scaled MinHash</em> in a Python and
 Rust package, <code>sourmash</code>, and show that it is competitive in
 accuracy with other containment estimation approaches.</p>
@@ -155,20 +157,21 @@ min-set-cov problem, where we determine the <em>minimum</em> number of
 genomes from a reference database needed to cover the identifiable
 genomic content from a metagenome. We implement a
 best-polynomial-time greedy approximation to the min-set-cov problem
-using <em>Scaled MinHash</em> in <code>sourmash</code>, provides an iteractive decomposition
-of metagenomes into genome matches.</p>
+using <em>Scaled MinHash</em> in <code>sourmash</code>. This technique provides an
+iteractive decomposition of metagenomes into genome matches.</p>
 <p>To evaluate the accuracy of our min-set-cov procedure, we implement a
 simple taxonomic classification approach in which we use the taxonomy
 of the genomes from the set cover to define the taxonomy of the
 metagenome content. We show that this permits precise and lightweight
 classification of metagenome content across all taxonomic levels.</p>
-<p>Finally, we show that the minimum set covers for several metagenomes are
-only a small subset of genomes even when using very large and redundant
-databases, and demonstrate that this subset can be used to map the
-metagenome reads in concordance with the estimates from <em>Scaled
-MinHash</em>. Thus, <em>Scaled MinHash</em> combined with min-set-cov provides a
-lightweight, accurate, and useful way to estimate the composition of
-metagenomes using a large reference database.</p>
+<p>Finally, we show that the minimum set covers for several metagenomes
+contain only a small subset of reference genomes even when using very
+large and redundant databases, and demonstrate that this subset can be
+used to map the metagenome reads in concordance with the estimates
+from <em>Scaled MinHash</em>. Thus, <em>Scaled MinHash</em> combined with
+min-set-cov provides a lightweight, accurate, and scalable way to
+estimate the composition of metagenomes using a large reference
+database.</p>
 <h1 id="results">Results</h1>
 <h2 id="scaled-minhash-sketches-support-accurate-containment-operations">Scaled MinHash sketches support accurate containment operations</h2>
 <p>We define the Scaled MinHash on an input domain of <span class="math inline">\(k\)</span>-mers, <span class="math inline">\(W\)</span>, as follows:</p>
@@ -183,7 +186,7 @@ ModHash to allow containment estimation. However, instead of taking
 <span class="math inline">\(0 \mod m\)</span> elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a Scaled MinHash uses the
 parameter <span class="math inline">\(s\)</span> to select a subset of <span class="math inline">\(W\)</span>.</p>
 <p>Scaled MinHash supports containment estimation with high accuracy and
-low bias. (Analytic work from David HERE.)</p>
+low bias. <strong>(Analytic work from David HERE.)</strong></p>
 <ul>
 <li>approximation formula (eqn 13 from overleaf)</li>
 <li>for queries into large sets (large <span class="math inline">\(|A|\)</span>), bias factor is low.</li>
@@ -203,7 +206,7 @@ MinHash</em>) <span class="citation" data-cites="jxLvWK4U">[<a href="#ref-jxLvWK
 synthetic mock metagenomic bacterial and archaeal community where the
 reference genomes are largely known <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">4</a>]</span>.
 This data set has been used in several methods evaluations
-<span class="citation" data-cites="TmjXG9kb">[<a href="#ref-19AP1jyqE" role="doc-biblioref">3</a>]</span>.</p>
+<span class="citation" data-cites="TmjXG9kb KP5SjPXN 18UKYqh4i 18UKYqh4i 19AP1jyqE">[<a href="#ref-19AP1jyqE" role="doc-biblioref">3</a>,<a href="#ref-TmjXG9kb" role="doc-biblioref">5</a>,<a href="#ref-KP5SjPXN" role="doc-biblioref">6</a>,<a href="#ref-18UKYqh4i" role="doc-biblioref">7</a>,<a href="#ref-18UKYqh4i" role="doc-biblioref">7</a>]</span>.</p>
 <div id="fig:containment" class="fignos">
 <figure>
 <img src="images/containment.svg" alt="Figure 1: Letter-value plot [hofmann_letter-value_2017?] of the differences from containment estimate to ground truth (exact). Each method is evaluated for k=\{21,31,51\}, except for Mash with k=51, which is unsupported." /><figcaption aria-hidden="true"><span>Figure 1:</span> <strong>Letter-value plot <span class="citation" data-cites="hofmann_letter-value_2017">[<a href="#ref-hofmann_letter-value_2017" role="doc-biblioref"><strong>hofmann_letter-value_2017?</strong></a>]</span> of the
@@ -219,16 +222,9 @@ All methods are within 1% of the exact containment on average (Figure
 <a href="#fig:containment">1</a>), with <code>CMash</code> consistently underestimating
 the containment for large <span class="math inline">\(k\)</span> and overestimating for small <span class="math inline">\(k\)</span>. <code>Mash Screen</code> with <span class="math inline">\(n=10000\)</span> has the smallest difference to ground truth for
 <span class="math inline">\(k=\{21, 31\}\)</span>, followed by <code>smol</code> with <code>scaled=1000</code> and <code>Mash Screen</code> with <span class="math inline">\(n=1000\)</span>.</p>
-<p>CTB todo:</p>
+<p>CTB TODO:</p>
 <ul>
-<li>use sourmash, not smol</li>
-</ul>
-<p>CTB questions:</p>
-<ul>
-<li>should we add sketch sizes in here more explicitly? e.g. number of hashes kept?</li>
-<li>compares well with others</li>
-<li>How much is missed figure; Poisson calculations? =&gt; appendix?</li>
-<li>should we make comment here about sequencing errors?</li>
+<li>switch figure to use sourmash</li>
 </ul>
 <h2 id="we-can-use-scaled-min-hash-to-construct-a-minimum-set-cover-for-metagenomes">We can use Scaled Min-Hash to construct a minimum set cover for metagenomes</h2>
 <p>We next ask: what is the smallest collection of genomes in a database
@@ -239,15 +235,16 @@ collection of genomes in <span class="math inline">\(D\)</span> which contain al
 intersection of <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? That is, we wish to find the smallest set
 <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that <span class="math display">\[k(M) \cap k(D) = \bigcup_n
 \{ k(M) \cap k(G_n) \} \]</span></p>
-<p>This is the <em>minimum set covering</em> problem, for which
-there is a polynomial-time approximation (cite). (Provide algorithm here.)</p>
+<p>This is the <em>minimum set covering</em> problem, for which there is a
+polynomial-time approximation <span class="citation" data-cites="doi:10.1007/978-0-387-30162-4_175">[<a href="#ref-doi:10.1007/978-0-387-30162-4_175" role="doc-biblioref"><strong>doi:10.1007/978-0-387-30162-4_175?</strong></a>]</span>.
+<strong>(Provide algorithm here.)</strong></p>
 <p>This greedy algorithm works by iteratively subtracting k-mers
 belonging to the genome that has the highest containment count from
 the metagenome (ref alg above). This results in a progressive
 classification of the known k-mers in the metagenome to specific
 genomes, in rank order of number of contained hashes. Note that in
 cases where equivalent matches are available at a particular rank,
-the match is chosen at random.</p>
+our implementation chooses a match at random.</p>
 <p>In Figure <a href="#fig:gather0">2</a>, we show the results of this iterative
 decomposition of the mock metagenome from
 <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">4</a>]</span>, into constituent genome matches. The
@@ -257,42 +254,41 @@ lower-covered genomes, and/or genomes with substantial overlap with
 earlier matches. Where there are overlaps between genomes, shared
 common k-mers are “claimed” by higher rank matches and only k-mer
 content specific to the later genome is used to identify the lower
-rank matches. For example, gesnomes from two strains of <em>Shewanella
+rank matches. For example, genomes from two strains of <em>Shewanella
 baltica</em> present in the mock metagenome in Figure <a href="#fig:gather0">2</a> have
 an approximately 50% overlap in k-mer content, and these shared k-mers
 are claimed by <em>Shewanella baltica</em> OS223 (compare <em>Shewanella
 baltica</em> OS223, rank 8, with <em>Shewanella baltica</em> OS185, rank 33; the
 difference between the red circles and green triangles for
 <em>S. baltica</em> OS185 represents the k-mers claimed by <em>S. baltica</em>
-OS223). CTB: maybe indicate or highlight these genomes in the figure?</p>
+OS223). (CTB: maybe indicate or highlight these genomes in the figure?)</p>
 <p>For this mock metagenome, 205m (54.8%) of 375m k-mers were found in
 GenBank. The remaining 169m (45.2%) k-mers had no matches, and
 represent either k-mers introduced by sequencing errors or unknown k-mers from
 real community members.</p>
 <div id="fig:gather0" class="fignos">
 <figure>
-<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering for the first 36 genomes from the minimum set cover of the synthetic metagenome from [4], calculated using 700,000 GenBank genomes. The Y axis is labeled with the NCBI-designed name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of remaining k-mers at that rank, while the green triangle symbols indicate the total number of k-mers, including those already assigned at previous ranks. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the coverage with the remaining k-mers at that rank, while the green triangle symbols indicate total coverage with all k-mers in the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
-A rank ordering for the first 36 genomes from the minimum set cover
+<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by remaining containment for the first 36 genomes from the minimum set cover of the synthetic metagenome from [4], calculated using 700,000 GenBank genomes. The Y axis is labeled with the NCBI-designed name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the percentage of the genome covered by k-mers remaining at that rank, while the green triangle symbols indicate total coverage with all k-mers in the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
+A rank ordering by remaining containment for the first 36 genomes from the minimum set cover
 of the synthetic metagenome from <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">4</a>]</span>,
 calculated using 700,000
 GenBank genomes. The Y axis is labeled with the NCBI-designed name of the
 genome.
 In the left plot, the X axis represents the estimated number of k-mers shared
 between each genome and the metagenome. The red circles indicate the number
-of remaining k-mers at that rank, while the green triangle symbols indicate
-the total number of k-mers, including those already assigned at previous ranks.
+of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers.
 In the right plot, the X axis represents the estimated k-mer coverage of that
-genome. The red circles indicate the coverage with the remaining k-mers at
+genome. The red circles indicate the percentage of the genome covered by k-mers remaining at
 that rank, while the green triangle symbols indicate total coverage with all
 k-mers in the metagenome, including those already assigned at previous ranks.</figcaption>
 </figure>
 </div>
 <h2 id="minimum-metagenome-covers-can-accurately-estimate-taxonomic-composition">Minimum metagenome covers can accurately estimate taxonomic composition</h2>
 <p>We evaluated the accuracy of min-set-cov for metagenome decomposition
-by using benchmarks from the Critical Asssessment of Metagenome
-Interpretation (CAMI) <span class="citation" data-cites="lsbnKJf8">[<a href="#ref-lsbnKJf8" role="doc-biblioref">9</a>]</span>, a community-driven
+using benchmarks from the Critical Asssessment of Metagenome
+Interpretation (CAMI) <span class="citation" data-cites="doi:10.1038/nmeth.4458">[<a href="#ref-doi:10.1038/nmeth.4458" role="doc-biblioref"><strong>doi:10.1038/nmeth.4458?</strong></a>]</span>, a community-driven
 initiative for reproducibly benchmarking metagenomic methods. We used
-the mouse gut metagenome dataset <span class="citation" data-cites="hWQhTndz">[<a href="#ref-hWQhTndz" role="doc-biblioref">10</a>]</span>,
+the mouse gut metagenome dataset <span class="citation" data-cites="hWQhTndz">[<a href="#ref-hWQhTndz" role="doc-biblioref">9</a>]</span>,
 in which a simulated
 mouse gut metagenome (<em>MGM</em>) was derived from 791 bacterial and
 archaeal genomes,
@@ -308,8 +304,8 @@ Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
 (CTB: check citations / content of latest actual CAMI pub, https://www.biorxiv.org/content/10.1101/2021.07.12.451567v1)</p>
 <p>Since min-set-cov yields only a collection of genomes rather than a
-species list, we generated a taxonomic profile for a given metagenome
-cover through the following procedure. For each genome match, we used
+species list, we generated a taxonomic profile from a given metagenome
+cover through the following procedure. For each genome match, we noted
 the species designation in the NCBI taxonomy for that genome. Then, we
 calculated the fraction of the genome remaining in the metagenome
 after k-mers belonging to higher-rank genomes have been removed (red
@@ -334,19 +330,21 @@ Performance per method at all major taxonomic ranks, with the shaded bands showi
 </figure>
 </div>
 <p>In Figures <a href="#fig:spider">3</a> and <a href="#fig:scores">4</a> we show an updated version of
-Figure 6 from <span class="citation" data-cites="hWQhTndz">[<a href="#ref-hWQhTndz" role="doc-biblioref">10</a>]</span> that includes our
+Figure 6 from <span class="citation" data-cites="hWQhTndz">[<a href="#ref-hWQhTndz" role="doc-biblioref">9</a>]</span> that includes our
 method, implemented in the <code>sourmash</code> software (CTB: what databases
 are used?). Here we compare 10 different methods for taxonomic
 profiling and their characteristics at each taxonomic rank. While
-previous methods show reduced completeness, the ratio of taxa
-correctly identified in the ground truth, below the genus level,
+previous methods show reduced completeness – the ratio of taxa
+correctly identified in the ground truth – below the genus level,
 <code>sourmash</code> can reach 88.7% completeness at the species level with the
 highest purity (the ratio of correctly predicted taxa over all
 predicted taxa) across all methods: 95.9% when filtering predictions
 below 1% abundance, and 97% for unfiltered results. <code>sourmash</code> also
-has the lowest L1-norm error (the sum of the absolute difference
+has the lowest L1-norm error,
+<!-- (the sum of the absolute difference
 between the true and predicted abundances at a specific taxonomic
-rank), the highest number of true positives and the lowest number of
+rank) -->
+the highest number of true positives and the lowest number of
 false positives.</p>
 <!--
 | Taxonomic binner                | Time (hh:mm) | Memory (kbytes) |
@@ -414,7 +412,7 @@ to eliminate genomes with only small overlaps (see Methods).
 -->
 <div id="tbl:genbank-cover" class="tablenos">
 <table id="tbl:genbank-cover">
-<caption><span>Table 1:</span> metagenomes and min-set-cov. </caption>
+<caption><span>Table 1:</span> Four metagenomes and their estimated minimum set cover from GenBank. </caption>
 <thead>
 <tr class="header">
 <th>data set</th>
@@ -452,36 +450,38 @@ to eliminate genomes with only small overlaps (see Methods).
 </table>
 </div>
 <p>In Table <a href="#tbl:genbank-cover">1</a>, we show the results of running min-set-cov
-for four metagenomes against genbank - two mock communities (cite
-cite), one human gut microbiome data set from iHMP (cite), and an oil
-well sample (cite). Our implementation provides estimates for both the
-<em>total</em> number of genomes with substantial overlap to a query genome,
-and a <em>minimum list</em> of genomes that account for k-mers with overlap
-in the query metagenome (see Methods).</p>
-<p>We find many genomes with large overlaps for each metagenome, due to the
-redundancy of the reference database. For example, the zymo mock contains a
-<em>Salmonella</em> genome, and there are over 200,000 Salmonella genomes
-that match to it in Genbank. Likewise, the iHMP dataset contains many
-XYZ. Since neither the podar mock nor the oil well community contain
-genomes from species with substantial representation in
-genbank, they yield many fewer total overlapping genomes.</p>
-<p>However, regardless of the number of genome with overlap, the
+for four metagenomes against genbank - two mock communities
+<span class="citation" data-cites="10okJq2cm 9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">4</a>,<a href="#ref-10okJq2cm" role="doc-biblioref">10</a>]</span> one human gut microbiome data set
+from iHMP <span class="citation" data-cites="UotiKLjf">[<a href="#ref-UotiKLjf" role="doc-biblioref">11</a>]</span>, and an oil well sample
+<span class="citation" data-cites="11WCsPgdk">[<a href="#ref-11WCsPgdk" role="doc-biblioref">12</a>]</span>. Our implementation provides estimates
+for both the <em>total</em> number of genomes with substantial overlap to a
+query genome, and a <em>minimum list</em> of genomes that account for k-mers
+with overlap in the query metagenome (see Methods).</p>
+<p>We find many genomes with large overlaps for each metagenome, due to
+the redundancy of the reference database. For example, the zymo mock
+contains a <em>Salmonella</em> genome, and there are over 200,000 Salmonella
+genomes that match to it in Genbank. Likewise, the iHMP dataset
+matches to over 75,000 <em>E. coli</em> genomes in GenBank. Since neither
+<code>podar mock</code> nor <code>oil well real</code> contain genomes from species with
+substantial representation in genbank, they yield many fewer total
+overlapping genomes.</p>
+<p>However, regardless of the number of genomes in the database with substantial
+overlap, the
 estimated <em>minimum</em> collection of genomes is always much smaller than the
 number of genomes with overlaps. In
 the cases where the k-mers in the metagenome are mostly identified,
-this is because of database redundancy: e.g. in the case of the zymo
-mock, the min-set-cov algorithm chooses only one Salmonella genome
-from the 200,000+ available. Conversely, in the case of the oil well
-sample, much of the sample is not identified,
+this is because of database redundancy: e.g. in the case of <code>zymo mock</code>, the min-set-cov algorithm chooses only one Salmonella genome
+from the 200,000+ available. Conversely, in the case of <code>oil well real</code>,
+much of the sample is not identified,
 suggesting that the small size of the covering set is because much
 of the sample is not represented in the database.</p>
 <p>CTB TODO: add % identified to table!</p>
 <h2 id="minimum-metagenome-covers-provide-representative-genomes-for-mapping">Minimum metagenome covers provide representative genomes for mapping</h2>
 <p>Mapping metagenome reads to representative genomes is an important
 step in many microbiome analysis pipelines, but mapping approaches
-struggle with large, redundant databases. One use case for a minimum
-metagenome cover is to select a small set of representative genomes to
-be used for mapping. We therefore developed a hybrid selection and
+struggle with large, redundant databases. One speciifc use for a minimum
+metagenome cover could be to select a small set of representative genomes
+for mapping. We therefore developed a hybrid selection and
 mapping pipeline that uses the rank-ordered min-set-cov results to
 map reads to candidate genomes.</p>
 <p>We first map all reads to all genomes in the minimum set cover, and
@@ -489,12 +489,12 @@ then successively remove reads that map to higher rank genomes from
 lower rank genomes, and remap the remaining reads. That is, all reads
 mapped to the rank-1 genome in Figure <a href="#fig:gather0">2</a> are removed from
 the rank-2 genome mapping, and all reads mapping to rank-1 and rank-2
-genomes are removed from the rank-3 genome mapping. This produces
+genomes are removed from the rank-3 genome mapping, and so on. This produces
 results directly analogous to those presented in Figure <a href="#fig:gather0">2</a>,
 but for reads rather than k-mers (CTB: provide as Suppl Figure?).
 Importantly, in this process we only consider genomes identified in
 the minimum set cover, because it is computationally intractable to map
-reads to the entire GenBank database. (CTB: check centrifuge?)</p>
+reads to the entire GenBank database. (CTB: check centrifuge.)</p>
 <p>Figure <a href="#fig:mapping">5</a> compares hash assignment rates
 and mapping rates for the four evaluation metagenomes in Table
 <a href="#tbl:genbank-cover">1</a>. Broadly speaking, we see that k-mer based
@@ -506,7 +506,7 @@ correspondence between mapping and hash assignment rates, while for
 actual metagenomes, there is more variation between mapping and hash
 assignments. Further work is needed to evaluate rates of variation across
 a larger number of metagenomes.</p>
-<p>CTB: do this for all four metagenomes!</p>
+<p>CTB: update figure to contain all four metagenomes!</p>
 <!--
 (belongs in discussion)
 This suggests that metagenome reads are being mapped to different
@@ -526,13 +526,14 @@ usually map one way or another.)
 -->
 <div id="fig:mapping" class="fignos">
 <figure>
-<img src="images/gather-podar.svg" alt="Figure 5: Hash-based decomposition of a metagenome into constituent genomes compares well to bases covered by read mapping. The reference genomes are rank ordered along the x axis based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (orange dots) is monotonically decreasing. The y axis shows absolute number of estimated k-mers classified to this genome (orange) or total number of bases covered in the reference (blue); the numbers have not been rescaled. Decreases in mapping (green peaks) occur for genomes which are not exact matches to the genomes of the organisms used to build the mock community (cite sherine, mash screen)." /><figcaption aria-hidden="true"><span>Figure 5:</span> <strong>Hash-based decomposition of a metagenome into constituent
+<img src="images/gather-podar.svg" alt="Figure 5: Hash-based decomposition of a metagenome into constituent genomes compares well to bases covered by read mapping. The reference genomes are rank ordered along the x axis based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (orange dots) is monotonically decreasing. The y axis shows absolute number of estimated k-mers classified to this genome (orange) or total number of bases covered in the reference (blue); the numbers have not been rescaled. Decreases in mapping (green peaks) occur for genomes which are not exact matches to the genomes of the organisms used to build the mock community [7,8]." /><figcaption aria-hidden="true"><span>Figure 5:</span> <strong>Hash-based decomposition of a metagenome into constituent
 genomes compares well to bases covered by read mapping.</strong>
 The reference genomes are rank ordered along the x axis based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (orange dots) is monotonically decreasing.
 The y axis shows absolute number of estimated k-mers classified to this genome (orange) or total number of bases covered in the reference (blue); the numbers have not been rescaled.
 Decreases in mapping (green peaks) occur for genomes which are not
 exact matches to the genomes of the organisms used to build the mock
-community (cite sherine, mash screen).</figcaption>
+community
+<span class="citation" data-cites="18UKYqh4i mH9pzoIn">[<a href="#ref-18UKYqh4i" role="doc-biblioref">7</a>,<a href="#ref-mH9pzoIn" role="doc-biblioref">8</a>]</span>.</figcaption>
 </figure>
 </div>
 <h1 id="discussion">Discussion</h1>
@@ -548,15 +549,12 @@ representation.</p>
 hash space divided by the boundary value used in creating the
 sketch. This is a type of lossy compression, with a fixed compression
 ratio of <span class="math inline">\(s\)</span>: for values of <span class="math inline">\(s\)</span> used here (<span class="math inline">\(s \approx 1000\)</span>), data sets are reduced in size 1000-fold.</p>
-<p>Unlike MinHash, <em>Scaled MinHash</em> supports containment analysis between
+<p>Unlike MinHash, <em>Scaled MinHash</em> supports containment estimation between
 sets of very different sizes, and here we demonstrate that it can be
 used efficiently and effectively for compositional analysis of shotgun
 metagenome data sets with k-mers. In particular, <em>Scaled MinHash</em> is
 competitive in accuracy with extant MinHash-based techniques for
-containment analysis, while also supporting Jaccard similarity.
-Footnote: We note that others have also applied the ModHash concept to
-genomic data; see, for example, Durbin’s “modimizer”
-<span class="citation" data-cites="8ZKpbGz7">[<a href="#ref-8ZKpbGz7" role="doc-biblioref">11</a>]</span>.</p>
+containment analysis, while also supporting Jaccard similarity.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><em>Scaled MinHash</em> offers several conveniences over <em>MinHash</em>. No hash
 is ever removed from a <em>Scaled MinHash</em> sketch during construction;
 while this means that sketches grow proportionally to the number of
@@ -581,11 +579,11 @@ revisiting the original data set. This includes unions and intersections.
 Although possible for MinHash, in practice this requires
 oversampling (using a larger <span class="math inline">\(n\)</span>) to account for possibly having less
 than <span class="math inline">\(n\)</span> values after filtering; this approach is taken by Finch, another
-MinHash sketching software for genomics <span class="citation" data-cites="lThwIYBH">[<a href="#ref-lThwIYBH" role="doc-biblioref">12</a>]</span>.</p>
+MinHash sketching software for genomics <span class="citation" data-cites="lThwIYBH">[<a href="#ref-lThwIYBH" role="doc-biblioref">14</a>]</span>.</p>
 <p>When the multiplicity of hashes in the original data is retained,
 <em>Scaled MinHash</em> sketches can be filtered on abundance. This allows
 removing low-abundance values, as implemented in Finch
-[doi:10.21105/joss.00505]]. Filtering values that only appear once
+[doi:10.21105/joss.00505]. Filtering values that only appear once
 was implemented in Mash by using a Bloom Filter and only adding values
 after they were seen once, with later versions also implementing an
 extra counter array to keep track of counts for each value in the
@@ -601,8 +599,7 @@ sketches when the maximum hash value in the MinHash sketch is larger
 than <span class="math inline">\(s\)</span>.</p>
 <p>Finally, because <em>Scaled MinHash</em> sketches are simply collections of
 hashes, existing k-mer indexing approaches can be applied to the
-sketches to provide fast database search of these indices with both
-similarity and containment metrics; a number of indexing operations,
+sketches to support fast search with both similarity and containment estimators; several index types,
 including Sequence Bloom Trees and reverse indices, are provided in
 the sourmash software.</p>
 <p>In exchange for these many conveniences, <em>Scaled MinHash</em> sketches
@@ -611,33 +608,32 @@ cardinality of the data set <span class="math inline">\(\approx s\)</span>, and 
 by <span class="math inline">\(H/s\)</span> (typically quite large, <span class="math inline">\(\approx 2e16\)</span>). The limited
 sensitivity of sketches may affect the sensitivity of gene- and viral
 genome-sized queries, but at <span class="math inline">\(s=1000\)</span> we see comparable accuracy and
-sketch size to MinHash for bacterial genome comparisons (Figure XXX,
-currently 1).</p>
+sketch size to MinHash for bacterial genome comparisons (Figure
+<a href="#fig:containment">1</a>).</p>
 <h2 id="minimum-set-covers-can-be-used-for-accurate-compositional-analysis-of-metagenomes.">Minimum set covers can be used for accurate compositional analysis of metagenomes.</h2>
 <p>Many metagenome content analysis approaches use reference genomes to
-interpret metagenome content, but most such approaches rely on a
+interpret the metagenome content, but most such approaches rely on a
 curated list of non-redundant genomes from a much larger database
-(e.g. Humann3/biobakery, cite). Here, we seek the <em>minimum</em> set of
-reference genomes necessary to account for all k-mers shared between
-the metagenome and the reference database. We show that this can be
-resolved efficiently for real-world data sets using a greedy
-algorithm; using <em>Scaled MinHash</em>, we provide an approach that readily
-scales to 700,000 genomes on current hardware (performance in
+(e.g. bioBakery 3 selects approximately 100,000 genomes <span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">15</a>]</span>). Here, we search an arbitrarily large database to retrieve
+a <em>minimum</em> set of reference genomes necessary to account for all k-mers
+shared between the metagenome and the database. We show that
+this can be resolved efficiently for real-world data sets; using <em>Scaled MinHash</em> with a greedy min-set-cov algorithm, we provide an approach that
+readily scales to 700,000 genomes on current hardware (performance in
 appendix). Moreover, this procedure reduces the number of genomes
 under consideration to <span class="math inline">\(\approx 100\)</span> for several mock and real
 metagenomes.</p>
 <p>The development of a small list of relevant genomes is particularly
 useful for large reference databases containing many redundant
-genomes; for example, in Table XXX, we show that for one particular
+genomes; for example, in Table <a href="#tbl:genbank-cover">1</a>, we show that for one particular
 mock community, we can select a minimum metagenome cover of 19 genomes
-for a metagenome that contains matches to over 400,000 genomes total.</p>
+for a metagenome that contains matches to over 400,000 GenBank genomes total.</p>
 <p>This minimum metagenome cover can then be used as inputs for further
 analysis, including both taxonomic content analysis and mapping
 approaches. For taxonomic analyses, we find that this approach is
 competitive with other current approaches and has many additional
 conveniences (discussed in detail below). The comparison of
 hash-based estimation of containment to mapping results in Figure
-?? shows that this approach is an accurate proxy for
+<a href="#fig:mapping">5</a> suggests that this approach may be an accurate proxy for
 systematic mapping.</p>
 <p>This min-set-cov approach for assigning genomes to metagenomes using
 k-mers differs substantially from extant k-mer and mapping-based
@@ -645,21 +641,22 @@ approaches for identifying relevant genomes. LCA-based approaches
 such as Kraken label individual k-mers based on taxonomic lineages in
 a database, and then use the resulting database of annotated k-mers to
 assign taxonomy to reads. Mapping- and homology-based approaches such
-as Diamond or @@@ use read mapping to genomes or read alignment to
-gene sequences in order to assign taxonomy and function. These
+as Diamond read mapping to genomes or read alignment to
+gene sequences in order to assign taxonomy and function (cite). These
 approaches typically focus on assigning <em>individual</em> k-mers or reads.
-In contrast, here we analyze the entire collection of reads/k-mers and
+In contrast, here we analyze the entire collection of k-mers and
 assigns them <em>in aggregate</em> to the <em>best</em> genome match.</p>
 <p>Our implementation of the min-set-cov algorithm in sourmash also
 readily supports custom reference databases as well as updating
 minimum set covers with the addition of new reference genomes. When
 updating set covers, the first stage of calculating overlaps can be
-done on only the new genomes (Column XYZ of Table ZZZ), while the
-actual calculation of the minimum set cover must be redone.</p>
+updated with the new genomes (Column 2 of Table <a href="#tbl:genbank-cover">1</a>),
+while the actual calculation of the minimum set cover must be redone
+each time.</p>
 <p>Our implementation of min-set-cov on top of <em>Scaled MinHash</em> means
 that there is a loss of resolution when choosing between very closely
-related genomes, because distinct hashes will not be chosen for them.
-However, other data structures can be easily used for min-set-cov:
+related genomes, because the set of hashes chosen may not discriminate
+between them. This is not intrinsic to min-set-cov, however;
 any data structure supporting both the <em>containment</em> <span class="math inline">\(C(A, B) = \frac{\vert A \cap B \vert }{\vert A \vert}\)</span> and <em>remove elements</em>
 operations can be used to implement the greedy approximation algorithm
 (ref algorithm in results section 1).
@@ -667,17 +664,15 @@ For example, a simple <em>set</em>
 of the <span class="math inline">\(k\)</span>-mer composition of the query supports element removal, and
 calculating containment can be done with regular set operations.
 Approximate membership query (AMQ) sketches like the <em>Counting
-Quotient Filter</em> <span class="citation" data-cites="pandey_general-purpose_2017">[<a href="#ref-pandey_general-purpose_2017" role="doc-biblioref"><strong>pandey_general-purpose_2017?</strong></a>]</span> can also be used, with
+Quotient Filter</em> <span class="citation" data-cites="ZT2VOiwV">[<a href="#ref-ZT2VOiwV" role="doc-biblioref">16</a>]</span> can also be used, with
 the benefit of reduced storage and memory usage. Moreover, the
 collection of datasets can be implemented with any data structure that
-can do containment comparisons with the query data structure. It
-is important to have performant containment searches, since
-<code>gather</code> may run <code>FindBestContainment</code> many times.</p>
-<p>The min-set-cov approach is reference-based, and hence is very
+can do containment comparisons with the query data structure.</p>
+<p>The min-set-cov approach is reference-based, and hence is entirely
 dependent on the reference database. In particular, in many cases the
 exact reference strains present in the metagenome will not be present
 in the database. This manifests in two ways in Figure
-??. First, there is a systematic mismatch between the hash
+<a href="#fig:mapping">5</a>. First, there is a systematic mismatch between the hash
 content and the mapping content (green line), because mapping software
 is more permissive in the face of small variants than k-mer-based
 exact matching. Moreover, many of the lower rank genomes in the plot
@@ -686,37 +681,41 @@ genomes, suggesting that strain-specific portions of the reference are
 being utilized for matching at lower ranks. In reality, there will
 usually be a different mixture of strains in the metagenome than in
 the reference database. Approaches such as spacegraphcats may help
-resolve this by adapting old references. <span class="citation" data-cites="cite">[<a href="#ref-cite" role="doc-biblioref"><strong>cite?</strong></a>]</span>.</p>
-<p>CTB: can we guess at places where gather would break? One is equivalent
+resolve this by adapting old references <span class="citation" data-cites="VsLophuT">[<a href="#ref-VsLophuT" role="doc-biblioref">17</a>]</span>.</p>
+<p>CTB TODO:</p>
+<ul>
+<li>can we guess at places where gather would break? One is equivalent
 containment/different genome sizes, e.g. virus/phage contained within
-other genomes.</p>
+other genomes.</li>
+</ul>
 <h2 id="minimum-metagenome-covers-support-accurate-and-flexible-taxonomic-conversation">Minimum metagenome covers support accurate and flexible taxonomic conversation</h2>
-<p>Once the min-set-cov approach has identified reference genomes, we can
-build a taxonomic classifier for metagenome content by simply
-reporting the taxonomies of the constitutent genomes, aggregated at
+<p>We can build a taxonomic classifier on top of minimum set covers for metagenomes
+by reporting the taxonomies of the constituent genomes, aggregated at
 the relevant taxonomic level using an LCA approach. Our initial
 taxonomic benchmarking shows that this approach is competitive for all
-metrics across all taxonomic levels (Figure XYZ).</p>
+metrics across all taxonomic levels (Figures <a href="#fig:spider">3</a> and <a href="#fig:scores">4</a>).</p>
 <p>One convenient feature of this approach to taxonomic analysis is that
 new or changed taxonomies can be readily incorporated by assigning
 them directly to genome identifiers; the majority of the computational
 work is involved in finding the reference genomes, which can have
 assignments in different taxonomic frameworks. For example, sourmash
-already supports GTDB natively, and will also support the emerging
-LINS framework (cite, cite). sourmash can also readily incorporate
-updates to taxonomies, e.g. the frequent updates to the NCBI taxonomy,
-without requiring expensive reanalysis of the primary metagenome data
-or the min-set-cov computation. Interestingly, the
-framing of taxonomic classification as a minimum set cover problem
-may also avoid the loss of taxonomic resolution that affects
-k-mer- and read-based approaches (cite cite); this is because we apply
-LCA <em>after</em> reads and k-mers have been assigned to individual genomes,
-and choose entire <em>genomes</em> based on a greedy best-match-first approach.</p>
+already supports GTDB <span class="citation" data-cites="vFApiGX2">[<a href="#ref-vFApiGX2" role="doc-biblioref">18</a>]</span> natively, and will
+also support the emerging LINS framework
+<span class="citation" data-cites="jf4f1xTA">[<a href="#ref-jf4f1xTA" role="doc-biblioref">19</a>]</span>. sourmash can also readily
+incorporate updates to taxonomies, e.g. the frequent updates to the
+NCBI taxonomy, without requiring expensive reanalysis of the primary
+metagenome data or the min-set-cov computation.</p>
+<p>Interestingly, the framing of taxonomic classification as a minimum
+set cover problem may also avoid the loss of taxonomic resolution that
+affects k-mer- and read-based approaches on large databases
+<span class="citation" data-cites="doi">[<a href="#ref-doi" role="doc-biblioref"><strong>doi?</strong></a> 10.1186/s13059-018-1554-6]</span>; this is because we apply LCA
+<em>after</em> reads and k-mers have been assigned to individual genomes, and
+choose entire <em>genomes</em> based on a greedy best-match-first approach.</p>
 <p>Finally, as the underlying min-set-cov implementation supports custom
 databases, it is straightforward to support taxonomic analysis using
-custom databases and/or custom taxonomic assignments. (sourmash
-already supports this natively.)</p>
-<h2 id="algorithm-is-simple-computational-performance-is-great">Algorithm is simple, computational performance is great</h2>
+custom databases and/or custom taxonomic assignments. sourmash
+already supports this natively.</p>
+<h2 id="simple-algorithms-support-performant-implementations">Simple algorithms support performant implementations</h2>
 <p>The algorithms underlying both <em>Scaled MinHash</em> and the greedy
 min-set-cov approximation are simple to describe and straightforward
 to implement. This increases the likelihood of correct
@@ -726,12 +725,12 @@ implementations.</p>
 <p>In the sourmash software package, we provide a mature and optimized
 implementation that implements all of the operations above. sourmash
 performs well in practice and supports a wide variety of use cases
-(see performance in appendix, docs and tutorials at sourmash.rtfd.io,
-and installation instructions for pip and conda). The sourmash
-project also provides large scale databases for NCBI and GTDB
-taxonomies.</p>
+(CTB: see performance in appendix, docs and tutorials at
+sourmash.rtfd.io, and installation instructions for pip and conda).
+The sourmash project also provides large scale databases for NCBI and
+GTDB taxonomies.</p>
 <h2 id="limitations-of-our-approach">Limitations of our approach</h2>
-<p>(For <em>Scaled MinHash</em>, <code>gather</code>, and taxonomy. Move where? Conclusions?)</p>
+<p>CTB: write/clean up the below.</p>
 <p><code>gather</code> as implemented in <code>sourmash</code> has the same limitations as
 <em>Scaled MinHash</em> sketches, including reduced sensitivity to small
 genomes/sequences such as viruses. <em>Scaled MinHash</em> sketches don’t
@@ -778,6 +777,7 @@ also depend on |A|, which was somewhat surprising</li>
 the prefix-lookup data structure, if one sacrifices some accuracy)</li>
 </ul>
 <h2 id="we-belieeeeeeeve">We belieeeeeeeve</h2>
+<p>CTB: write/clean up the below.</p>
 <p>min set cov could be applied in many more circumstances - read based analysis,
 contig based analysis, maybe variant calling, etc.</p>
 <p>Mention weighted cover cc David?</p>
@@ -788,6 +788,7 @@ approach could be used with exact containment, and/or with other
 shingling approaches.</p>
 <p>CTB: discuss centrifuge, etc. Could this be impemented on top of that?</p>
 <h1 id="conclusion">Conclusion</h1>
+<p>CTB: write this.</p>
 <ul>
 <li>scaled min hash is powerful, with well defined limitations.</li>
 <li>gather is awesome and convenient.</li>
@@ -814,84 +815,7 @@ creating a software ecosystem that allow practical applications,
 including taxonomic classification in metagenomes and large scale
 indexing and searching in public genomic databases.</p>
 <h1 id="methods">Methods</h1>
-<h2 id="implementation-of-scaled-minhash">Implementation of Scaled MinHash</h2>
-<p>We provide two implementations of Scaled MinHash, <code>smol</code> and
-<code>sourmash</code>. <code>smol</code> is a minimal implementation of <em>Scaled MinHash</em>
-developed to demonstrate the method; it does not include many required
-features for working with real biological data, but its smaller code
-base makes it a more readable and concise example of the method.
-<code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">13</a>]</span> implements features and
-functionality needed for large scale analyses of real data.</p>
-<h2 id="comparison-between-cmash-mash-screen-and-scaled-minhash.">Comparison between CMash, mash screen, and Scaled MinHash.</h2>
-<p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
-supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they were run with
-<span class="math inline">\(n=\{1000, 10000\}\)</span> to evaluate the containment estimates when using
-larger sketches with sizes comparable to the Scaled MinHash sketches
-with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
-<span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
-Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<a href="#ref-matsakis_rust_2014" role="doc-biblioref"><strong>matsakis_rust_2014?</strong></a>]</span>.</p>
-<p>For <em>Mash Screen</em> the ratio of hashes matched by total hashes is used
-instead of the <em>Containment Score</em>, since the latter uses a <span class="math inline">\(k\)</span>-mer
-survival process modeled as a Poisson process first introduced in
-<span class="citation" data-cites="fan_assembly_2015">[<a href="#ref-fan_assembly_2015" role="doc-biblioref"><strong>fan_assembly_2015?</strong></a>]</span> and later used in the <em>Mash distance</em>
-<span class="citation" data-cites="ondov_mash:_2016">[<a href="#ref-ondov_mash:_2016" role="doc-biblioref"><strong>ondov_mash:_2016?</strong></a>]</span> and <em>Containment score</em> <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span>
-formulations.</p>
-<h2 id="mhbt">MHBT</h2>
-<p>The <em>MinHash Bloom Tree</em> (<em>MHBT</em>) is a variation of the <em>Sequence
-Bloom Tree</em> (<em>SBT</em>) that uses Scaled MinHash sketches as leaf nodes
-instead of Bloom Filters as in the SBT. The search operation in SBTs
-is defined as a breadth-first search starting at the root of the tree,
-using a threshold of the original <span class="math inline">\(k\)</span>-mers in the query to decide when
-to prune the search. MHBTs use a query Scaled MinHash sketch instead,
-but keep the same search approach. The threshold of a query <span class="math inline">\(Q\)</span>
-approach introduced in <span class="citation" data-cites="solomon_fast_2016">[<a href="#ref-solomon_fast_2016" role="doc-biblioref"><strong>solomon_fast_2016?</strong></a>]</span> is equivalent to the
-containment <span class="math display">\[C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}\]</span>
-described in <span class="citation" data-cites="broder_resemblance_1997">[<a href="#ref-broder_resemblance_1997" role="doc-biblioref"><strong>broder_resemblance_1997?</strong></a>]</span>, where <span class="math inline">\(S\)</span> is a Scaled MinHash
-sketch. For internal nodes <span class="math inline">\(n\)</span> (which are Bloom Filters) the
-containment of the query Scaled MinHash sketch <span class="math inline">\(Q\)</span> is
-<span class="math display">\[
-C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
-   \vert}
-\]</span>
-as defined by
-<span class="citation" data-cites="koslicki_improving_2019">[<a href="#ref-koslicki_improving_2019" role="doc-biblioref"><strong>koslicki_improving_2019?</strong></a>]</span> for the <em>Containment MinHash</em> to <em>Bloom
-Filter</em> comparison.</p>
-<p>MHBTs support both containment and similarity queries.
-For internal nodes the containment <span class="math inline">\(C(Q,n)\)</span> is used as an upper-bound of the similarity <span class="math inline">\(J(Q, n)\)</span>:
-<span class="math display">\[C(Q, n) &amp;\ge J(Q, n) \\
-  \frac{\vert Q \cap n \vert }{\vert Q \vert} \ge \frac{\vert Q \cap n \vert }{\vert Q \cup n \vert}
-  \]</span>
-since <span class="math inline">\(\vert Q \cup n \vert \ge \vert Q \vert\)</span>.
-When a leaf node is reached then the similarity <span class="math inline">\(J(Q, S)\)</span> is calculated for the Scaled MinHash sketch <span class="math inline">\(S\)</span>
-and declared a match if it is above the threshold <span class="math inline">\(t\)</span>.
-Because the upper-bound is being used,
-this can lead to extra nodes being checked,
-but it simplifies implementation and provides better correctness guarantees.</p>
-<h2 id="inverted-index">Inverted index</h2>
-<p>The LCA index in <code>sourmash</code> is an inverted index that stores a mapping
-from hashes in a collection of signatures to a list of IDs for
-signatures containing the hash. Despite the name, the list of
-signature IDs is not collapsed to the lowest common ancestor (as in
-kraken), and is calculated as needed by downstream methods using
-taxonomy information stored separately in the LCA index.</p>
-<p>The mapping from hashes to signature IDs in the LCA index is an
-implicit representation of the original signatures used to build the
-index, and so returning the signatures is implemented by rebuilding
-the original signatures on-the-fly. Search in an LCA index matches
-the <span class="math inline">\(k\)</span>-mers in the query to the list of signatures IDs containing
-them, using a counter data structure to sort results by number of
-hashes per signature ID. The rebuilt signatures are then returned as
-matches based on the signature ID, with containment or similarity to
-the query calculated against the rebuilt signatures.</p>
-<p>mash screen <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span> has a similar index, but it is
-constructed on-the-fly using the distinct hashes in a sketch
-collection as keys, and values are counters initially set to zero. As
-the query is processed, matching hashes have their counts incremented,
-and after all hashes in the query are processed then all the sketches
-in the collection are checked in the counters to quantify the
-containment/similarity of each sketch in the query. The LCA index
-uses the opposite approach, opting to reconstruct the sketches
-on-the-fly.</p>
+<p>TBD</p>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
@@ -919,20 +843,38 @@ on-the-fly.</p>
 <div id="ref-mH9pzoIn" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">8. </div><div class="csl-right-inline"><strong>Mash: fast genome and metagenome distance estimation using MinHash</strong> <div class="csl-block">Brian D Ondov, Todd J Treangen, Páll Melsted, Adam B Mallonee, Nicholas H Bergman, Sergey Koren, Adam M Phillippy</div> <em>Genome Biology</em> (2016-06-20) <a href="https://doi.org/gfx74q">https://doi.org/gfx74q</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-016-0997-x">10.1186/s13059-016-0997-x</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27323842">27323842</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4915045">PMC4915045</a></div></div>
 </div>
-<div id="ref-lsbnKJf8" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline"><strong>Critical Assessment of Metagenome Interpretation—a benchmark of metagenomics software</strong> <div class="csl-block">Alexander Sczyrba, Peter Hofmann, Peter Belmann, David Koslicki, Stefan Janssen, Johannes Dröge, Ivan Gregor, Stephan Majda, Jessika Fiedler, Eik Dahms, … Alice C McHardy</div> <em>Nature Methods</em> (2017-10-02) <a href="https://doi.org/gbzspt">https://doi.org/gbzspt</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/nmeth.4458">10.1038/nmeth.4458</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28967888">28967888</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5903868">PMC5903868</a></div></div>
-</div>
 <div id="ref-hWQhTndz" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline"><strong>Tutorial: assessing metagenomics software with the CAMI benchmarking toolkit</strong> <div class="csl-block">Fernando Meyer, Till-Robin Lesker, David Koslicki, Adrian Fritz, Alexey Gurevich, Aaron E Darling, Alexander Sczyrba, Andreas Bremges, Alice C McHardy</div> <em>Nature Protocols</em> (2021-03-01) <a href="https://doi.org/gh77rh">https://doi.org/gh77rh</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41596-020-00480-3">10.1038/s41596-020-00480-3</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33649565">33649565</a></div></div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline"><strong>Tutorial: assessing metagenomics software with the CAMI benchmarking toolkit</strong> <div class="csl-block">Fernando Meyer, Till-Robin Lesker, David Koslicki, Adrian Fritz, Alexey Gurevich, Aaron E Darling, Alexander Sczyrba, Andreas Bremges, Alice C McHardy</div> <em>Nature Protocols</em> (2021-03-01) <a href="https://doi.org/gh77rh">https://doi.org/gh77rh</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41596-020-00480-3">10.1038/s41596-020-00480-3</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33649565">33649565</a></div></div>
+</div>
+<div id="ref-10okJq2cm" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline"><strong>ZymoBIOMICS Microbial Community Standards</strong> <div class="csl-block">ZYMO RESEARCH</div> <a href="https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards">https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards</a></div>
+</div>
+<div id="ref-UotiKLjf" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline"><strong>The Integrative Human Microbiome Project</strong> <div class="csl-block">The Integrative HMP (iHMP) Research Network Consortium</div> <em>Nature</em> (2019-05) <a href="https://doi.org/gf3wp9">https://doi.org/gf3wp9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-019-1238-8">10.1038/s41586-019-1238-8</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142853">31142853</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6784865">PMC6784865</a></div></div>
+</div>
+<div id="ref-11WCsPgdk" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline"><strong>Genome-Resolved Metagenomic Analysis Reveals Roles for Candidate Phyla and Other Microbial Community Members in Biogeochemical Transformations in Oil Reservoirs</strong> <div class="csl-block">Ping Hu, Lauren Tom, Andrea Singh, Brian C Thomas, Brett J Baker, Yvette M Piceno, Gary L Andersen, Jillian F Banfield</div> <em>mBio</em> (2016-03-02) <a href="https://doi.org/f8j5xr">https://doi.org/f8j5xr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1128/mbio.01669-15">10.1128/mbio.01669-15</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26787827">26787827</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4725000">PMC4725000</a></div></div>
 </div>
 <div id="ref-8ZKpbGz7" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">11. </div><div class="csl-right-inline"><strong>GitHub - richarddurbin/modimizer: a toolset for fast DNA read set matching and assembly using a new type of reduced kmer</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/richarddurbin/modimizer">https://github.com/richarddurbin/modimizer</a></div>
+<div class="csl-left-margin">13. </div><div class="csl-right-inline"><strong>GitHub - richarddurbin/modimizer: a toolset for fast DNA read set matching and assembly using a new type of reduced kmer</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/richarddurbin/modimizer">https://github.com/richarddurbin/modimizer</a></div>
 </div>
 <div id="ref-lThwIYBH" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">12. </div><div class="csl-right-inline"><strong>Finch: a tool adding dynamic abundance filtering to genomic MinHashing</strong> <div class="csl-block">Roderick Bovee, Nick Greenfield</div> <em>The Journal of Open Source Software</em> (2018-02-01) <a href="https://doi.org/gm85dx">https://doi.org/gm85dx</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00505">10.21105/joss.00505</a></div></div>
+<div class="csl-left-margin">14. </div><div class="csl-right-inline"><strong>Finch: a tool adding dynamic abundance filtering to genomic MinHashing</strong> <div class="csl-block">Roderick Bovee, Nick Greenfield</div> <em>The Journal of Open Source Software</em> (2018-02-01) <a href="https://doi.org/gm85dx">https://doi.org/gm85dx</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00505">10.21105/joss.00505</a></div></div>
 </div>
-<div id="ref-ExvjTLL3" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">13. </div><div class="csl-right-inline"><strong>sourmash: a library for MinHash sketching of DNA</strong> <div class="csl-block">C Titus Brown, Luiz Irber</div> <em>The Journal of Open Source Software</em> (2016-09-14) <a href="https://doi.org/ghdrk5">https://doi.org/ghdrk5</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></div></div>
+<div id="ref-wfjpVLUe" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline"><strong>Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3</strong> <div class="csl-block">Francesco Beghini, Lauren J McIver, Aitor Blanco-Míguez, Leonard Dubois, Francesco Asnicar, Sagun Maharjan, Ana Mailyan, Paolo Manghi, Matthias Scholz, Andrew Maltez Thomas, … Nicola Segata</div> <em>eLife</em> (2021-05-04) <a href="https://doi.org/gkc38n">https://doi.org/gkc38n</a> <div class="csl-block">DOI: <a href="https://doi.org/10.7554/elife.65088">10.7554/elife.65088</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33944776">33944776</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8096432">PMC8096432</a></div></div>
+</div>
+<div id="ref-ZT2VOiwV" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline"><strong>A General-Purpose Counting Filter</strong> <div class="csl-block">Prashant Pandey, Michael A Bender, Rob Johnson, Rob Patro</div> <em>Association for Computing Machinery (ACM)</em> (2017-05-09) <a href="https://doi.org/gg29n9">https://doi.org/gg29n9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/3035918.3035963">10.1145/3035918.3035963</a></div></div>
+</div>
+<div id="ref-VsLophuT" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline"><strong>Exploring neighborhoods in large metagenome assembly graphs using spacegraphcats reveals hidden sequence diversity</strong> <div class="csl-block">CTitus Brown, Dominik Moritz, Michael P O’Brien, Felix Reidl, Taylor Reiter, Blair D Sullivan</div> <em>Genome Biology</em> (2020-07-06) <a href="https://doi.org/d4bb">https://doi.org/d4bb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-020-02066-4">10.1186/s13059-020-02066-4</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32631445">32631445</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7336657">PMC7336657</a></div></div>
+</div>
+<div id="ref-vFApiGX2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline"><strong>GTDB: an ongoing census of bacterial and archaeal diversity through a phylogenetically consistent, rank normalized and complete genome-based taxonomy</strong> <div class="csl-block">Donovan H Parks, Maria Chuvochina, Christian Rinke, Aaron J Mussig, Pierre-Alain Chaumeil, Philip Hugenholtz</div> <em>Nucleic Acids Research</em> (2021-09-14) <a href="https://doi.org/gm97d8">https://doi.org/gm97d8</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/nar/gkab776">10.1093/nar/gkab776</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34520557">34520557</a></div></div>
+</div>
+<div id="ref-jf4f1xTA" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline"><strong>A Proposal for a Genome Similarity-Based Taxonomy for Plant-Pathogenic Bacteria that Is Sufficiently Precise to Reflect Phylogeny, Host Range, and Outbreak Affiliation Applied to &lt;i&gt;Pseudomonas syringae sensu lato&lt;/i&gt; as a Proof of Concept</strong> <div class="csl-block">Boris A Vinatzer, Alexandra J Weisberg, Caroline L Monteil, Haitham A Elmarakeby, Samuel K Sheppard, Lenwood S Heath</div> <em>Phytopathology®</em> (2017-01) <a href="https://doi.org/gg78hd">https://doi.org/gg78hd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1094/phyto-07-16-0252-r">10.1094/phyto-07-16-0252-r</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27552324">27552324</a></div></div>
 </div>
 </div>
 <h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
@@ -1164,6 +1106,14 @@ the trade-off between speed and memory consumption for both
 approaches, especially for larger indices.</p>
 <p>Notes:
 * new genomes can be added quickly to SBT.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>We note that others have also applied the ModHash concept to
+genomic data; see, for example, Durbin’s “modimizer”
+<span class="citation" data-cites="8ZKpbGz7">[<a href="#ref-8ZKpbGz7" role="doc-biblioref">13</a>]</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!-- default theme -->
 
 <style>
