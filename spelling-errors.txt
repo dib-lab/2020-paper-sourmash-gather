@@ -13,7 +13,7 @@ cardinalities
 cardinality
 CMash
 coli
-Compositional
+compositional
 conda
 contig
 cov
@@ -48,7 +48,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+mhbt
 microbiome
 MinHash
 ModHash

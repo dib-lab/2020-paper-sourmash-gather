@@ -40,9 +40,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,9 +64,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@e359fe6](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e359fe69fc542f5a3a4a697eb7136b07f2b3d53b)
+from [dib-lab/2020-paper-sourmash-gather@9ed98eb](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae)
 on November 2, 2021.
 </em></small>
 
@@ -213,7 +213,7 @@ This data set has been used in several methods evaluations
 [@doi:10.1093/bioinformatics/btu395;@doi:10.1101/gr.213959.116;@doi:10.1101/155358;@doi:10.1101/155358;@doi:10.1186/s13059-019-1841-x].
 
 ![
-**Letter-value plot [@hofmann_letter-value_2017] of the
+**Letter-value plot [@doi:10.1080/10618600.2017.1305277] of the
 differences from containment estimate to ground truth (exact).**
 Each method is evaluated for $k=\{21,31,51\}$,
 except for `Mash` with $k=51$, which is unsupported.
@@ -739,7 +739,7 @@ metagenome data or the min-set-cov computation.
 Interestingly, the framing of taxonomic classification as a minimum
 set cover problem may also avoid the loss of taxonomic resolution that
 affects k-mer- and read-based approaches on large databases
-[@doi: 10.1186/s13059-018-1554-6]; this is because we apply LCA
+[@doi:10.1186/s13059-018-1554-6]; this is because we apply LCA
 _after_ reads and k-mers have been assigned to individual genomes, and
 choose entire *genomes* based on a greedy best-match-first approach.
 
