@@ -1,297 +1,44 @@
 [
   {
+    "id": "UotiKLjf",
     "type": "article-journal",
-    "id": "lsbnKJf8",
+    "container-title": "Nature",
+    "DOI": "10.1038/s41586-019-1238-8",
+    "ISSN": "0028-0836, 1476-4687",
+    "issue": "7758",
+    "journalAbbreviation": "Nature",
+    "language": "en",
+    "page": "641-648",
+    "source": "DOI.org (Crossref)",
+    "title": "The Integrative Human Microbiome Project",
+    "URL": "https://doi.org/gf3wp9",
+    "volume": "569",
     "author": [
       {
-        "family": "Sczyrba",
-        "given": "Alexander"
-      },
-      {
-        "family": "Hofmann",
-        "given": "Peter"
-      },
-      {
-        "family": "Belmann",
-        "given": "Peter"
-      },
-      {
-        "family": "Koslicki",
-        "given": "David"
-      },
-      {
-        "family": "Janssen",
-        "given": "Stefan"
-      },
-      {
-        "family": "Dröge",
-        "given": "Johannes"
-      },
-      {
-        "family": "Gregor",
-        "given": "Ivan"
-      },
-      {
-        "family": "Majda",
-        "given": "Stephan"
-      },
-      {
-        "family": "Fiedler",
-        "given": "Jessika"
-      },
-      {
-        "family": "Dahms",
-        "given": "Eik"
-      },
-      {
-        "family": "Bremges",
-        "given": "Andreas"
-      },
-      {
-        "family": "Fritz",
-        "given": "Adrian"
-      },
-      {
-        "family": "Garrido-Oter",
-        "given": "Ruben"
-      },
-      {
-        "family": "Jørgensen",
-        "given": "Tue Sparholt"
-      },
-      {
-        "family": "Shapiro",
-        "given": "Nicole"
-      },
-      {
-        "family": "Blood",
-        "given": "Philip D"
-      },
-      {
-        "family": "Gurevich",
-        "given": "Alexey"
-      },
-      {
-        "family": "Bai",
-        "given": "Yang"
-      },
-      {
-        "family": "Turaev",
-        "given": "Dmitrij"
-      },
-      {
-        "family": "DeMaere",
-        "given": "Matthew Z"
-      },
-      {
-        "family": "Chikhi",
-        "given": "Rayan"
-      },
-      {
-        "family": "Nagarajan",
-        "given": "Niranjan"
-      },
-      {
-        "family": "Quince",
-        "given": "Christopher"
-      },
-      {
-        "family": "Meyer",
-        "given": "Fernando"
-      },
-      {
-        "family": "Balvočiūtė",
-        "given": "Monika"
-      },
-      {
-        "family": "Hansen",
-        "given": "Lars Hestbjerg"
-      },
-      {
-        "family": "Sørensen",
-        "given": "Søren J"
-      },
-      {
-        "family": "Chia",
-        "given": "Burton K H"
-      },
-      {
-        "family": "Denis",
-        "given": "Bertrand"
-      },
-      {
-        "family": "Froula",
-        "given": "Jeff L"
-      },
-      {
-        "family": "Wang",
-        "given": "Zhong"
-      },
-      {
-        "family": "Egan",
-        "given": "Robert"
-      },
-      {
-        "family": "Don Kang",
-        "given": "Dongwan"
-      },
-      {
-        "family": "Cook",
-        "given": "Jeffrey J"
-      },
-      {
-        "family": "Deltel",
-        "given": "Charles"
-      },
-      {
-        "family": "Beckstette",
-        "given": "Michael"
-      },
-      {
-        "family": "Lemaitre",
-        "given": "Claire"
-      },
-      {
-        "family": "Peterlongo",
-        "given": "Pierre"
-      },
-      {
-        "family": "Rizk",
-        "given": "Guillaume"
-      },
-      {
-        "family": "Lavenier",
-        "given": "Dominique"
-      },
-      {
-        "family": "Wu",
-        "given": "Yu-Wei"
-      },
-      {
-        "family": "Singer",
-        "given": "Steven W"
-      },
-      {
-        "family": "Jain",
-        "given": "Chirag"
-      },
-      {
-        "family": "Strous",
-        "given": "Marc"
-      },
-      {
-        "family": "Klingenberg",
-        "given": "Heiner"
-      },
-      {
-        "family": "Meinicke",
-        "given": "Peter"
-      },
-      {
-        "family": "Barton",
-        "given": "Michael D"
-      },
-      {
-        "family": "Lingner",
-        "given": "Thomas"
-      },
-      {
-        "family": "Lin",
-        "given": "Hsin-Hung"
-      },
-      {
-        "family": "Liao",
-        "given": "Yu-Chieh"
-      },
-      {
-        "family": "Silva",
-        "given": "Genivaldo Gueiros Z"
-      },
-      {
-        "family": "Cuevas",
-        "given": "Daniel A"
-      },
-      {
-        "family": "Edwards",
-        "given": "Robert A"
-      },
-      {
-        "family": "Saha",
-        "given": "Surya"
-      },
-      {
-        "family": "Piro",
-        "given": "Vitor C"
-      },
-      {
-        "family": "Renard",
-        "given": "Bernhard Y"
-      },
-      {
-        "family": "Pop",
-        "given": "Mihai"
-      },
-      {
-        "family": "Klenk",
-        "given": "Hans-Peter"
-      },
-      {
-        "family": "Göker",
-        "given": "Markus"
-      },
-      {
-        "family": "Kyrpides",
-        "given": "Nikos C"
-      },
-      {
-        "family": "Woyke",
-        "given": "Tanja"
-      },
-      {
-        "family": "Vorholt",
-        "given": "Julia A"
-      },
-      {
-        "family": "Schulze-Lefert",
-        "given": "Paul"
-      },
-      {
-        "family": "Rubin",
-        "given": "Edward M"
-      },
-      {
-        "family": "Darling",
-        "given": "Aaron E"
-      },
-      {
-        "family": "Rattei",
-        "given": "Thomas"
-      },
-      {
-        "family": "McHardy",
-        "given": "Alice C"
+        "family": "The Integrative HMP (iHMP) Research Network Consortium",
+        "given": ""
       }
     ],
-    "issued": {
+    "accessed": {
       "date-parts": [
         [
-          2017,
-          10,
+          "2021",
+          11,
           2
         ]
       ]
     },
-    "container-title": "Nature Methods",
-    "DOI": "10.1038/nmeth.4458",
-    "volume": "14",
-    "issue": "11",
-    "page": "1063-1071",
-    "publisher": "Springer Science and Business Media LLC",
-    "title": "Critical Assessment of Metagenome Interpretation—a benchmark of metagenomics software",
-    "URL": "https://doi.org/gbzspt",
-    "PMCID": "PMC5903868",
-    "PMID": "28967888",
-    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1038/nmeth.4458"
+    "issued": {
+      "date-parts": [
+        [
+          "2019",
+          5
+        ]
+      ]
+    },
+    "PMCID": "PMC6784865",
+    "PMID": "31142853",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1038/s41586-019-1238-8"
   },
   {
     "type": "article-journal",
@@ -401,6 +148,103 @@
     "URL": "https://doi.org/f6kt42",
     "PMID": "24947750",
     "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1093/bioinformatics/btu395"
+  },
+  {
+    "type": "article-journal",
+    "id": "vFApiGX2",
+    "author": [
+      {
+        "family": "Parks",
+        "given": "Donovan H"
+      },
+      {
+        "family": "Chuvochina",
+        "given": "Maria"
+      },
+      {
+        "family": "Rinke",
+        "given": "Christian"
+      },
+      {
+        "family": "Mussig",
+        "given": "Aaron J"
+      },
+      {
+        "family": "Chaumeil",
+        "given": "Pierre-Alain"
+      },
+      {
+        "family": "Hugenholtz",
+        "given": "Philip"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          9,
+          14
+        ]
+      ]
+    },
+    "abstract": "The Genome Taxonomy Database (GTDB; https://gtdb.ecogenomic.org) provides a phylogenetically consistent and rank normalized genome-based taxonomy for prokaryotic genomes sourced from the NCBI Assembly database. GTDB R06-RS202 spans 254 090 bacterial and 4316 archaeal genomes, a 270% increase since the introduction of the GTDB in November, 2017. These genomes are organized into 45 555 bacterial and 2339 archaeal species clusters which is a 200% increase since the integration of species clusters into the GTDB in June, 2019. Here, we explore prokaryotic diversity from the perspective of the GTDB and highlight the importance of metagenome-assembled genomes in expanding available genomic representation. We also discuss improvements to the GTDB website which allow tracking of taxonomic changes, easy assessment of genome assembly quality, and identification of genomes assembled from type material or used as species representatives. Methodological updates and policy changes made since the inception of the GTDB are then described along with the procedure used to update species clusters in the GTDB. We conclude with a discussion on the use of average nucleotide identities as a pragmatic approach for delineating prokaryotic species.",
+    "container-title": "Nucleic Acids Research",
+    "DOI": "10.1093/nar/gkab776",
+    "page": "gkab776",
+    "publisher": "Oxford University Press (OUP)",
+    "title": "GTDB: an ongoing census of bacterial and archaeal diversity through a phylogenetically consistent, rank normalized and complete genome-based taxonomy",
+    "URL": "https://doi.org/gm97d8",
+    "PMID": "34520557",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1093/nar/gkab776"
+  },
+  {
+    "type": "article-journal",
+    "id": "jf4f1xTA",
+    "author": [
+      {
+        "family": "Vinatzer",
+        "given": "Boris A."
+      },
+      {
+        "family": "Weisberg",
+        "given": "Alexandra J."
+      },
+      {
+        "family": "Monteil",
+        "given": "Caroline L."
+      },
+      {
+        "family": "Elmarakeby",
+        "given": "Haitham A."
+      },
+      {
+        "family": "Sheppard",
+        "given": "Samuel K."
+      },
+      {
+        "family": "Heath",
+        "given": "Lenwood S."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          1
+        ]
+      ]
+    },
+    "abstract": "Taxonomy of plant pathogenic bacteria is challenging because pathogens of different crops often belong to the same named species but current taxonomy does not provide names for bacteria below the subspecies level. The introduction of the host range-based pathovar system in the 1980s provided a temporary solution to this problem but has many limitations. The affordability of genome sequencing now provides the opportunity for developing a new genome-based taxonomic framework. We already proposed to name individual bacterial isolates based on pairwise genome similarity. Here, we expand on this idea and propose to use genome similarity-based codes, which we now call life identification numbers (LINs), to describe and name bacterial taxa. Using 93 genomes of Pseudomonas syringae sensu lato, LINs were compared with a P. syringae genome tree whereby the assigned LINs were found to be informative of a majority of phylogenetic relationships. LINs also reflected host range and outbreak association for strains of P. syringae pathovar actinidiae, a pathovar for which many genome sequences are available. We conclude that LINs could provide the basis for a new taxonomic framework to address the shortcomings of the current pathovar system and to complement the current taxonomic system of bacteria in general.",
+    "container-title": "Phytopathology®",
+    "DOI": "10.1094/phyto-07-16-0252-r",
+    "volume": "107",
+    "issue": "1",
+    "page": "18-28",
+    "publisher": "Scientific Societies",
+    "title": "A Proposal for a Genome Similarity-Based Taxonomy for Plant-Pathogenic Bacteria that Is Sufficiently Precise to Reflect Phylogeny, Host Range, and Outbreak Affiliation Applied to <i>Pseudomonas syringae sensu lato</i> as a Proof of Concept",
+    "URL": "https://doi.org/gg78hd",
+    "PMID": "27552324",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1094/phyto-07-16-0252-r"
   },
   {
     "type": "article-journal",
@@ -583,6 +427,100 @@
   },
   {
     "type": "article-journal",
+    "id": "11WCsPgdk",
+    "author": [
+      {
+        "family": "Hu",
+        "given": "Ping"
+      },
+      {
+        "family": "Tom",
+        "given": "Lauren"
+      },
+      {
+        "family": "Singh",
+        "given": "Andrea"
+      },
+      {
+        "family": "Thomas",
+        "given": "Brian C."
+      },
+      {
+        "family": "Baker",
+        "given": "Brett J."
+      },
+      {
+        "family": "Piceno",
+        "given": "Yvette M."
+      },
+      {
+        "family": "Andersen",
+        "given": "Gary L."
+      },
+      {
+        "family": "Banfield",
+        "given": "Jillian F."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          3,
+          2
+        ]
+      ]
+    },
+    "container-title": "mBio",
+    "DOI": "10.1128/mbio.01669-15",
+    "volume": "7",
+    "issue": "1",
+    "publisher": "American Society for Microbiology",
+    "title": "Genome-Resolved Metagenomic Analysis Reveals Roles for Candidate Phyla and Other Microbial Community Members in Biogeochemical Transformations in Oil Reservoirs",
+    "URL": "https://doi.org/f8j5xr",
+    "PMCID": "PMC4725000",
+    "PMID": "26787827",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1128/mbio.01669-15"
+  },
+  {
+    "type": "article-journal",
+    "id": "ZT2VOiwV",
+    "author": [
+      {
+        "family": "Pandey",
+        "given": "Prashant"
+      },
+      {
+        "family": "Bender",
+        "given": "Michael A."
+      },
+      {
+        "family": "Johnson",
+        "given": "Rob"
+      },
+      {
+        "family": "Patro",
+        "given": "Rob"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          5,
+          9
+        ]
+      ]
+    },
+    "container-title": "Association for Computing Machinery (ACM)",
+    "DOI": "10.1145/3035918.3035963",
+    "publisher": "Association for Computing Machinery (ACM)",
+    "title": "A General-Purpose Counting Filter",
+    "URL": "https://doi.org/gg29n9",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1145/3035918.3035963"
+  },
+  {
+    "type": "article-journal",
     "id": "mH9pzoIn",
     "author": [
       {
@@ -692,35 +630,54 @@
   },
   {
     "type": "article-journal",
-    "id": "ExvjTLL3",
+    "id": "VsLophuT",
     "author": [
       {
-        "family": "Titus Brown",
-        "given": "C."
+        "family": "Brown",
+        "given": "C. Titus"
       },
       {
-        "family": "Irber",
-        "given": "Luiz"
+        "family": "Moritz",
+        "given": "Dominik"
+      },
+      {
+        "family": "O’Brien",
+        "given": "Michael P."
+      },
+      {
+        "family": "Reidl",
+        "given": "Felix"
+      },
+      {
+        "family": "Reiter",
+        "given": "Taylor"
+      },
+      {
+        "family": "Sullivan",
+        "given": "Blair D."
       }
     ],
     "issued": {
       "date-parts": [
         [
-          2016,
-          9,
-          14
+          2020,
+          7,
+          6
         ]
       ]
     },
-    "container-title": "The Journal of Open Source Software",
-    "DOI": "10.21105/joss.00027",
-    "volume": "1",
-    "issue": "5",
-    "page": "27",
-    "publisher": "The Open Journal",
-    "title": "sourmash: a library for MinHash sketching of DNA",
-    "URL": "https://doi.org/ghdrk5",
-    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.21105/joss.00027"
+    "abstract": "Genomes computationally inferred from large metagenomic data sets are often incomplete and may be missing functionally important content and strain variation. We introduce an information retrieval system for large metagenomic data sets that exploits the sparsity of DNA assembly graphs to efficiently extract subgraphs surrounding an inferred genome. We apply this system to recover missing content from genome bins and show that substantial genomic sequence variation is present in a real metagenome. Our software implementation is available at under the 3-Clause BSD License.",
+    "container-title": "Genome Biology",
+    "DOI": "10.1186/s13059-020-02066-4",
+    "volume": "21",
+    "issue": "1",
+    "page": "164",
+    "publisher": "Springer Science and Business Media LLC",
+    "title": "Exploring neighborhoods in large metagenome assembly graphs using spacegraphcats reveals hidden sequence diversity",
+    "URL": "https://doi.org/d4bb",
+    "PMCID": "PMC7336657",
+    "PMID": "32631445",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1186/s13059-020-02066-4"
   },
   {
     "type": "article-journal",
@@ -755,6 +712,100 @@
     "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.21105/joss.00505"
   },
   {
+    "type": "article-journal",
+    "id": "wfjpVLUe",
+    "author": [
+      {
+        "family": "Beghini",
+        "given": "Francesco"
+      },
+      {
+        "family": "McIver",
+        "given": "Lauren J"
+      },
+      {
+        "family": "Blanco-Míguez",
+        "given": "Aitor"
+      },
+      {
+        "family": "Dubois",
+        "given": "Leonard"
+      },
+      {
+        "family": "Asnicar",
+        "given": "Francesco"
+      },
+      {
+        "family": "Maharjan",
+        "given": "Sagun"
+      },
+      {
+        "family": "Mailyan",
+        "given": "Ana"
+      },
+      {
+        "family": "Manghi",
+        "given": "Paolo"
+      },
+      {
+        "family": "Scholz",
+        "given": "Matthias"
+      },
+      {
+        "family": "Thomas",
+        "given": "Andrew Maltez"
+      },
+      {
+        "family": "Valles-Colomer",
+        "given": "Mireia"
+      },
+      {
+        "family": "Weingart",
+        "given": "George"
+      },
+      {
+        "family": "Zhang",
+        "given": "Yancong"
+      },
+      {
+        "family": "Zolfo",
+        "given": "Moreno"
+      },
+      {
+        "family": "Huttenhower",
+        "given": "Curtis"
+      },
+      {
+        "family": "Franzosa",
+        "given": "Eric A"
+      },
+      {
+        "family": "Segata",
+        "given": "Nicola"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          5,
+          4
+        ]
+      ]
+    },
+    "abstract": "Culture-independent analyses of microbial communities have progressed dramatically in the last decade, particularly due to advances in methods for biological profiling via shotgun metagenomics. Opportunities for improvement continue to accelerate, with greater access to multi-omics, microbial reference genomes, and strain-level diversity. To leverage these, we present bioBakery 3, a set of integrated, improved methods for taxonomic, strain-level, functional, and phylogenetic profiling of metagenomes newly developed to build on the largest set of reference sequences now available. Compared to current alternatives, MetaPhlAn 3 increases the accuracy of taxonomic profiling, and HUMAnN 3 improves that of functional potential and activity. These methods detected novel disease-microbiome links in applications to CRC (1262 metagenomes) and IBD (1635 metagenomes and 817 metatranscriptomes). Strain-level profiling of an additional 4077 metagenomes with StrainPhlAn 3 and PanPhlAn 3 unraveled the phylogenetic and functional structure of the common gut microbe , previously described by only 15 isolate genomes. With open-source implementations and cloud-deployable reproducible workflows, the bioBakery 3 platform can help researchers deepen the resolution, scale, and accuracy of multi-omic profiling for microbial community studies.",
+    "container-title": "eLife",
+    "DOI": "10.7554/elife.65088",
+    "volume": "10",
+    "page": "e65088",
+    "publisher": "eLife Sciences Publications, Ltd",
+    "title": "Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3",
+    "URL": "https://doi.org/gkc38n",
+    "PMCID": "PMC8096432",
+    "PMID": "33944776",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.7554/elife.65088"
+  },
+  {
     "id": "8ZKpbGz7",
     "type": "webpage",
     "abstract": "a toolset for fast DNA read set matching and assembly using a new type of reduced kmer - GitHub - richarddurbin/modimizer: a toolset for fast DNA read set matching and assembly using a new type of ...",
@@ -767,11 +818,30 @@
       "date-parts": [
         [
           "2021",
-          10,
-          29
+          11,
+          2
         ]
       ]
     },
     "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: url:https://github.com/richarddurbin/modimizer"
+  },
+  {
+    "id": "10okJq2cm",
+    "type": "webpage",
+    "abstract": "The ZymoBIOMICS Microbial Community Standards are accurately characterized mock communities consisting of various bacteria and yeast used for microbiome/metagenome workflow optimization and as positive controls.",
+    "container-title": "ZYMO RESEARCH",
+    "language": "en",
+    "title": "ZymoBIOMICS Microbial Community Standards",
+    "URL": "https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards",
+    "accessed": {
+      "date-parts": [
+        [
+          "2021",
+          11,
+          2
+        ]
+      ]
+    },
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: url:https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards"
   }
 ]
