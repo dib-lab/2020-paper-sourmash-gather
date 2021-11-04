@@ -14,7 +14,7 @@ cardinalities
 cardinality
 CMash
 coli
-compositional
+Compositional
 conda
 contig
 cov
@@ -39,7 +39,7 @@ iteratively
 Jaccard
 Koslicki
 Kraken
-LCA
+lca
 LINS
 lossy
 Luiz
@@ -50,7 +50,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 microbiome
 MinHash
 ModHash
@@ -65,7 +65,7 @@ ReiterTaylor
 reproducibly
 rescaled
 revindex
-runtime
+Runtime
 saltyscientist
 SBT
 scalable

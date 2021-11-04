@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3e90d752aedebab63bb63adf92560899f640b55/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3e90d752aedebab63bb63adf92560899f640b55/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3e90d752aedebab63bb63adf92560899f640b55/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3e90d752aedebab63bb63adf92560899f640b55/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@016f598](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/016f598bd15a61758af893c09c835172053af13f)
+from [dib-lab/2020-paper-sourmash-gather@f3e90d7](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f3e90d752aedebab63bb63adf92560899f640b55)
 on November 4, 2021.
 </em></small>
 
@@ -494,9 +494,9 @@ to eliminate genomes with only small overlaps (see Methods).
 | data set | genomes >= 100k overlap | min-set-cov | % k-mers identified |
 | -------- | -------- | -------- | ------- | 
 | `zymo mock` (SRR12324253) | 405,839 | 19 | XX% |
-| `podar mock` (SRR606249) | 5800 | 74 | XX% |
-| `gut real` (SRR5650070)  | 96,423     | 99     | XX% |
-| `oil well real` (SRR1976948) | 1235 | 135 | XX% |
+| `podar mock` (SRR606249) | 5800 | 74 | 54.8% |
+| `gut real` (SRR5650070)  | 96,423     | 99     | 36.0% |
+| `oil well real` (SRR1976948) | 1235 | 135 | 14.9% |
 
 Table: Four metagenomes and their estimated minimum set cover from GenBank. {#tbl:genbank-cover}
 
