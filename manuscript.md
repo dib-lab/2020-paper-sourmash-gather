@@ -4,9 +4,13 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-11-02'
+date-meta: '2021-11-04'
 author-meta:
 - Luiz Irber
+- Phillip T. Brooks
+- Taylor Reiter
+- N. Tessa Pierce
+- David Koslicki
 - C. Titus Brown
 header-includes: |-
   <!--
@@ -18,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-11-02" />
-  <meta name="citation_publication_date" content="2021-11-02" />
+  <meta name="dc.date" content="2021-11-04" />
+  <meta name="citation_publication_date" content="2021-11-04" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -31,6 +35,22 @@ header-includes: |-
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0003-4371-9659" />
   <meta name="twitter:creator" content="@luizirber" />
+  <meta name="citation_author" content="Phillip T. Brooks" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
+  <meta name="citation_author_orcid" content="0000-0003-3987-244X" />
+  <meta name="twitter:creator" content="@brooksph" />
+  <meta name="citation_author" content="Taylor Reiter" />
+  <meta name="citation_author_institution" content="Graduate Group in Food Science, UC Davis" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
+  <meta name="citation_author_orcid" content="0000-0002-7388-421X" />
+  <meta name="twitter:creator" content="@ReiterTaylor" />
+  <meta name="citation_author" content="N. Tessa Pierce" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
+  <meta name="citation_author_orcid" content="0000-0002-2942-5331" />
+  <meta name="twitter:creator" content="@saltyscientist" />
+  <meta name="citation_author" content="David Koslicki" />
+  <meta name="citation_author_institution" content="Computer Science and Engineering, Pennsylvania State University" />
+  <meta name="citation_author_orcid" content="0000-0002-0640-954X" />
   <meta name="citation_author" content="C. Titus Brown" />
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0001-6001-2677" />
@@ -40,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -64,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/016f598bd15a61758af893c09c835172053af13f/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@9ed98eb](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/9ed98ebae61178f9adf6513f32e93e0aa5c8a9ae)
-on November 2, 2021.
+from [dib-lab/2020-paper-sourmash-gather@016f598](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/016f598bd15a61758af893c09c835172053af13f)
+on November 4, 2021.
 </em></small>
 
 ## Authors
@@ -86,6 +106,49 @@ on November 2, 2021.
      · Funded by Grant XXXXXXXX
   </small>
 
++ **Phillip T. Brooks**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
+    [0000-0003-3987-244X](https://orcid.org/0000-0003-3987-244X)
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [brooksph](https://github.com/brooksph)
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
+    [brooksph](https://twitter.com/brooksph)<br>
+  <small>
+     Department of Population Health and Reproduction, UC Davis
+  </small>
+
++ **Taylor Reiter**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
+    [0000-0002-7388-421X](https://orcid.org/0000-0002-7388-421X)
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [taylorreiter](https://github.com/taylorreiter)
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
+    [ReiterTaylor](https://twitter.com/ReiterTaylor)<br>
+  <small>
+     Graduate Group in Food Science, UC Davis; Department of Population Health and Reproduction, UC Davis
+  </small>
+
++ **N. Tessa Pierce**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
+    [0000-0002-2942-5331](https://orcid.org/0000-0002-2942-5331)
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [bluegenes](https://github.com/bluegenes)
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
+    [saltyscientist](https://twitter.com/saltyscientist)<br>
+  <small>
+     Department of Population Health and Reproduction, UC Davis
+     · Funded by NSF 1711984
+  </small>
+
++ **David Koslicki**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
+    [0000-0002-0640-954X](https://orcid.org/0000-0002-0640-954X)
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [dkoslicki](https://github.com/dkoslicki)<br>
+  <small>
+     Computer Science and Engineering, Pennsylvania State University
+  </small>
+
 + **C. Titus Brown**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
     [0000-0001-6001-2677](https://orcid.org/0000-0001-6001-2677)
@@ -99,7 +162,6 @@ on November 2, 2021.
 
 ## Abstract {.page_break_before}
 
-The interpretation of metagenome data
 The assignment of genomes and taxonomy to metagenome data underlies
 many microbiome studies. Here we describe two algorithms for
 compositional analysis of metagenome sequencing data. We first develop
@@ -135,7 +197,7 @@ compositional analyses.
 
 Here, we describe a lightweight and scalable approach to compositional
 analysis of shotgun metagenome data. Our approach tackles the
-selection of appropriate reference genomes and provides a
+selection of appropriate reference genomes for downstream analysis and provides a
 computationally efficient method for taxonomic classification of
 metagenome data.
 
@@ -206,11 +268,11 @@ MinHash sketches as well as conversion to MinHash sketches.
 
 We compare the _Scaled MinHash_ method to CMash (_Containment
 MinHash_) [@doi:10.1101/184150] and Mash Screen (_Containment Score_)
-[@doi:10.1186/s13059-019-1841-x] for containment queries in a
-synthetic mock metagenomic bacterial and archaeal community where the
+[@doi:10.1186/s13059-019-1841-x] for containment queries in data from a
+mock bacterial and archaeal community where the
 reference genomes are largely known [@doi:10.1111/1462-2920.12086].
 This data set has been used in several methods evaluations
-[@doi:10.1093/bioinformatics/btu395;@doi:10.1101/gr.213959.116;@doi:10.1101/155358;@doi:10.1101/155358;@doi:10.1186/s13059-019-1841-x].
+[@doi:10.1093/bioinformatics/btu395;@doi:10.1101/gr.213959.116;@doi:10.1101/155358;@doi:10.1186/s13059-019-1841-x].
 
 ![
 **Letter-value plot [@doi:10.1080/10618600.2017.1305277] of the
@@ -219,7 +281,7 @@ Each method is evaluated for $k=\{21,31,51\}$,
 except for `Mash` with $k=51$, which is unsupported.
 ](images/containment.svg "Containment estimation between smol, CMash, and mash screen"){#fig:containment}
 
-Figure @fig:containment shows results with low-coverage and
+Figure @fig:containment shows containment analysis of genomes in this metagenome, with low-coverage and
 contaminant genomes (as described in [@doi:10.1101/155358] and
 [@doi:10.1186/s13059-016-0997-x]) removed from the database.
 All methods are within 1\% of the exact containment on average (Figure
@@ -248,13 +310,13 @@ This is the *minimum set covering* problem, for which there is a
 polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175].
 **(Provide algorithm here.)**
 
-This greedy algorithm works by iteratively subtracting k-mers
+This greedy algorithm iteratively subtracts k-mers
 belonging to the genome that has the highest containment count from
 the metagenome (ref alg above).  This results in a progressive
 classification of the known k-mers in the metagenome to specific
 genomes, in rank order of number of contained hashes. Note that in
 cases where equivalent matches are available at a particular rank,
-our implementation chooses a match at random.
+a match is chosen at random.
 
 In Figure @fig:gather0, we show the results of this iterative
 decomposition of the mock metagenome from
@@ -283,8 +345,8 @@ real community members.
 **K-mer decomposition of a metagenome into constituent genomes.**
 A rank ordering by remaining containment for the first 36 genomes from the minimum set cover
 of the synthetic metagenome from [@doi:10.1111/1462-2920.12086],
-calculated using 700,000
-GenBank genomes. The Y axis is labeled with the NCBI-designed name of the
+calculated against a database containing 700,000
+genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the
 genome.
 In the left plot, the X axis represents the estimated number of k-mers shared
 between each genome and the metagenome. The red circles indicate the number
@@ -298,7 +360,7 @@ k-mers in the metagenome, including those already assigned at previous ranks.
 ## Minimum metagenome covers can accurately estimate taxonomic composition
 
 We evaluated the accuracy of min-set-cov for metagenome decomposition
-using benchmarks from the Critical Asssessment of Metagenome
+using benchmarks from the Critical Assessment of Metagenome
 Interpretation (CAMI) [@doi:10.1038/nmeth.4458], a community-driven
 initiative for reproducibly benchmarking metagenomic methods.  We used
 the mouse gut metagenome dataset [@doi:10.1038/s41596-020-00480-3],
@@ -431,16 +493,16 @@ to eliminate genomes with only small overlaps (see Methods).
 
 | data set | genomes >= 100k overlap | min-set-cov | % k-mers identified |
 | -------- | -------- | -------- | ------- | 
-| `zymo mock` (SRR12324253) | 405,839 | 19 | 0% |
-| `podar mock` (SRR606249) | 5800 | 74 | 0% |
-| `gut real` (SRR5650070)  | 96,423     | 99     | 0% |
-| `oil well real` (SRR1976948) | 1235 | 135 | 0% |
+| `zymo mock` (SRR12324253) | 405,839 | 19 | XX% |
+| `podar mock` (SRR606249) | 5800 | 74 | XX% |
+| `gut real` (SRR5650070)  | 96,423     | 99     | XX% |
+| `oil well real` (SRR1976948) | 1235 | 135 | XX% |
 
 Table: Four metagenomes and their estimated minimum set cover from GenBank. {#tbl:genbank-cover}
 
 In Table @tbl:genbank-cover, we show the results of running min-set-cov
-for four metagenomes against genbank - two mock communities 
-[@https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards;@doi:10.1111/1462-2920.12086] one human gut microbiome data set
+for four metagenomes against GenBank - two mock communities 
+[@https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards;@doi:10.1111/1462-2920.12086], one human gut microbiome data set
 from iHMP [@doi:10.1038/s41586-019-1238-8], and an oil well sample
 [@doi:10.1128/mBio.01669-15].  Our implementation provides estimates
 for both the *total* number of genomes with substantial overlap to a
@@ -448,9 +510,9 @@ query genome, and a *minimum list* of genomes that account for k-mers
 with overlap in the query metagenome (see Methods).
 
 We find many genomes with large overlaps for each metagenome, due to
-the redundancy of the reference database. For example, the zymo mock
+the redundancy of the reference database. For example, `zymo mock`
 contains a *Salmonella* genome, and there are over 200,000 Salmonella
-genomes that match to it in Genbank. Likewise, the iHMP dataset
+genomes that match to it in Genbank. Likewise, `gut real`
 matches to over 75,000 *E. coli* genomes in GenBank.  Since neither
 `podar mock` nor `oil well real` contain genomes from species with
 substantial representation in genbank, they yield many fewer total
@@ -474,8 +536,8 @@ CTB TODO: add % identified to table!
 
 Mapping metagenome reads to representative genomes is an important
 step in many microbiome analysis pipelines, but mapping approaches
-struggle with large, redundant databases.  One speciifc use for a minimum
-metagenome cover could be to select a small set of representative genomes
+struggle with large, redundant databases.  One specifc use for a minimum
+metagenome cover is to select a small set of representative genomes
 for mapping.  We therefore developed a hybrid selection and
 mapping pipeline that uses the rank-ordered min-set-cov results to
 map reads to candidate genomes.
@@ -505,7 +567,7 @@ actual metagenomes, there is more variation between mapping and hash
 assignments.  Further work is needed to evaluate rates of variation across
 a larger number of metagenomes.
 
-CTB: update figure to contain all four metagenomes!
+CTB: update figure to contain all four metagenomes! Fix axis labels, symbols.
 
 <!--
 (belongs in discussion)
@@ -528,14 +590,15 @@ usually map one way or another.)
 ![
 **Hash-based decomposition of a metagenome into constituent
 genomes compares well to bases covered by read mapping.** 
-The reference genomes are rank ordered along the x axis based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (orange dots) is monotonically decreasing.
-The y axis shows absolute number of estimated k-mers classified to this genome (orange) or total number of bases covered in the reference (blue); the numbers have not been rescaled.
+The reference genomes are rank ordered along the x axis (as in Figure @fig:gather0), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
+The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
 Decreases in mapping (green peaks) occur for genomes which are not
 exact matches to the genomes of the organisms used to build the mock
 community 
 [@doi:10.1101/155358;@doi:10.1186/s13059-016-0997-x].
 ](images/gather-podar.svg "gather results for podar"){#fig:mapping}
 
+CTB: make note that numbers have not been rescaled in text.
 
 
 # Discussion
