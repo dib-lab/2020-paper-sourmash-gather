@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/61e7f04973e91890f1e89bb971d1658dda8ae4d0">dib-lab/2020-paper-sourmash-gather@61e7f04</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/97330d61d02aee0e472247418a3e0303dbf55edd">dib-lab/2020-paper-sourmash-gather@97330d6</a>
 on November 6, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -672,29 +672,31 @@ sensitivity of sketches may affect the sensitivity of gene- and viral
 genome-sized queries, but at <span class="math inline">\(s=1000\)</span> we see comparable accuracy and
 sketch size to MinHash for bacterial genome comparisons (Figure
 <a href="#fig:containment">1</a>).</p>
-<p>DK also notes: do these belong in this section?
-* The variance of the estimate of C(A,B)=|AB| / |A| appears to
-also depend on |A|, which was somewhat surprising
-* The “fixed k-size” problem (which might be able to be overcome with
-the prefix-lookup data structure, if one sacrifices some accuracy)</p>
+<p>Notes from DK: do these belong in this section?</p>
+<ul>
+<li>The variance of the estimate of C(A,B)=|AB| / |A| appears to
+also depend on |A|, which was somewhat surprising</li>
+<li>The “fixed k-size” problem (which might be able to be overcome with
+the prefix-lookup data structure, if one sacrifices some accuracy)</li>
+</ul>
 <h2 id="minimum-set-covers-can-be-used-for-accurate-compositional-analysis-of-metagenomes.">Minimum set covers can be used for accurate compositional analysis of metagenomes.</h2>
 <p>Many metagenome content analysis approaches use reference genomes to
-interpret the metagenome content, but most such approaches rely on a
-curated list of reduced-redundancy genomes from a much larger database
-(e.g. bioBakery 3 selects approximately 100,000 genomes <span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">18</a>]</span>). Here, we search an arbitrarily large database to retrieve
+interpret the metagenome content, but most such approaches rely on
+select a list of reduced-redundancy genomes from a much larger database
+(e.g. bioBakery 3 selects approximately 100,000 genomes <span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">18</a>]</span>). Here, we do this reduction automatically by searching the complete database to retrieve
 a <em>minimum</em> set of reference genomes necessary to account for all k-mers
 shared between the metagenome and the database. We show that
 this can be resolved efficiently for real-world data sets; implementing
 a greedy min-set-cov approximation algorithm on top of <em>Scaled MinHash</em>,
 we provide an approach that
 readily scales to 700,000 genomes on current hardware (performance in
-appendix). Moreover, this procedure reduces the number of genomes
+appendix). We show that in practice this procedure reduces the number of genomes
 under consideration to <span class="math inline">\(\approx 100\)</span> for several mock and real
 metagenomes.</p>
 <p>The development of a small list of relevant genomes is particularly
 useful for large reference databases containing many redundant
 genomes; for example, in Table <a href="#tbl:genbank-cover">1</a>, we show that for
-two communities, we can select minimum metagenome covers of 19 and 99
+one mock and one real community, we select minimum metagenome covers of 19 and 99
 genomes for metagenomes that contain matches to 406k and 96k GenBank
 genomes total.</p>
 <p>The min-set-cov approach for assigning genomes to metagenomes using
@@ -757,21 +759,24 @@ a genus or family, or were mis-assigned as a result of contamination.</p>
 databases, it is straightforward to support <em>taxonomic</em> analysis using
 custom databases and/or custom taxonomic assignments. sourmash
 already supports this functionality natively.</p>
-<h2 id="min-set-cov-maybe-useful-beyond-k-mers.">Min-set-cov maybe useful beyond k-mers.</h2>
-<h2 id="simple-algorithms-support-performant-implementations">Simple algorithms support performant implementations</h2>
-<p>The algorithms underlying both <em>Scaled MinHash</em> and the greedy
+<!--
+## Simple algorithms support performant implementations
+
+The algorithms underlying both _Scaled MinHash_ and the greedy
 min-set-cov approximation are simple to describe and straightforward
-to implement. This increases the likelihood of correct
+to implement.  This increases the likelihood of correct
 implementation, provides opportunities for independent optimization of
 data structures, and simplifies interoperability between different
-implementations.</p>
-<p>In the sourmash software package, we provide a mature and optimized
-implementation that implements all of the operations above. sourmash
+implementations.
+
+In the sourmash software package, we provide a mature and optimized
+implementation that implements all of the operations above.  sourmash
 performs well in practice and supports a wide variety of use cases
 (CTB: see performance in appendix, docs and tutorials at
 sourmash.rtfd.io, and installation instructions for pip and conda).
 The sourmash project also provides large scale databases for NCBI and
-GTDB taxonomies.</p>
+GTDB taxonomies.
+-->
 <h2 id="the-minimum-set-cover-approach-is-reference-dependent">The minimum set cover approach is reference dependent</h2>
 <p>The min-set-cov approach is reference-based, and hence is entirely
 dependent on the reference database. In particular, in many cases the
@@ -803,7 +808,7 @@ overlapping genomes, that is, <em>all</em> the genomes in column 2 of Table
 taken to first identify the full list of overlapping genomes, followed
 by a higher resolution approach to identify a specific subset of
 matcheing genomes.</p>
-<h2 id="opportunities-for-future-improvement-of-min-set-cov-calculations">Opportunities for future improvement of min-set-cov calculations</h2>
+<h2 id="opportunities-for-future-improvement-of-min-set-cov">Opportunities for future improvement of min-set-cov</h2>
 <p>There are a number of immediate opportunities for future improvement of
 the min-set-cov approach.</p>
 <p>Implementing min-set-cov on top of <em>Scaled MinHash</em> means
@@ -842,32 +847,16 @@ existing solutions taken by other methods,
 like the <em>species score</em> (for disambiguation) and <em>Expectation-Maximization</em> (for abundance analysis)
 approaches from Centrifuge <span class="citation" data-cites="kim_centrifuge_2016">[<a href="#ref-kim_centrifuge_2016" role="doc-biblioref"><strong>kim_centrifuge_2016?</strong></a>]</span>.</p>
 <h1 id="conclusion">Conclusion</h1>
-<p>CTB: write this.</p>
-<ul>
-<li>scaled min hash is powerful, with well defined limitations.</li>
-<li>gather is awesome and convenient.</li>
-<li>taxonomy is awesome and overcomes limitations of many current approaches.</li>
-<li>sourmash is robust software that provides a practically usable implementation of these ideas.</li>
-<li>future directions…</li>
-</ul>
-<p><em>Scaled MinHash</em> sketches are simple to implement and analyze, with
-consistent guarantees for the range of values and subsetting
-properties when applied to datasets. Containment and similarity
-operations between <em>Scaled MinHash</em> sketches avoid the need to access
-the original data or more limited representations that only allow
-membership query, and serve as a proxy for large scale comparisons
-between hundreds or thousands of datasets.</p>
-<p>Small genomes require low scaled values in order to properly estimate
-containment and similarity, and exact <span class="math inline">\(k\)</span>-mer matching is brittle when
-considering evolutionarily-diverged organisms. While some of these
-problems can be overcome in future work, <em>Scaled MinHash</em> sketches can
-serve as a prefilter for more accurate and computationally expensive
-applications, allowing these methods to be used in larger scales by
-avoiding processing data that is unlikely to return usable results.</p>
-<p><em>Scaled MinHash</em> sketches are effective basic building blocks for
-creating a software ecosystem that allow practical applications,
-including taxonomic classification in metagenomes and large scale
-indexing and searching in public genomic databases.</p>
+<p>The <em>Scaled MinHash</em> and min-set-cov approaches explored here are
+powerful and accurate approaches to analyzing metagenomes, with well
+defined limitations. The immediate applications for both mapping-based
+and taxonomic analysis of metagnomes are already interesting. In
+particular, we provide implementations of these approaches in robust
+open-source software, together with workflows to enable their
+practical use on large data sets. The approaches also offer many
+opportunities for further exploration and improvement with additional
+sketch types, additional approximation algorithms, and additional
+summarization approaches. The world is our oyster!</p>
 <h1 id="methods">Methods</h1>
 <p>TBD</p>
 <h2 class="page_break_before" id="references">References</h2>
