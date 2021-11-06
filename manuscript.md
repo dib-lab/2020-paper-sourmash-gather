@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@61e7f04](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/61e7f04973e91890f1e89bb971d1658dda8ae4d0)
+from [dib-lab/2020-paper-sourmash-gather@97330d6](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/97330d61d02aee0e472247418a3e0303dbf55edd)
 on November 6, 2021.
 </em></small>
 
@@ -692,7 +692,8 @@ genome-sized queries, but at $s=1000$ we see comparable accuracy and
 sketch size to MinHash for bacterial genome comparisons (Figure
 @fig:containment).
 
-DK also notes: do these belong in this section?
+Notes from DK: do these belong in this section?
+
 * The variance of the estimate of C(A,B)=|A\cap B| / |A| appears to
   also depend on |A\B|, which was somewhat surprising
 * The “fixed k-size” problem (which might be able to be overcome with
@@ -702,23 +703,23 @@ DK also notes: do these belong in this section?
 ## Minimum set covers can be used for accurate compositional analysis of metagenomes.
 
 Many metagenome content analysis approaches use reference genomes to
-interpret the metagenome content, but most such approaches rely on a
-curated list of reduced-redundancy genomes from a much larger database
-(e.g. bioBakery 3 selects approximately 100,000 genomes [@doi:10.7554/eLife.65088]).  Here, we search an arbitrarily large database to retrieve
+interpret the metagenome content, but most such approaches rely on
+select a list of reduced-redundancy genomes from a much larger database
+(e.g. bioBakery 3 selects approximately 100,000 genomes [@doi:10.7554/eLife.65088]).  Here, we do this reduction automatically by searching the complete database to retrieve
 a *minimum* set of reference genomes necessary to account for all k-mers
 shared between the metagenome and the database. We show that
 this can be resolved efficiently for real-world data sets; implementing
 a greedy min-set-cov approximation algorithm on top of _Scaled MinHash_,
 we provide an approach that
 readily scales to 700,000 genomes on current hardware (performance in
-appendix). Moreover, this procedure reduces the number of genomes
+appendix). We show that in practice this procedure reduces the number of genomes
 under consideration to $\approx 100$ for several mock and real
 metagenomes.
 
 The development of a small list of relevant genomes is particularly
 useful for large reference databases containing many redundant
 genomes; for example, in Table @tbl:genbank-cover, we show that for
-two communities, we can select minimum metagenome covers of 19 and 99
+one mock and one real community, we select minimum metagenome covers of 19 and 99
 genomes for metagenomes that contain matches to 406k and 96k GenBank
 genomes total.
 
@@ -791,8 +792,7 @@ databases, it is straightforward to support *taxonomic* analysis using
 custom databases and/or custom taxonomic assignments. sourmash
 already supports this functionality natively.
 
-## Min-set-cov maybe useful beyond k-mers.
-
+<!--
 ## Simple algorithms support performant implementations
 
 The algorithms underlying both _Scaled MinHash_ and the greedy
@@ -809,6 +809,7 @@ performs well in practice and supports a wide variety of use cases
 sourmash.rtfd.io, and installation instructions for pip and conda).
 The sourmash project also provides large scale databases for NCBI and
 GTDB taxonomies.
+-->
 
 ## The minimum set cover approach is reference dependent
 
@@ -845,7 +846,7 @@ taken to first identify the full list of overlapping genomes, followed
 by a higher resolution approach to identify a specific subset of
 matcheing genomes.
 
-## Opportunities for future improvement of min-set-cov calculations
+## Opportunities for future improvement of min-set-cov
 
 There are a number of immediate opportunities for future improvement of
 the min-set-cov approach.
@@ -894,35 +895,16 @@ approaches from Centrifuge [@kim_centrifuge_2016].
 
 # Conclusion
 
-CTB: write this.
-
-* scaled min hash is powerful, with well defined limitations.
-* gather is awesome and convenient.
-* taxonomy is awesome and overcomes limitations of many current approaches.
-* sourmash is robust software that provides a practically usable implementation of these ideas.
-* future directions...
-
-_Scaled MinHash_ sketches are simple to implement and analyze, with
-consistent guarantees for the range of values and subsetting
-properties when applied to datasets.  Containment and similarity
-operations between _Scaled MinHash_ sketches avoid the need to access
-the original data or more limited representations that only allow
-membership query, and serve as a proxy for large scale comparisons
-between hundreds or thousands of datasets.
-
-Small genomes require low scaled values in order to properly estimate
-containment and similarity, and exact $k$-mer matching is brittle when
-considering evolutionarily-diverged organisms.  While some of these
-problems can be overcome in future work, _Scaled MinHash_ sketches can
-serve as a prefilter for more accurate and computationally expensive
-applications, allowing these methods to be used in larger scales by
-avoiding processing data that is unlikely to return usable results.
-
-_Scaled MinHash_ sketches are effective basic building blocks for
-creating a software ecosystem that allow practical applications,
-including taxonomic classification in metagenomes and large scale
-indexing and searching in public genomic databases.
-
+The _Scaled MinHash_ and min-set-cov approaches explored here are
+powerful and accurate approaches to analyzing metagenomes, with well
+defined limitations. The immediate applications for both mapping-based
+and taxonomic analysis of metagnomes are already interesting. In
+particular, we provide implementations of these approaches in robust
+open-source software, together with workflows to enable their
+practical use on large data sets.  The approaches also offer many
+opportunities for further exploration and improvement with additional
+sketch types, additional approximation algorithms, and additional
+summarization approaches. The world is our oyster!
 
 
 # Methods

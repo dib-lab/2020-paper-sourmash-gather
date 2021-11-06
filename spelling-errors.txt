@@ -15,7 +15,6 @@ cardinality
 CMash
 coli
 Compositional
-conda
 contig
 cov
 CTB
@@ -27,8 +26,7 @@ downsampled
 downsampling
 Durbin’s
 eqn
-evolutionarily
-Genbank
+GenBank
 genomic
 GTDB
 iHMP
@@ -38,7 +36,7 @@ iteratively
 Jaccard
 Koslicki
 Kraken
-lca
+LCA
 LINS
 lossy
 Luiz
@@ -50,7 +48,8 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+metagnomes
+mhbt
 microbiome
 MinHash
 mis
@@ -60,8 +59,6 @@ modimizer
 natively
 NCBI
 PacBio
-performant
-prefilter
 Reiter
 ReiterTaylor
 reproducibly
@@ -74,7 +71,7 @@ scalable
 Shewanella
 sourmash
 SRR
-subsetting
+summarization
 taylorreiter
 TBD
 TODO
