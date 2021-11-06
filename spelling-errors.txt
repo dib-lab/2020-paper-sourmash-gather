@@ -18,7 +18,7 @@ Compositional
 conda
 contig
 cov
-ctb
+CTB
 dataset
 datasets
 DK
@@ -43,6 +43,7 @@ LINS
 lossy
 Luiz
 luizirber
+matcheing
 mer
 mers
 metagenome
@@ -77,7 +78,6 @@ subsetting
 taylorreiter
 TBD
 TODO
-txonomic
 UC
 XXXXXXXX
 XYZ

@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a940a0b9434ad2b9e9f96f5fd9765ce8fa1e2066/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a940a0b9434ad2b9e9f96f5fd9765ce8fa1e2066/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a940a0b9434ad2b9e9f96f5fd9765ce8fa1e2066/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/a940a0b9434ad2b9e9f96f5fd9765ce8fa1e2066/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/61e7f04973e91890f1e89bb971d1658dda8ae4d0/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@a940a0b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a940a0b9434ad2b9e9f96f5fd9765ce8fa1e2066)
+from [dib-lab/2020-paper-sourmash-gather@61e7f04](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/61e7f04973e91890f1e89bb971d1658dda8ae4d0)
 on November 6, 2021.
 </em></small>
 
@@ -611,15 +611,14 @@ _Scaled MinHash_ is an implementation of ModHash that uses the bottom
 hashing concept from MinHash to support containment operations. In
 brief, all elements in the set to be sketched are hashed, and any hash values
 below a certain fixed boundary value are kept for the sketch. This fixed boundary
-value is determined by the desired accuracy for the sketch
-representation.
+value is determined by the desired accuracy for the sketch operations.
 
 Intuitively, _Scaled MinHash_ performs a density sampling at a rate of 1
 $k$-mer per $s$ distinct k-mers seen, where $s$ is the size of the
 hash space divided by the boundary value used in creating the
 sketch. This is a type of lossy compression, with a fixed compression
 ratio of $s$: for values of $s$ used here ($s \approx
-1000$), data sets are reduced in size 1000-fold.
+1000$), k-mer sets are reduced in cardinality by 1000-fold.
 
 Unlike MinHash, _Scaled MinHash_ supports containment estimation between
 sets of very different sizes, and here we demonstrate that it can be
@@ -634,9 +633,9 @@ genomic data; see, for example, Durbin's "modimizer"
 
 _Scaled MinHash_ offers several conveniences over _MinHash_.  No hash
 is ever removed from a _Scaled MinHash_ sketch during construction;
-while this means that sketches grow proportionally to the number of
+so while sketches grow proportionally to the number of
 distinct k-mers in the sampled data set, sketches _also_ support many
-operations - including all of the operations used in this paper -
+operations - including all of the operations used here -
 without needing to revisit the original data set. This is in contrast
 to MinHash, which requires auxiliary data structures for many
 operations - most especially, containment operations (cite CMash and
@@ -657,13 +656,12 @@ hash values from a sketch, allowing post-processing and filtering without
 revisiting the original data set. This includes unions and intersections.
 Although possible for MinHash, in practice this requires
 oversampling (using a larger $n$) to account for possibly having less
-than $n$ values after filtering; this approach is taken by Finch, another
-MinHash sketching software for genomics [@doi:10.21105/joss.00505].
+than $n$ values after filtering, e.g. see the approach taken in Finch [@doi:10.21105/joss.00505].
 
 When the multiplicity of hashes in the original data is retained,
 _Scaled MinHash_ sketches can be filtered on abundance.  This allows
 removing low-abundance values, as implemented in Finch
-[doi:10.21105/joss.00505].  Filtering values that only appear once
+[@doi:10.21105/joss.00505].  Filtering values that only appear once
 was implemented in Mash by using a Bloom Filter and only adding values
 after they were seen once, with later versions also implementing an
 extra counter array to keep track of counts for each value in the
@@ -680,7 +678,7 @@ sketches when the maximum hash value in the MinHash sketch is larger
 than $s$.
 
 Finally, because _Scaled MinHash_ sketches are simply collections of
-hashes, existing k-mer indexing approaches can be applied to the
+hashes, any existing k-mer indexing approaches can be applied to
 sketches to support fast search with both similarity and containment estimators; several index types,
 including Sequence Bloom Trees and reverse indices, are provided in
 the sourmash software.
@@ -694,15 +692,24 @@ genome-sized queries, but at $s=1000$ we see comparable accuracy and
 sketch size to MinHash for bacterial genome comparisons (Figure
 @fig:containment).
 
+DK also notes: do these belong in this section?
+* The variance of the estimate of C(A,B)=|A\cap B| / |A| appears to
+  also depend on |A\B|, which was somewhat surprising
+* The “fixed k-size” problem (which might be able to be overcome with
+  the prefix-lookup data structure, if one sacrifices some accuracy)
+  
+
 ## Minimum set covers can be used for accurate compositional analysis of metagenomes.
 
 Many metagenome content analysis approaches use reference genomes to
 interpret the metagenome content, but most such approaches rely on a
-curated list of non-redundant genomes from a much larger database
+curated list of reduced-redundancy genomes from a much larger database
 (e.g. bioBakery 3 selects approximately 100,000 genomes [@doi:10.7554/eLife.65088]).  Here, we search an arbitrarily large database to retrieve
 a *minimum* set of reference genomes necessary to account for all k-mers
 shared between the metagenome and the database. We show that
-this can be resolved efficiently for real-world data sets; using _Scaled MinHash_ with a greedy min-set-cov algorithm, we provide an approach that
+this can be resolved efficiently for real-world data sets; implementing
+a greedy min-set-cov approximation algorithm on top of _Scaled MinHash_,
+we provide an approach that
 readily scales to 700,000 genomes on current hardware (performance in
 appendix). Moreover, this procedure reduces the number of genomes
 under consideration to $\approx 100$ for several mock and real
@@ -710,18 +717,31 @@ metagenomes.
 
 The development of a small list of relevant genomes is particularly
 useful for large reference databases containing many redundant
-genomes; for example, in Table @tbl:genbank-cover, we show that for one particular
-mock community, we can select a minimum metagenome cover of 19 genomes
-for a metagenome that contains matches to over 400,000 GenBank genomes total.
+genomes; for example, in Table @tbl:genbank-cover, we show that for
+two communities, we can select minimum metagenome covers of 19 and 99
+genomes for metagenomes that contain matches to 406k and 96k GenBank
+genomes total.
 
-This minimum metagenome cover can then be used as inputs for further
-analysis, including both taxonomic content analysis and mapping
-approaches.  For taxonomic analyses, we find that this approach is
-competitive with other current approaches and has several additional
-conveniences (discussed in detail below).  The comparison of
-hash-based estimation of containment to mapping results in Figure
-@fig:mapping suggests that this approach is an accurate proxy for
-systematic mapping.
+The min-set-cov approach for assigning genomes to metagenomes using
+k-mers differs substantially from extant k-mer and mapping-based
+approaches for identifying relevant genomes.  LCA-based approaches
+such as Kraken label individual k-mers based on taxonomic lineages in
+a database, and then use the resulting database of annotated k-mers to
+assign taxonomy to reads. Mapping- and homology-based approaches such
+as Diamond use read mapping to genomes or read alignment to
+gene sequences in order to assign taxonomy and function (cite). These
+approaches typically focus on assigning *individual* k-mers or reads.
+In contrast, here we analyze the entire collection of k-mers and
+assigns them _in aggregate_ to the _best_ genome match, and then repeat
+until no matches remain.
+
+The resulting metagenome cover can then be used as inputs for further
+analysis, including both taxonomic content analysis and read mapping.
+For taxonomic analyses, we find that this approach is competitive with
+other current approaches and has several additional conveniences
+(discussed in detail below).  The comparison of hash-based estimation
+of containment to mapping results in Figure @fig:mapping suggests that
+this approach is an accurate proxy for systematic mapping.
 
 Our implementation of the min-set-cov algorithm in sourmash also
 readily supports custom reference databases as well as updating
@@ -731,19 +751,19 @@ calculating overlaps can be updated with the new genomes (Column 2 of
 Table @tbl:genbank-cover), while the actual calculation of the minimum
 set cover must be redone each time.
 
-CTB TODO:
-
-* can we guess at places where gather would break? One is equivalent
-containment/different genome sizes, e.g. virus/phage contained within
-other genomes.
+Minimum set cover approaches may provide opportunities beyond those
+discussed here. For example, read- and contig-based analysis, and analysis
+and presentation of alignments, can be potentially simplified with this
+approach.
 
 ## Minimum metagenome covers support accurate and flexible taxonomic assignment
 
-We can build a taxonomic classifier on top of minimum set covers for metagenomes
-by reporting the taxonomies of the constituent genomes, aggregated at
-the relevant taxonomic level using an LCA approach.  Our initial
-taxonomic benchmarking shows that this approach is competitive for all
-metrics across all taxonomic levels (Figures @fig:spider and @fig:scores).
+We can build a taxonomic classifier on top of minimum set covers for
+metagenomes by reporting the taxonomies of the constituent genomes,
+weighted by distinct overlap and aggregated at the relevant taxonomic
+level using an LCA approach.  Our CAMI-based taxonomic benchmarking shows
+that this approach is competitive for all metrics across all taxonomic
+levels (Figures @fig:spider and @fig:scores).
 
 One convenient feature of this approach to taxonomic analysis is that
 new or changed taxonomies can be readily incorporated by assigning
@@ -767,9 +787,11 @@ This minimizes the impact of individual k-mers that may be common to
 a genus or family, or were mis-assigned as a result of contamination.
 
 Finally, as the underlying min-set-cov implementation supports custom
-databases, it is straightforward to support *txonomic* analysis using
+databases, it is straightforward to support *taxonomic* analysis using
 custom databases and/or custom taxonomic assignments. sourmash
 already supports this functionality natively.
+
+## Min-set-cov maybe useful beyond k-mers.
 
 ## Simple algorithms support performant implementations
 
@@ -788,15 +810,7 @@ sourmash.rtfd.io, and installation instructions for pip and conda).
 The sourmash project also provides large scale databases for NCBI and
 GTDB taxonomies.
 
-The approach presented here chooses arbitrarily between
-matches with equivalent numbers of contained k-mers. There are specific
-genomic circumstances where this approach could usefully be refined with
-additional criteria. For example, if a phage genome is present in the
-reference database, and is also present within one or more genomes in the
-database, it may desirable to select the match with the highest
-Jaccard *similarity* in order to select the phage genome directly.
-
-## Reference dependence
+## The minimum set cover approach is reference dependent
 
 The min-set-cov approach is reference-based, and hence is entirely
 dependent on the reference database. In particular, in many cases the
@@ -811,10 +825,30 @@ genomes, suggesting that strain-specific portions of the reference are
 being utilized for matching at lower ranks. In reality, there will
 usually be a different mixture of strains in the metagenome than in
 the reference database. Methods for updating references from
-metagenome data sets may provide an approach for generating
+metagenome data sets may provide an opportunity for generating
 metagenome-specific references [@doi:10.1186/s13059-020-02066-4].
 
-## Opportunities for future improvement
+The approach presented here chooses arbitrarily between
+matches with equivalent numbers of contained k-mers. There are specific
+genomic circumstances where this approach could usefully be refined with
+additional criteria. For example, if a phage genome is present in the
+reference database, and is also present within one or more genomes in the
+database, it may desirable to select the match with the highest
+Jaccard *similarity* in order to select the phage genome directly.
+
+In light of the strong reference dependence of the min-set-cov
+approach together with the insensitivity of the _Scaled MinHash_, it
+may be useful to explore alternate methods of summarizing the list of
+overlapping genomes, that is, *all* the genomes in column 2 of Table
+@tbl:genbank-cover. For example, a hierarchical approach could be
+taken to first identify the full list of overlapping genomes, followed
+by a higher resolution approach to identify a specific subset of
+matcheing genomes.
+
+## Opportunities for future improvement of min-set-cov calculations
+
+There are a number of immediate opportunities for future improvement of
+the min-set-cov approach.
 
 Implementing min-set-cov on top of _Scaled MinHash_ means
 that there is a loss of resolution when choosing between very closely
@@ -838,16 +872,13 @@ can do containment comparisons with the query data structure.
 
 In turn, this means that limitations of our current implementation,
 such as insensitivity to small genomes when $s$ is approximately the
-same as the genome size, are not intrinsic to the minimum set cover
-approach.
+same as the genome size, may be readily solvable with other sketch types.
 
-There are many other opportunities for improving on the initial explorations
-above.
+There are other opportunities for improving on these initial explorations.
 The availability of abundance counts for each
 element in the _Scaled MinHash_ is not well explored, since the
-process of _removing elements_ from the query doesn't account for them
-(the element is removed even if the count is much higher than the
-count in the match).
+process of _removing elements_ from the query does not use them
+.
 <!-- David comment: could use a compressive sensing approach here:
 $ min \norm{x}^2_1 + \lambda \norm{Ax - y}^2_2, x \ge 0$
 Y_i = count of hash i in sample
@@ -858,34 +889,7 @@ Both the multiple match as well as the abundance counts issues can benefit from
 existing solutions taken by other methods,
 like the _species score_ (for disambiguation) and _Expectation-Maximization_ (for abundance analysis)
 approaches from Centrifuge [@kim_centrifuge_2016].
-
-From DK: a couple other that I’ve tentatively/mathematically observed:
-
-* The variance of the estimate of C(A,B)=|A\cap B| / |A| appears to
-  also depend on |A\B|, which was somewhat surprising
-* The “fixed k-size” problem (which might be able to be overcome with
-  the prefix-lookup data structure, if one sacrifices some accuracy)
   
-Mention weighted set covers.
-
-## Additional opportunities
-
-The min-set-cov approach for assigning genomes to metagenomes using
-k-mers differs substantially from extant k-mer and mapping-based
-approaches for identifying relevant genomes.  LCA-based approaches
-such as Kraken label individual k-mers based on taxonomic lineages in
-a database, and then use the resulting database of annotated k-mers to
-assign taxonomy to reads. Mapping- and homology-based approaches such
-as Diamond use read mapping to genomes or read alignment to
-gene sequences in order to assign taxonomy and function (cite). These
-approaches typically focus on assigning *individual* k-mers or reads.
-In contrast, here we analyze the entire collection of k-mers and
-assigns them _in aggregate_ to the _best_ genome match.
-
-Minimum set cover approaches may provide opportunities beyond those
-discussed here. For example, read- and contig-based analysis, and analysis
-and presentation of alignments, can be potentially simplified with this
-approach.
 
 
 # Conclusion
