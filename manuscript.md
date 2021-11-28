@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@5955e59](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5955e593924c2061dd27a6b820cb70978c6e246e)
+from [dib-lab/2020-paper-sourmash-gather@7f84cd8](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7f84cd869d2dd536e1fc247b183720109bf26cc2)
 on November 28, 2021.
 </em></small>
 
@@ -200,12 +200,18 @@ compositional analyses, and most methods choose representative subsets
 of available genomic information to analyze.
 
 Here, we describe a lightweight and scalable approach to compositional
-analysis of shotgun metagenome data. Our approach tackles the
-selection of appropriate reference genomes for downstream analysis and
-provides a computationally efficient method for taxonomic
-classification of metagenome data.  Our implementation in the
-`sourmash` software can make use of all currently available microbial
-genomes.
+analysis of shotgun metagenome data based on finding the minimum set
+of reference genomes that accounts for all known k-mers in a
+metagenome.  We use a mod-hash basd sketching approach for k-mers to
+scale to using currently available reference genomes.
+
+Our approach tackles the selection of appropriate reference genomes
+for downstream analysis and provides a computationally efficient
+method for taxonomic classification of metagenome data.  Our
+implementation in the `sourmash` software can make use of all
+currently available microbial genomes.
+
+<!--
 
 We first describe _FracMinHash_, a sketching technique based on
 mod-hash (cite Broder), 
@@ -236,9 +242,19 @@ from _FracMinHash_. Thus, _FracMinHash_ combined with
 min-set-cov provides a lightweight, accurate, and scalable way to
 estimate the composition of metagenomes using a large reference
 database.
+-->
 
 
 # Results
+
+We first describe _FracMinHash_, a sketching technique that supports
+containment estimation for metagenome datasets using k-mers. We next
+frame reference-based metagenome content analysis as the problem of
+finding a _minimum set cover_ for a metagenome using a collection of
+reference genomes. We then evaluate the accuracy of this approach
+using a taxonomic classification benchmark. Finally, we demonstrate
+the utility of this approach by using the genomes from the minimum set
+cover as reference genomes for read mapping.
 
 ## FracMinHash sketches support accurate containment operations
 
@@ -614,9 +630,14 @@ that were preferentially mapped to *S. baltica OS223*, rank 8.
 
 # Discussion
 
+Below, we discuss the features and drawbacks of using FracMinHash and
+minimum metagenome covers to analyze metagenome datasets.
+
+(CTB: probably want to talk a bit about long reads below, too.)
+
 ## Scaled MinHash provides efficient containment queries for large data sets.
 
-FracMinHash is an derivative of ModHash that uses the bottom hashing
+FracMinHash is a derivative of ModHash that uses the bottom hashing
 concept from MinHash to support containment operations. In brief, all
 elements in the set to be sketched are hashed, and any hash values
 below a certain fixed boundary value are kept for the sketch. This
@@ -640,7 +661,7 @@ containment analysis, while also supporting Jaccard similarity.
 We note that the FracMinHash technique has been used under a number of
 different names, including FracMinHash
 [@doi:10.12688/f1000research.19675.1)] (cite Luiz thesis),
-universe minimizers [@doi:10.1016/j.cels.2021.08.009]], Shasta
+universe minimizers [@doi:10.1016/j.cels.2021.08.009], Shasta
 markers [@doi:0.1038/s41587-020-0503-6], and mincode syncmers [@doi:10.7717/peerj.10805].  The name FracMinHash was
 coined by Kristoffer Sahlin in an online discussion on Twitter
 [@url:https://twitter.com/krsahlin/status/1463169988689285125] and
@@ -851,7 +872,8 @@ genomic circumstances where this approach could usefully be refined with
 additional criteria. For example, if a phage genome is present in the
 reference database, and is also present within one or more genomes in the
 database, it may desirable to select the match with the highest
-Jaccard *similarity* in order to select the phage genome directly.
+Jaccard *similarity* in order to select the phage genome directly. This is
+algorithmically straightforward to implement.
 
 In light of the strong reference dependence of the min-set-cov
 approach together with the insensitivity of the FracMinHash technique, it

@@ -1,13 +1,14 @@
 aggregative
 alg
+algorithmically
 AMQ
 Archaea
 archaeal
 baltica
+basd
 benchmarking
 biobakery
 bluegenes
-Broder
 brooksph
 CAMI
 CAMISIM
@@ -15,7 +16,7 @@ cardinalities
 cardinality
 CMash
 coli
-compositional
+Compositional
 contig
 cov
 CTB
@@ -49,7 +50,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+mhbt
 microbiome
 mincode
 MinHash
