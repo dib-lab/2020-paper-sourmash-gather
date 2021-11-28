@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5955e593924c2061dd27a6b820cb70978c6e246e/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@5c2c9d9](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5c2c9d91c2a336d686d9e357f26bddb086b48711)
+from [dib-lab/2020-paper-sourmash-gather@5955e59](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5955e593924c2061dd27a6b820cb70978c6e246e)
 on November 28, 2021.
 </em></small>
 
@@ -164,17 +164,18 @@ on November 28, 2021.
 
 The assignment of genomes and taxonomy to metagenome data underlies
 many microbiome studies. Here we describe two algorithms for
-compositional analysis of metagenome sequencing data. We first develop
-a sketching technique, _Scaled MinHash_, that
-supports Jaccard containment estimation between sets of different size.
-We implement _Scaled MinHash_ in the sourmash software and demonstrate
+compositional analysis of metagenome sequencing data. We first investigate
+the _FracMinHash_ sketching technique, a derivative of modulo hash that
+supports Jaccard containment estimation between sets of different size
+[@doi:10.1109/SEQUEN.1997.666900].
+We implement _FracMinHash_ in the sourmash software and demonstrate
 large-scale containment searches of metagenomes using all 700,000 currently
 available microbial reference genomes.
 We next frame shotgun
 metagenome compositional analysis in terms of min-set-cover, i.e. as
 the problem of finding a minimum collection of reference genomes
 that "cover" the known k-mers in a metagenome. We implement a greedy
-approximate solution using  _Scaled MinHash_ sketches, and evaluate
+approximate solution using  _FracMinHash_ sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
 Finally, we show that genomes in the minimum set cover can be used for accurate read
 mapping.
@@ -191,10 +192,10 @@ Compositional analysis of shotgun metagenome samples has the goal of
 identifying what functions and taxonomic units are present in the
 data.  Function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-(cite biobakery, MEGAN-LR), gene search (cite mmseqs, eggnog etc.), or k-mer matches
-(Kraken).  For many of these methods, the substantial increase in the
-number of available reference genomes (1.1m in GenBank as of XYZ)
-presents a significant practical obstacle to comprehensive
+(cite biobakery, MEGAN-LR), gene search (cite mmseqs, eggnog etc.), or
+k-mer matches (Kraken).  For many of these methods, the substantial
+increase in the number of available reference genomes (1.1m in GenBank
+as of XYZ) presents a significant practical obstacle to comprehensive
 compositional analyses, and most methods choose representative subsets
 of available genomic information to analyze.
 
@@ -206,10 +207,11 @@ classification of metagenome data.  Our implementation in the
 `sourmash` software can make use of all currently available microbial
 genomes.
 
-We first define _Scaled MinHash_, an extension of MinHash sketching
+We first describe _FracMinHash_, a sketching technique based on
+mod-hash (cite Broder), 
 that supports containment estimation for metagenome
-datasets using k-mers.  We implement _Scaled MinHash_ in a Python and
-Rust package, `sourmash`, and show that it is competitive in
+datasets using k-mers.  We implement _FracMinHash_ in a Python and
+Rust package, `sourmash`, and demonstrate that it is competitive in
 accuracy with other containment estimation approaches.
 
 We next frame reference-based metagenome content analysis as a
@@ -217,12 +219,12 @@ min-set-cov problem, where we determine the _minimum_ number of
 genomes from a reference database needed to cover the identifiable
 genomic content from a metagenome.  We implement a
 best-polynomial-time greedy approximation to the min-set-cov problem
-using _Scaled MinHash_ in `sourmash`. This technique provides an
+using _FracMinHash_ in `sourmash`. This technique provides an
 iterative decomposition of metagenomes into genome matches.
 
 To evaluate the accuracy of our min-set-cov procedure, we implement a
 simple taxonomic classification approach in which we use the taxonomy
-of the genomes from the set cover to define the taxonomy of the
+of the genomes in the set cover to define the taxonomy of the
 metagenome content. We show that this permits precise and lightweight
 classification of metagenome content across all taxonomic levels.
 
@@ -230,7 +232,7 @@ Finally, we show that the minimum set covers for several metagenomes
 contain only a small subset of reference genomes even when using very
 large and redundant databases, and demonstrate that this subset can be
 used to map the metagenome reads in concordance with the estimates
-from _Scaled MinHash_. Thus, _Scaled MinHash_ combined with
+from _FracMinHash_. Thus, _FracMinHash_ combined with
 min-set-cov provides a lightweight, accurate, and scalable way to
 estimate the composition of metagenomes using a large reference
 database.
@@ -238,23 +240,24 @@ database.
 
 # Results
 
-## Scaled MinHash sketches support accurate containment operations
+## FracMinHash sketches support accurate containment operations
 
-We define the Scaled MinHash on an input domain of $k$-mers, $W$, as follows:
+We define the *fractional MinHash*, or FracMinHash, on an input domain
+of $k$-mers, $W$, as follows:
 
-$$\mathbf{SCALED}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
+$$\mathbf{FRAC}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
 W\,\}$$ where $H$ is the largest possible value in the domain of
 $h(x)$ and $\frac{H}{s}$ is the \emph{maximum hash} value in the
-Scaled MinHash.
+FracMinHash.
 
-The Scaled MinHash is a mix of MinHash and ModHash
+The FracMinHash is a mix of MinHash and ModHash
 [@doi:10.1109/SEQUEN.1997.666900].  It keeps the selection of the
 smallest elements from MinHash, while using the dynamic size from
 ModHash to allow containment estimation.  However, instead of taking
-$0 \mod m$ elements like $\mathbf{MOD}_m(W)$, a Scaled MinHash uses the
+$0 \mod m$ elements like $\mathbf{MOD}_m(W)$, a FracMinHash uses the
 parameter $s$ to select a subset of $W$.
 
-Scaled MinHash supports containment estimation with high accuracy and
+FracMinHash supports containment estimation with high accuracy and
 low bias. **(Analytic work from David HERE.)**
 
 * approximation formula (eqn 13 from overleaf)
@@ -262,16 +265,15 @@ low bias. **(Analytic work from David HERE.)**
 * refer to appendix for derivation.
 
 Given a uniform hash function $h$ and $s=m$, the cardinalities of
-$\mathbf{SCALED}_s(W)$ and $\mathbf{MOD}_m(W)$ converge for large
+$\mathbf{FRAC}_s(W)$ and $\mathbf{MOD}_m(W)$ converge for large
 $\vert W \vert$.  The main difference is the range of possible values
-in the hash space, since the Scaled MinHash range is contiguous and
+in the hash space, since the FracMinHash range is contiguous and
 the ModHash range is not.  This permits a variety of convenient
-operations on the sketches, including iterative downsampling of Scaled
-MinHash sketches as well as conversion to MinHash sketches.
+operations on the sketches, including iterative downsampling of FracMinHash sketches as well as conversion to MinHash sketches.
 
-## A Scaled MinHash implementation accurately estimates containment between sets of different sizes
+## A FracMinHash implementation accurately estimates containment between sets of different sizes
 
-We compare the _Scaled MinHash_ method to CMash (_Containment
+We compare the _FracMinHash_ method to CMash (_Containment
 MinHash_) [@doi:10.1101/184150] and Mash Screen (_Containment Score_)
 [@doi:10.1186/s13059-019-1841-x] for containment queries in data from a
 mock bacterial and archaeal community where the
@@ -284,7 +286,7 @@ This data set has been used in several methods evaluations
 differences from containment estimate to ground truth (exact).**
 Each method is evaluated for $k=\{21,31,51\}$,
 except for `Mash` with $k=51$, which is unsupported.
-](images/containment.svg "Containment estimation between smol, CMash, and mash screen"){#fig:containment}
+](images/containment.svg "Containment estimation between FracMinHash, CMash, and mash screen"){#fig:containment}
 
 Figure @fig:containment shows containment analysis of genomes in this metagenome, with low-coverage and
 contaminant genomes (as described in [@doi:10.1101/155358] and
@@ -293,14 +295,14 @@ All methods are within 1\% of the exact containment on average (Figure
 @fig:containment), with `CMash` consistently underestimating
 the containment for large $k$ and overestimating for small $k$.  `Mash
 Screen` with $n=10000$ has the smallest difference to ground truth for
-$k=\{21, 31\}$, followed by `smol` with `scaled=1000` and `Mash
+$k=\{21, 31\}$, followed by `FracMinHash` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
 
 CTB TODO:
 
-* switch figure to use sourmash
+* switch figure to use sourmash; update description to reference sourmash.
 
-## We can use Scaled Min-Hash to construct a minimum set cover for metagenomes
+## We can use FracMinHash to construct a minimum set cover for metagenomes
 
 We next ask: what is the smallest collection of genomes in a database
 that contains all of the known k-mers in a metagenome?
@@ -319,9 +321,12 @@ This greedy algorithm iteratively subtracts k-mers
 belonging to the genome that has the highest containment count from
 the metagenome (ref alg above).  This results in a progressive
 classification of the known k-mers in the metagenome to specific
-genomes, in rank order of number of contained hashes. Note that in
-cases where equivalent matches are available at a particular rank,
-a match is chosen at random.
+genomes, in rank order of number of contained hashes.[^equivalent]
+
+[^equivalent]: In our current implementation in `sourmash`, when
+equivalent matches are available for a given rank, a match is chosen
+at random. This is an implementation decision that is not intrinsic to
+the algorithm itself.
 
 In Figure @fig:gather0, we show the results of this iterative
 decomposition of the mock metagenome from
@@ -349,7 +354,7 @@ real community members.
 ![
 **K-mer decomposition of a metagenome into constituent genomes.**
 A rank ordering by remaining containment for the first 36 genomes from the minimum set cover
-of the synthetic metagenome from [@doi:10.1111/1462-2920.12086],
+of the `podar mock` synthetic metagenome from [@doi:10.1111/1462-2920.12086],
 calculated against a database containing 700,000
 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the
 genome.
@@ -594,8 +599,9 @@ usually map one way or another.)
 -->
 
 ![
-**Hash-based decomposition of a metagenome into constituent
+**Hash-based k-mer decomposition of a metagenome into constituent
 genomes compares well to bases covered by read mapping.** 
+(CTB: add more description here.)
 The reference genomes are rank ordered along the x axis (as in Figure @fig:gather0), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
 The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
 Decreases in mapping (green peaks) occur for genomes which are not
@@ -610,51 +616,58 @@ that were preferentially mapped to *S. baltica OS223*, rank 8.
 
 ## Scaled MinHash provides efficient containment queries for large data sets.
 
-_Scaled MinHash_ is an implementation of ModHash that uses the bottom
-hashing concept from MinHash to support containment operations. In
-brief, all elements in the set to be sketched are hashed, and any hash values
-below a certain fixed boundary value are kept for the sketch. This fixed boundary
-value is determined by the desired accuracy for the sketch operations.
+FracMinHash is an derivative of ModHash that uses the bottom hashing
+concept from MinHash to support containment operations. In brief, all
+elements in the set to be sketched are hashed, and any hash values
+below a certain fixed boundary value are kept for the sketch. This
+fixed boundary value is determined by the desired accuracy for the
+sketch operations.
 
-Intuitively, _Scaled MinHash_ performs a density sampling at a rate of 1
+Intuitively, FracMinHash performs a density sampling at a rate of 1
 $k$-mer per $s$ distinct k-mers seen, where $s$ is the size of the
 hash space divided by the boundary value used in creating the
 sketch. This is a type of lossy compression, with a fixed compression
 ratio of $s$: for values of $s$ used here ($s \approx
 1000$), k-mer sets are reduced in cardinality by 1000-fold.
 
-Unlike MinHash, _Scaled MinHash_ supports containment estimation between
+Unlike MinHash, FracMinHash supports containment estimation between
 sets of very different sizes, and here we demonstrate that it can be
 used efficiently and effectively for compositional analysis of shotgun
-metagenome data sets with k-mers. In particular, _Scaled MinHash_ is
+metagenome data sets with k-mers. In particular, FracMinHash is
 competitive in accuracy with extant MinHash-based techniques for
-containment analysis, while also supporting Jaccard similarity.[^durbin]
+containment analysis, while also supporting Jaccard similarity.
 
-[^durbin]: We note that others have also applied the ModHash concept to
-genomic data; see, for example, Durbin's "modimizer"
-[@https://github.com/richarddurbin/modimizer].
+We note that the FracMinHash technique has been used under a number of
+different names, including FracMinHash
+[@doi:10.12688/f1000research.19675.1)] (cite Luiz thesis),
+universe minimizers [@doi:10.1016/j.cels.2021.08.009]], Shasta
+markers [@doi:0.1038/s41587-020-0503-6], and mincode syncmers [@doi:10.7717/peerj.10805].  The name FracMinHash was
+coined by Kristoffer Sahlin in an online discussion on Twitter
+[@url:https://twitter.com/krsahlin/status/1463169988689285125] and
+chosen by discussants as the least ambiguous option. We use it here
+accordingly.
 
-_Scaled MinHash_ offers several conveniences over _MinHash_.  No hash
-is ever removed from a _Scaled MinHash_ sketch during construction;
-so while sketches grow proportionally to the number of
-distinct k-mers in the sampled data set, sketches _also_ support many
+FracMinHash offers several conveniences over MinHash.  No hash
+is ever removed from a FracMinHash_ sketch during construction;
+thus sketches grow proportionally to the number of
+distinct k-mers in the sampled data set, but _also_ support many
 operations - including all of the operations used here -
 without needing to revisit the original data set. This is in contrast
 to MinHash, which requires auxiliary data structures for many
 operations - most especially, containment operations (cite CMash and
-mash screen).  Thus _Scaled MinHash_ sketches serve as distributed
+mash screen).  Thus FracMinHash sketches serve as
 compressed indices for the original content for a much broader range
 of operations than MinHash.
 
-Because _Scaled MinHash_ sketches collect all hash values below a
-fixed threshold, they also support streaming analysis of sketches: any
+Because FracMinHash sketches collect all hash values below a fixed
+threshold, they also support streaming analysis of sketches: any
 operations that used a previously selected value can be cached and
-updated with newly arriving values.  ModHash has similar
-properties, but this is not the case for MinHash, since
-after $n$ values are selected any displacement caused by new data can
-invalidate previous calculations.
+updated with newly arriving values.  ModHash has similar properties,
+but this is not the case for MinHash: after $n$ values are selected
+any displacement caused by new data can invalidate previous
+calculations.
 
-_Scaled MinHash_ also directly supports the addition and subtraction of
+FracMinHash also directly supports the addition and subtraction of
 hash values from a sketch, allowing post-processing and filtering without
 revisiting the original data set. This includes unions and intersections.
 Although possible for MinHash, in practice this requires
@@ -662,31 +675,31 @@ oversampling (using a larger $n$) to account for possibly having less
 than $n$ values after filtering, e.g. see the approach taken in Finch [@doi:10.21105/joss.00505].
 
 When the multiplicity of hashes in the original data is retained,
-_Scaled MinHash_ sketches can be filtered on abundance.  This allows
+FracMinHash sketches can be filtered on abundance.  This allows
 removing low-abundance values, as implemented in Finch
 [@doi:10.21105/joss.00505].  Filtering values that only appear once
 was implemented in Mash by using a Bloom Filter and only adding values
 after they were seen once, with later versions also implementing an
 extra counter array to keep track of counts for each value in the
-MinHash.  These operations can be done in _Scaled MinHash_ without
+MinHash.  These operations can be done in FracMinHash without
 auxiliary data structures.
 
-Another useful operation available on _Scaled MinHash_ sketches is
-*downsampling*: the contiguous value range for _Scaled MinHash_ sketches
-allows deriving MinHash sketches from _Scaled MinHash_ sketches
-whenever the number of hashes in the _Scaled MinHash_ sketch is equal
+Another useful operation available on FracMinHash sketches is
+*downsampling*: the contiguous value range for FracMinHash sketches
+allows deriving MinHash sketches from FracMinHash sketches
+whenever the number of hashes in the FracMinHash sketch is equal
 to or greater than $n$, as long as the same hashing scheme is used.
-Likewise, MinHash sketches can be converted to _Scaled MinHash_
+Likewise, MinHash sketches can be converted to FracMinHash
 sketches when the maximum hash value in the MinHash sketch is larger
 than $s$.
 
-Finally, because _Scaled MinHash_ sketches are simply collections of
+Finally, because FracMinHash sketches are simply collections of
 hashes, any existing k-mer indexing approaches can be applied to
 sketches to support fast search with both similarity and containment estimators; several index types,
 including Sequence Bloom Trees and reverse indices, are provided in
 the sourmash software.
 
-In exchange for these many conveniences, _Scaled MinHash_ sketches
+In exchange for these many conveniences, FracMinHash sketches
 have limited sensitivity for small data sets where the k-mer
 cardinality of the data set $\approx s$, and are only bounded in size
 by $H/s$ (typically quite large, $\approx 2e16$).  The limited
@@ -712,7 +725,7 @@ select a list of reduced-redundancy genomes from a much larger database
 a *minimum* set of reference genomes necessary to account for all k-mers
 shared between the metagenome and the database. We show that
 this can be resolved efficiently for real-world data sets; implementing
-a greedy min-set-cov approximation algorithm on top of _Scaled MinHash_,
+a greedy min-set-cov approximation algorithm on top of FracMinHash,
 we provide an approach that
 readily scales to 700,000 genomes on current hardware (performance in
 appendix). We show that in practice this procedure reduces the number of genomes
@@ -793,7 +806,7 @@ a genus or family, or were mis-assigned as a result of contamination.
 Finally, as the underlying min-set-cov implementation supports custom
 databases, it is straightforward to support *taxonomic* analysis using
 custom databases and/or custom taxonomic assignments. sourmash
-already supports this functionality natively.
+natively supports this functionality.
 
 <!--
 ## Simple algorithms support performant implementations
@@ -841,7 +854,7 @@ database, it may desirable to select the match with the highest
 Jaccard *similarity* in order to select the phage genome directly.
 
 In light of the strong reference dependence of the min-set-cov
-approach together with the insensitivity of the _Scaled MinHash_, it
+approach together with the insensitivity of the FracMinHash technique, it
 may be useful to explore alternate methods of summarizing the list of
 overlapping genomes, that is, *all* the genomes in column 2 of Table
 @tbl:genbank-cover. For example, a hierarchical approach could be
@@ -854,7 +867,7 @@ matching genomes.
 There are a number of immediate opportunities for future improvement of
 the min-set-cov approach.
 
-Implementing min-set-cov on top of _Scaled MinHash_ means
+Implementing min-set-cov on top of FracMinHash means
 that there is a loss of resolution when choosing between very closely
 related genomes, because the set of hashes chosen may not discriminate
 between them.  Likewise, the potentially very large size of the sketches
@@ -880,7 +893,7 @@ same as the genome size, may be readily solvable with other sketch types.
 
 There are other opportunities for improving on these initial explorations.
 The availability of abundance counts for each
-element in the _Scaled MinHash_ is not well explored, since the
+element in the FracMinHash is not well explored, since the
 process of _removing elements_ from the query does not use them
 .
 <!-- David comment: could use a compressive sensing approach here:
@@ -893,16 +906,16 @@ Both the multiple match as well as the abundance counts issues can benefit from
 existing solutions taken by other methods,
 like the _species score_ (for disambiguation) and _Expectation-Maximization_ (for abundance analysis)
 approaches from Centrifuge [@kim_centrifuge_2016].
-  
+
 
 
 # Conclusion
 
-The _Scaled MinHash_ and min-set-cov approaches explored here are
-powerful and accurate approaches to analyzing metagenomes, with well
+The FracMinHash and min-set-cov approaches explored here provide
+powerful and accurate techniques for analyzing metagenomes, with well
 defined limitations. The immediate applications for both mapping-based
-and taxonomic analysis of metagnomes are already interesting. In
-particular, we provide implementations of these approaches in robust
+and taxonomic analysis of metagenomes are already interesting. We provide
+an implementation of these approaches in robust
 open-source software, together with workflows to enable their
 practical use on large data sets.  The approaches also offer many
 opportunities for further exploration and improvement with additional

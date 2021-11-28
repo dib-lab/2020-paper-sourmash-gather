@@ -7,6 +7,7 @@ baltica
 benchmarking
 biobakery
 bluegenes
+Broder
 brooksph
 CAMI
 CAMISIM
@@ -24,9 +25,9 @@ DK
 dkoslicki
 downsampled
 downsampling
-Durbin’s
 eqn
-genbank
+FracMinHash
+GenBank
 genomic
 GTDB
 iHMP
@@ -36,6 +37,7 @@ iteratively
 Jaccard
 Koslicki
 Kraken
+Kristoffer
 LCA
 LINS
 lossy
@@ -47,14 +49,14 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-metagnomes
-mhbt
+MHBT
 microbiome
+mincode
 MinHash
+minimizers
 mis
 mmseqs
 ModHash
-modimizer
 natively
 NCBI
 PacBio
@@ -64,6 +66,7 @@ reproducibly
 rescaled
 revindex
 runtime
+Sahlin
 saltyscientist
 SBT
 scalable
@@ -71,6 +74,7 @@ Shewanella
 sourmash
 SRR
 summarization
+syncmers
 taylorreiter
 TBD
 TODO
