@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-11-06" />
+  <meta name="dcterms.date" content="2021-11-28" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-11-06" />
-  <meta name="citation_publication_date" content="2021-11-06" />
+  <meta name="dc.date" content="2021-11-28" />
+  <meta name="citation_publication_date" content="2021-11-28" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/97330d61d02aee0e472247418a3e0303dbf55edd">dib-lab/2020-paper-sourmash-gather@97330d6</a>
-on November 6, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5c2c9d91c2a336d686d9e357f26bddb086b48711">dib-lab/2020-paper-sourmash-gather@5c2c9d9</a>
+on November 28, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -187,7 +187,7 @@ the problem of finding a minimum collection of reference genomes
 that “cover” the known k-mers in a metagenome. We implement a greedy
 approximate solution using <em>Scaled MinHash</em> sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
-Finally, we show that the minimum set cover can be used for accurate read
+Finally, we show that genomes in the minimum set cover can be used for accurate read
 mapping.
 sourmash is available as open source under the
 BSD 3-Clause license at github.com/dib-lab/sourmash/.</p>
@@ -198,7 +198,7 @@ communities.</p>
 identifying what functions and taxonomic units are present in the
 data. Function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-(cite biobakery, MEGAN-LR), gene search (cite mmseqs, etc.), or k-mer matches
+(cite biobakery, MEGAN-LR), gene search (cite mmseqs, eggnog etc.), or k-mer matches
 (Kraken). For many of these methods, the substantial increase in the
 number of available reference genomes (1.1m in GenBank as of XYZ)
 presents a significant practical obstacle to comprehensive
@@ -311,7 +311,7 @@ cases where equivalent matches are available at a particular rank,
 a match is chosen at random.</p>
 <p>In Figure <a href="#fig:gather0">2</a>, we show the results of this iterative
 decomposition of the mock metagenome from
-<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">4</a>]</span>, into constituent genome matches. The
+<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">4</a>]</span> (Table <a href="#tbl:genbank-cover">1</a>, row 2), into constituent genome matches. The
 high rank (early) matches reflect large and/or mostly-covered genomes
 with high containment, while later matches reflect smaller genomes,
 lower-covered genomes, and/or genomes with substantial overlap with
@@ -409,7 +409,10 @@ has the lowest L1-norm error,
 between the true and predicted abundances at a specific taxonomic
 rank) -->
 the highest number of true positives and the lowest number of
-false positives.</p>
+false positives.
+<!-- TR: it looks like mOTU has hte lowest L1-norm, not sourmash? -->
+<!-- runtimes/memory are mentioned in the discussion saying they're in the appendix,
+I think it would be nice to mention that they're in the appendix here --></p>
 <!--
 | Taxonomic binner                | Time (hh:mm) | Memory (kbytes) |
 |:--------------------------------|-------------:|----------------:|
@@ -523,18 +526,18 @@ query genome, and a <em>minimum list</em> of genomes that account for k-mers
 with overlap in the query metagenome (see Methods).</p>
 <p>We find many genomes with large overlaps for each metagenome, due to
 the redundancy of the reference database. For example, <code>zymo mock</code>
-contains a <em>Salmonella</em> genome, and there are over 200,000 Salmonella
-genomes that match to it in Genbank. Likewise, <code>gut real</code>
+contains a <em>Salmonella</em> genome, and there are over 200,000 <em>Salmonella</em>
+genomes that match to it in GenBank. Likewise, <code>gut real</code>
 matches to over 75,000 <em>E. coli</em> genomes in GenBank. Since neither
 <code>podar mock</code> nor <code>oil well real</code> contain genomes from species with
-substantial representation in genbank, they yield many fewer total
+substantial representation in GenBank, they yield many fewer total
 overlapping genomes.</p>
-<p>However, regardless of the number of genomes in the database with substantial
+<p>Regardless of the number of genomes in the database with substantial
 overlap, the
 estimated <em>minimum</em> collection of genomes is always much smaller than the
 number of genomes with overlaps. In
 the cases where the k-mers in the metagenome are mostly identified,
-this is because of database redundancy: e.g. in the case of <code>zymo mock</code>, the min-set-cov algorithm chooses only one Salmonella genome
+this is because of database redundancy: e.g. in the case of <code>zymo mock</code>, the min-set-cov algorithm chooses only one <em>Salmonella</em> genome
 from the 200,000+ available. Conversely, in the case of <code>oil well real</code>,
 much of the sample is not identified,
 suggesting that the small size of the covering set is because much
@@ -560,9 +563,9 @@ the minimum set cover, because it is computationally intractable to map
 reads to the entire GenBank database. (CTB: check centrifuge.)</p>
 <p>Figure <a href="#fig:mapping">5</a> compares hash assignment rates
 and mapping rates for the four evaluation metagenomes in Table
-<a href="#tbl:genbank-cover">1</a>. Broadly speaking, we see that k-mer based
+<a href="#tbl:genbank-cover">1</a>. Broadly speaking, we see that k-mer-based
 estimates of metagenome composition align closely with the number of
-bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping correspond well. This suggests that the k-mer based min-set-cov
+bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping correspond well. This suggests that the k-mer-based min-set-cov
 approach effectively selects reference genomes for metagenome read mapping.</p>
 <p>For mock metagenomes (panels X and Y), there appears to be a close
 correspondence between mapping and hash assignment rates, while for
@@ -626,7 +629,7 @@ operations - including all of the operations used here -
 without needing to revisit the original data set. This is in contrast
 to MinHash, which requires auxiliary data structures for many
 operations - most especially, containment operations (cite CMash and
-mash screen). Thus Scaled MinHash sketches serve as distributed
+mash screen). Thus <em>Scaled MinHash</em> sketches serve as distributed
 compressed indices for the original content for a much broader range
 of operations than MinHash.</p>
 <p>Because <em>Scaled MinHash</em> sketches collect all hash values below a
@@ -636,7 +639,7 @@ updated with newly arriving values. ModHash has similar
 properties, but this is not the case for MinHash, since
 after <span class="math inline">\(n\)</span> values are selected any displacement caused by new data can
 invalidate previous calculations.</p>
-<p>Scaled MinHash also directly supports the addition and subtraction of
+<p><em>Scaled MinHash</em> also directly supports the addition and subtraction of
 hash values from a sketch, allowing post-processing and filtering without
 revisiting the original data set. This includes unions and intersections.
 Although possible for MinHash, in practice this requires
@@ -652,7 +655,7 @@ extra counter array to keep track of counts for each value in the
 MinHash. These operations can be done in <em>Scaled MinHash</em> without
 auxiliary data structures.</p>
 <p>Another useful operation available on <em>Scaled MinHash</em> sketches is
-<em>downsampling</em>: the contiguous value range for Scaled MinHash sketches
+<em>downsampling</em>: the contiguous value range for <em>Scaled MinHash</em> sketches
 allows deriving MinHash sketches from <em>Scaled MinHash</em> sketches
 whenever the number of hashes in the <em>Scaled MinHash</em> sketch is equal
 to or greater than <span class="math inline">\(n\)</span>, as long as the same hashing scheme is used.
@@ -709,7 +712,7 @@ as Diamond use read mapping to genomes or read alignment to
 gene sequences in order to assign taxonomy and function (cite). These
 approaches typically focus on assigning <em>individual</em> k-mers or reads.
 In contrast, here we analyze the entire collection of k-mers and
-assigns them <em>in aggregate</em> to the <em>best</em> genome match, and then repeat
+assign them <em>in aggregate</em> to the <em>best</em> genome match, and then repeat
 until no matches remain.</p>
 <p>The resulting metagenome cover can then be used as inputs for further
 analysis, including both taxonomic content analysis and read mapping.
@@ -807,7 +810,7 @@ overlapping genomes, that is, <em>all</em> the genomes in column 2 of Table
 <a href="#tbl:genbank-cover">1</a>. For example, a hierarchical approach could be
 taken to first identify the full list of overlapping genomes, followed
 by a higher resolution approach to identify a specific subset of
-matcheing genomes.</p>
+matching genomes.</p>
 <h2 id="opportunities-for-future-improvement-of-min-set-cov">Opportunities for future improvement of min-set-cov</h2>
 <p>There are a number of immediate opportunities for future improvement of
 the min-set-cov approach.</p>
@@ -815,7 +818,7 @@ the min-set-cov approach.</p>
 that there is a loss of resolution when choosing between very closely
 related genomes, because the set of hashes chosen may not discriminate
 between them. Likewise, the potentially very large size of the sketches
-may inhibit the application of this approach to metagenomes.</p>
+may inhibit the application of this approach to very large metagenomes.</p>
 <p>These limitations are not intrinsic to min-set-cov, however;
 any data structure supporting both the <em>containment</em> <span class="math inline">\(C(A, B) = \frac{\vert A \cap B \vert }{\vert A \vert}\)</span> and <em>remove elements</em>
 operations can be used to implement the greedy approximation algorithm
@@ -863,7 +866,7 @@ summarization approaches. The world is our oyster!</p>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
 <div id="ref-AX7zdKKw" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-23) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
+<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-22) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
 </div>
 <div id="ref-jxLvWK4U" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">2. </div><div class="csl-right-inline"><strong>IMPROVING MIN HASH VIA THE CONTAINMENT INDEX WITH APPLICATIONS TO METAGENOMIC ANALYSIS</strong> <div class="csl-block">David Koslicki, Hooman Zabeti</div> <em>Cold Spring Harbor Laboratory</em> (2017-09-04) <a href="https://doi.org/ghvn6z">https://doi.org/ghvn6z</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/184150">10.1101/184150</a></div></div>

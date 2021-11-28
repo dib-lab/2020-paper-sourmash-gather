@@ -680,6 +680,7 @@
         ]
       ]
     },
+    "abstract": "While metagenomics has emerged as a technology of choice for analyzing bacterial populations, the assembly of metagenomic data remains challenging, thus stifling biological discoveries. Moreover, recent studies revealed that complex bacterial populations may be composed from dozens of related strains, thus further amplifying the challenge of metagenomic assembly. metaSPAdes addresses various challenges of metagenomic assembly by capitalizing on computational ideas that proved to be useful in assemblies of single cells and highly polymorphic diploid genomes. We benchmark metaSPAdes against other state-of-the-art metagenome assemblers and demonstrate that it results in high-quality assemblies across diverse data sets.",
     "container-title": "Genome Research",
     "DOI": "10.1101/gr.213959.116",
     "volume": "27",
@@ -706,7 +707,7 @@
         [
           2002,
           11,
-          23
+          22
         ]
       ]
     },
@@ -1202,7 +1203,7 @@
         [
           "2021",
           11,
-          6
+          28
         ]
       ]
     },
@@ -1221,7 +1222,7 @@
         [
           "2021",
           11,
-          6
+          28
         ]
       ]
     },

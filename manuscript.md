@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-11-06'
+date-meta: '2021-11-28'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-11-06" />
-  <meta name="citation_publication_date" content="2021-11-06" />
+  <meta name="dc.date" content="2021-11-28" />
+  <meta name="citation_publication_date" content="2021-11-28" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/97330d61d02aee0e472247418a3e0303dbf55edd/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5c2c9d91c2a336d686d9e357f26bddb086b48711/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@97330d6](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/97330d61d02aee0e472247418a3e0303dbf55edd)
-on November 6, 2021.
+from [dib-lab/2020-paper-sourmash-gather@5c2c9d9](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5c2c9d91c2a336d686d9e357f26bddb086b48711)
+on November 28, 2021.
 </em></small>
 
 ## Authors
@@ -176,7 +176,7 @@ the problem of finding a minimum collection of reference genomes
 that "cover" the known k-mers in a metagenome. We implement a greedy
 approximate solution using  _Scaled MinHash_ sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
-Finally, we show that the minimum set cover can be used for accurate read
+Finally, we show that genomes in the minimum set cover can be used for accurate read
 mapping.
 sourmash is available as open source under the
 BSD 3-Clause license at github.com/dib-lab/sourmash/.
@@ -191,7 +191,7 @@ Compositional analysis of shotgun metagenome samples has the goal of
 identifying what functions and taxonomic units are present in the
 data.  Function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-(cite biobakery, MEGAN-LR), gene search (cite mmseqs, etc.), or k-mer matches
+(cite biobakery, MEGAN-LR), gene search (cite mmseqs, eggnog etc.), or k-mer matches
 (Kraken).  For many of these methods, the substantial increase in the
 number of available reference genomes (1.1m in GenBank as of XYZ)
 presents a significant practical obstacle to comprehensive
@@ -325,7 +325,7 @@ a match is chosen at random.
 
 In Figure @fig:gather0, we show the results of this iterative
 decomposition of the mock metagenome from
-[@doi:10.1111/1462-2920.12086], into constituent genome matches.  The
+[@doi:10.1111/1462-2920.12086] (Table @tbl:genbank-cover, row 2), into constituent genome matches.  The
 high rank (early) matches reflect large and/or mostly-covered genomes
 with high containment, while later matches reflect smaller genomes,
 lower-covered genomes, and/or genomes with substantial overlap with
@@ -428,6 +428,9 @@ between the true and predicted abundances at a specific taxonomic
 rank) -->
 the highest number of true positives and the lowest number of
 false positives.
+<!-- TR: it looks like mOTU has hte lowest L1-norm, not sourmash? -->
+<!-- runtimes/memory are mentioned in the discussion saying they're in the appendix,
+I think it would be nice to mention that they're in the appendix here -->
 
 <!--
 | Taxonomic binner                | Time (hh:mm) | Memory (kbytes) |
@@ -516,20 +519,20 @@ with overlap in the query metagenome (see Methods).
 
 We find many genomes with large overlaps for each metagenome, due to
 the redundancy of the reference database. For example, `zymo mock`
-contains a *Salmonella* genome, and there are over 200,000 Salmonella
-genomes that match to it in Genbank. Likewise, `gut real`
+contains a *Salmonella* genome, and there are over 200,000 *Salmonella*
+genomes that match to it in GenBank. Likewise, `gut real`
 matches to over 75,000 *E. coli* genomes in GenBank.  Since neither
 `podar mock` nor `oil well real` contain genomes from species with
-substantial representation in genbank, they yield many fewer total
+substantial representation in GenBank, they yield many fewer total
 overlapping genomes.
 
-However, regardless of the number of genomes in the database with substantial
+Regardless of the number of genomes in the database with substantial
 overlap, the
 estimated _minimum_ collection of genomes is always much smaller than the
 number of genomes with overlaps. In
 the cases where the k-mers in the metagenome are mostly identified,
 this is because of database redundancy: e.g. in the case of `zymo
-mock`, the min-set-cov algorithm chooses only one Salmonella genome
+mock`, the min-set-cov algorithm chooses only one *Salmonella* genome
 from the 200,000+ available. Conversely, in the case of `oil well real`,
 much of the sample is not identified,
 suggesting that the small size of the covering set is because much
@@ -559,9 +562,9 @@ reads to the entire GenBank database. (CTB: check centrifuge.)
 
 Figure @fig:mapping compares hash assignment rates
 and mapping rates for the four evaluation metagenomes in Table
-@tbl:genbank-cover. Broadly speaking, we see that k-mer based
+@tbl:genbank-cover. Broadly speaking, we see that k-mer-based
 estimates of metagenome composition align closely with the number of
-bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping correspond well. This suggests that the k-mer based min-set-cov
+bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping correspond well. This suggests that the k-mer-based min-set-cov
 approach effectively selects reference genomes for metagenome read mapping.
 
 For mock metagenomes (panels X and Y), there appears to be a close
@@ -639,7 +642,7 @@ operations - including all of the operations used here -
 without needing to revisit the original data set. This is in contrast
 to MinHash, which requires auxiliary data structures for many
 operations - most especially, containment operations (cite CMash and
-mash screen).  Thus Scaled MinHash sketches serve as distributed
+mash screen).  Thus _Scaled MinHash_ sketches serve as distributed
 compressed indices for the original content for a much broader range
 of operations than MinHash.
 
@@ -651,7 +654,7 @@ properties, but this is not the case for MinHash, since
 after $n$ values are selected any displacement caused by new data can
 invalidate previous calculations.
 
-Scaled MinHash also directly supports the addition and subtraction of
+_Scaled MinHash_ also directly supports the addition and subtraction of
 hash values from a sketch, allowing post-processing and filtering without
 revisiting the original data set. This includes unions and intersections.
 Although possible for MinHash, in practice this requires
@@ -669,7 +672,7 @@ MinHash.  These operations can be done in _Scaled MinHash_ without
 auxiliary data structures.
 
 Another useful operation available on _Scaled MinHash_ sketches is
-*downsampling*: the contiguous value range for Scaled MinHash sketches
+*downsampling*: the contiguous value range for _Scaled MinHash_ sketches
 allows deriving MinHash sketches from _Scaled MinHash_ sketches
 whenever the number of hashes in the _Scaled MinHash_ sketch is equal
 to or greater than $n$, as long as the same hashing scheme is used.
@@ -733,7 +736,7 @@ as Diamond use read mapping to genomes or read alignment to
 gene sequences in order to assign taxonomy and function (cite). These
 approaches typically focus on assigning *individual* k-mers or reads.
 In contrast, here we analyze the entire collection of k-mers and
-assigns them _in aggregate_ to the _best_ genome match, and then repeat
+assign them _in aggregate_ to the _best_ genome match, and then repeat
 until no matches remain.
 
 The resulting metagenome cover can then be used as inputs for further
@@ -844,7 +847,7 @@ overlapping genomes, that is, *all* the genomes in column 2 of Table
 @tbl:genbank-cover. For example, a hierarchical approach could be
 taken to first identify the full list of overlapping genomes, followed
 by a higher resolution approach to identify a specific subset of
-matcheing genomes.
+matching genomes.
 
 ## Opportunities for future improvement of min-set-cov
 
@@ -855,7 +858,7 @@ Implementing min-set-cov on top of _Scaled MinHash_ means
 that there is a loss of resolution when choosing between very closely
 related genomes, because the set of hashes chosen may not discriminate
 between them.  Likewise, the potentially very large size of the sketches
-may inhibit the application of this approach to metagenomes.
+may inhibit the application of this approach to very large metagenomes.
 
 These limitations are not intrinsic to min-set-cov, however; 
 any data structure supporting both the _containment_ $C(A, B) =

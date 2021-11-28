@@ -14,7 +14,7 @@ cardinalities
 cardinality
 CMash
 coli
-Compositional
+compositional
 contig
 cov
 CTB
@@ -26,7 +26,7 @@ downsampled
 downsampling
 Durbin’s
 eqn
-GenBank
+genbank
 genomic
 GTDB
 iHMP
@@ -41,7 +41,6 @@ LINS
 lossy
 Luiz
 luizirber
-matcheing
 mer
 mers
 metagenome
