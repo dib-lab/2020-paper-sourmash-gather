@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@80b32eb](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/80b32eba6567f817113f43a2949817ede4e8d95d)
+from [dib-lab/2020-paper-sourmash-gather@e1876c0](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e1876c0ecfdf0563938916d4e10f775ee3e21825)
 on December 1, 2021.
 </em></small>
 
@@ -195,11 +195,11 @@ to interpret the sequencing data [@doi:10.1038/d41586-019-01654-0].
 
 Metagenome function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-[@doi:10.7554/eLife.65088,@doi:10.1186/s13062-018-0208-7], large-scale
+[@doi:10.7554/eLife.65088;@doi:10.1186/s13062-018-0208-7], large-scale
 protein search
-[@doi:10.1093/bioinformatics/btab184, @doi:10.1093/nar/gky1085], or
+[@doi:10.1093/bioinformatics/btab184;@doi:10.1093/nar/gky1085], or
 k-mer matches
-[@doi:10.1186/s13059-019-1891-0, @doi:10.1038/ncomms11257].  For many
+[@doi:10.1186/s13059-019-1891-0;@doi:10.1038/ncomms11257].  For many
 of these methods, the substantial increase in the number of available
 reference genomes (1.1m in GenBank as of DATE) presents a significant
 practical obstacle to comprehensive compositional analyses, and most

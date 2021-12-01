@@ -27,7 +27,7 @@ downsampled
 downsampling
 eqn
 FracMinHash
-genbank
+GenBank
 genomic
 GTDB
 iHMP
@@ -38,14 +38,14 @@ Jaccard
 Koslicki
 Kraken
 Kristoffer
-lca
+LCA
 LINS
 lossy
 Luiz
 luizirber
 mer
 mers
-metagenome
+Metagenome
 metagenomes
 metagenomic
 metagenomics
