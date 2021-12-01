@@ -5,9 +5,8 @@ AMQ
 Archaea
 archaeal
 baltica
-basd
 benchmarking
-biobakery
+bioBakery
 bluegenes
 brooksph
 CAMI
@@ -16,7 +15,7 @@ cardinalities
 cardinality
 CMash
 coli
-Compositional
+compositional
 contig
 cov
 CTB
@@ -28,7 +27,7 @@ downsampled
 downsampling
 eqn
 FracMinHash
-GenBank
+genbank
 genomic
 GTDB
 iHMP
@@ -39,7 +38,7 @@ Jaccard
 Koslicki
 Kraken
 Kristoffer
-LCA
+lca
 LINS
 lossy
 Luiz
@@ -50,13 +49,13 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 microbiome
+microbiomes
 mincode
 MinHash
 minimizers
 mis
-mmseqs
 ModHash
 natively
 NCBI
@@ -81,4 +80,3 @@ TBD
 TODO
 UC
 XXXXXXXX
-XYZ

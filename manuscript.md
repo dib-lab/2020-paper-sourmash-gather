@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-11-28'
+date-meta: '2021-12-01'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-11-28" />
-  <meta name="citation_publication_date" content="2021-11-28" />
+  <meta name="dc.date" content="2021-12-01" />
+  <meta name="citation_publication_date" content="2021-12-01" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/7f84cd869d2dd536e1fc247b183720109bf26cc2/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/80b32eba6567f817113f43a2949817ede4e8d95d/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@7f84cd8](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7f84cd869d2dd536e1fc247b183720109bf26cc2)
-on November 28, 2021.
+from [dib-lab/2020-paper-sourmash-gather@80b32eb](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/80b32eba6567f817113f43a2949817ede4e8d95d)
+on December 1, 2021.
 </em></small>
 
 ## Authors
@@ -162,7 +162,7 @@ on November 28, 2021.
 
 ## Abstract {.page_break_before}
 
-The assignment of genomes and taxonomy to metagenome data underlies
+The assignment of reference genomes and taxonomy to metagenome data underlies
 many microbiome studies. Here we describe two algorithms for
 compositional analysis of metagenome sequencing data. We first investigate
 the _FracMinHash_ sketching technique, a derivative of modulo hash that
@@ -177,39 +177,49 @@ the problem of finding a minimum collection of reference genomes
 that "cover" the known k-mers in a metagenome. We implement a greedy
 approximate solution using  _FracMinHash_ sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
-Finally, we show that genomes in the minimum set cover can be used for accurate read
-mapping.
+Finally, we show that the minimum set cover can be used to guide the
+select of reference genomes for read mapping.
 sourmash is available as open source under the
 BSD 3-Clause license at github.com/dib-lab/sourmash/.
 
 
 # Introduction
 
-Shotgun metagenomics samples the DNA sequence content of microbial
-communities.
+Shotgun DNA sequencing of microbial communities is an important
+technique for studying host-associated and environmental microbiomes.
+By sampling the DNA sequence content of microbial communities, shotgun
+metagenomics enables the taxonomic and functional characterization of
+microbiomes [@doi:10.1038/s41586-019-1238-8]. However, this
+characterization relies critically on the methods and databases used
+to interpret the sequencing data [@doi:10.1038/d41586-019-01654-0].
 
-Compositional analysis of shotgun metagenome samples has the goal of
-identifying what functions and taxonomic units are present in the
-data.  Function and taxonomy is typically inferred from available
+Metagenome function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-(cite biobakery, MEGAN-LR), gene search (cite mmseqs, eggnog etc.), or
-k-mer matches (Kraken).  For many of these methods, the substantial
-increase in the number of available reference genomes (1.1m in GenBank
-as of XYZ) presents a significant practical obstacle to comprehensive
-compositional analyses, and most methods choose representative subsets
-of available genomic information to analyze.
+[@doi:10.7554/eLife.65088,@doi:10.1186/s13062-018-0208-7], large-scale
+protein search
+[@doi:10.1093/bioinformatics/btab184, @doi:10.1093/nar/gky1085], or
+k-mer matches
+[@doi:10.1186/s13059-019-1891-0, @doi:10.1038/ncomms11257].  For many
+of these methods, the substantial increase in the number of available
+reference genomes (1.1m in GenBank as of DATE) presents a significant
+practical obstacle to comprehensive compositional analyses, and most
+methods choose representative subsets of available genomic information
+to analyze; for example, bioBakery 3 provides a database containing
+99.2k reference genomes [@doi:10.7554/eLife.65088].
 
 Here, we describe a lightweight and scalable approach to compositional
 analysis of shotgun metagenome data based on finding the minimum set
 of reference genomes that accounts for all known k-mers in a
-metagenome.  We use a mod-hash basd sketching approach for k-mers to
-scale to using currently available reference genomes.
+metagenome.  We use a mod-hash based sketching approach for k-mers to
+reduce memory requirements, and implement a polynomial-time greedy
+approximation algorithm for the minimum set analysis.
 
 Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
 method for taxonomic classification of metagenome data.  Our
-implementation in the `sourmash` software can make use of all
-currently available microbial genomes.
+implementation in the open source `sourmash` software works with
+reference databases containing a million or more microbial genomes and
+supports multiple taxonomies and private databases.
 
 <!--
 
@@ -662,7 +672,7 @@ We note that the FracMinHash technique has been used under a number of
 different names, including FracMinHash
 [@doi:10.12688/f1000research.19675.1)] (cite Luiz thesis),
 universe minimizers [@doi:10.1016/j.cels.2021.08.009], Shasta
-markers [@doi:0.1038/s41587-020-0503-6], and mincode syncmers [@doi:10.7717/peerj.10805].  The name FracMinHash was
+markers [@doi:10.1038/s41587-020-0503-6], and mincode syncmers [@doi:10.7717/peerj.10805].  The name FracMinHash was
 coined by Kristoffer Sahlin in an online discussion on Twitter
 [@url:https://twitter.com/krsahlin/status/1463169988689285125] and
 chosen by discussants as the least ambiguous option. We use it here
