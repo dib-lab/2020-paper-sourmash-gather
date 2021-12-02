@@ -45,7 +45,7 @@ Luiz
 luizirber
 mer
 mers
-Metagenome
+metagenome
 metagenomes
 metagenomic
 metagenomics

@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-01'
+date-meta: '2021-12-02'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-01" />
-  <meta name="citation_publication_date" content="2021-12-01" />
+  <meta name="dc.date" content="2021-12-02" />
+  <meta name="citation_publication_date" content="2021-12-02" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1876c0ecfdf0563938916d4e10f775ee3e21825/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@e1876c0](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e1876c0ecfdf0563938916d4e10f775ee3e21825)
-on December 1, 2021.
+from [dib-lab/2020-paper-sourmash-gather@aa99560](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/aa995605d51c5e721ea520aeb8346ee4d60cb342)
+on December 2, 2021.
 </em></small>
 
 ## Authors
@@ -186,12 +186,15 @@ BSD 3-Clause license at github.com/dib-lab/sourmash/.
 # Introduction
 
 Shotgun DNA sequencing of microbial communities is an important
-technique for studying host-associated and environmental microbiomes.
+technique for studying host-associated and environmental microbiomes 
+[@doi:10.1038/s41587-020-0718-6; @doi:10.1111/1462-2920.15314].
 By sampling the DNA sequence content of microbial communities, shotgun
 metagenomics enables the taxonomic and functional characterization of
-microbiomes [@doi:10.1038/s41586-019-1238-8]. However, this
-characterization relies critically on the methods and databases used
-to interpret the sequencing data [@doi:10.1038/d41586-019-01654-0].
+microbiomes [@doi:10.1038/s41586-019-1238-8; @doi10.1126/science.1261359]. 
+However, this characterization relies critically on the methods and 
+databases used to interpret the sequencing data 
+[@doi:10.1038/d41586-019-01654-0; @doi:10.1038/s41592-021-01141-3; 
+@doi:10.1101/2021.07.12.451567; @doi:10.1093/bib/bbx120].
 
 Metagenome function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
