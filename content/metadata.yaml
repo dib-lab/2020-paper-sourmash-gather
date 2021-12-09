@@ -16,6 +16,39 @@ authors:
       - Department of Population Health and Reproduction, UC Davis
     funders:
       - Grant XXXXXXXX
+  - github: brooksph
+    name: Phillip T. Brooks
+    initials: PTB
+    orcid: 0000-0003-3987-244X
+    twitter: brooksph
+    email: philliptbrooks@gmail.com
+    affiliations:
+      - Department of Population Health and Reproduction, UC Davis
+  - github: taylorreiter
+    name: Taylor Reiter
+    initials: TER
+    orcid: 0000-0002-7388-421X
+    twitter: ReiterTaylor
+    email: tereiter@ucdavis.edu
+    affiliations:
+      - Graduate Group in Food Science, UC Davis
+      - Department of Population Health and Reproduction, UC Davis
+  - github: bluegenes
+    name: N. Tessa Pierce
+    initials: NTP
+    orcid: 0000-0002-2942-5331
+    twitter: saltyscientist
+    email: ntpierce@ucdavis.edu
+    affiliations:
+     - Department of Population Health and Reproduction, UC Davis
+    funders: NSF 1711984
+  - github: dkoslicki
+    name: David Koslicki
+    initials: DK
+    orcid: 0000-0002-0640-954X
+    email: dmk333@psu.edu
+    affiliations:
+      - Computer Science and Engineering, Pennsylvania State University
   - github: ctb
     name: C. Titus Brown
     initials: CTB

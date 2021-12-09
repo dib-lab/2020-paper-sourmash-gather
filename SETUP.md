@@ -1,7 +1,8 @@
 # Table of contents
 
 - [Creating a new manuscript](#creating-a-new-manuscript)
-  * [Configuration](#configuration)
+  * [Using setup script](#using-setup-script)
+  * [Manual configuration](#manual-configuration)
   * [Create repository](#create-repository)
   * [Continuous integration](#continuous-integration)
     + [GitHub Actions](#github-actions)
@@ -13,6 +14,7 @@
   * [README updates](#readme-updates)
   * [Finalize](#finalize)
 - [Merging upstream rootstock changes](#merging-upstream-rootstock-changes)
+  * [Default branch](#default-branch)
 
 _generated with [markdown-toc](https://ecotrust-canada.github.io/markdown-toc/)_
 
@@ -26,8 +28,33 @@ These steps should be performed in a command-line shell (terminal), starting in 
 Setup is supported on Linux, macOS, and Windows.
 Windows setup requires [Git Bash](https://gitforwindows.org/) or [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/faq).
 
-## Configuration
+## Using setup script
+Creating a new manuscript using GitHub actions, the recommended default CI service (see below), can be achieved easily using the [setup script](https://github.com/manubot/rootstock/blob/main/setup.bash).
+This simply runs the steps detailed below in the manual configuration.
 
+Use the command below to copy `setup.bash` and run it.
+You can check the code that will be executed [here](https://github.com/manubot/rootstock/blob/main/setup.bash).
+
+````sh
+bash <( curl --location https://github.com/manubot/rootstock/raw/main/setup.bash )
+````
+The script will then take you through the process of cloning the rootstock repo, make the changes required to use GitHub actions, edit the README to point to your repo and commit the changes.
+Your new manuscript repo is then ready for you to start adding your own content.
+
+This script does not not create the remote repo for you, so you will be prompted to manually create an empty GitHub repository at <https://github.com/new>.
+Do not initialize the repository, other than optionally adding a description.
+
+### CLI
+There is also a command line interface for users who want to create manuscripts at scale and in an automated way.
+See the help for details.
+
+````sh
+bash setup.bash --help
+````
+
+## Manual configuration
+
+If you do not wish to use the above setup script to configure your new manuscript repository, you can instead execute the steps manually.
 First, you must configure two environment variables (`OWNER` and `REPO`).
 These variables specify the GitHub repository for the manuscript (i.e. `https://github.com/OWNER/REPO`).
 Make sure that the case of `OWNER` matches how your username is displayed on GitHub.
@@ -62,13 +89,14 @@ git remote set-url origin https://github.com/$OWNER/$REPO.git
 git remote set-url origin git@github.com:$OWNER/$REPO.git
 ```
 
-Next, you must manually create an empty GitHub repository at <https://github.com/new>.
+Then create an empty repository on GitHub. 
+You can do this at <https://github.com/new> or via the [GitHub command line interface](https://github.com/cli/cli) (if installed) with `gh repo create`.
 Make sure to use the same "Owner" and "Repository name" specified above.
 Do not initialize the repository, other than optionally adding a Description.
 Next, push your cloned manuscript:
 
 ```sh
-git push --set-upstream origin master
+git push --set-upstream origin main
 ```
 
 ## Continuous integration
@@ -263,7 +291,7 @@ If the changes look okay, commit and push:
 ```shell
 git add --update
 git commit --message "Brand repo to $OWNER/$REPO"
-git push origin master
+git push origin main
 ```
 
 You should be good to go now.
@@ -290,7 +318,7 @@ Second, pull the new commits from rootstock, but do not automerge:
 git config remote.rootstock.url || git remote add rootstock https://github.com/manubot/rootstock.git
 
 # pull the new commits from rootstock
-git pull --no-ff --no-rebase --no-commit rootstock master
+git pull --no-ff --no-rebase --no-commit rootstock main
 ```
 
 If all goes well, there won't be any conflicts.
@@ -302,7 +330,7 @@ You may notice changes that affect how items in `content` are processed.
 If so, you should edit and stage `content` files as needed.
 When there are no longer any unstaged changes, then do `git commit`.
 
-If updating `master` via a pull request, proceed to push the commit to GitHub and open a pull request.
+If updating your default branch (i.e. `main` or `master`) via a pull request, proceed to push the commit to GitHub and open a pull request.
 Once the pull request is ready to merge, use GitHub's "Create a merge commit" option rather than "Squash and merge" or "Rebase and merge" to preserve the rootstock commit hashes.
 
 The environment for local builds does not automatically update when [`build/environment.yml`](build/environment.yml) changes.
@@ -312,3 +340,18 @@ To update your local conda `manubot` environment with new changes, run:
 # update a local conda environment
 conda env update --file build/environment.yml
 ```
+
+## Default branch
+
+On 2020-10-01, GitHub [changed](https://github.blog/changelog/2020-10-01-the-default-branch-for-newly-created-repositories-is-now-main/) the default branch name for new repositories from `master` to `main`.
+More information on GitHub's migration is available at [github/renaming](https://github.com/github/renaming).
+
+On 2020-12-10, Manubot [updated](https://github.com/manubot/rootstock/pull/399) the Rootstock default branch to `main`.
+For existing manuscripts, the default branch will remain `master`,
+unless manually switched to `main`.
+Rootstock has been configured to run continuous integration on both `main` and `master`,
+so existing manuscripts can, but are not required, to switch their default branch to `main`.
+
+Upgrading to the latest Rootstock will change several READMEs links to `main`.
+For manuscripts that do not plan to switch their default branch,
+do not include these changes in the upgrade merge commit.
