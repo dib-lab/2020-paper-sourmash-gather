@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-02" />
+  <meta name="dcterms.date" content="2021-12-09" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-02" />
-  <meta name="citation_publication_date" content="2021-12-02" />
+  <meta name="dc.date" content="2021-12-09" />
+  <meta name="citation_publication_date" content="2021-12-09" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/aa995605d51c5e721ea520aeb8346ee4d60cb342">dib-lab/2020-paper-sourmash-gather@aa99560</a>
-on December 2, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e1c0a0440363f4240f3ded8143c61c5159c1a487">dib-lab/2020-paper-sourmash-gather@e1c0a04</a>
+on December 9, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -905,7 +905,131 @@ opportunities for further exploration and improvement with additional
 sketch types, additional approximation algorithms, and additional
 summarization approaches. The world is our oyster!</p>
 <h1 id="methods">Methods</h1>
-<p>TBD</p>
+<h2 id="implementation-of-scaled-minhash">Implementation of Scaled MinHash</h2>
+<p>We provide two implementations of Scaled MinHash, <code>smol</code> and
+<code>sourmash</code>. <code>smol</code> is a minimal implementation of <em>Scaled MinHash</em>
+developed to demonstrate the method; it does not include many required
+features for working with real biological data, but its smaller code
+base makes it a more readable and concise example of the method.
+<code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">39</a>]</span> implements features and
+functionality needed for large scale analyses of real data.</p>
+<h2 id="comparison-between-cmash-mash-screen-and-scaled-minhash.">Comparison between CMash, mash screen, and Scaled MinHash.</h2>
+<p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
+supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they were run with
+<span class="math inline">\(n=\{1000, 10000\}\)</span> to evaluate the containment estimates when using
+larger sketches with sizes comparable to the Scaled MinHash sketches
+with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
+<span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
+Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<a href="#ref-matsakis_rust_2014" role="doc-biblioref"><strong>matsakis_rust_2014?</strong></a>]</span>.</p>
+<p>For <em>Mash Screen</em> the ratio of hashes matched by total hashes is used
+instead of the <em>Containment Score</em>, since the latter uses a <span class="math inline">\(k\)</span>-mer
+survival process modeled as a Poisson process first introduced in
+<span class="citation" data-cites="fan_assembly_2015">[<a href="#ref-fan_assembly_2015" role="doc-biblioref"><strong>fan_assembly_2015?</strong></a>]</span> and later used in the <em>Mash distance</em>
+<span class="citation" data-cites="ondov_mash:_2016">[<a href="#ref-ondov_mash:_2016" role="doc-biblioref"><strong>ondov_mash:_2016?</strong></a>]</span> and <em>Containment score</em> <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span>
+formulations.</p>
+<h2 id="mhbt">MHBT</h2>
+<p>The <em>MinHash Bloom Tree</em> (<em>MHBT</em>) is a variation of the <em>Sequence
+Bloom Tree</em> (<em>SBT</em>) that uses Scaled MinHash sketches as leaf nodes
+instead of Bloom Filters as in the SBT. The search operation in SBTs
+is defined as a breadth-first search starting at the root of the tree,
+using a threshold of the original <span class="math inline">\(k\)</span>-mers in the query to decide when
+to prune the search. MHBTs use a query Scaled MinHash sketch instead,
+but keep the same search approach. The threshold of a query <span class="math inline">\(Q\)</span>
+approach introduced in <span class="citation" data-cites="solomon_fast_2016">[<a href="#ref-solomon_fast_2016" role="doc-biblioref"><strong>solomon_fast_2016?</strong></a>]</span> is equivalent to the
+containment <span class="math display">\[C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}\]</span>
+described in <span class="citation" data-cites="broder_resemblance_1997">[<a href="#ref-broder_resemblance_1997" role="doc-biblioref"><strong>broder_resemblance_1997?</strong></a>]</span>, where <span class="math inline">\(S\)</span> is a Scaled MinHash
+sketch. For internal nodes <span class="math inline">\(n\)</span> (which are Bloom Filters) the
+containment of the query Scaled MinHash sketch <span class="math inline">\(Q\)</span> is
+<span class="math display">\[
+C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
+   \vert}
+\]</span>
+as defined by
+<span class="citation" data-cites="koslicki_improving_2019">[<a href="#ref-koslicki_improving_2019" role="doc-biblioref"><strong>koslicki_improving_2019?</strong></a>]</span> for the <em>Containment MinHash</em> to <em>Bloom
+Filter</em> comparison.</p>
+<p>MHBTs support both containment and similarity queries.
+For internal nodes the containment <span class="math inline">\(C(Q,n)\)</span> is used as an upper-bound of the similarity <span class="math inline">\(J(Q, n)\)</span>:
+<span class="math display">\[C(Q, n) &amp;\ge J(Q, n) \\
+  \frac{\vert Q \cap n \vert }{\vert Q \vert} \ge \frac{\vert Q \cap n \vert }{\vert Q \cup n \vert}
+  \]</span>
+since <span class="math inline">\(\vert Q \cup n \vert \ge \vert Q \vert\)</span>.
+When a leaf node is reached then the similarity <span class="math inline">\(J(Q, S)\)</span> is calculated for the Scaled MinHash sketch <span class="math inline">\(S\)</span>
+and declared a match if it is above the threshold <span class="math inline">\(t\)</span>.
+Because the upper-bound is being used,
+this can lead to extra nodes being checked,
+but it simplifies implementation and provides better correctness guarantees.</p>
+<h2 id="inverted-index">Inverted index</h2>
+<p>The LCA index in <code>sourmash</code> is an inverted index that stores a mapping
+from hashes in a collection of signatures to a list of IDs for
+signatures containing the hash. Despite the name, the list of
+signature IDs is not collapsed to the lowest common ancestor (as in
+kraken), and is calculated as needed by downstream methods using
+taxonomy information stored separately in the LCA index.</p>
+<p>The mapping from hashes to signature IDs in the LCA index is an
+implicit representation of the original signatures used to build the
+index, and so returning the signatures is implemented by rebuilding
+the original signatures on-the-fly. Search in an LCA index matches
+the <span class="math inline">\(k\)</span>-mers in the query to the list of signatures IDs containing
+them, using a counter data structure to sort results by number of
+hashes per signature ID. The rebuilt signatures are then returned as
+matches based on the signature ID, with containment or similarity to
+the query calculated against the rebuilt signatures.</p>
+<p>mash screen <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span> has a similar index, but it is
+constructed on-the-fly using the distinct hashes in a sketch
+collection as keys, and values are counters initially set to zero. As
+the query is processed, matching hashes have their counts incremented,
+and after all hashes in the query are processed then all the sketches
+in the collection are checked in the counters to quantify the
+containment/similarity of each sketch in the query. The LCA index
+uses the opposite approach, opting to reconstruct the sketches
+on-the-fly.</p>
+<h2 id="theoretical-analysis-of-scaled-minhash">Theoretical analysis of Scaled MinHash</h2>
+<h3 id="expectation">Expectation</h3>
+<p>In this section, we aim to study how well</p>
+<span class="math display">\[\begin{align}
+\scaleb:=\frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert }
+\label{eqn:scaleC}
+\end{align}\]</span>
+<p>approximates the containment index</p>
+<span class="math display">\[\begin{align}
+\label{eqn:C}
+C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert},
+\end{align}\]</span>
+<p>for two arbitrary sets <span class="math inline">\(A,B\)</span> which are subsets of the domain <span class="math inline">\(\Omega\)</span> of the uniform hash function <span class="math inline">\(h:\Omega \rightarrow [0,H]\)</span>. By rescaling, we can assume without loss of generality that <span class="math inline">\(H=1\)</span> and <span class="math inline">\(0&lt;s\leq H\)</span> in the definition
+<span class="math display">\[
+\mathbf{SCALED}_s(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq \frac{H}{s}\right\}.
+\]</span></p>
+<p>For notational simplicity, we define <span class="math inline">\(X_A := \vert \mathbf{SCALED}_s(A) |\)</span>. Observe that if one views <span class="math inline">\(h\)</span> as a uniformly distributed random variable, we have that <span class="math inline">\(X_A\)</span> is distributed as a binomial random variable: <span class="math inline">\({\rm Binom}(|A|, s)\)</span>. Furthermore, if <span class="math inline">\(A\cap B = \emptyset\)</span>, then <span class="math inline">\(X_A\)</span> and <span class="math inline">\(X_B\)</span> are independent. We then compute the expectation of .</p>
+<p>In light of , we note that  is not an unbiased estimate of , but for <span class="math inline">\(\vert A \vert\)</span> sufficiently large, the bias factor <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1. Alternatively, if <span class="math inline">\(|A|\)</span> is known (or estimated, eg. by using HyperLogLog ), then
+<span class="math display">\[
+\scale := \frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert \left(1-(1-s)^{\vert A\vert}\right)} \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert&gt;0}
+\]</span>
+is an unbiased estimate of the containment index.</p>
+<h3 id="variance">Variance</h3>
+<p>We can calculate the variance of <span class="math inline">\(\scale\)</span> directly from the associated multivariate probability mass function. Indeed, if we let <span class="math inline">\(n=|A\cap B|\)</span> and <span class="math inline">\(m=|A\setminus B|\)</span>, since <span class="math inline">\(X_{A\cap B}\sim {\rm Binom}(n, s)\)</span> and <span class="math inline">\(X_{A\setminus B}\sim {\rm Binom}(m, s)\)</span> are independent, the probability mass function is:</p>
+<span class="math display">\[\begin{align*}
+f_{C_\text{scale}}(k, l) = \binom{n}{k} \binom{m}{l} s^{p+k} (1-s)^{m+n-k-l}\quad {\rm for}\ k=0,\dots, n,\ {\rm and}\ l=0,\dots, m.
+\end{align*}\]</span>
+<p>The variance of the unbiased estimator is then computed as:</p>
+<span class="math display">\[\begin{align}
+    \Var\left[\scale \right] &amp;= \E\left[\scale\right]^2 - \E\left[\scale^2\right]\\
+    &amp;= \frac{|A\cap B|^2}{|A|^2} - \left(1-(1-s)^{ \vert A\vert}\right)^{-2} \sum_{k=1}^n \sum_{l=0}^m \frac{k^2}{(k+l)^2} \binom{n}{k} \binom{m}{l} s^{k+l} (1-s)^{n+m-k-l} \label{eqn:double}
+\end{align}\]</span>
+<p>Unfortunately, the double sum in  appears to have no closed form representation. However, in practice, it is easily computed numerically when given particular values of <span class="math inline">\(m\)</span>, <span class="math inline">\(n\)</span> and <span class="math inline">\(s\)</span>. A first order Taylor series approximation of the variance can be computed.</p>
+<p>Proceeding in the same fashion, we can obtain second and third order approximations to the variance. Indeed, series approximations can be had to arbitrarily high order due to the binomial distribution having finite central moments of arbitrary order.</p>
+<h3 id="asymptotic-normality">Asymptotic normality</h3>
+<p>To show asymptotic normality of <span class="math inline">\(\scale\)</span>, we utilize the delta method  combined with the De Moivre-Laplace theorem. Indeed, since</p>
+<h4 id="confidence-intervals-and-hypothesis-tests">Confidence intervals and hypothesis tests</h4>
+<p>Recall that an {} of a distribution parameter <span class="math inline">\(s\)</span>, is an interval which contains <span class="math inline">\(s\)</span> with limiting probability <span class="math inline">\(1 - \alpha\)</span>.
+Closely related, an {} is an interval
+that contains a limiting random variable with probability <span class="math inline">\(1-\alpha\)</span>.
+We will omit the word ``approximate’’ in the rest of the paper, for brevity and also use the notation <span class="math inline">\(X \in x \pm y\)</span> to mean <span class="math inline">\(X \in [x-y,x+y]\)</span>.
+Finally, for <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>, we let <span class="math inline">\(z_\alpha = \Phi^{-1}(1- \alpha/2)\)</span>,
+where <span class="math inline">\(\mathrm{\Phi}^{-1}\)</span> is the inverse of the cumulative distribution function of the standard normal distribution.</p>
+<h4 id="other-stuff">Other stuff</h4>
+<p>This section is a collection of other observations that might be useful.</p>
+<p>First, there is a lot of theory about ratios of independent random variables. Here, however, we have a ratio of correlated random variables, but we do know their covariance.</p>
+<p>Interestingly, this means that the covariance doesn’t depend on <span class="math inline">\(\Y\)</span> at all, but rather <span class="math inline">\(\Cov(\X,\X+\Y)=\Cov(\X,\X)=\Var(\X)\)</span>.</p>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
@@ -1022,6 +1146,9 @@ summarization approaches. The world is our oyster!</p>
 </div>
 <div id="ref-ZT2VOiwV" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">38. </div><div class="csl-right-inline"><strong>A General-Purpose Counting Filter</strong> <div class="csl-block">Prashant Pandey, Michael A Bender, Rob Johnson, Rob Patro</div> <em>Association for Computing Machinery (ACM)</em> (2017-05-09) <a href="https://doi.org/gg29n9">https://doi.org/gg29n9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/3035918.3035963">10.1145/3035918.3035963</a></div></div>
+</div>
+<div id="ref-ExvjTLL3" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">39. </div><div class="csl-right-inline"><strong>sourmash: a library for MinHash sketching of DNA</strong> <div class="csl-block">C Titus Brown, Luiz Irber</div> <em>The Journal of Open Source Software</em> (2016-09-14) <a href="https://doi.org/ghdrk5">https://doi.org/ghdrk5</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></div></div>
 </div>
 </div>
 <h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
