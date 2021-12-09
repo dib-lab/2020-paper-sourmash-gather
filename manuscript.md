@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-02'
+date-meta: '2021-12-09'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-02" />
-  <meta name="citation_publication_date" content="2021-12-02" />
+  <meta name="dc.date" content="2021-12-09" />
+  <meta name="citation_publication_date" content="2021-12-09" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/aa995605d51c5e721ea520aeb8346ee4d60cb342/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/e1c0a0440363f4240f3ded8143c61c5159c1a487/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@aa99560](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/aa995605d51c5e721ea520aeb8346ee4d60cb342)
-on December 2, 2021.
+from [dib-lab/2020-paper-sourmash-gather@e1c0a04](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/e1c0a0440363f4240f3ded8143c61c5159c1a487)
+on December 9, 2021.
 </em></small>
 
 ## Authors
@@ -960,7 +960,284 @@ summarization approaches. The world is our oyster!
 
 # Methods
 
-TBD
+## Implementation of Scaled MinHash
+
+We provide two implementations of Scaled MinHash, `smol` and
+`sourmash`.  `smol` is a minimal implementation of _Scaled MinHash_
+developed to demonstrate the method; it does not include many required
+features for working with real biological data, but its smaller code
+base makes it a more readable and concise example of the method.
+`sourmash` [@doi:10.21105/joss.00027] implements features and
+functionality needed for large scale analyses of real data.
+
+## Comparison between CMash, mash screen, and Scaled MinHash.
+
+Experiments use $k=\{21, 31, 51\}$ (except for Mash, which only
+supports $k \le 32$).  For Mash and CMash they were run with
+$n=\{1000, 10000\}$ to evaluate the containment estimates when using
+larger sketches with sizes comparable to the Scaled MinHash sketches
+with $scaled=1000$.  The truth set is calculated using an exact
+$k$-mer counter implemented with a _HashSet_ data structure in the
+Rust programming language [@matsakis_rust_2014].
+
+For _Mash Screen_ the ratio of hashes matched by total hashes is used
+instead of the _Containment Score_, since the latter uses a $k$-mer
+survival process modeled as a Poisson process first introduced in
+[@fan_assembly_2015] and later used in the _Mash distance_
+[@ondov_mash:_2016] and _Containment score_ [@ondov_mash_2019]
+formulations.
+
+## MHBT
+
+The _MinHash Bloom Tree_ (_MHBT_) is a variation of the _Sequence
+Bloom Tree_ (_SBT_) that uses Scaled MinHash sketches as leaf nodes
+instead of Bloom Filters as in the SBT.  The search operation in SBTs
+is defined as a breadth-first search starting at the root of the tree,
+using a threshold of the original $k$-mers in the query to decide when
+to prune the search.  MHBTs use a query Scaled MinHash sketch instead,
+but keep the same search approach.  The threshold of a query $Q$
+approach introduced in [@solomon_fast_2016] is equivalent to the
+containment $$C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}$$
+described in [@broder_resemblance_1997], where $S$ is a Scaled MinHash
+sketch.  For internal nodes $n$ (which are Bloom Filters) the
+containment of the query Scaled MinHash sketch $Q$ is
+$$
+C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
+   \vert}
+$$
+as defined by
+[@koslicki_improving_2019] for the _Containment MinHash_ to _Bloom
+Filter_ comparison.
+
+MHBTs support both containment and similarity queries.
+For internal nodes the containment $C(Q,n)$ is used as an upper-bound of the similarity $J(Q, n)$:
+$$C(Q, n) &\ge J(Q, n) \\
+  \frac{\vert Q \cap n \vert }{\vert Q \vert} \ge \frac{\vert Q \cap n \vert }{\vert Q \cup n \vert}
+  $$
+since $\vert Q \cup n \vert \ge \vert Q \vert$.
+When a leaf node is reached then the similarity $J(Q, S)$ is calculated for the Scaled MinHash sketch $S$
+and declared a match if it is above the threshold $t$.
+Because the upper-bound is being used,
+this can lead to extra nodes being checked,
+but it simplifies implementation and provides better correctness guarantees.
+
+## Inverted index
+
+The LCA index in `sourmash` is an inverted index that stores a mapping
+from hashes in a collection of signatures to a list of IDs for
+signatures containing the hash.  Despite the name, the list of
+signature IDs is not collapsed to the lowest common ancestor (as in
+kraken), and is calculated as needed by downstream methods using
+taxonomy information stored separately in the LCA index.
+
+The mapping from hashes to signature IDs in the LCA index is an
+implicit representation of the original signatures used to build the
+index, and so returning the signatures is implemented by rebuilding
+the original signatures on-the-fly.  Search in an LCA index matches
+the $k$-mers in the query to the list of signatures IDs containing
+them, using a counter data structure to sort results by number of
+hashes per signature ID.  The rebuilt signatures are then returned as
+matches based on the signature ID, with containment or similarity to
+the query calculated against the rebuilt signatures.
+
+mash screen [@ondov_mash_2019] has a similar index, but it is
+constructed on-the-fly using the distinct hashes in a sketch
+collection as keys, and values are counters initially set to zero.  As
+the query is processed, matching hashes have their counts incremented,
+and after all hashes in the query are processed then all the sketches
+in the collection are checked in the counters to quantify the
+containment/similarity of each sketch in the query.  The LCA index
+uses the opposite approach, opting to reconstruct the sketches
+on-the-fly.
+
+## Theoretical analysis of Scaled MinHash
+
+
+```{=latex}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\DeclareMathOperator*{\Var}{\mathrm{Var}}
+\DeclareMathOperator*{\Cov}{\mathrm{Cov}}
+\def\E{\mathrm{E}}
+\def\X{{X_{A\cap B}}}
+\def\Y{{X_{A\setminus B}}}
+\newcommand\bigoh{{\mathcal O}\xspace}
+\def\P{\mathrm{Pr}}
+\def\Pr{\mathrm{Pr}}
+\def\scaleb{\hat{C}_\text{scale}(A,B)}
+\def\scale{C_\text{scale}(A,B)}
+```
+
+
+### Expectation
+
+In this section, we aim to study how well
+```{=latex}
+\begin{align}
+\scaleb:=\frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert }
+\label{eqn:scaleC}
+\end{align}
+```
+approximates the containment index
+```{=latex}
+\begin{align}
+\label{eqn:C}
+C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert},
+\end{align}
+```
+for two arbitrary sets $A,B$ which are subsets of the domain $\Omega$ of the uniform hash function $h:\Omega \rightarrow [0,H]$. By rescaling, we can assume without loss of generality that $H=1$ and $0<s\leq H$ in the definition
+$$
+\mathbf{SCALED}_s(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq \frac{H}{s}\right\}.
+$$
+
+For notational simplicity, we define $X_A := \vert \mathbf{SCALED}_s(A) |$. Observe that if one views $h$ as a uniformly distributed random variable, we have that $X_A$ is distributed as a binomial random variable: ${\rm Binom}(|A|, s)$. Furthermore, if $A\cap B = \emptyset$, then $X_A$ and $X_B$ are independent. We then compute the expectation of \cref{eqn:scaleC}.
+
+```{=latex}
+\begin{theorem}
+\label{thm:Escaled}
+For $0<s\leq 1$,
+\begin{align*}
+\E\left[\scaleb \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0} \right] =
+\frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right)
+\end{align*}
+\end{theorem}
+```
+
+```{=latex}
+\begin{proof}
+Using the notation introduced previously, observe that
+$$
+\scaleb \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0} = \frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},
+$$
+and that the random variables $\X$ and $\Y$ are independent.
+We next collect a few useful facts: from standard calculus,
+\begin{align}
+    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y>0}.
+\end{align}
+Then using the moment generating function of the binomial distribution, we have
+\begin{align}
+    \E\left[t^\X\right] &= (1-s+st)^{\vert A \cap B \vert}\\
+    \E\left[t^\Y\right] &= (1-s+st)^{\vert A \setminus B \vert}.
+\end{align}
+We also know by continuity that
+\begin{align}
+    \E\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
+    &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
+\end{align}
+Using these observations, we can then finally calculate that
+\begin{align}
+    \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
+    &= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
+    &= \int_0^1 \E\left[\X  \, t^{\X-1}\right] \E\left[t^\Y\right]\,dt\label{line:2}\\
+    &= \vert A\cap B\vert s \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
+    &= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
+    &= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
+\end{align}
+where Fubini's theorem is used in \cref{line:1} and independence in \cref{line:2}.
+\end{proof}
+```
+
+In light of \cref{thm:Escaled}, we note that \cref{eqn:scaleC} is not an unbiased estimate of \cref{eqn:C}, but for $\vert A \vert$ sufficiently large, the bias factor $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1. Alternatively, if $|A|$ is known (or estimated, eg. by using HyperLogLog \cite{flajolet2007hyperloglog}), then
+$$
+\scale := \frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert \left(1-(1-s)^{\vert A\vert}\right)} \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0}
+$$
+is an unbiased estimate of the containment index.
+
+### Variance
+We can calculate the variance of $\scale$ directly from the associated multivariate probability mass function. Indeed, if we let $n=|A\cap B|$ and $m=|A\setminus B|$, since $X_{A\cap B}\sim {\rm Binom}(n, s)$ and $X_{A\setminus B}\sim {\rm Binom}(m, s)$ are independent, the probability mass function is:
+```{=latex}
+\begin{align*}
+f_{C_\text{scale}}(k, l) = \binom{n}{k} \binom{m}{l} s^{p+k} (1-s)^{m+n-k-l}\quad {\rm for}\ k=0,\dots, n,\ {\rm and}\ l=0,\dots, m.
+\end{align*}
+```
+The variance of the unbiased estimator is then computed as:
+```{=latex}
+\begin{align}
+    \Var\left[\scale \right] &= \E\left[\scale\right]^2 - \E\left[\scale^2\right]\\
+    &= \frac{|A\cap B|^2}{|A|^2} - \left(1-(1-s)^{ \vert A\vert}\right)^{-2} \sum_{k=1}^n \sum_{l=0}^m \frac{k^2}{(k+l)^2} \binom{n}{k} \binom{m}{l} s^{k+l} (1-s)^{n+m-k-l} \label{eqn:double}
+\end{align}
+```
+Unfortunately, the double sum in \cref{eqn:double} appears to have no closed form representation. However, in practice, it is easily computed numerically when given particular values of $m$, $n$ and $s$. A first order Taylor series approximation of the variance can be computed.
+
+```{=latex}
+\begin{theorem}
+For $n=|A\cap B|$ and $|A\setminus B|=m$, a first order Taylor series approximation gives
+\begin{align*}
+\Var\left[\scale \right] \approx \frac{mn(1-s)}{s(m+n)^3}.
+\end{align*}
+\end{theorem}
+\begin{proof}
+Let $g(x,y)=\frac{x}{x+y}$, $\mu_x = ns$, $\mu_y = ms$ and use subscripts to denote partial derivatives:
+\begin{align*}
+    g_x(x,y) &= \frac{y}{(x+y)^2}\\
+    g_y(x,y) &= \frac{-x}{(x+y)^2}
+\end{align*}
+We then have the first order Taylor series:
+\begin{align}
+    \Var\left(g\left(\X,\Y\right)\right) &= g_x^2(\mu_x,\mu_y) \Var(\X) + 2 g_x(\mu_x,\mu_y)g_y(\mu_x,\mu_y) \E[\X-\mu_x]\E[\Y-\mu_y] \notag \\
+    &+ g_y^2(\mu_x,\mu_y)\Var(\Y) \label{eqn:zeroterm}\\
+    &= \frac{m^2}{s^2(m+n)^4} ns(1-s) + \frac{n^2}{s^2(m+n)^4} ms(1-s) \notag \\
+    &= \frac{mn(1-s)}{(m+n)^3s},\notag
+\end{align}
+with the middle term of \cref{eqn:zeroterm} factoring due to independence.
+\end{proof}
+```
+Proceeding in the same fashion, we can obtain second and third order approximations to the variance. Indeed, series approximations can be had to arbitrarily high order due to the binomial distribution having finite central moments of arbitrary order.
+
+```{=latex}
+\begin{theorem}
+For $n=|A\cap B|$ and $|A\setminus B|=m$, a second order Taylor series approximation gives
+\begin{align*}
+\Var\left[\scale \right] \approx \frac{m n (1-p) \left(p^2 \left(m^2+m (2 n+3)+n (n+3)+6\right)-p (m+n+6)+1\right)}{p^3 (m+n)^5}.
+\end{align*}
+\end{theorem}
+```
+
+```{=latex}
+\begin{theorem}
+For $n=|A\cap B|$ and $|A\setminus B|=m$, a third order Taylor series approximation gives
+\begin{align*}
+\Var\left[\scale \right] \approx& s^{-5} (m+n)^{-7} m n (1-s) \Big(s \Big(s^2 (m+n-4) \Big(m^2+2 m (n+2)+n (n+4)+60\Big)\\
+&+ s^3 \Big(m^4+m^3 (4 n+1)+m^2 \Big(6 n^2+3 n+5\Big)+m (n (n (4 n+3)+10)-10)\\
+&+ n \Big(n\Big(n^2+n+5\Big)-10\Big)+120\Big)\\
+&- s (m+n) (2 m+2 n+41)+9 m+9 n+150 s-30\Big)+1\Big).
+\end{align*}
+\end{theorem}
+```
+
+### Asymptotic normality
+
+To show asymptotic normality of $\scale$, we utilize the delta method \cite[section 14.1.3]{agresti2003categorical} combined with the De Moivre-Laplace theorem. Indeed, since
+
+#### Confidence intervals and hypothesis tests
+
+Recall that an {\em approximate $(1-\alpha)$-confidence interval} of a distribution parameter $s$, is an interval which contains $s$ with limiting probability $1 - \alpha$.
+Closely related, an {\em approximate hypothesis test with significance level $(1-\alpha)$} is an interval
+that contains a limiting random variable with probability $1-\alpha$.
+We will omit the word ``approximate'' in the rest of the paper, for brevity and also use the notation $X \in x \pm y$ to mean $X \in [x-y,x+y]$.
+Finally, for $0 < \alpha < 1$, we let $z_\alpha = \Phi^{-1}(1- \alpha/2)$,
+where $\mathrm{\Phi}^{-1}$ is the inverse of the cumulative distribution function of the standard normal distribution.
+
+#### Other stuff
+
+This section is a collection of other observations that might be useful.
+
+First, there is a lot of theory about ratios of independent random variables. Here, however, we have a ratio of correlated random variables, but we do know their covariance.
+
+```{=latex}
+\begin{proposition}
+$\Cov(\X,\X+\Y) = ns(1-s)$.
+\end{proposition}
+\begin{proof}
+\begin{align*}
+    \Cov(\X,\X+\Y) &= \E[\X(\X+\Y)] - \E[\X]\E[\X+\Y] \\
+    &= \E[\X^2] + \E[\X\Y]-\E[\X]\E[\X+\Y]\\
+    &= ns(1+(n-1)s) + n m s^2 - ns(ns + ms)\\
+    &= ns(1-s).
+\end{align*}
+\end{proof}
+```
+Interestingly, this means that the covariance doesn't depend on $\Y$ at all, but rather $\Cov(\X,\X+\Y)=\Cov(\X,\X)=\Var(\X)$.
 
 
 ## References {.page_break_before}
