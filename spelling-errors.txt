@@ -28,7 +28,7 @@ downsampling
 eg
 eqn
 FracMinHash
-GenBank
+genbank
 genomic
 GTDB
 HashSet
@@ -41,7 +41,7 @@ Jaccard
 Koslicki
 kraken
 Kristoffer
-LCA
+lca
 LINS
 lossy
 Luiz
@@ -52,7 +52,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 MHBTs
 microbiome
 microbiomes
@@ -85,5 +85,6 @@ summarization
 syncmers
 taylorreiter
 TODO
+tradeoffs
 UC
 XXXXXXXX

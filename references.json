@@ -2841,6 +2841,270 @@
   },
   {
     "type": "article-journal",
+    "id": "EIgqGxWw",
+    "author": [
+      {
+        "family": "Sunagawa",
+        "given": "Shinichi"
+      },
+      {
+        "family": "Coelho",
+        "given": "Luis Pedro"
+      },
+      {
+        "family": "Chaffron",
+        "given": "Samuel"
+      },
+      {
+        "family": "Kultima",
+        "given": "Jens Roat"
+      },
+      {
+        "family": "Labadie",
+        "given": "Karine"
+      },
+      {
+        "family": "Salazar",
+        "given": "Guillem"
+      },
+      {
+        "family": "Djahanschiri",
+        "given": "Bardya"
+      },
+      {
+        "family": "Zeller",
+        "given": "Georg"
+      },
+      {
+        "family": "Mende",
+        "given": "Daniel R."
+      },
+      {
+        "family": "Alberti",
+        "given": "Adriana"
+      },
+      {
+        "family": "Cornejo-Castillo",
+        "given": "Francisco M."
+      },
+      {
+        "family": "Costea",
+        "given": "Paul I."
+      },
+      {
+        "family": "Cruaud",
+        "given": "Corinne"
+      },
+      {
+        "family": "d'Ovidio",
+        "given": "Francesco"
+      },
+      {
+        "family": "Engelen",
+        "given": "Stefan"
+      },
+      {
+        "family": "Ferrera",
+        "given": "Isabel"
+      },
+      {
+        "family": "Gasol",
+        "given": "Josep M."
+      },
+      {
+        "family": "Guidi",
+        "given": "Lionel"
+      },
+      {
+        "family": "Hildebrand",
+        "given": "Falk"
+      },
+      {
+        "family": "Kokoszka",
+        "given": "Florian"
+      },
+      {
+        "family": "Lepoivre",
+        "given": "Cyrille"
+      },
+      {
+        "family": "Lima-Mendez",
+        "given": "Gipsi"
+      },
+      {
+        "family": "Poulain",
+        "given": "Julie"
+      },
+      {
+        "family": "Poulos",
+        "given": "Bonnie T."
+      },
+      {
+        "family": "Royo-Llonch",
+        "given": "Marta"
+      },
+      {
+        "family": "Sarmento",
+        "given": "Hugo"
+      },
+      {
+        "family": "Vieira-Silva",
+        "given": "Sara"
+      },
+      {
+        "family": "Dimier",
+        "given": "Céline"
+      },
+      {
+        "family": "Picheral",
+        "given": "Marc"
+      },
+      {
+        "family": "Searson",
+        "given": "Sarah"
+      },
+      {
+        "family": "Kandels-Lewis",
+        "given": "Stefanie"
+      },
+      {
+        "family": "Bowler",
+        "given": "Chris"
+      },
+      {
+        "family": "de Vargas",
+        "given": "Colomban"
+      },
+      {
+        "family": "Gorsky",
+        "given": "Gabriel"
+      },
+      {
+        "family": "Grimsley",
+        "given": "Nigel"
+      },
+      {
+        "family": "Hingamp",
+        "given": "Pascal"
+      },
+      {
+        "family": "Iudicone",
+        "given": "Daniele"
+      },
+      {
+        "family": "Jaillon",
+        "given": "Olivier"
+      },
+      {
+        "family": "Not",
+        "given": "Fabrice"
+      },
+      {
+        "family": "Ogata",
+        "given": "Hiroyuki"
+      },
+      {
+        "family": "Pesant",
+        "given": "Stephane"
+      },
+      {
+        "family": "Speich",
+        "given": "Sabrina"
+      },
+      {
+        "family": "Stemmann",
+        "given": "Lars"
+      },
+      {
+        "family": "Sullivan",
+        "given": "Matthew B."
+      },
+      {
+        "family": "Weissenbach",
+        "given": "Jean"
+      },
+      {
+        "family": "Wincker",
+        "given": "Patrick"
+      },
+      {
+        "family": "Karsenti",
+        "given": "Eric"
+      },
+      {
+        "family": "Raes",
+        "given": "Jeroen"
+      },
+      {
+        "family": "Acinas",
+        "given": "Silvia G."
+      },
+      {
+        "family": "Bork",
+        "given": "Peer"
+      },
+      {
+        "family": "Boss",
+        "given": "Emmanuel"
+      },
+      {
+        "family": "Bowler",
+        "given": "Chris"
+      },
+      {
+        "family": "Follows",
+        "given": "Michael"
+      },
+      {
+        "family": "Karp-Boss",
+        "given": "Lee"
+      },
+      {
+        "family": "Krzic",
+        "given": "Uros"
+      },
+      {
+        "family": "Reynaud",
+        "given": "Emmanuel G."
+      },
+      {
+        "family": "Sardet",
+        "given": "Christian"
+      },
+      {
+        "family": "Sieracki",
+        "given": "Mike"
+      },
+      {
+        "family": "Velayoudon",
+        "given": "Didier"
+      },
+      {
+        "literal": "Tara Oceans coordinators"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          5,
+          22
+        ]
+      ]
+    },
+    "container-title": "Science",
+    "DOI": "10.1126/science.1261359",
+    "volume": "348",
+    "issue": "6237",
+    "page": "1261359",
+    "publisher": "American Association for the Advancement of Science (AAAS)",
+    "title": "Structure and function of the global ocean microbiome",
+    "URL": "https://doi.org/4tr",
+    "PMID": "25999513",
+    "note": "This CSL Item was generated by Manubot v0.5.1 from its persistent identifier (standard_id).\nstandard_id: doi:10.1126/science.1261359"
+  },
+  {
+    "type": "article-journal",
     "id": "11WCsPgdk",
     "author": [
       {
@@ -3475,7 +3739,7 @@
         [
           "2021",
           12,
-          9
+          11
         ]
       ]
     },
@@ -3494,7 +3758,7 @@
         [
           "2021",
           12,
-          9
+          11
         ]
       ]
     },
