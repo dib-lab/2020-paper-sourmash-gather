@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-11" />
+  <meta name="dcterms.date" content="2021-12-13" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-11" />
-  <meta name="citation_publication_date" content="2021-12-11" />
+  <meta name="dc.date" content="2021-12-13" />
+  <meta name="citation_publication_date" content="2021-12-13" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/361649d3bb1bab39955d8c298587546c4b5b79fe">dib-lab/2020-paper-sourmash-gather@361649d</a>
-on December 11, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ffb240893d6b615d3c019d928ca32ff465c0c2f4">dib-lab/2020-paper-sourmash-gather@ffb2408</a>
+on December 13, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -220,7 +220,7 @@ analysis of shotgun metagenome data based on finding the minimum set
 of reference genomes that accounts for all known k-mers in a
 metagenome. We use a mod-hash based sketching approach for k-mers to
 reduce memory requirements, and implement a polynomial-time greedy
-approximation algorithm for the minimum set analysis.</p>
+approximation algorithm for the minimum set cover analysis.</p>
 <p>Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
 method for taxonomic classification of metagenome data. Our
@@ -331,8 +331,14 @@ intersection of <span class="math inline">\(D\)</span> and <span class="math inl
 <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that <span class="math display">\[k(M) \cap k(D) = \bigcup_n
 \{ k(M) \cap k(G_n) \} \]</span></p>
 <p>This is the <em>minimum set covering</em> problem, for which there is a
-polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>.
-<strong>(Provide algorithm here.)</strong></p>
+polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>.</p>
+<ol type="1">
+<li>Initialize <span class="math inline">\(C \leftarrow \null\)</span>. Define <span class="math inline">\(f(C) = \lbar \bigcup_{s \in C} s \lbar\)</span></li>
+<li>Repeat until <span class="math inline">\(f(C) = f(S)\)</span></li>
+<li>Choose <span class="math inline">\(s \in S\)</span> maximizing the contribution of the element <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></li>
+<li>Let <span class="math inline">\(C \leftarrow C \bigcup \{ s \}\)</span></li>
+<li>Return <span class="math inline">\(C\)</span></li>
+</ol>
 <p>This greedy algorithm iteratively subtracts k-mers
 belonging to the genome that has the largest estimated containment from
 the metagenome (ref alg above). This results in a progressive

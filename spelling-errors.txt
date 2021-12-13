@@ -52,7 +52,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+mhbt
 MHBTs
 microbiome
 microbiomes

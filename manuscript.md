@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-11'
+date-meta: '2021-12-13'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-11" />
-  <meta name="citation_publication_date" content="2021-12-11" />
+  <meta name="dc.date" content="2021-12-13" />
+  <meta name="citation_publication_date" content="2021-12-13" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/361649d3bb1bab39955d8c298587546c4b5b79fe/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/ffb240893d6b615d3c019d928ca32ff465c0c2f4/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@361649d](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/361649d3bb1bab39955d8c298587546c4b5b79fe)
-on December 11, 2021.
+from [dib-lab/2020-paper-sourmash-gather@ffb2408](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ffb240893d6b615d3c019d928ca32ff465c0c2f4)
+on December 13, 2021.
 </em></small>
 
 ## Authors
@@ -215,7 +215,7 @@ analysis of shotgun metagenome data based on finding the minimum set
 of reference genomes that accounts for all known k-mers in a
 metagenome.  We use a mod-hash based sketching approach for k-mers to
 reduce memory requirements, and implement a polynomial-time greedy
-approximation algorithm for the minimum set analysis.
+approximation algorithm for the minimum set cover analysis.
 
 Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
@@ -344,7 +344,12 @@ $\{ G_n \}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n
 
 This is the *minimum set covering* problem, for which there is a
 polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175].
-**(Provide algorithm here.)**
+
+1. Initialize $C \leftarrow \null$. Define $f(C) = \lbar \bigcup_{s \in C} s \lbar$
+2. Repeat until $f(C) = f(S)$
+3. Choose $s \in S$ maximizing the contribution of the element $f(C \cup \{ s \}) - f(C)$
+4. Let $C \leftarrow C \bigcup \{ s \}$
+5. Return $C$
 
 This greedy algorithm iteratively subtracts k-mers
 belonging to the genome that has the largest estimated containment from
