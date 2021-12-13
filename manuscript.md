@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@812349e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/812349eb8c24e6c9f1f47977afdfaad81ac04859)
+from [dib-lab/2020-paper-sourmash-gather@7e96f9e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7e96f9eb3ff0649fbeb0f78142463ff1115055c6)
 on December 13, 2021.
 </em></small>
 
@@ -345,8 +345,8 @@ $\{ G_n \}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n
 This is the *minimum set covering* problem, for which there is a
 polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175]:
 
-1. Initialize $C \leftarrow \emptyset$. 
-   Define $f(C) = \lvert \bigcup_{s \in C} s \rvert $
+1. Initialize $C \leftarrow \emptyset$.
+   Define $f(C) = \mid \cup_{s \in C} s \mid $
 2. Repeat until $f(C) = f(M \cap D)$:
    3. Choose $s \in G$ maximizing the contribution of the element $f(C \cup \{ s \}) - f(C)$
    4. Let $C \leftarrow C \cup \{ s \}$
