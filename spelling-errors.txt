@@ -18,7 +18,7 @@ coli
 compositional
 contig
 cov
-CTB
+ctb
 dataset
 datasets
 DK
@@ -39,7 +39,7 @@ Irber
 iteratively
 Jaccard
 Koslicki
-kraken
+Kraken
 Kristoffer
 LCA
 LINS

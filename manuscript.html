@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0df9c5867b368b9102d58c73b5d157468cf13eed/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0df9c5867b368b9102d58c73b5d157468cf13eed/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0df9c5867b368b9102d58c73b5d157468cf13eed/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0df9c5867b368b9102d58c73b5d157468cf13eed/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/0df9c5867b368b9102d58c73b5d157468cf13eed">dib-lab/2020-paper-sourmash-gather@0df9c58</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bab83a3001ab2ce53568a308edbed13d5e8ab85d">dib-lab/2020-paper-sourmash-gather@bab83a3</a>
 on December 13, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -333,10 +333,13 @@ intersection of <span class="math inline">\(D\)</span> and <span class="math inl
 <p>This is the <em>minimum set covering</em> problem, for which there is a
 polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>.</p>
 <ol type="1">
-<li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span>. Define $f(C) = | _{s C} s | $</li>
-<li>Repeat until <span class="math inline">\(f(C) = f(M \cap D)\)</span></li>
+<li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span>.
+Define $f(C) = _{s C} s $</li>
+<li>Repeat until <span class="math inline">\(f(C) = f(M \cap D)\)</span>
+<ol start="3" type="1">
 <li>Choose <span class="math inline">\(s \in G\)</span> maximizing the contribution of the element <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></li>
-<li>Let <span class="math inline">\(C \leftarrow C \bigcup \{ s \}\)</span></li>
+<li>Let <span class="math inline">\(C \leftarrow C \cup \{ s \}\)</span></li>
+</ol></li>
 <li>Return <span class="math inline">\(C\)</span></li>
 </ol>
 <p>This greedy algorithm iteratively subtracts k-mers
