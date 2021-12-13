@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bab83a3001ab2ce53568a308edbed13d5e8ab85d">dib-lab/2020-paper-sourmash-gather@bab83a3</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/812349eb8c24e6c9f1f47977afdfaad81ac04859">dib-lab/2020-paper-sourmash-gather@812349e</a>
 on December 13, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -331,22 +331,21 @@ intersection of <span class="math inline">\(D\)</span> and <span class="math inl
 <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that <span class="math display">\[k(M) \cap k(D) = \bigcup_n
 \{ k(M) \cap k(G_n) \} \]</span></p>
 <p>This is the <em>minimum set covering</em> problem, for which there is a
-polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>.</p>
+polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>:</p>
 <ol type="1">
 <li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span>.
 Define $f(C) = _{s C} s $</li>
-<li>Repeat until <span class="math inline">\(f(C) = f(M \cap D)\)</span>
+<li>Repeat until <span class="math inline">\(f(C) = f(M \cap D)\)</span>:
 <ol start="3" type="1">
 <li>Choose <span class="math inline">\(s \in G\)</span> maximizing the contribution of the element <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></li>
 <li>Let <span class="math inline">\(C \leftarrow C \cup \{ s \}\)</span></li>
 </ol></li>
 <li>Return <span class="math inline">\(C\)</span></li>
 </ol>
-<p>This greedy algorithm iteratively subtracts k-mers
-belonging to the genome that has the largest estimated containment from
-the metagenome (ref alg above). This results in a progressive
-classification of the known k-mers in the metagenome to specific
-genomes, in rank order of number of contained hashes.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>This greedy algorithm iteratively subtracts k-mers belonging to the
+genome that has the largest estimated containment from the metagenome,
+resulting in a progressive classification of the known k-mers in the
+metagenome to specific genomes.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>In Figure <a href="#fig:gather0">2</a>, we show an example of this iterative
 decomposition of k-mers for a mock metagenome, <code>podar mock</code>
 <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span> (Table <a href="#tbl:genbank-cover">1</a>, row 2). The
