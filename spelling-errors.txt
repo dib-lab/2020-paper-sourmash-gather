@@ -41,7 +41,7 @@ Jaccard
 Koslicki
 kraken
 Kristoffer
-lca
+LCA
 LINS
 lossy
 Luiz
@@ -52,7 +52,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 MHBTs
 microbiome
 microbiomes
