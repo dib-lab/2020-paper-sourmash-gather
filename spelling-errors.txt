@@ -1,5 +1,4 @@
 aggregative
-alg
 algorithmically
 AMQ
 Archaea
@@ -18,7 +17,7 @@ coli
 compositional
 contig
 cov
-ctb
+CTB
 dataset
 datasets
 DK
@@ -28,7 +27,7 @@ downsampling
 eg
 eqn
 FracMinHash
-genbank
+GenBank
 genomic
 GTDB
 HashSet
@@ -39,9 +38,9 @@ Irber
 iteratively
 Jaccard
 Koslicki
-Kraken
+kraken
 Kristoffer
-LCA
+lca
 LINS
 lossy
 Luiz

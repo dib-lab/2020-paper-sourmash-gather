@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/bab83a3001ab2ce53568a308edbed13d5e8ab85d/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/812349eb8c24e6c9f1f47977afdfaad81ac04859/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@bab83a3](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bab83a3001ab2ce53568a308edbed13d5e8ab85d)
+from [dib-lab/2020-paper-sourmash-gather@812349e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/812349eb8c24e6c9f1f47977afdfaad81ac04859)
 on December 13, 2021.
 </em></small>
 
@@ -343,20 +343,19 @@ $\{ G_n \}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n
 \{ k(M) \cap k(G_n) \} $$
 
 This is the *minimum set covering* problem, for which there is a
-polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175].
+polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175]:
 
 1. Initialize $C \leftarrow \emptyset$. 
    Define $f(C) = \lvert \bigcup_{s \in C} s \rvert $
-2. Repeat until $f(C) = f(M \cap D)$
+2. Repeat until $f(C) = f(M \cap D)$:
    3. Choose $s \in G$ maximizing the contribution of the element $f(C \cup \{ s \}) - f(C)$
    4. Let $C \leftarrow C \cup \{ s \}$
 5. Return $C$
 
-This greedy algorithm iteratively subtracts k-mers
-belonging to the genome that has the largest estimated containment from
-the metagenome (ref alg above).  This results in a progressive
-classification of the known k-mers in the metagenome to specific
-genomes, in rank order of number of contained hashes.[^equivalent]
+This greedy algorithm iteratively subtracts k-mers belonging to the
+genome that has the largest estimated containment from the metagenome,
+resulting in a progressive classification of the known k-mers in the
+metagenome to specific genomes.[^equivalent]
 
 [^equivalent]: In our current implementation in `sourmash`, when
 equivalent matches are available for a given rank, a match is chosen
