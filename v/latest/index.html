@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-13" />
+  <meta name="dcterms.date" content="2021-12-14" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-13" />
-  <meta name="citation_publication_date" content="2021-12-13" />
+  <meta name="dc.date" content="2021-12-14" />
+  <meta name="citation_publication_date" content="2021-12-14" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7e96f9eb3ff0649fbeb0f78142463ff1115055c6">dib-lab/2020-paper-sourmash-gather@7e96f9e</a>
-on December 13, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c93ee41f99200709d14e43da5bbc6109f4eb4af8">dib-lab/2020-paper-sourmash-gather@c93ee41</a>
+on December 14, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -328,27 +328,29 @@ Formally, for a
 given metagenome <span class="math inline">\(M\)</span> and a reference database <span class="math inline">\(D\)</span>, what is the minimum
 collection of genomes in <span class="math inline">\(D\)</span> which contain all of the k-mers in the
 intersection of <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? That is, we wish to find the smallest set
-<span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that <span class="math display">\[k(M) \cap k(D) = \bigcup_n
-\{ k(M) \cap k(G_n) \} \]</span></p>
-<p>This is the <em>minimum set covering</em> problem, for which there is a
+<span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that, for the k-mer decomposition <span class="math inline">\(k()\)</span>,
+$k(M) k(D) = _n
+{ k(M) k(G_n) } $$</p>
+<p>This is a <em>minimum set covering</em> problem, for which there is a
 polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>:</p>
 <ol type="1">
-<li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span>.
-Define $f(C) = _{s C} s $</li>
+<li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span>.</li>
+<li>Define $ f(C) = _{s C} s $</li>
 <li>Repeat until <span class="math inline">\(f(C) = f(M \cap D)\)</span>:
-<ol start="3" type="1">
+<ol start="4" type="1">
 <li>Choose <span class="math inline">\(s \in G\)</span> maximizing the contribution of the element <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></li>
 <li>Let <span class="math inline">\(C \leftarrow C \cup \{ s \}\)</span></li>
 </ol></li>
 <li>Return <span class="math inline">\(C\)</span></li>
 </ol>
-<p>This greedy algorithm iteratively subtracts k-mers belonging to the
-genome that has the largest estimated containment from the metagenome,
-resulting in a progressive classification of the known k-mers in the
+<p>This greedy algorithm iteratively chooses reference genomes from <span class="math inline">\(D\)</span>
+in order of largest remaining overlap with <span class="math inline">\(M\)</span>. This results in a
+progressive classification of the known k-mers in the
 metagenome to specific genomes.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>In Figure <a href="#fig:gather0">2</a>, we show an example of this iterative
-decomposition of k-mers for a mock metagenome, <code>podar mock</code>
-<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span> (Table <a href="#tbl:genbank-cover">1</a>, row 2). The
+classification of k-mers for a mock metagenome, <code>podar mock</code>
+<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span> (Table <a href="#tbl:genbank-cover">1</a>, row 2), ordered
+by remaining overlap. The
 high rank (early) matches reflect large and/or mostly-covered genomes
 with high containment, while later matches reflect genomes that share
 fewer k-mers with the remaining set of k-mers in the metagenome -
