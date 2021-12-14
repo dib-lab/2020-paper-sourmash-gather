@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece">dib-lab/2020-paper-sourmash-gather@c1d3f56</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a701287d8c035a4016f60be5a91a1b5f82d93a5d">dib-lab/2020-paper-sourmash-gather@a701287</a>
 on December 14, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -188,7 +188,7 @@ the problem of finding a minimum collection of reference genomes
 that “cover” the known k-mers in a metagenome. We implement a greedy
 approximate solution using <em>FracMinHash</em> sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
-Finally, we show that the minimum set cover can be used to guide the
+Finally, we show that the minimum metagenome cover can be used to guide the
 select of reference genomes for read mapping.
 sourmash is available as open source under the
 BSD 3-Clause license at github.com/dib-lab/sourmash/.</p>
@@ -218,7 +218,7 @@ to analyze; for example, bioBakery 3 provides a database containing
 <p>Here, we describe a lightweight and scalable approach to compositional
 analysis of shotgun metagenome data based on finding the minimum set
 of reference genomes that accounts for all known k-mers in a
-metagenome. We use a mod-hash based sketching approach for k-mers to
+metagenome - a “minimum metagenome cover”. We use a mod-hash based sketching approach for k-mers to
 reduce memory requirements, and implement a polynomial-time greedy
 approximation algorithm for the minimum set cover analysis.</p>
 <p>Our approach tackles the selection of appropriate reference genomes
@@ -266,7 +266,7 @@ frame reference-based metagenome content analysis as the problem of
 finding a <em>minimum set cover</em> for a metagenome using a collection of
 reference genomes. We then evaluate the accuracy of this approach
 using a taxonomic classification benchmark. Finally, we demonstrate
-the utility of this approach by using the genomes from the minimum set
+the utility of this approach by using the genomes from the minimum metagenome
 cover as reference genomes for read mapping.</p>
 <h2 id="fracminhash-sketches-support-accurate-containment-operations">FracMinHash sketches support accurate containment operations</h2>
 <p>We define the <em>fractional MinHash</em>, or FracMinHash, on an input domain
@@ -332,12 +332,9 @@ intersection of <span class="math inline">\(D\)</span> and <span class="math inl
 <span class="math display">\[ k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} \]</span></p>
 <p>This is a <em>minimum set covering</em> problem, for which there is a
 polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>:</p>
-<p>Why is this not? Here: $ f(C) = _{s C} s $</p>
-<p>Try: <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></p>
-<p>Try 2: <span class="math inline">\(f(C) = \cap_{s \in C} s\)</span></p>
 <ol type="1">
 <li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span></li>
-<li>Define <span class="math inline">\(f(C) = \vert \cup_{s \in C} s \vert\)</span></li>
+<li>Define <span class="math inline">\(f(C) = \vert \cup_{s \in C} \{ s \} \vert\)</span></li>
 <li>Repeat until <span class="math inline">\(f(C) = f(M \cap D)\)</span>:
 <ol start="4" type="1">
 <li>Choose <span class="math inline">\(s \in G\)</span> maximizing the contribution of the element <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></li>
@@ -370,18 +367,17 @@ k-mer content, and these shared k-mers are first claimed by
 <a href="#fig:gather0">2</a>. Here the difference between the red circles and green
 triangles for <em>S. baltica</em> OS185 represents the k-mers claimed by
 <em>S. baltica</em> OS223 .</p>
-<p>(CTB: maybe indicate or highlight these genomes in the figure?)</p>
+<p>&lt;– (CTB: maybe indicate or highlight these genomes in the figure?) –&gt;</p>
 <p>For this mock metagenome, 205m (54.8%) of 375m k-mers were found in
 GenBank. The remaining 169m (45.2%) k-mers had no matches, and
 represent either k-mers introduced by sequencing errors or unknown k-mers from
 real community members.</p>
 <div id="fig:gather0" class="fignos">
 <figure>
-<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by remaining containment for the first 36 genomes from the minimum set cover of the podar mock synthetic metagenome from [18], calculated against a database containing 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the percentage of the genome covered by k-mers remaining at that rank, while the green triangle symbols indicate total coverage with all k-mers in the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
-A rank ordering by remaining containment for the first 36 genomes from the minimum set cover
-of the <code>podar mock</code> synthetic metagenome from <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span>,
-calculated against a database containing 700,000
-genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the
+<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover of the podar mock synthetic metagenome [18], calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the percentage of the genome covered by k-mers remaining at that rank, while the green triangle symbols indicate total coverage with all k-mers in the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
+A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover
+of the <code>podar mock</code> synthetic metagenome <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span>,
+calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the
 genome.
 In the left plot, the X axis represents the estimated number of k-mers shared
 between each genome and the metagenome. The red circles indicate the number
@@ -413,8 +409,8 @@ Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
 (CTB: check citations / content of latest actual CAMI pub, https://www.biorxiv.org/content/10.1101/2021.07.12.451567v1)</p>
 <p>Since min-set-cov yields only a collection of genomes, it must be
-converted into a taxonomy.
-We therefore developed the following procedure for
+converted into a taxonomy for CAMI.
+We developed the following procedure for
 generating a taxonomic profile from a given metagenome
 cover. For each genome match, we note
 the species designation in the NCBI taxonomy for that genome. Then, we
@@ -451,7 +447,7 @@ correctly identified in the ground truth – below the genus level,
 highest purity (the ratio of correctly predicted taxa over all
 predicted taxa) across all methods: 95.9% when filtering predictions
 below 1% abundance, and 97% for unfiltered results. <code>sourmash</code> also
-has the lowest L1-norm error,
+has the second lowest L1-norm error,
 <!-- (the sum of the absolute difference
 between the true and predicted abundances at a specific taxonomic
 rank) -->
@@ -526,7 +522,7 @@ to eliminate genomes with only small overlaps (see Methods).
 -->
 <div id="tbl:genbank-cover" class="tablenos">
 <table id="tbl:genbank-cover">
-<caption><span>Table 1:</span> Four metagenomes and their estimated minimum set cover from GenBank. </caption>
+<caption><span>Table 1:</span> Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank. </caption>
 <thead>
 <tr class="header">
 <th>data set</th>
@@ -563,7 +559,7 @@ to eliminate genomes with only small overlaps (see Methods).
 </tbody>
 </table>
 </div>
-<p>In Table <a href="#tbl:genbank-cover">1</a>, we show the results of running min-set-cov
+<p>In Table <a href="#tbl:genbank-cover">1</a>, we show the minimum metagenome cover
 for four metagenomes against GenBank - two mock communities
 <span class="citation" data-cites="10okJq2cm 9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>,<a href="#ref-10okJq2cm" role="doc-biblioref">27</a>]</span>, one human gut microbiome data set
 from iHMP <span class="citation" data-cites="UotiKLjf">[<a href="#ref-UotiKLjf" role="doc-biblioref">4</a>]</span>, and an oil well sample
@@ -597,21 +593,23 @@ metagenome cover is to select a small set of representative genomes
 for mapping. We therefore developed a hybrid selection and
 mapping pipeline that uses the rank-ordered min-set-cov results to
 map reads to candidate genomes.</p>
-<p>We first map all reads to all genomes in the minimum set cover, and
+<p>We first map all reads to all genomes in the minimum metagenome cover, and
 then successively remove reads that map to higher rank genomes from
 lower rank genomes, and remap the remaining reads. That is, all reads
 mapped to the rank-1 genome in Figure <a href="#fig:gather0">2</a> are removed from
 the rank-2 genome mapping, and all reads mapping to rank-1 and rank-2
 genomes are removed from the rank-3 genome mapping, and so on. This produces
 results directly analogous to those presented in Figure <a href="#fig:gather0">2</a>,
-but for reads rather than k-mers (CTB: provide as Suppl Figure?).
-Importantly, in this process we only consider genomes identified in
+but for reads rather than k-mers.
+<!-- Importantly, in this process we only consider genomes identified in
 the minimum set cover, because it is computationally intractable to map
-reads to the entire GenBank database. (CTB: check centrifuge.)</p>
+reads to the entire GenBank database. (CTB: check centrifuge.) 
+(CTB: provide versions of figure 1 here as Suppl Figure?) 
+--></p>
 <p>Figure <a href="#fig:mapping">5</a> compares hash assignment rates
 and mapping rates for the four evaluation metagenomes in Table
 <a href="#tbl:genbank-cover">1</a>. Broadly speaking, we see that k-mer-based
-estimates of metagenome composition align closely with the number of
+estimates of metagenome composition agree closely with the number of
 bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping correspond well. This suggests that the k-mer-based min-set-cov
 approach effectively selects reference genomes for metagenome read mapping.</p>
 <p>For mock metagenomes (panels X and Y), there appears to be a close
@@ -639,9 +637,12 @@ usually map one way or another.)
 -->
 <div id="fig:mapping" class="fignos">
 <figure>
-<img src="images/gather-podar.svg" alt="Figure 5: Hash-based k-mer decomposition of a metagenome into constituent genomes compares well to bases covered by read mapping. (CTB: add more description here.) The reference genomes are rank ordered along the x axis (as in Figure 2), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing. The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled. Decreases in mapping (green peaks) occur for genomes which are not exact matches to the genomes of the organisms used to build the mock community; for example, in plot (a), the peak at rank 33, S. baltica OS185 represents reads that were preferentially mapped to S. baltica OS223, rank 8. [21,23]." /><figcaption aria-hidden="true"><span>Figure 5:</span> <strong>Hash-based k-mer decomposition of a metagenome into constituent
+<img src="images/gather-podar.svg" alt="Figure 5: Hash-based k-mer decomposition of a metagenome into constituent genomes compares well to bases covered by read mapping. (CTB: add more description here.) Plots for each of four metagenomes showing estimated k-mer overlap per genome, along with bases covered by read mapping. The reference genomes are rank ordered along the x axis (as in Figure 2), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing. The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled. Decreases in mapping (green peaks) occur for genomes which are not exact matches to the genomes of the organisms used to build the mock community; for example, in plot (a), the peak at rank 33, S. baltica OS185 represents reads that were preferentially mapped to S. baltica OS223, rank 8. [21,23]." /><figcaption aria-hidden="true"><span>Figure 5:</span> <strong>Hash-based k-mer decomposition of a metagenome into constituent
 genomes compares well to bases covered by read mapping.</strong>
 (CTB: add more description here.)
+Plots for each of four metagenomes showing estimated k-mer overlap per
+genome, along
+with bases covered by read mapping.
 The reference genomes are rank ordered along the x axis (as in Figure <a href="#fig:gather0">2</a>), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
 The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
 Decreases in mapping (green peaks) occur for genomes which are not
