@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f297239c0bbe1ad7f15fb83f5791637dece9278b/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f297239c0bbe1ad7f15fb83f5791637dece9278b/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f297239c0bbe1ad7f15fb83f5791637dece9278b/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f297239c0bbe1ad7f15fb83f5791637dece9278b/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@f297239](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f297239c0bbe1ad7f15fb83f5791637dece9278b)
+from [dib-lab/2020-paper-sourmash-gather@3d12ffe](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c)
 on December 14, 2021.
 </em></small>
 
@@ -349,7 +349,7 @@ Why is this not? Here: $ f(C) = \cap_{s \in C} s $
 
 Try: $f(C \cup \{ s \}) - f(C)$
 
-Try 2: $f(C \cap \{ s \}) - f(C)$
+Try 2: $f(C \cap_{s \in C} \{ s \}) - f(C)$
 
 1. Initialize $C \leftarrow \emptyset$
 2. Define $ f(C) = \vert \cup_{s \in C} s \vert $
