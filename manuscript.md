@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@c93ee41](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c93ee41f99200709d14e43da5bbc6109f4eb4af8)
+from [dib-lab/2020-paper-sourmash-gather@b4d6154](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/b4d6154e50fec9bff20aaceaf6b3072601dd5faa)
 on December 14, 2021.
 </em></small>
 
@@ -340,13 +340,12 @@ given metagenome $M$ and a reference database $D$, what is the minimum
 collection of genomes in $D$ which contain all of the k-mers in the
 intersection of $D$ and $M$? That is, we wish to find the smallest set
 $\{ G_n \}$ of genomes in $D$ such that, for the k-mer decomposition $k()$,
-$k(M) \cap k(D) = \bigcup_n
-\{ k(M) \cap k(G_n) \} $$
+$$ k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} $$
 
 This is a *minimum set covering* problem, for which there is a
 polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175]:
 
-1. Initialize $C \leftarrow \emptyset$.
+1. Initialize $C \leftarrow \emptyset$
 2. Define $ f(C) = \vert \cup_{s \in C} s \vert $
 3. Repeat until $f(C) = f(M \cap D)$:
    4. Choose $s \in G$ maximizing the contribution of the element $f(C \cup \{ s \}) - f(C)$
