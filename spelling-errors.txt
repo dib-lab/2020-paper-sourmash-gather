@@ -17,7 +17,7 @@ coli
 compositional
 contig
 cov
-ctb
+CTB
 dataset
 datasets
 DK
@@ -27,7 +27,7 @@ downsampling
 eg
 eqn
 FracMinHash
-GenBank
+genbank
 genomic
 GTDB
 HashSet
@@ -38,9 +38,9 @@ Irber
 iteratively
 Jaccard
 Koslicki
-kraken
+Kraken
 Kristoffer
-lca
+LCA
 LINS
 lossy
 Luiz
@@ -51,7 +51,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 MHBTs
 microbiome
 microbiomes

@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-13'
+date-meta: '2021-12-14'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-13" />
-  <meta name="citation_publication_date" content="2021-12-13" />
+  <meta name="dc.date" content="2021-12-14" />
+  <meta name="citation_publication_date" content="2021-12-14" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e96f9eb3ff0649fbeb0f78142463ff1115055c6/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c93ee41f99200709d14e43da5bbc6109f4eb4af8/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@7e96f9e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7e96f9eb3ff0649fbeb0f78142463ff1115055c6)
-on December 13, 2021.
+from [dib-lab/2020-paper-sourmash-gather@c93ee41](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c93ee41f99200709d14e43da5bbc6109f4eb4af8)
+on December 14, 2021.
 </em></small>
 
 ## Authors
@@ -339,22 +339,23 @@ Formally, for a
 given metagenome $M$ and a reference database $D$, what is the minimum
 collection of genomes in $D$ which contain all of the k-mers in the
 intersection of $D$ and $M$? That is, we wish to find the smallest set
-$\{ G_n \}$ of genomes in $D$ such that $$k(M) \cap k(D) = \bigcup_n
+$\{ G_n \}$ of genomes in $D$ such that, for the k-mer decomposition $k()$,
+$k(M) \cap k(D) = \bigcup_n
 \{ k(M) \cap k(G_n) \} $$
 
-This is the *minimum set covering* problem, for which there is a
+This is a *minimum set covering* problem, for which there is a
 polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175]:
 
 1. Initialize $C \leftarrow \emptyset$.
-   Define $f(C) = \mid \cup_{s \in C} s \mid $
-2. Repeat until $f(C) = f(M \cap D)$:
-   3. Choose $s \in G$ maximizing the contribution of the element $f(C \cup \{ s \}) - f(C)$
-   4. Let $C \leftarrow C \cup \{ s \}$
-5. Return $C$
+2. Define $ f(C) = \vert \cup_{s \in C} s \vert $
+3. Repeat until $f(C) = f(M \cap D)$:
+   4. Choose $s \in G$ maximizing the contribution of the element $f(C \cup \{ s \}) - f(C)$
+   5. Let $C \leftarrow C \cup \{ s \}$
+6. Return $C$
 
-This greedy algorithm iteratively subtracts k-mers belonging to the
-genome that has the largest estimated containment from the metagenome,
-resulting in a progressive classification of the known k-mers in the
+This greedy algorithm iteratively chooses reference genomes from $D$
+in order of largest remaining overlap with $M$.  This results in a
+progressive classification of the known k-mers in the
 metagenome to specific genomes.[^equivalent]
 
 [^equivalent]: In our current implementation in `sourmash`, when
@@ -363,8 +364,9 @@ at random. This is an implementation decision that is not intrinsic to
 the algorithm itself.
 
 In Figure @fig:gather0, we show an example of this iterative
-decomposition of k-mers for a mock metagenome, `podar mock`
-[@doi:10.1111/1462-2920.12086] (Table @tbl:genbank-cover, row 2). The
+classification of k-mers for a mock metagenome, `podar mock`
+[@doi:10.1111/1462-2920.12086] (Table @tbl:genbank-cover, row 2), ordered
+by remaining overlap. The
 high rank (early) matches reflect large and/or mostly-covered genomes
 with high containment, while later matches reflect genomes that share
 fewer k-mers with the remaining set of k-mers in the metagenome -
