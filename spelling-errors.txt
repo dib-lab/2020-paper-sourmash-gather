@@ -27,7 +27,7 @@ downsampling
 eg
 eqn
 FracMinHash
-GenBank
+genbank
 genomic
 GTDB
 HashSet
@@ -38,7 +38,7 @@ Irber
 iteratively
 Jaccard
 Koslicki
-kraken
+Kraken
 Kristoffer
 lca
 LINS

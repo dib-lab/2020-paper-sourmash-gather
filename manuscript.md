@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f4598169d7f7a73fa363c7c8ddf9ed60ff07a78b/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f4598169d7f7a73fa363c7c8ddf9ed60ff07a78b/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f4598169d7f7a73fa363c7c8ddf9ed60ff07a78b/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/b4d6154e50fec9bff20aaceaf6b3072601dd5faa/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f4598169d7f7a73fa363c7c8ddf9ed60ff07a78b/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@b4d6154](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/b4d6154e50fec9bff20aaceaf6b3072601dd5faa)
+from [dib-lab/2020-paper-sourmash-gather@f459816](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f4598169d7f7a73fa363c7c8ddf9ed60ff07a78b)
 on December 14, 2021.
 </em></small>
 
@@ -344,6 +344,8 @@ $$ k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} $$
 
 This is a *minimum set covering* problem, for which there is a
 polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175]:
+
+Why is this not? Here: $ f(C) = \vert{} \cup_{s \in C} s \vert{} $
 
 1. Initialize $C \leftarrow \emptyset$
 2. Define $ f(C) = \vert \cup_{s \in C} s \vert $
