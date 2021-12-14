@@ -20,14 +20,13 @@ cov
 CTB
 dataset
 datasets
-DK
 dkoslicki
 downsampled
 downsampling
 eg
-eqn
+eukaryotic
 FracMinHash
-GenBank
+genbank
 genomic
 GTDB
 HashSet
@@ -42,6 +41,7 @@ kraken
 Kristoffer
 lca
 LINS
+losslessly
 lossy
 Luiz
 luizirber
@@ -51,7 +51,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+mhbt
 MHBTs
 microbiome
 microbiomes
@@ -80,10 +80,12 @@ scalable
 Shewanella
 sourmash
 SRR
+subsampled
 summarization
 syncmers
 taylorreiter
 TODO
 tradeoffs
 UC
+unmapped
 XXXXXXXX

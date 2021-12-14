@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a701287d8c035a4016f60be5a91a1b5f82d93a5d/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a701287d8c035a4016f60be5a91a1b5f82d93a5d">dib-lab/2020-paper-sourmash-gather@a701287</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d0457ed77c8477eb290379d62fa6523e0c2acbf0">dib-lab/2020-paper-sourmash-gather@d0457ed</a>
 on December 14, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -177,15 +177,16 @@ Department of Population Health and Reproduction, UC Davis
 many microbiome studies. Here we describe two algorithms for
 compositional analysis of metagenome sequencing data. We first investigate
 the <em>FracMinHash</em> sketching technique, a derivative of modulo hash that
-supports Jaccard containment estimation between sets of different size
-<span class="citation" data-cites="AX7zdKKw">[<a href="#ref-AX7zdKKw" role="doc-biblioref">1</a>]</span>.
-We implement <em>FracMinHash</em> in the sourmash software and demonstrate
+supports Jaccard containment estimation between sets of different size.
+We implement <em>FracMinHash</em> in the sourmash software, evaluate its
+accuracy, and demonstrate
 large-scale containment searches of metagenomes using all 700,000 currently
 available microbial reference genomes.
 We next frame shotgun
-metagenome compositional analysis in terms of min-set-cover, i.e. as
-the problem of finding a minimum collection of reference genomes
-that “cover” the known k-mers in a metagenome. We implement a greedy
+metagenome compositional analysis as the problem of finding a minimum
+collection of reference genomes that “cover” the known k-mers in a metagenome,
+a minimum set cover problem.
+We implement a greedy
 approximate solution using <em>FracMinHash</em> sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
 Finally, we show that the minimum metagenome cover can be used to guide the
@@ -195,31 +196,32 @@ BSD 3-Clause license at github.com/dib-lab/sourmash/.</p>
 <h1 id="introduction">Introduction</h1>
 <p>Shotgun DNA sequencing of microbial communities is an important
 technique for studying host-associated and environmental microbiomes
-<span class="citation" data-cites="hMM4KrP3 LJ9K03qs">[<a href="#ref-hMM4KrP3" role="doc-biblioref">2</a>,<a href="#ref-LJ9K03qs" role="doc-biblioref">3</a>]</span>.
+<span class="citation" data-cites="hMM4KrP3 LJ9K03qs">[<a href="#ref-hMM4KrP3" role="doc-biblioref">1</a>,<a href="#ref-LJ9K03qs" role="doc-biblioref">2</a>]</span>.
 By sampling the DNA sequence content of microbial communities, shotgun
 metagenomics enables the taxonomic and functional characterization of
-microbiomes <span class="citation" data-cites="UotiKLjf EIgqGxWw">[<a href="#ref-UotiKLjf" role="doc-biblioref">4</a>,<a href="#ref-EIgqGxWw" role="doc-biblioref">5</a>]</span>.
+microbiomes <span class="citation" data-cites="UotiKLjf EIgqGxWw">[<a href="#ref-UotiKLjf" role="doc-biblioref">3</a>,<a href="#ref-EIgqGxWw" role="doc-biblioref">4</a>]</span>.
 However, this characterization relies critically on the methods and
 databases used to interpret the sequencing data
-<span class="citation" data-cites="OBZeBS9O 10WmapgAH A7OCZbgE wXphq8MN">[<a href="#ref-OBZeBS9O" role="doc-biblioref">6</a>,<a href="#ref-10WmapgAH" role="doc-biblioref">7</a>,<a href="#ref-A7OCZbgE" role="doc-biblioref">8</a>,<a href="#ref-wXphq8MN" role="doc-biblioref">9</a>]</span>.</p>
+<span class="citation" data-cites="OBZeBS9O 10WmapgAH A7OCZbgE wXphq8MN">[<a href="#ref-OBZeBS9O" role="doc-biblioref">5</a>,<a href="#ref-10WmapgAH" role="doc-biblioref">6</a>,<a href="#ref-A7OCZbgE" role="doc-biblioref">7</a>,<a href="#ref-wXphq8MN" role="doc-biblioref">8</a>]</span>.</p>
 <p>Metagenome function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-<span class="citation" data-cites="wfjpVLUe 1Ch2YQf42">[<a href="#ref-wfjpVLUe" role="doc-biblioref">10</a>,<a href="#ref-1Ch2YQf42" role="doc-biblioref">11</a>]</span>, large-scale
+<span class="citation" data-cites="wfjpVLUe 1Ch2YQf42">[<a href="#ref-wfjpVLUe" role="doc-biblioref">9</a>,<a href="#ref-1Ch2YQf42" role="doc-biblioref">10</a>]</span>, large-scale
 protein search
-<span class="citation" data-cites="ZeDGX6j5 MqG4Noz7">[<a href="#ref-ZeDGX6j5" role="doc-biblioref">12</a>,<a href="#ref-MqG4Noz7" role="doc-biblioref">13</a>]</span>, or
+<span class="citation" data-cites="ZeDGX6j5 MqG4Noz7">[<a href="#ref-ZeDGX6j5" role="doc-biblioref">11</a>,<a href="#ref-MqG4Noz7" role="doc-biblioref">12</a>]</span>, or
 k-mer matches
-<span class="citation" data-cites="wfp4mBcT P2zJQDwU">[<a href="#ref-wfp4mBcT" role="doc-biblioref">14</a>,<a href="#ref-P2zJQDwU" role="doc-biblioref">15</a>]</span>. For many
+<span class="citation" data-cites="wfp4mBcT P2zJQDwU">[<a href="#ref-wfp4mBcT" role="doc-biblioref">13</a>,<a href="#ref-P2zJQDwU" role="doc-biblioref">14</a>]</span>. For many
 of these methods, the substantial increase in the number of available
-reference genomes (1.1m in GenBank as of DATE) presents a significant
-practical obstacle to comprehensive compositional analyses, and most
-methods choose representative subsets of available genomic information
-to analyze; for example, bioBakery 3 provides a database containing
-99.2k reference genomes <span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">10</a>]</span>.</p>
+microbial reference genomes (1.1m in GenBank as of November 2021)
+presents a significant practical obstacle to comprehensive
+compositional analyses, and most methods choose representative subsets
+of available genomic information to analyze; for example, bioBakery 3
+provides a database containing 99.2k reference genomes
+<span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">9</a>]</span>.</p>
 <p>Here, we describe a lightweight and scalable approach to compositional
 analysis of shotgun metagenome data based on finding the minimum set
 of reference genomes that accounts for all known k-mers in a
 metagenome - a “minimum metagenome cover”. We use a mod-hash based sketching approach for k-mers to
-reduce memory requirements, and implement a polynomial-time greedy
+reduce memory requirements <span class="citation" data-cites="AX7zdKKw">[<a href="#ref-AX7zdKKw" role="doc-biblioref">15</a>]</span>, and implement a polynomial-time greedy
 approximation algorithm for the minimum set cover analysis.</p>
 <p>Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
@@ -270,24 +272,27 @@ the utility of this approach by using the genomes from the minimum metagenome
 cover as reference genomes for read mapping.</p>
 <h2 id="fracminhash-sketches-support-accurate-containment-operations">FracMinHash sketches support accurate containment operations</h2>
 <p>We define the <em>fractional MinHash</em>, or FracMinHash, on an input domain
-of <span class="math inline">\(k\)</span>-mers, <span class="math inline">\(W\)</span>, as follows:</p>
+of hash values <span class="math inline">\(W\)</span>, as follows:</p>
 <p><span class="math display">\[\mathbf{FRAC}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
 W\,\}\]</span> where <span class="math inline">\(H\)</span> is the largest possible value in the domain of
-<span class="math inline">\(h(x)\)</span> and <span class="math inline">\(\frac{H}{s}\)</span> is the  value in the
-FracMinHash.</p>
+<span class="math inline">\(h(x)\)</span> and <span class="math inline">\(\frac{H}{s}\)</span> is the <em>maximum hash value</em> allowed in the
+FracMinHash sketch.</p>
 <p>The FracMinHash is a mix of MinHash and ModHash
-<span class="citation" data-cites="AX7zdKKw">[<a href="#ref-AX7zdKKw" role="doc-biblioref">1</a>]</span>. It keeps the selection of the
+<span class="citation" data-cites="AX7zdKKw">[<a href="#ref-AX7zdKKw" role="doc-biblioref">15</a>]</span>. It keeps the selection of the
 smallest elements from MinHash, while using the dynamic size from
 ModHash to allow containment estimation. However, instead of taking
 <span class="math inline">\(0 \mod m\)</span> elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a FracMinHash uses the
 parameter <span class="math inline">\(s\)</span> to select a subset of <span class="math inline">\(W\)</span>.</p>
-<p>FracMinHash supports containment estimation with high accuracy and
-low bias. <strong>(Analytic work from David HERE.)</strong></p>
-<ul>
-<li>approximation formula (eqn 13 from overleaf)</li>
-<li>for queries into large sets (large <span class="math inline">\(|A|\)</span>), bias factor is low.</li>
-<li>refer to appendix for derivation.</li>
-</ul>
+<!--
+
+FracMinHash supports containment estimation with high accuracy and
+low bias. **(Analytic work from David HERE.)**
+
+* approximation formula (eqn 13 from overleaf)
+* for queries into large sets (large $|A|$), bias factor is low.
+* refer to appendix for derivation.
+
+-->
 <p>Given a uniform hash function <span class="math inline">\(h\)</span> and <span class="math inline">\(s=m\)</span>, the cardinalities of
 <span class="math inline">\(\mathbf{FRAC}_s(W)\)</span> and <span class="math inline">\(\mathbf{MOD}_m(W)\)</span> converge for large
 <span class="math inline">\(\vert W \vert\)</span>. The main difference is the range of possible values
@@ -327,7 +332,7 @@ that contains all of the known k-mers in a metagenome?
 Formally, for a
 given metagenome <span class="math inline">\(M\)</span> and a reference database <span class="math inline">\(D\)</span>, what is the minimum
 collection of genomes in <span class="math inline">\(D\)</span> which contain all of the k-mers in the
-intersection of <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? That is, we wish to find the smallest set
+intersection of <span class="math inline">\(D\)</span> and <span class="math inline">\(M\)</span>? We wish to find the smallest set
 <span class="math inline">\(\{ G_n \}\)</span> of genomes in <span class="math inline">\(D\)</span> such that, for the k-mer decomposition <span class="math inline">\(k()\)</span>,
 <span class="math display">\[ k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} \]</span></p>
 <p>This is a <em>minimum set covering</em> problem, for which there is a
@@ -347,17 +352,19 @@ in order of largest remaining overlap with <span class="math inline">\(M\)</span
 progressive classification of the known k-mers in the
 metagenome to specific genomes.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>In Figure <a href="#fig:gather0">2</a>, we show an example of this iterative
-classification of k-mers for a mock metagenome, <code>podar mock</code>
-<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span> (Table <a href="#tbl:genbank-cover">1</a>, row 2), ordered
-by remaining overlap. The
+classification of k-mers by matching genome for the mock metagenome from
+<span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span>, which we term <code>podar mock</code> (see
+Table <a href="#tbl:genbank-cover">1</a>, row 2). The matching genomes are provided
+in the order found by the greedy algorithm, i.e. by overlap with remaining k-mers in the metagenome.
+The
 high rank (early) matches reflect large and/or mostly-covered genomes
 with high containment, while later matches reflect genomes that share
 fewer k-mers with the remaining set of k-mers in the metagenome -
 smaller genomes, less-covered genomes, and/or genomes with substantial
 overlap with earlier matches. Where there are overlaps between
 genomes, shared common k-mers are “claimed” by higher rank matches and
-only k-mer content specific to the later genome is used to identify
-the lower rank matches.</p>
+only k-mer content specific to the later genome is used to find
+lower rank matches.</p>
 <p>As one example of metagenome k-mers shared with multiple matches,
 genomes from two strains of <em>Shewanella baltica</em> are present in the
 mock metagenome. These genomes have an approximately 50% overlap in
@@ -367,14 +374,16 @@ k-mer content, and these shared k-mers are first claimed by
 <a href="#fig:gather0">2</a>. Here the difference between the red circles and green
 triangles for <em>S. baltica</em> OS185 represents the k-mers claimed by
 <em>S. baltica</em> OS223 .</p>
-<p>&lt;– (CTB: maybe indicate or highlight these genomes in the figure?) –&gt;</p>
+<!-- (CTB: maybe indicate or highlight these genomes in the figure?) -->
 <p>For this mock metagenome, 205m (54.8%) of 375m k-mers were found in
-GenBank. The remaining 169m (45.2%) k-mers had no matches, and
+GenBank
+(see
+Table <a href="#tbl:genbank-cover">1</a>, row 2). The remaining 169m (45.2%) k-mers had no matches, and
 represent either k-mers introduced by sequencing errors or unknown k-mers from
 real community members.</p>
 <div id="fig:gather0" class="fignos">
 <figure>
-<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover of the podar mock synthetic metagenome [18], calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the percentage of the genome covered by k-mers remaining at that rank, while the green triangle symbols indicate total coverage with all k-mers in the metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
+<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover of the podar mock synthetic metagenome [18], calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the percentage of the genome covered by k-mers remaining at that rank, while the green triangle symbols indicate overlap between the genome and the entire metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
 A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover
 of the <code>podar mock</code> synthetic metagenome <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>]</span>,
 calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the
@@ -384,8 +393,8 @@ between each genome and the metagenome. The red circles indicate the number
 of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers.
 In the right plot, the X axis represents the estimated k-mer coverage of that
 genome. The red circles indicate the percentage of the genome covered by k-mers remaining at
-that rank, while the green triangle symbols indicate total coverage with all
-k-mers in the metagenome, including those already assigned at previous ranks.</figcaption>
+that rank, while the green triangle symbols indicate overlap between
+the genome and the entire metagenome, including those already assigned at previous ranks.</figcaption>
 </figure>
 </div>
 <h2 id="minimum-metagenome-covers-can-accurately-estimate-taxonomic-composition">Minimum metagenome covers can accurately estimate taxonomic composition</h2>
@@ -409,7 +418,7 @@ Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
 (CTB: check citations / content of latest actual CAMI pub, https://www.biorxiv.org/content/10.1101/2021.07.12.451567v1)</p>
 <p>Since min-set-cov yields only a collection of genomes, it must be
-converted into a taxonomy for CAMI.
+converted into a taxonomy for benchmarking with CAMI.
 We developed the following procedure for
 generating a taxonomic profile from a given metagenome
 cover. For each genome match, we note
@@ -561,13 +570,15 @@ to eliminate genomes with only small overlaps (see Methods).
 </div>
 <p>In Table <a href="#tbl:genbank-cover">1</a>, we show the minimum metagenome cover
 for four metagenomes against GenBank - two mock communities
-<span class="citation" data-cites="10okJq2cm 9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>,<a href="#ref-10okJq2cm" role="doc-biblioref">27</a>]</span>, one human gut microbiome data set
-from iHMP <span class="citation" data-cites="UotiKLjf">[<a href="#ref-UotiKLjf" role="doc-biblioref">4</a>]</span>, and an oil well sample
+<span class="citation" data-cites="10okJq2cm 9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">18</a>,<a href="#ref-10okJq2cm" role="doc-biblioref">27</a>]</span>, a human gut microbiome data set
+from iHMP <span class="citation" data-cites="UotiKLjf">[<a href="#ref-UotiKLjf" role="doc-biblioref">3</a>]</span>, and an oil well sample
 <span class="citation" data-cites="11WCsPgdk">[<a href="#ref-11WCsPgdk" role="doc-biblioref">28</a>]</span>. Our implementation provides estimates
 for both the <em>total</em> number of genomes with substantial overlap to a
-query genome, and a <em>minimum list</em> of genomes that account for k-mers
-with overlap in the query metagenome (see Methods).</p>
-<p>We find many genomes with large overlaps for each metagenome, due to
+query genome, and the minimum set of genomes that account for k-mers
+with overlap in the query metagenome. Note that only matches estimated
+to have more than 100,000 overlapping k-mers are shown (see Methods for
+details).</p>
+<p>We find many genomes with overlaps for each metagenome, due to
 the redundancy of the reference database. For example, <code>zymo mock</code>
 contains a <em>Salmonella</em> genome, and there are over 200,000 <em>Salmonella</em>
 genomes that match to it in GenBank. Likewise, <code>gut real</code>
@@ -585,17 +596,21 @@ from the 200,000+ available. Conversely, in the case of <code>oil well real</cod
 much of the sample is not identified,
 suggesting that the small size of the covering set is because much
 of the sample is not represented in the database.</p>
+<!-- CTB provide some kind of taxonomic breakdown at, say, genus level? -->
 <h2 id="minimum-metagenome-covers-provide-representative-genomes-for-mapping">Minimum metagenome covers provide representative genomes for mapping</h2>
 <p>Mapping metagenome reads to representative genomes is an important
 step in many microbiome analysis pipelines, but mapping approaches
 struggle with large, redundant databases. One specific use for a minimum
-metagenome cover is to select a small set of representative genomes
+metagenome cover could be to select a small set of representative genomes
 for mapping. We therefore developed a hybrid selection and
 mapping pipeline that uses the rank-ordered min-set-cov results to
 map reads to candidate genomes.</p>
-<p>We first map all reads to all genomes in the minimum metagenome cover, and
-then successively remove reads that map to higher rank genomes from
-lower rank genomes, and remap the remaining reads. That is, all reads
+<!-- CTB do we have a citation for "mapping approaches struggle..."? -->
+<p>We first map all metagenome reads to the first ranked genome in the minimum metagenome
+cover, and then remove successfully mapped reads from the metagenome.
+Remaining unmapped reads are then mapped to the second rank genome, and
+this then continues until all genomes have been used.
+That is, all reads
 mapped to the rank-1 genome in Figure <a href="#fig:gather0">2</a> are removed from
 the rank-2 genome mapping, and all reads mapping to rank-1 and rank-2
 genomes are removed from the rank-3 genome mapping, and so on. This produces
@@ -610,7 +625,7 @@ reads to the entire GenBank database. (CTB: check centrifuge.)
 and mapping rates for the four evaluation metagenomes in Table
 <a href="#tbl:genbank-cover">1</a>. Broadly speaking, we see that k-mer-based
 estimates of metagenome composition agree closely with the number of
-bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping correspond well. This suggests that the k-mer-based min-set-cov
+bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping coverage correspond well. This suggests that the k-mer-based min-set-cov
 approach effectively selects reference genomes for metagenome read mapping.</p>
 <p>For mock metagenomes (panels X and Y), there appears to be a close
 correspondence between mapping and hash assignment rates, while for
@@ -663,10 +678,11 @@ elements in the set to be sketched are hashed, and any hash values
 below a certain fixed boundary value are kept for the sketch. This
 fixed boundary value is determined by the desired accuracy for the
 sketch operations, with clear space/time constraint tradeoffs.</p>
+<p>(CTB: re-evaluate this claim.)</p>
 <p>Intuitively, FracMinHash can be viewed as performing density sampling
-at a rate of 1 <span class="math inline">\(k\)</span>-mer per <span class="math inline">\(s\)</span> distinct k-mers seen, where <span class="math inline">\(s\)</span> is the
-size of the hash space divided by the boundary value used in creating
-the sketch. This can also be viewed as a type of lossy compression,
+at a rate of 1 <span class="math inline">\(k\)</span>-mer per <span class="math inline">\(s\)</span> distinct k-mers seen, where <span class="math inline">\(s\)</span> is used
+to define define a boundary value <span class="math inline">\(\frac{H}{s}\)</span> for the bottom sketch.
+FracMinHash can also be viewed as a type of lossy compression,
 with a fixed compression ratio of <span class="math inline">\(s\)</span>: for values of <span class="math inline">\(s\)</span> used here (<span class="math inline">\(s \approx 1000\)</span>), k-mer sets are reduced in cardinality by 1000-fold.</p>
 <p>Unlike MinHash, FracMinHash supports containment estimation between
 sets of very different sizes, and here we demonstrate that it can be
@@ -705,7 +721,7 @@ hash values from a sketch, allowing for limited types of
 post-processing and filtering without revisiting the original data
 set. This includes unions and intersections. Although possible for
 MinHash, in practice this requires oversampling (using a larger <span class="math inline">\(n\)</span>)
-to account for possibly having less than <span class="math inline">\(n\)</span> values after filtering,
+to account for possibly having fewer than <span class="math inline">\(n\)</span> values after filtering,
 e.g. see the approach taken in Finch <span class="citation" data-cites="lThwIYBH">[<a href="#ref-lThwIYBH" role="doc-biblioref">34</a>]</span>.</p>
 <p>When the multiplicity of hashes in the original data is retained,
 FracMinHash sketches can be filtered on abundance. This allows
@@ -720,13 +736,13 @@ auxiliary data structures.</p>
 <em>downsampling</em>: the contiguous value range for FracMinHash sketches
 means that MinHash sketches can be extracted from FracMinHash sketches
 whenever the size of the requested MinHash is less than the size of
-the FracMinHash sketch. Likewise, MinHash sketches can be converted
+the FracMinHash sketch. Likewise, MinHash sketches can be losslessly converted
 to FracMinHash sketches when the maximum hash value in the MinHash
 sketch is larger than <span class="math inline">\(H / s\)</span>.</p>
 <p>Finally, because FracMinHash sketches are simply collections of
-hashes, any existing k-mer indexing approaches can be applied to
+hashes, existing k-mer indexing approaches can be applied to
 sketches to support fast search with both similarity and containment
-estimators; several index types, including Sequence Bloom Trees and
+estimators; several index types, including Sequence Bloom Trees (CTB: cite) and
 reverse indices, are provided in the sourmash software.</p>
 <p>In exchange for these many conveniences, FracMinHash sketches
 have limited sensitivity for small data sets where the k-mer
@@ -736,25 +752,26 @@ sensitivity of sketches may affect the sensitivity of gene- and viral
 genome-sized queries, but at <span class="math inline">\(s=1000\)</span> we see comparable accuracy and
 sketch size to MinHash for bacterial genome comparisons (Figure
 <a href="#fig:containment">1</a>).</p>
-<p>Notes from DK: do these belong in this section?</p>
-<ul>
-<li>The variance of the estimate of C(A,B)=|AB| / |A| appears to
-also depend on |A|, which was somewhat surprising</li>
-<li>The “fixed k-size” problem (which might be able to be overcome with
-the prefix-lookup data structure, if one sacrifices some accuracy)</li>
-</ul>
+<!--
+Notes from DK: do these belong in this section?
+
+* The variance of the estimate of C(A,B)=|A\cap B| / |A| appears to
+  also depend on |A\B|, which was somewhat surprising
+* The “fixed k-size” problem (which might be able to be overcome with
+  the prefix-lookup data structure, if one sacrifices some accuracy)
+-->
 <h2 id="minimum-set-covers-can-be-used-for-accurate-compositional-analysis-of-metagenomes.">Minimum set covers can be used for accurate compositional analysis of metagenomes.</h2>
 <p>Many metagenome content analysis approaches use reference genomes to
 interpret the metagenome content, but most such approaches rely on
 choosing a list of reduced-redundancy genomes from a much larger database
-(e.g. bioBakery 3 selects approximately 100,000 genomes <span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">10</a>]</span>). Here, we do this reduction automatically by searching the complete database for
+(e.g. bioBakery 3 selects approximately 100,000 genomes <span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">9</a>]</span>). Here, we do this reduction automatically by searching the complete database for
 a <em>minimum</em> set of reference genomes necessary to account for all k-mers
 shared between the metagenome and the database. We show that
 this can be resolved efficiently for real-world data sets; implementing
 a greedy min-set-cov approximation algorithm on top of FracMinHash,
 we provide an approach that
 readily scales to 700,000 genomes on current hardware (performance in
-appendix). We show that in practice this procedure reduces the number of genomes
+appendix: CTB). We show that in practice this procedure reduces the number of genomes
 under consideration to <span class="math inline">\(\approx 100\)</span> for several mock and real
 metagenomes.</p>
 <p>The development of a small list of relevant genomes is particularly
@@ -775,8 +792,8 @@ approaches typically focus on assigning <em>individual</em> k-mers or reads.
 In contrast, here we analyze the entire collection of k-mers and
 assign them <em>in aggregate</em> to the <em>best</em> genome match, and then repeat
 until no matches remain.</p>
-<p>The resulting metagenome cover can then be used as inputs for further
-analysis, including both taxonomic content analysis and read mapping.
+<p>The resulting minimum metagenome cover can then be used as part of further
+analyses, including both taxonomic content analysis and read mapping.
 For taxonomic analyses, we find that this approach is competitive with
 other current approaches and has several additional conveniences
 (discussed in detail below). The comparison of hash-based estimation
@@ -784,18 +801,18 @@ of containment to mapping results in Figure <a href="#fig:mapping">5</a> suggest
 this approach is an accurate proxy for systematic mapping.</p>
 <p>Our implementation of the min-set-cov algorithm in sourmash also
 readily supports using custom reference databases as well as updating
-minimum set covers with the addition of new reference genomes. When
-updating set covers with new reference genomes, the first stage of
+minimum metagenome covers with the addition of new reference genomes. When
+updating metagenome covers with new reference genomes, the first stage of
 calculating overlaps can be updated with the new genomes (Column 2 of
-Table <a href="#tbl:genbank-cover">1</a>), while the actual calculation of the minimum
+Table <a href="#tbl:genbank-cover">1</a>), while the actual calculation of the <em>minimum</em>
 set cover must be redone each time.</p>
 <p>Minimum set cover approaches may provide opportunities beyond those
 discussed here. For example, read- and contig-based analysis, and analysis
 and presentation of alignments, can be potentially simplified with this
 approach.</p>
 <h2 id="minimum-metagenome-covers-support-accurate-and-flexible-taxonomic-assignment">Minimum metagenome covers support accurate and flexible taxonomic assignment</h2>
-<p>We can build a taxonomic classifier on top of minimum set covers for
-metagenomes by reporting the taxonomies of the constituent genomes,
+<p>We can build a taxonomic classifier on top of minimum metagenome covers
+by reporting the taxonomies of the constituent genomes,
 weighted by distinct overlap and aggregated at the relevant taxonomic
 level using an LCA approach. Our CAMI-based taxonomic benchmarking shows
 that this approach is competitive for all metrics across all taxonomic
@@ -804,14 +821,14 @@ levels (Figures <a href="#fig:spider">3</a> and <a href="#fig:scores">4</a>).</p
 new or changed taxonomies can be readily incorporated by assigning
 them directly to genome identifiers; the majority of the computational
 work is involved in finding the reference genomes, which can have
-assignments in different taxonomic frameworks. For example, sourmash
+assignments in multiple taxonomic frameworks. For example, sourmash
 already supports GTDB <span class="citation" data-cites="vFApiGX2">[<a href="#ref-vFApiGX2" role="doc-biblioref">35</a>]</span> natively, and will
 also support the emerging LINS framework
 <span class="citation" data-cites="jf4f1xTA">[<a href="#ref-jf4f1xTA" role="doc-biblioref">36</a>]</span>. sourmash can also readily
 incorporate updates to taxonomies, e.g. the frequent updates to the
 NCBI taxonomy, without requiring expensive reanalysis of the primary
-metagenome data or the min-set-cov computation.</p>
-<p>Interestingly, the framing of taxonomic classification as a minimum
+metagenome data or even regenerating the minimum metagenome cover.</p>
+<p>Interestingly, this framing of taxonomic classification as a minimum
 set cover problem may also avoid the loss of taxonomic resolution that
 affects k-mer- and read-based approaches on large databases
 <span class="citation" data-cites="j7nehrZT">[<a href="#ref-j7nehrZT" role="doc-biblioref">37</a>]</span>; this is because we apply LCA
@@ -820,8 +837,8 @@ choose entire <em>genomes</em> based on a greedy best-match-first approach.
 This minimizes the impact of individual k-mers that may be common to
 a genus or family, or were mis-assigned as a result of contamination.</p>
 <p>Finally, as the underlying min-set-cov implementation supports custom
-databases, it is straightforward to support <em>taxonomic</em> analysis using
-custom databases and/or custom taxonomic assignments. This is
+databases, it is straightforward to support taxonomic analysis using
+<em>custom</em> databases and/or custom taxonomic assignments. This is
 potentially useful for projects that are generating many new genomes
 and wish to use them for metagenome analysis. sourmash natively
 supports this functionality.</p>
@@ -848,7 +865,7 @@ GTDB taxonomies.
 dependent on the reference database. This may present challenges:
 for example, in many cases the exact reference strains present in the
 metagenome will not be present in the database. This manifests in two
-ways in Figure <a href="#fig:mapping">5</a>. First, there is a systematic mismatch
+ways in Figure <a href="#fig:mapping">5</a>. First, for real metagenomes, there is a systematic mismatch
 between the hash content and the mapping content (green line), because
 mapping software is more permissive in the face of small variants than
 k-mer-based exact matching. Moreover, many of the lower rank genomes
@@ -856,7 +873,7 @@ in the plot are from the same species but different <em>strains</em> as the
 higher ranked genomes, suggesting that strain-specific portions of the
 reference are being utilized for matching at lower ranks. In reality,
 there will usually be a different mixture of strains in the metagenome
-than in the reference database. Methods for updating references from
+than is present in the reference database. Methods for updating references from
 metagenome data sets may provide an opportunity for generating
 metagenome-specific references <span class="citation" data-cites="VsLophuT">[<a href="#ref-VsLophuT" role="doc-biblioref">38</a>]</span>.</p>
 <p>The approach presented here chooses arbitrarily between
@@ -870,7 +887,7 @@ algorithmically straightforward to implement when desired.</p>
 <p>In light of the strong reference dependence of the min-set-cov
 approach together with the insensitivity of the FracMinHash technique,
 it may be useful to explore alternate methods of summarizing the list
-of overlapping genomes, that is, <em>all</em> the genomes in column 2 of
+of overlapping genomes, that is, summarizing <em>all</em> the genomes in column 2 of
 Table <a href="#tbl:genbank-cover">1</a>. For example, a hierarchical approach could
 be taken to first identify the full list of overlapping genomes using
 FracMinHash at a low resolution, followed by a higher resolution
@@ -878,30 +895,29 @@ approach to identify the best matching genomes.</p>
 <h2 id="opportunities-for-future-improvement-of-min-set-cov">Opportunities for future improvement of min-set-cov</h2>
 <p>There are a number of immediate opportunities for future improvement of
 the min-set-cov approach.</p>
-<p>Implementing min-set-cov on top of FracMinHash means
-that there is a loss of resolution when choosing between very closely
-related genomes, because the set of hashes chosen may not discriminate
+<p>Implementing min-set-cov on top of FracMinHash means our approach may
+incorrectly choose between very closely related genomes,
+because the set of subsampled hashes chosen may not discriminate
 between them. Likewise, the potentially very large size of the sketches
 may inhibit the application of this approach to very large metagenomes.</p>
 <p>These limitations are not intrinsic to min-set-cov, however;
 any data structure supporting both the <em>containment</em> <span class="math inline">\(C(A, B) = \frac{\vert A \cap B \vert }{\vert A \vert}\)</span> and <em>remove elements</em>
-operations can be used to implement the greedy approximation algorithm
-(ref algorithm in results section 1).
+operations can be used to implement the greedy approximation algorithm.
 For example, a simple <em>set</em>
 of the <span class="math inline">\(k\)</span>-mer composition of the query supports element removal, and
 calculating containment can be done with regular set operations.
-Approximate membership query (AMQ) sketches like the <em>Counting
-Quotient Filter</em> <span class="citation" data-cites="ZT2VOiwV">[<a href="#ref-ZT2VOiwV" role="doc-biblioref">39</a>]</span> can also be used, with
-the benefit of reduced storage and memory usage. Moreover, the
-collection of datasets can be implemented with any data structure that
-can do containment comparisons with the query data structure.</p>
+Approximate membership query (AMQ) sketches like the Counting
+Quotient Filter <span class="citation" data-cites="ZT2VOiwV">[<a href="#ref-ZT2VOiwV" role="doc-biblioref">39</a>]</span> can also be used, with
+the benefit of reduced storage and memory usage.</p>
 <p>In turn, this means that limitations of our current implementation,
 such as insensitivity to small genomes when <span class="math inline">\(s\)</span> is approximately the
 same as the genome size, may be readily solvable with other sketch types.</p>
 <p>There are other opportunities for improving on these initial explorations.
 The availability of abundance counts for each
 element in the FracMinHash is not well explored, since the
-process of <em>removing elements</em> from the query does not use them.</p>
+process of <em>removing elements</em> from the query does not use them.
+This may be important for genomes with more repetitive content such as
+eukaryotic genomes.</p>
 <!-- David comment: could use a compressive sensing approach here:
 $ min \norm{x}^2_1 + \lambda \norm{Ax - y}^2_2, x \ge 0$
 Y_i = count of hash i in sample
@@ -911,17 +927,16 @@ convert to least squares and use Lawson and Hanson for blistering speed!
 <p>Both the multiple match as well as the abundance counts issues can benefit from
 existing solutions taken by other methods,
 like the <em>species score</em> (for disambiguation) and <em>Expectation-Maximization</em> (for abundance analysis)
-approaches from Centrifuge <span class="citation" data-cites="kim_centrifuge_2016">[<a href="#ref-kim_centrifuge_2016" role="doc-biblioref"><strong>kim_centrifuge_2016?</strong></a>]</span>.</p>
+approaches from Centrifuge <span class="citation" data-cites="1DB8QGIqc">[<a href="#ref-1DB8QGIqc" role="doc-biblioref">40</a>]</span>.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>The FracMinHash and min-set-cov approaches explored here provide
 powerful and accurate techniques for analyzing metagenomes, with well
-defined limitations. The immediate applications for both mapping-based
-and taxonomic analysis of metagenomes are already effective. We provide
+defined limitations. We show that several immediate applications for both taxonomic and mapping-based analysis of metagenomes are already effective. We provide
 an implementation of these approaches in robust
 open-source software, together with workflows to enable their
 practical use on large data sets. The approaches also offer many
-opportunities for further exploration and improvement with additional
-sketch types, additional approximation algorithms, and additional
+opportunities for further exploration and improvement with different
+data structures, alternative approximation algorithms, and additional
 summarization approaches.</p>
 <h1 id="methods">Methods</h1>
 <h2 id="implementation-of-scaled-minhash">Implementation of Scaled MinHash</h2>
@@ -930,7 +945,7 @@ summarization approaches.</p>
 developed to demonstrate the method; it does not include many required
 features for working with real biological data, but its smaller code
 base makes it a more readable and concise example of the method.
-<code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">40</a>]</span> implements features and
+<code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">41</a>]</span> implements features and
 functionality needed for large scale analyses of real data.</p>
 <h2 id="comparison-between-cmash-mash-screen-and-scaled-minhash.">Comparison between CMash, mash screen, and Scaled MinHash.</h2>
 <p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
@@ -1052,50 +1067,50 @@ where <span class="math inline">\(\mathrm{\Phi}^{-1}\)</span> is the inverse of 
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-AX7zdKKw" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-22) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
-</div>
 <div id="ref-hMM4KrP3" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline"><strong>A genomic catalog of Earth’s microbiomes</strong> <div class="csl-block">Stephen Nayfach, Simon Roux, Rekha Seshadri, Daniel Udwary, Neha Varghese, Frederik Schulz, Dongying Wu, David Paez-Espino, I-Min Chen, Marcel Huntemann, … IMG/M Data Consortium</div> <em>Nature Biotechnology</em> (2020-11-09) <a href="https://doi.org/ghjh4b">https://doi.org/ghjh4b</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41587-020-0718-6">10.1038/s41587-020-0718-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33169036">33169036</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8041624">PMC8041624</a></div></div>
+<div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>A genomic catalog of Earth’s microbiomes</strong> <div class="csl-block">Stephen Nayfach, Simon Roux, Rekha Seshadri, Daniel Udwary, Neha Varghese, Frederik Schulz, Dongying Wu, David Paez-Espino, I-Min Chen, Marcel Huntemann, … IMG/M Data Consortium</div> <em>Nature Biotechnology</em> (2020-11-09) <a href="https://doi.org/ghjh4b">https://doi.org/ghjh4b</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41587-020-0718-6">10.1038/s41587-020-0718-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33169036">33169036</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8041624">PMC8041624</a></div></div>
 </div>
 <div id="ref-LJ9K03qs" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline"><strong>Metagenomic assessment of the global diversity and distribution of bacteria and fungi</strong> <div class="csl-block">Mohammad Bahram, Tarquin Netherway, Clémence Frioux, Pamela Ferretti, Luis Pedro Coelho, Stefan Geisen, Peer Bork, Falk Hildebrand</div> <em>Environmental Microbiology</em> (2020-12-02) <a href="https://doi.org/gjcw9f">https://doi.org/gjcw9f</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1111/1462-2920.15314">10.1111/1462-2920.15314</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33185929">33185929</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7898879">PMC7898879</a></div></div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline"><strong>Metagenomic assessment of the global diversity and distribution of bacteria and fungi</strong> <div class="csl-block">Mohammad Bahram, Tarquin Netherway, Clémence Frioux, Pamela Ferretti, Luis Pedro Coelho, Stefan Geisen, Peer Bork, Falk Hildebrand</div> <em>Environmental Microbiology</em> (2020-12-02) <a href="https://doi.org/gjcw9f">https://doi.org/gjcw9f</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1111/1462-2920.15314">10.1111/1462-2920.15314</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33185929">33185929</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7898879">PMC7898879</a></div></div>
 </div>
 <div id="ref-UotiKLjf" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline"><strong>The Integrative Human Microbiome Project</strong> <div class="csl-block">The Integrative HMP (iHMP) Research Network Consortium</div> <em>Nature</em> (2019-05-29) <a href="https://doi.org/gf3wp9">https://doi.org/gf3wp9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-019-1238-8">10.1038/s41586-019-1238-8</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142853">31142853</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6784865">PMC6784865</a></div></div>
+<div class="csl-left-margin">3. </div><div class="csl-right-inline"><strong>The Integrative Human Microbiome Project</strong> <div class="csl-block">The Integrative HMP (iHMP) Research Network Consortium</div> <em>Nature</em> (2019-05-29) <a href="https://doi.org/gf3wp9">https://doi.org/gf3wp9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-019-1238-8">10.1038/s41586-019-1238-8</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142853">31142853</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6784865">PMC6784865</a></div></div>
 </div>
 <div id="ref-EIgqGxWw" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">5. </div><div class="csl-right-inline"><strong>Structure and function of the global ocean microbiome</strong> <div class="csl-block">Shinichi Sunagawa, Luis Pedro Coelho, Samuel Chaffron, Jens Roat Kultima, Karine Labadie, Guillem Salazar, Bardya Djahanschiri, Georg Zeller, Daniel R Mende, Adriana Alberti, … Tara Oceans coordinators</div> <em>Science</em> (2015-05-22) <a href="https://doi.org/4tr">https://doi.org/4tr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1126/science.1261359">10.1126/science.1261359</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/25999513">25999513</a></div></div>
+<div class="csl-left-margin">4. </div><div class="csl-right-inline"><strong>Structure and function of the global ocean microbiome</strong> <div class="csl-block">Shinichi Sunagawa, Luis Pedro Coelho, Samuel Chaffron, Jens Roat Kultima, Karine Labadie, Guillem Salazar, Bardya Djahanschiri, Georg Zeller, Daniel R Mende, Adriana Alberti, … Tara Oceans coordinators</div> <em>Science</em> (2015-05-22) <a href="https://doi.org/4tr">https://doi.org/4tr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1126/science.1261359">10.1126/science.1261359</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/25999513">25999513</a></div></div>
 </div>
 <div id="ref-OBZeBS9O" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline"><strong>Priorities for the next 10 years of human microbiome research</strong> <div class="csl-block">Lita Proctor</div> <em>Nature</em> (2019-05-29) <a href="https://doi.org/gnnprk">https://doi.org/gnnprk</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/d41586-019-01654-0">10.1038/d41586-019-01654-0</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142863">31142863</a></div></div>
+<div class="csl-left-margin">5. </div><div class="csl-right-inline"><strong>Priorities for the next 10 years of human microbiome research</strong> <div class="csl-block">Lita Proctor</div> <em>Nature</em> (2019-05-29) <a href="https://doi.org/gnnprk">https://doi.org/gnnprk</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/d41586-019-01654-0">10.1038/d41586-019-01654-0</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142863">31142863</a></div></div>
 </div>
 <div id="ref-10WmapgAH" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline"><strong>Challenges in benchmarking metagenomic profilers</strong> <div class="csl-block">Zheng Sun, Shi Huang, Meng Zhang, Qiyun Zhu, Niina Haiminen, Anna Paola Carrieri, Yoshiki Vázquez-Baeza, Laxmi Parida, Ho-Cheol Kim, Rob Knight, Yang-Yu Liu</div> <em>Nature Methods</em> (2021-05-13) <a href="https://doi.org/gj2n7w">https://doi.org/gj2n7w</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41592-021-01141-3">10.1038/s41592-021-01141-3</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33986544">33986544</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8184642">PMC8184642</a></div></div>
+<div class="csl-left-margin">6. </div><div class="csl-right-inline"><strong>Challenges in benchmarking metagenomic profilers</strong> <div class="csl-block">Zheng Sun, Shi Huang, Meng Zhang, Qiyun Zhu, Niina Haiminen, Anna Paola Carrieri, Yoshiki Vázquez-Baeza, Laxmi Parida, Ho-Cheol Kim, Rob Knight, Yang-Yu Liu</div> <em>Nature Methods</em> (2021-05-13) <a href="https://doi.org/gj2n7w">https://doi.org/gj2n7w</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41592-021-01141-3">10.1038/s41592-021-01141-3</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33986544">33986544</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8184642">PMC8184642</a></div></div>
 </div>
 <div id="ref-A7OCZbgE" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline"><strong>Critical Assessment of Metagenome Interpretation - the second round of challenges</strong> <div class="csl-block">F Meyer, A Fritz, Z-L Deng, D Koslicki, A Gurevich, G Robertson, M Alser, D Antipov, F Beghini, D Bertrand, … AC McHardy</div> <em>Cold Spring Harbor Laboratory</em> (2021-07-12) <a href="https://doi.org/gk566x">https://doi.org/gk566x</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/2021.07.12.451567">10.1101/2021.07.12.451567</a></div></div>
+<div class="csl-left-margin">7. </div><div class="csl-right-inline"><strong>Critical Assessment of Metagenome Interpretation - the second round of challenges</strong> <div class="csl-block">F Meyer, A Fritz, Z-L Deng, D Koslicki, A Gurevich, G Robertson, M Alser, D Antipov, F Beghini, D Bertrand, … AC McHardy</div> <em>Cold Spring Harbor Laboratory</em> (2021-07-12) <a href="https://doi.org/gk566x">https://doi.org/gk566x</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/2021.07.12.451567">10.1101/2021.07.12.451567</a></div></div>
 </div>
 <div id="ref-wXphq8MN" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline"><strong>A review of methods and databases for metagenomic classification and assembly</strong> <div class="csl-block">Florian P Breitwieser, Jennifer Lu, Steven L Salzberg</div> <em>Briefings in Bioinformatics</em> (2019-07) <a href="https://doi.org/gdq95k">https://doi.org/gdq95k</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bib/bbx120">10.1093/bib/bbx120</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29028872">29028872</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6781581">PMC6781581</a></div></div>
+<div class="csl-left-margin">8. </div><div class="csl-right-inline"><strong>A review of methods and databases for metagenomic classification and assembly</strong> <div class="csl-block">Florian P Breitwieser, Jennifer Lu, Steven L Salzberg</div> <em>Briefings in Bioinformatics</em> (2019-07) <a href="https://doi.org/gdq95k">https://doi.org/gdq95k</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bib/bbx120">10.1093/bib/bbx120</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29028872">29028872</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6781581">PMC6781581</a></div></div>
 </div>
 <div id="ref-wfjpVLUe" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline"><strong>Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3</strong> <div class="csl-block">Francesco Beghini, Lauren J McIver, Aitor Blanco-Míguez, Leonard Dubois, Francesco Asnicar, Sagun Maharjan, Ana Mailyan, Paolo Manghi, Matthias Scholz, Andrew Maltez Thomas, … Nicola Segata</div> <em>eLife</em> (2021-05-04) <a href="https://doi.org/gkc38n">https://doi.org/gkc38n</a> <div class="csl-block">DOI: <a href="https://doi.org/10.7554/elife.65088">10.7554/elife.65088</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33944776">33944776</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8096432">PMC8096432</a></div></div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline"><strong>Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3</strong> <div class="csl-block">Francesco Beghini, Lauren J McIver, Aitor Blanco-Míguez, Leonard Dubois, Francesco Asnicar, Sagun Maharjan, Ana Mailyan, Paolo Manghi, Matthias Scholz, Andrew Maltez Thomas, … Nicola Segata</div> <em>eLife</em> (2021-05-04) <a href="https://doi.org/gkc38n">https://doi.org/gkc38n</a> <div class="csl-block">DOI: <a href="https://doi.org/10.7554/elife.65088">10.7554/elife.65088</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33944776">33944776</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8096432">PMC8096432</a></div></div>
 </div>
 <div id="ref-1Ch2YQf42" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">11. </div><div class="csl-right-inline"><strong>MEGAN-LR: new algorithms allow accurate binning and easy interactive exploration of metagenomic long reads and contigs</strong> <div class="csl-block">Daniel H Huson, Benjamin Albrecht, Caner Bağcı, Irina Bessarab, Anna Górska, Dino Jolic, Rohan BH Williams</div> <em>Biology Direct</em> (2018-04-20) <a href="https://doi.org/gnnprp">https://doi.org/gnnprp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13062-018-0208-7">10.1186/s13062-018-0208-7</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29678199">29678199</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5910613">PMC5910613</a></div></div>
+<div class="csl-left-margin">10. </div><div class="csl-right-inline"><strong>MEGAN-LR: new algorithms allow accurate binning and easy interactive exploration of metagenomic long reads and contigs</strong> <div class="csl-block">Daniel H Huson, Benjamin Albrecht, Caner Bağcı, Irina Bessarab, Anna Górska, Dino Jolic, Rohan BH Williams</div> <em>Biology Direct</em> (2018-04-20) <a href="https://doi.org/gnnprp">https://doi.org/gnnprp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13062-018-0208-7">10.1186/s13062-018-0208-7</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29678199">29678199</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5910613">PMC5910613</a></div></div>
 </div>
 <div id="ref-ZeDGX6j5" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">12. </div><div class="csl-right-inline"><strong>Fast and sensitive taxonomic assignment to metagenomic contigs</strong> <div class="csl-block">M Mirdita, M Steinegger, F Breitwieser, J Söding, E Levy Karin</div> <em>Bioinformatics</em> (2021-09-15) <a href="https://doi.org/gnnprm">https://doi.org/gnnprm</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btab184">10.1093/bioinformatics/btab184</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33734313">33734313</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8479651">PMC8479651</a></div></div>
+<div class="csl-left-margin">11. </div><div class="csl-right-inline"><strong>Fast and sensitive taxonomic assignment to metagenomic contigs</strong> <div class="csl-block">M Mirdita, M Steinegger, F Breitwieser, J Söding, E Levy Karin</div> <em>Bioinformatics</em> (2021-09-15) <a href="https://doi.org/gnnprm">https://doi.org/gnnprm</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btab184">10.1093/bioinformatics/btab184</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33734313">33734313</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8479651">PMC8479651</a></div></div>
 </div>
 <div id="ref-MqG4Noz7" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">13. </div><div class="csl-right-inline"><strong>eggNOG 5.0: a hierarchical, functionally and phylogenetically annotated orthology resource based on 5090 organisms and 2502 viruses</strong> <div class="csl-block">Jaime Huerta-Cepas, Damian Szklarczyk, Davide Heller, Ana Hernández-Plaza, Sofia K Forslund, Helen Cook, Daniel R Mende, Ivica Letunic, Thomas Rattei, Lars J Jensen, … Peer Bork</div> <em>Nucleic Acids Research</em> (2019-01-08) <a href="https://doi.org/gg8bdg">https://doi.org/gg8bdg</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/nar/gky1085">10.1093/nar/gky1085</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30418610">30418610</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6324079">PMC6324079</a></div></div>
+<div class="csl-left-margin">12. </div><div class="csl-right-inline"><strong>eggNOG 5.0: a hierarchical, functionally and phylogenetically annotated orthology resource based on 5090 organisms and 2502 viruses</strong> <div class="csl-block">Jaime Huerta-Cepas, Damian Szklarczyk, Davide Heller, Ana Hernández-Plaza, Sofia K Forslund, Helen Cook, Daniel R Mende, Ivica Letunic, Thomas Rattei, Lars J Jensen, … Peer Bork</div> <em>Nucleic Acids Research</em> (2019-01-08) <a href="https://doi.org/gg8bdg">https://doi.org/gg8bdg</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/nar/gky1085">10.1093/nar/gky1085</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30418610">30418610</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6324079">PMC6324079</a></div></div>
 </div>
 <div id="ref-wfp4mBcT" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">14. </div><div class="csl-right-inline"><strong>Improved metagenomic analysis with Kraken 2</strong> <div class="csl-block">Derrick E Wood, Jennifer Lu, Ben Langmead</div> <em>Genome Biology</em> (2019-11-28) <a href="https://doi.org/ggfk55">https://doi.org/ggfk55</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-019-1891-0">10.1186/s13059-019-1891-0</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31779668">31779668</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6883579">PMC6883579</a></div></div>
+<div class="csl-left-margin">13. </div><div class="csl-right-inline"><strong>Improved metagenomic analysis with Kraken 2</strong> <div class="csl-block">Derrick E Wood, Jennifer Lu, Ben Langmead</div> <em>Genome Biology</em> (2019-11-28) <a href="https://doi.org/ggfk55">https://doi.org/ggfk55</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-019-1891-0">10.1186/s13059-019-1891-0</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31779668">31779668</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6883579">PMC6883579</a></div></div>
 </div>
 <div id="ref-P2zJQDwU" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">15. </div><div class="csl-right-inline"><strong>Fast and sensitive taxonomic classification for metagenomics with Kaiju</strong> <div class="csl-block">Peter Menzel, Kim Lee Ng, Anders Krogh</div> <em>Nature Communications</em> (2016-04-13) <a href="https://doi.org/f8h4b6">https://doi.org/f8h4b6</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/ncomms11257">10.1038/ncomms11257</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27071849">27071849</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4833860">PMC4833860</a></div></div>
+<div class="csl-left-margin">14. </div><div class="csl-right-inline"><strong>Fast and sensitive taxonomic classification for metagenomics with Kaiju</strong> <div class="csl-block">Peter Menzel, Kim Lee Ng, Anders Krogh</div> <em>Nature Communications</em> (2016-04-13) <a href="https://doi.org/f8h4b6">https://doi.org/f8h4b6</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/ncomms11257">10.1038/ncomms11257</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27071849">27071849</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4833860">PMC4833860</a></div></div>
+</div>
+<div id="ref-AX7zdKKw" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline"><strong>On the resemblance and containment of documents</strong> <div class="csl-block">AZ Broder</div> <em>Institute of Electrical and Electronics Engineers (IEEE)</em> (2002-11-22) <a href="https://doi.org/fqk7hr">https://doi.org/fqk7hr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/sequen.1997.666900">10.1109/sequen.1997.666900</a></div></div>
 </div>
 <div id="ref-jxLvWK4U" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">16. </div><div class="csl-right-inline"><strong>IMPROVING MIN HASH VIA THE CONTAINMENT INDEX WITH APPLICATIONS TO METAGENOMIC ANALYSIS</strong> <div class="csl-block">David Koslicki, Hooman Zabeti</div> <em>Cold Spring Harbor Laboratory</em> (2017-09-04) <a href="https://doi.org/ghvn6z">https://doi.org/ghvn6z</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/184150">10.1101/184150</a></div></div>
@@ -1169,8 +1184,11 @@ where <span class="math inline">\(\mathrm{\Phi}^{-1}\)</span> is the inverse of 
 <div id="ref-ZT2VOiwV" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">39. </div><div class="csl-right-inline"><strong>A General-Purpose Counting Filter</strong> <div class="csl-block">Prashant Pandey, Michael A Bender, Rob Johnson, Rob Patro</div> <em>Association for Computing Machinery (ACM)</em> (2017-05-09) <a href="https://doi.org/gg29n9">https://doi.org/gg29n9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/3035918.3035963">10.1145/3035918.3035963</a></div></div>
 </div>
+<div id="ref-1DB8QGIqc" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">40. </div><div class="csl-right-inline"><strong>Centrifuge: rapid and sensitive classification of metagenomic sequences</strong> <div class="csl-block">Daehwan Kim, Li Song, Florian P Breitwieser, Steven L Salzberg</div> <em>Genome Research</em> (2016-12) <a href="https://doi.org/f9fnrr">https://doi.org/f9fnrr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.210641.116">10.1101/gr.210641.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27852649">27852649</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5131823">PMC5131823</a></div></div>
+</div>
 <div id="ref-ExvjTLL3" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">40. </div><div class="csl-right-inline"><strong>sourmash: a library for MinHash sketching of DNA</strong> <div class="csl-block">C Titus Brown, Luiz Irber</div> <em>The Journal of Open Source Software</em> (2016-09-14) <a href="https://doi.org/ghdrk5">https://doi.org/ghdrk5</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></div></div>
+<div class="csl-left-margin">41. </div><div class="csl-right-inline"><strong>sourmash: a library for MinHash sketching of DNA</strong> <div class="csl-block">C Titus Brown, Luiz Irber</div> <em>The Journal of Open Source Software</em> (2016-09-14) <a href="https://doi.org/ghdrk5">https://doi.org/ghdrk5</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></div></div>
 </div>
 </div>
 <h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
