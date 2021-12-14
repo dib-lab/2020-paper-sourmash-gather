@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/3d12ffe22a2abbebf0b60fd8e648eb1fe36ebe2c">dib-lab/2020-paper-sourmash-gather@3d12ffe</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c1d3f56c31dd1aa225dc1b2d578e4611c5119ece">dib-lab/2020-paper-sourmash-gather@c1d3f56</a>
 on December 14, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -334,10 +334,10 @@ intersection of <span class="math inline">\(D\)</span> and <span class="math inl
 polynomial-time approximation <span class="citation" data-cites="wsQccc3f">[<a href="#ref-wsQccc3f" role="doc-biblioref">24</a>]</span>:</p>
 <p>Why is this not? Here: $ f(C) = _{s C} s $</p>
 <p>Try: <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></p>
-<p>Try 2: <span class="math inline">\(f(C \cap_{s \in C} \{ s \}) - f(C)\)</span></p>
+<p>Try 2: <span class="math inline">\(f(C) = \cap_{s \in C} s\)</span></p>
 <ol type="1">
 <li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span></li>
-<li>Define $ f(C) = _{s C} s $</li>
+<li>Define <span class="math inline">\(f(C) = \vert \cup_{s \in C} s \vert\)</span></li>
 <li>Repeat until <span class="math inline">\(f(C) = f(M \cap D)\)</span>:
 <ol start="4" type="1">
 <li>Choose <span class="math inline">\(s \in G\)</span> maximizing the contribution of the element <span class="math inline">\(f(C \cup \{ s \}) - f(C)\)</span></li>
