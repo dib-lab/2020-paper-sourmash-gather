@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-14" />
+  <meta name="dcterms.date" content="2021-12-16" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-14" />
-  <meta name="citation_publication_date" content="2021-12-14" />
+  <meta name="dc.date" content="2021-12-16" />
+  <meta name="citation_publication_date" content="2021-12-16" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d0457ed77c8477eb290379d62fa6523e0c2acbf0">dib-lab/2020-paper-sourmash-gather@d0457ed</a>
-on December 14, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a4e306a8b72a8f36fd20b13037a6af36f2c727ac">dib-lab/2020-paper-sourmash-gather@a4e306a</a>
+on December 16, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -1017,6 +1017,17 @@ in the collection are checked in the counters to quantify the
 containment/similarity of each sketch in the query. The LCA index
 uses the opposite approach, opting to reconstruct the sketches
 on-the-fly.</p>
+<h2 id="revised-theoretical-analysis-of-fracminhash">Revised theoretical analysis of FracMinHash</h2>
+<p>Given two arbitrary sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> which are subsets of a domain
+<span class="math inline">\(\Omega\)</span>, the containment index <span class="math inline">\(\C\)</span> is defined as
+<span class="math inline">\(C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert}\)</span>. Let <span class="math inline">\(h\)</span> be a
+perfect hash function <span class="math inline">\(h~:~\Omega \rightarrow~[0,H]\)</span> for some <span class="math inline">\(H\in \mathbb{R}\)</span>. For a  <span class="math inline">\(s\)</span> where <span class="math inline">\(0 \le s \le 1\)</span>, a
+FracMinHash sketch of a set <span class="math inline">\(A\)</span> is defined as follows:</p>
+<span class="math display">\[\begin{equation}
+    %\mathbf{FRAC}_S(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq Hs\right\}.
+    \mathbf{FRAC}_S(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq Hs\right\}.
+\end{equation}\]</span>
+<p>The scale factor <span class="math inline">\(s\)</span> is a tunable parameter that can modify the size of the sketch. Using this FracMinHash sketch, we define the FracMinHash estimate of the containment index <span class="math inline">\(\scaleb\)</span> as follows:</p>
 <h2 id="theoretical-analysis-of-scaled-minhash">Theoretical analysis of Scaled MinHash</h2>
 <h3 id="expectation">Expectation</h3>
 <p>In this section, we aim to study how well</p>

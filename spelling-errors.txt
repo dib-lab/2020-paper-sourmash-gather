@@ -17,7 +17,7 @@ coli
 compositional
 contig
 cov
-CTB
+ctb
 dataset
 datasets
 dkoslicki
@@ -26,7 +26,7 @@ downsampling
 eg
 eukaryotic
 FracMinHash
-genbank
+GenBank
 genomic
 GTDB
 HashSet
@@ -47,11 +47,11 @@ Luiz
 luizirber
 mer
 mers
-metagenome
+Metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 MHBTs
 microbiome
 microbiomes
@@ -86,6 +86,7 @@ syncmers
 taylorreiter
 TODO
 tradeoffs
+tunable
 UC
 unmapped
 XXXXXXXX

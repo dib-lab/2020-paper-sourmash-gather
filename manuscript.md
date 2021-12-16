@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-14'
+date-meta: '2021-12-16'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-14" />
-  <meta name="citation_publication_date" content="2021-12-14" />
+  <meta name="dc.date" content="2021-12-16" />
+  <meta name="citation_publication_date" content="2021-12-16" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d0457ed77c8477eb290379d62fa6523e0c2acbf0/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@d0457ed](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d0457ed77c8477eb290379d62fa6523e0c2acbf0)
-on December 14, 2021.
+from [dib-lab/2020-paper-sourmash-gather@a4e306a](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a4e306a8b72a8f36fd20b13037a6af36f2c727ac)
+on December 16, 2021.
 </em></small>
 
 ## Authors
@@ -1086,6 +1086,26 @@ in the collection are checked in the counters to quantify the
 containment/similarity of each sketch in the query.  The LCA index
 uses the opposite approach, opting to reconstruct the sketches
 on-the-fly.
+
+## Revised theoretical analysis of FracMinHash
+
+Given two arbitrary sets $A$ and $B$ which are subsets of a domain
+$\Omega$, the containment index $\C$ is defined as
+$C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert}$. Let $h$ be a
+perfect hash function $h~:~\Omega \rightarrow~[0,H]$ for some $H\in
+\mathbb{R}$. For a \textit{scale factor} $s$ where $0 \le s \le 1$, a
+FracMinHash sketch of a set $A$ is defined as follows:
+
+
+```{=latex}
+\begin{equation}
+    %\mathbf{FRAC}_S(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq Hs\right\}.
+    \mathbf{FRAC}_S(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq Hs\right\}.
+\end{equation}
+```
+
+
+The scale factor $s$ is a tunable parameter that can modify the size of the sketch. Using this FracMinHash sketch, we define the FracMinHash estimate of the containment index $\scaleb$ as follows:
 
 ## Theoretical analysis of Scaled MinHash
 
