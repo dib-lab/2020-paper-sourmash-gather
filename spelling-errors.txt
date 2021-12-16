@@ -17,7 +17,7 @@ coli
 compositional
 contig
 cov
-ctb
+CTB
 dataset
 datasets
 dkoslicki
@@ -36,10 +36,11 @@ Illumina
 Irber
 iteratively
 Jaccard
+joss
 Koslicki
-kraken
+Kraken
 Kristoffer
-lca
+LCA
 LINS
 losslessly
 lossy
@@ -47,12 +48,11 @@ Luiz
 luizirber
 mer
 mers
-Metagenome
+metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
-MHBTs
+mhbt
 microbiome
 microbiomes
 mincode
@@ -75,7 +75,6 @@ runtime
 Sahlin
 saltyscientist
 SBT
-SBTs
 scalable
 Shewanella
 sourmash
@@ -90,3 +89,4 @@ tunable
 UC
 unmapped
 XXXXXXXX
+zenodo

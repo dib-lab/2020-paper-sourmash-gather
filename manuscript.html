@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a4e306a8b72a8f36fd20b13037a6af36f2c727ac/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a4e306a8b72a8f36fd20b13037a6af36f2c727ac">dib-lab/2020-paper-sourmash-gather@a4e306a</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/605a304667c300ae8eb344d75ff0fd0b58c970c4">dib-lab/2020-paper-sourmash-gather@605a304</a>
 on December 16, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -939,19 +939,20 @@ opportunities for further exploration and improvement with different
 data structures, alternative approximation algorithms, and additional
 summarization approaches.</p>
 <h1 id="methods">Methods</h1>
-<h2 id="implementation-of-scaled-minhash">Implementation of Scaled MinHash</h2>
-<p>We provide two implementations of Scaled MinHash, <code>smol</code> and
-<code>sourmash</code>. <code>smol</code> is a minimal implementation of <em>Scaled MinHash</em>
-developed to demonstrate the method; it does not include many required
-features for working with real biological data, but its smaller code
-base makes it a more readable and concise example of the method.
-<code>sourmash</code> <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">41</a>]</span> implements features and
-functionality needed for large scale analyses of real data.</p>
+<h2 id="implementation-of-fracminhash-and-min-set-cov">Implementation of FracMinHash and min-set-cov</h2>
+<p>We provide implementations of FracMinHash and min-set-cov in the
+software package <code>sourmash</code>, which is implemented in Python and Rust
+and developed under the BSD license <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">41</a>]</span> (cite
+joss, zenodo latest version, github URL). FracMinHash sketches are
+created for DNA sequence inputs using the <code>sourmash sketch dna</code>
+command with the <code>scaled</code> parameter. Minimum metagenome covers are
+generated using <code>sourmash gather</code> with the sketched metagenome as
+query against a collection of one or more sketched genomes.</p>
 <h2 id="comparison-between-cmash-mash-screen-and-scaled-minhash.">Comparison between CMash, mash screen, and Scaled MinHash.</h2>
 <p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
 supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they were run with
 <span class="math inline">\(n=\{1000, 10000\}\)</span> to evaluate the containment estimates when using
-larger sketches with sizes comparable to the Scaled MinHash sketches
+larger sketches with sizes comparable to the FracMinHash sketches
 with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
 <span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
 Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<a href="#ref-matsakis_rust_2014" role="doc-biblioref"><strong>matsakis_rust_2014?</strong></a>]</span>.</p>
@@ -961,73 +962,30 @@ survival process modeled as a Poisson process first introduced in
 <span class="citation" data-cites="fan_assembly_2015">[<a href="#ref-fan_assembly_2015" role="doc-biblioref"><strong>fan_assembly_2015?</strong></a>]</span> and later used in the <em>Mash distance</em>
 <span class="citation" data-cites="ondov_mash:_2016">[<a href="#ref-ondov_mash:_2016" role="doc-biblioref"><strong>ondov_mash:_2016?</strong></a>]</span> and <em>Containment score</em> <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span>
 formulations.</p>
-<h2 id="mhbt">MHBT</h2>
-<p>The <em>MinHash Bloom Tree</em> (<em>MHBT</em>) is a variation of the <em>Sequence
-Bloom Tree</em> (<em>SBT</em>) that uses Scaled MinHash sketches as leaf nodes
-instead of Bloom Filters as in the SBT. The search operation in SBTs
-is defined as a breadth-first search starting at the root of the tree,
-using a threshold of the original <span class="math inline">\(k\)</span>-mers in the query to decide when
-to prune the search. MHBTs use a query Scaled MinHash sketch instead,
-but keep the same search approach. The threshold of a query <span class="math inline">\(Q\)</span>
-approach introduced in <span class="citation" data-cites="solomon_fast_2016">[<a href="#ref-solomon_fast_2016" role="doc-biblioref"><strong>solomon_fast_2016?</strong></a>]</span> is equivalent to the
-containment <span class="math display">\[C(Q, S) = \frac{\vert Q \cap S \vert }{\vert S \vert}\]</span>
-described in <span class="citation" data-cites="broder_resemblance_1997">[<a href="#ref-broder_resemblance_1997" role="doc-biblioref"><strong>broder_resemblance_1997?</strong></a>]</span>, where <span class="math inline">\(S\)</span> is a Scaled MinHash
-sketch. For internal nodes <span class="math inline">\(n\)</span> (which are Bloom Filters) the
-containment of the query Scaled MinHash sketch <span class="math inline">\(Q\)</span> is
-<span class="math display">\[
-C(Q, n) = \frac{\vert \{\,h \in n \mid \forall h \in Q\,\} \vert}{\vert Q
-   \vert}
-\]</span>
-as defined by
-<span class="citation" data-cites="koslicki_improving_2019">[<a href="#ref-koslicki_improving_2019" role="doc-biblioref"><strong>koslicki_improving_2019?</strong></a>]</span> for the <em>Containment MinHash</em> to <em>Bloom
-Filter</em> comparison.</p>
-<p>MHBTs support both containment and similarity queries.
-For internal nodes the containment <span class="math inline">\(C(Q,n)\)</span> is used as an upper-bound of the similarity <span class="math inline">\(J(Q, n)\)</span>:
-<span class="math display">\[C(Q, n) &amp;\ge J(Q, n) \\
-  \frac{\vert Q \cap n \vert }{\vert Q \vert} \ge \frac{\vert Q \cap n \vert }{\vert Q \cup n \vert}
-  \]</span>
-since <span class="math inline">\(\vert Q \cup n \vert \ge \vert Q \vert\)</span>.
-When a leaf node is reached then the similarity <span class="math inline">\(J(Q, S)\)</span> is calculated for the Scaled MinHash sketch <span class="math inline">\(S\)</span>
-and declared a match if it is above the threshold <span class="math inline">\(t\)</span>.
-Because the upper-bound is being used,
-this can lead to extra nodes being checked,
-but it simplifies implementation and provides better correctness guarantees.</p>
-<h2 id="inverted-index">Inverted index</h2>
-<p>The LCA index in <code>sourmash</code> is an inverted index that stores a mapping
-from hashes in a collection of signatures to a list of IDs for
-signatures containing the hash. Despite the name, the list of
-signature IDs is not collapsed to the lowest common ancestor (as in
-kraken), and is calculated as needed by downstream methods using
-taxonomy information stored separately in the LCA index.</p>
-<p>The mapping from hashes to signature IDs in the LCA index is an
-implicit representation of the original signatures used to build the
-index, and so returning the signatures is implemented by rebuilding
-the original signatures on-the-fly. Search in an LCA index matches
-the <span class="math inline">\(k\)</span>-mers in the query to the list of signatures IDs containing
-them, using a counter data structure to sort results by number of
-hashes per signature ID. The rebuilt signatures are then returned as
-matches based on the signature ID, with containment or similarity to
-the query calculated against the rebuilt signatures.</p>
-<p>mash screen <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span> has a similar index, but it is
-constructed on-the-fly using the distinct hashes in a sketch
-collection as keys, and values are counters initially set to zero. As
-the query is processed, matching hashes have their counts incremented,
-and after all hashes in the query are processed then all the sketches
-in the collection are checked in the counters to quantify the
-containment/similarity of each sketch in the query. The LCA index
-uses the opposite approach, opting to reconstruct the sketches
-on-the-fly.</p>
+<h2 id="genbank-searches-and-comparisons">GenBank searches and comparisons</h2>
+<h2 id="figures-and-notebooks">Figures and notebooks</h2>
 <h2 id="revised-theoretical-analysis-of-fracminhash">Revised theoretical analysis of FracMinHash</h2>
 <p>Given two arbitrary sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> which are subsets of a domain
-<span class="math inline">\(\Omega\)</span>, the containment index <span class="math inline">\(\C\)</span> is defined as
+<span class="math inline">\(\Omega\)</span>, the containment index <span class="math inline">\(C(A,B)\)</span> is defined as
 <span class="math inline">\(C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert}\)</span>. Let <span class="math inline">\(h\)</span> be a
-perfect hash function <span class="math inline">\(h~:~\Omega \rightarrow~[0,H]\)</span> for some <span class="math inline">\(H\in \mathbb{R}\)</span>. For a  <span class="math inline">\(s\)</span> where <span class="math inline">\(0 \le s \le 1\)</span>, a
+perfect hash function <span class="math inline">\(h~:~\Omega \rightarrow~[0,H]\)</span> for some <span class="math inline">\(H\in \mathbb{R}\)</span>. For a <em>scale factor</em> <span class="math inline">\(s\)</span> where <span class="math inline">\(0 \le s \le 1\)</span>, a
 FracMinHash sketch of a set <span class="math inline">\(A\)</span> is defined as follows:</p>
 <span class="math display">\[\begin{equation}
     %\mathbf{FRAC}_S(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq Hs\right\}.
     \mathbf{FRAC}_S(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq Hs\right\}.
 \end{equation}\]</span>
 <p>The scale factor <span class="math inline">\(s\)</span> is a tunable parameter that can modify the size of the sketch. Using this FracMinHash sketch, we define the FracMinHash estimate of the containment index <span class="math inline">\(\scaleb\)</span> as follows:</p>
+<span class="math display">\[\begin{equation}
+    \scaleb:=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert }.
+    \label{eqn:scaleC}
+\end{equation}\]</span>
+<p>For notational simplicity, we define <span class="math inline">\(X_A := \vert \mathbf{FRAC}_S(A) \vert\)</span>. Observe that if one views <span class="math inline">\(h\)</span> as a uniformly distributed
+random variable, we have that <span class="math inline">\(X_A\)</span> is distributed as a binomial
+random variable: <span class="math inline">\(X_A \sim {\rm Binom}(|A|, s)\)</span>. Furthermore, if
+<span class="math inline">\(A\cap B = \emptyset\)</span> where both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are non-empty sets, then
+<span class="math inline">\(X_A\)</span> and <span class="math inline">\(X_B\)</span> are independent when the probability of success is
+strictly smaller than <span class="math inline">\(1\)</span>. Using these notations, we compute the
+expectation of .</p>
 <h2 id="theoretical-analysis-of-scaled-minhash">Theoretical analysis of Scaled MinHash</h2>
 <h3 id="expectation">Expectation</h3>
 <p>In this section, we aim to study how well</p>
