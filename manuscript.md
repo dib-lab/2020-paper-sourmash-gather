@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/605a304667c300ae8eb344d75ff0fd0b58c970c4/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@605a304](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/605a304667c300ae8eb344d75ff0fd0b58c970c4)
+from [dib-lab/2020-paper-sourmash-gather@36ae9e3](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/36ae9e3243f5e235bd84c174971b2862fbe1d441)
 on December 16, 2021.
 </em></small>
 
@@ -369,7 +369,7 @@ at random. This is an implementation decision that is not intrinsic to
 the algorithm itself.
 
 In Figure @fig:gather0, we show an example of this iterative
-classification of k-mers by matching genome for the mock metagenome from 
+classification of k-mers by matching GenBank genome for the mock metagenome from 
 [@doi:10.1111/1462-2920.12086], which we term `podar mock` (see
 Table @tbl:genbank-cover, row 2). The matching genomes are provided
 in the order found by the greedy algorithm, i.e. by overlap with remaining k-mers in the metagenome.
@@ -1025,9 +1025,38 @@ survival process modeled as a Poisson process first introduced in
 [@ondov_mash:_2016] and _Containment score_ [@ondov_mash_2019]
 formulations.
 
-## GenBank searches and comparisons
+## GenBank database sketching and searches
 
-## Figures and notebooks
+Minimum metagenome covers were calculated using a microbial genome
+subset of GenBank (date XYZ, number of genomes ZZZ) using a scaled
+factor of 2000 and a k-mer size of 31. Sketches for all genomes and
+metagenomes were calculated with `sourmash sketch dna -p
+scaled=2000,k=31`. The minimum metagenome covers were calculated using
+all genomes sharing 100 hashes with the metagenome (that is, an
+estimated overlap of 100,000 k-mers) with
+`sourmash gather --threshold-bp 1e5`.
+Overlapping sketches were saved with `--save-prefetch`
+and matches were saved with `--save-matches`.
+
+The GenBank database used is XYZ GB in size and is available for download
+at ZZZ.
+
+## Taxonomy
+
+## Genome retrieval and mapping workflow
+
+mapping
+
+The complete workflow, from metagenome download to taxonomic analysis
+and iterative mapping, is implemented in the genome-grist package
+(version, doi, etc.). genome-grist uses snakemake (cite) to implement
+a workflow that combines sourmash sketching, metagenome cover
+calculation, and taxonomic analysis with metagenome download from the
+SRA, genome download from GenBank, and read mapping.
+
+The summary results from genome-grist for this paper are available HERE.
+
+## Figures and notebooks for this paper.
 
 ## Revised theoretical analysis of FracMinHash
 
@@ -1053,13 +1082,12 @@ FracMinHash sketch of a set $A$ is defined as follows:
 ```
 
 
-The scale factor $s$ is a tunable parameter that can modify the size of the sketch. Using this FracMinHash sketch, we define the FracMinHash estimate of the containment index $\scaleb$ as follows:
+The scale factor $s$ is a tunable parameter that can modify the size of the sketch. Using this FracMinHash sketch, we define the FracMinHash estimate of the containment index $\hat{C}_\text{frac}(A,B)$ as follows:
 
 
 ```{=latex}
 \begin{equation}
-    \scaleb:=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert }.
-    \label{eqn:scaleC}
+    \hat{C}_\text{scale}(A,B):=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert}.
 \end{equation}
 ```
 
@@ -1071,7 +1099,7 @@ random variable: $X_A \sim {\rm Binom}(|A|, s)$. Furthermore, if
 $A\cap B = \emptyset$ where both $A$ and $B$ are non-empty sets, then
 $X_A$ and $X_B$ are independent when the probability of success is
 strictly smaller than $1$. Using these notations, we compute the
-expectation of \cref{eqn:scaleC}.
+expectation of (equation).
 
 ## Theoretical analysis of Scaled MinHash
 
