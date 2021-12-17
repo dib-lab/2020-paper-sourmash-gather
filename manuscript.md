@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@88ad93b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/88ad93bcb3a6ea5423aedd121b35aab175bfffdf)
+from [dib-lab/2020-paper-sourmash-gather@f996b7c](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684)
 on December 17, 2021.
 </em></small>
 
@@ -1208,6 +1208,7 @@ $$
 
 For notational simplicity, we define $X_A := \vert \mathbf{SCALED}_s(A) |$. Observe that if one views $h$ as a uniformly distributed random variable, we have that $X_A$ is distributed as a binomial random variable: ${\rm Binom}(|A|, s)$. Furthermore, if $A\cap B = \emptyset$, then $X_A$ and $X_B$ are independent. We then compute the expectation of \cref{eqn:scaleC}.
 
+
 ```{=latex}
 \begin{theorem}
 \label{thm:Escaled}
@@ -1219,6 +1220,8 @@ For $0<s\leq 1$,
 \end{theorem}
 ```
 
+
+
 ```{=latex}
 \begin{proof}
 Using the notation introduced previously, observe that
@@ -1227,6 +1230,7 @@ $$
 $$
 and that the random variables $\X$ and $\Y$ are independent.
 We next collect a few useful facts: from standard calculus,
+
 \begin{align}
     \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y>0}.
 \end{align}
@@ -1240,6 +1244,7 @@ We also know by continuity that
     \E\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
     &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
 \end{align}
+
 Using these observations, we can then finally calculate that
 \begin{align}
     \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
@@ -1252,6 +1257,7 @@ Using these observations, we can then finally calculate that
 where Fubini's theorem is used in \cref{line:1} and independence in \cref{line:2}.
 \end{proof}
 ```
+
 
 In light of \cref{thm:Escaled}, we note that \cref{eqn:scaleC} is not an unbiased estimate of \cref{eqn:C}, but for $\vert A \vert$ sufficiently large, the bias factor $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1. Alternatively, if $|A|$ is known (or estimated, eg. by using HyperLogLog \cite{flajolet2007hyperloglog}), then
 $$

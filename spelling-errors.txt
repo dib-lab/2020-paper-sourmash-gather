@@ -54,7 +54,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+mhbt
 microbiome
 microbiomes
 mincode
@@ -73,7 +73,7 @@ reproducibly
 rescaled
 rescaling
 revindex
-Runtime
+runtime
 Sahlin
 saltyscientist
 SBT
