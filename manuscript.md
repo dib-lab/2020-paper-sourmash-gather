@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@aeb5b6f](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6)
+from [dib-lab/2020-paper-sourmash-gather@5f198f8](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5f198f8c6623ea234fcce3304642e544d252e4b5)
 on December 17, 2021.
 </em></small>
 
@@ -1063,6 +1063,8 @@ of the genome-grist package.
 
 ## Figures and notebooks for this paper.
 
+(point at gather figures repo)
+
 ## Data accessions
 
 The summary results from genome-grist for this paper are available HERE.
@@ -1124,12 +1126,12 @@ Using the notation introduced previously, observe that
 ```{=latex}
 \def\scaleb{\hat{C}_\text{frac}(A,B)}
 \begin{align*}
-\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} = \frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},
+\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} = \frac{X_{A\cap B}}{X_{A\cap B} + X_{A\setminus B}} \mathbbm{1}_{X_{A\cap B} + X_{A\setminus B}>0},
 \end{align*}
 ```
 
 
-and that the random variables $\X$ and $\Y$ are independent (which follows directly from the fact that $A \cap B$ is non-empty, and because $A$ and $B$ are distinct, $A \setminus B$ is also non-empty).
+and that the random variables $X_{A\cap B}$ and $X_{A\setminus B}$ are independent (which follows directly from the fact that $A \cap B$ is non-empty, and because $A$ and $B$ are distinct, $A \setminus B$ is also non-empty).
 We will use the following fact from standard calculus:
 
 
@@ -1145,12 +1147,12 @@ Then using the moment generating function of the binomial distribution, we have
 
 ```{=latex}
 \begin{align}
-    \mathrm{E}\left[t^\X\right] &= (1-s+st)^{\vert A \cap B \vert}\\
-    \mathrm{E}\left[t^\Y\right] &= (1-s+st)^{\vert A \setminus B \vert}.
+    \mathrm{E}\left[t^X_{A\cap B}\right] &= (1-s+st)^{\vert A \cap B \vert}\\
+    \mathrm{E}\left[t^X_{A\setminus B}\right] &= (1-s+st)^{\vert A \setminus B \vert}.
 \end{align}
 We also know by continuity that 
 \begin{align}
-    \mathrm{E}\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
+    \mathrm{E}\left[X_{A\cap B} \, t^{X_{A\cap B}-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
     &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
 \end{align}
 ```
@@ -1162,9 +1164,9 @@ Using these observations, we can then finally calculate that
 
 ```{=latex}
 \begin{align}
-    \mathrm{E}\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \mathrm{E}\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
-    &= \int_0^1 \mathrm{E}\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
-    &= \int_0^1 \mathrm{E}\left[\X  \, t^{\X-1}\right] \mathrm{E}\left[t^\Y\right]\,dt\label{line:2}\\
+    \mathrm{E}\left[\frac{X_{A\cap B}}{X_{A\cap B} + X_{A\setminus B}} \mathbbm{1}_{X_{A\cap B} + X_{A\setminus B}>0},\right] &= \mathrm{E}\left[\int_0^1 X_{A\cap B} \,  t^{X_{A\cap B}+X_{A\setminus B}-1}\,dt\right]\\
+    &= \int_0^1 \mathrm{E}\left[X_{A\cap B}  \, t^{X_{A\cap B}+X_{A\setminus B}-1}\,dt\right]\label{line:1}\\
+    &= \int_0^1 \mathrm{E}\left[X_{A\cap B}  \, t^{X_{A\cap B}-1}\right] \mathrm{E}\left[t^X_{A\setminus B}\right]\,dt\label{line:2}\\
     &= \vert A\cap B\vert \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
     &= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
     &= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
@@ -1175,213 +1177,21 @@ Using these observations, we can then finally calculate that
 where Fubini's theorem is used in (line 1) and independence in (line 2).
 
 
-In light of (theorem), we note that \cref{eqn:scaleC} is *not* an unbiased estimate of $C(A,B)$. This may explain the observations in (Luiz thesis) that showed the uncorrected version in (eqn) leads to suboptimal performance for short sequences (e.g viruses). However, for sufficiently large $\vert A \vert$ and $s$, the bias factor $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
+In light of (theorem), we note that (eqution) is *not* an
+unbiased estimate of $C(A,B)$. This may explain the observations in
+(Luiz thesis) that showed the uncorrected version in (eqn) leads to
+suboptimal performance for short sequences (e.g viruses). However, for
+sufficiently large $\vert A \vert$ and $s$, the bias factor
+$\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
 
-The expectation of $C_\text{frac}(A,B)$ follows directly from (equation) and (theorem).
-
-For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty, the expectation of $\scale$ is given by
+The expectation of $C_\text{frac}(A,B)$ follows directly from
+(equation) and (theorem): for $0<s<1$, if $A$ and $B$ are two distinct
+sets such that $A \cap B$ is non-empty, the expectation of $C(A, B)$ is
+given by
 
 $$
-\mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}.
+\mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}
 $$
-
-## Theoretical analysis of Scaled MinHash
-
-
-```{=latex}
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}{Proposition}
-\DeclareMathOperator*{\Var}{\mathrm{Var}}
-\DeclareMathOperator*{\Cov}{\mathrm{Cov}}
-\def\E{\mathrm{E}}
-\def\X{{X_{A\cap B}}}
-\def\Y{{X_{A\setminus B}}}
-\newcommand\bigoh{{\mathcal O}\xspace}
-\def\P{\mathrm{Pr}}
-\def\Pr{\mathrm{Pr}}
-\def\scaleb{\hat{C}_\text{scale}(A,B)}
-\def\scale{C_\text{scale}(A,B)}
-```
-
-
-### Expectation
-
-In this section, we aim to study how well
-```{=latex}
-\begin{align}
-\scaleb:=\frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert }
-\label{eqn:scaleC}
-\end{align}
-```
-approximates the containment index
-```{=latex}
-\begin{align}
-\label{eqn:C}
-C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert},
-\end{align}
-```
-for two arbitrary sets $A,B$ which are subsets of the domain $\Omega$ of the uniform hash function $h:\Omega \rightarrow [0,H]$. By rescaling, we can assume without loss of generality that $H=1$ and $0<s\leq H$ in the definition
-$$
-\mathbf{SCALED}_s(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq \frac{H}{s}\right\}.
-$$
-
-For notational simplicity, we define $X_A := \vert \mathbf{SCALED}_s(A) |$. Observe that if one views $h$ as a uniformly distributed random variable, we have that $X_A$ is distributed as a binomial random variable: ${\rm Binom}(|A|, s)$. Furthermore, if $A\cap B = \emptyset$, then $X_A$ and $X_B$ are independent. We then compute the expectation of \cref{eqn:scaleC}.
-
-
-```{=latex}
-\begin{theorem}
-\label{thm:Escaled}
-For $0<s\leq 1$,
-\begin{align*}
-\mathrm{E}\left[\scaleb \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0} \right] =
-\frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right)
-\end{align*}
-\end{theorem}
-```
-
-
-
-```{=latex}
-Using the notation introduced previously, observe that
-$$
-\scaleb \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0} = \frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},
-$$
-and that the random variables $\X$ and $\Y$ are independent.
-We next collect a few useful facts: from standard calculus,
-
-\begin{align}
-    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y>0}.
-\end{align}
-Then using the moment generating function of the binomial distribution, we have
-\begin{align}
-    \E\left[t^\X\right] &= (1-s+st)^{\vert A \cap B \vert}\\
-    \E\left[t^\Y\right] &= (1-s+st)^{\vert A \setminus B \vert}.
-\end{align}
-We also know by continuity that
-\begin{align}
-    \E\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
-    &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
-\end{align}
-```
-
-
-Using these observations, we can then finally calculate that
-
-
-```{=latex}
-\begin{align}
-    \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
-    &= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
-    &= \int_0^1 \E\left[\X  \, t^{\X-1}\right] \E\left[t^\Y\right]\,dt\label{line:2}\\
-    &= \vert A\cap B\vert s \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
-    &= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
-    &= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
-\end{align}
-where Fubini's theorem is used in (line 1) and independence in (line 2).
-```
-
-
-In light of \cref{thm:Escaled}, we note that \cref{eqn:scaleC} is not an unbiased estimate of \cref{eqn:C}, but for $\vert A \vert$ sufficiently large, the bias factor $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1. Alternatively, if $|A|$ is known (or estimated, eg. by using HyperLogLog \cite{flajolet2007hyperloglog}), then
-$$
-\scale := \frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert \left(1-(1-s)^{\vert A\vert}\right)} \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0}
-$$
-is an unbiased estimate of the containment index.
-
-### Variance
-We can calculate the variance of $\scale$ directly from the associated multivariate probability mass function. Indeed, if we let $n=|A\cap B|$ and $m=|A\setminus B|$, since $X_{A\cap B}\sim {\rm Binom}(n, s)$ and $X_{A\setminus B}\sim {\rm Binom}(m, s)$ are independent, the probability mass function is:
-```{=latex}
-\begin{align*}
-f_{C_\text{scale}}(k, l) = \binom{n}{k} \binom{m}{l} s^{p+k} (1-s)^{m+n-k-l}\quad {\rm for}\ k=0,\dots, n,\ {\rm and}\ l=0,\dots, m.
-\end{align*}
-```
-The variance of the unbiased estimator is then computed as:
-```{=latex}
-\begin{align}
-    \Var\left[\scale \right] &= \E\left[\scale\right]^2 - \E\left[\scale^2\right]\\
-    &= \frac{|A\cap B|^2}{|A|^2} - \left(1-(1-s)^{ \vert A\vert}\right)^{-2} \sum_{k=1}^n \sum_{l=0}^m \frac{k^2}{(k+l)^2} \binom{n}{k} \binom{m}{l} s^{k+l} (1-s)^{n+m-k-l} \label{eqn:double}
-\end{align}
-```
-Unfortunately, the double sum in \cref{eqn:double} appears to have no closed form representation. However, in practice, it is easily computed numerically when given particular values of $m$, $n$ and $s$. A first order Taylor series approximation of the variance can be computed.
-
-```{=latex}
-\begin{theorem}
-For $n=|A\cap B|$ and $|A\setminus B|=m$, a first order Taylor series approximation gives
-\begin{align*}
-\Var\left[\scale \right] \approx \frac{mn(1-s)}{s(m+n)^3}.
-\end{align*}
-\end{theorem}
-\begin{proof}
-Let $g(x,y)=\frac{x}{x+y}$, $\mu_x = ns$, $\mu_y = ms$ and use subscripts to denote partial derivatives:
-\begin{align*}
-    g_x(x,y) &= \frac{y}{(x+y)^2}\\
-    g_y(x,y) &= \frac{-x}{(x+y)^2}
-\end{align*}
-We then have the first order Taylor series:
-\begin{align}
-    \Var\left(g\left(\X,\Y\right)\right) &= g_x^2(\mu_x,\mu_y) \Var(\X) + 2 g_x(\mu_x,\mu_y)g_y(\mu_x,\mu_y) \E[\X-\mu_x]\E[\Y-\mu_y] \notag \\
-    &+ g_y^2(\mu_x,\mu_y)\Var(\Y) \label{eqn:zeroterm}\\
-    &= \frac{m^2}{s^2(m+n)^4} ns(1-s) + \frac{n^2}{s^2(m+n)^4} ms(1-s) \notag \\
-    &= \frac{mn(1-s)}{(m+n)^3s},\notag
-\end{align}
-with the middle term of \cref{eqn:zeroterm} factoring due to independence.
-\end{proof}
-```
-Proceeding in the same fashion, we can obtain second and third order approximations to the variance. Indeed, series approximations can be had to arbitrarily high order due to the binomial distribution having finite central moments of arbitrary order.
-
-```{=latex}
-\begin{theorem}
-For $n=|A\cap B|$ and $|A\setminus B|=m$, a second order Taylor series approximation gives
-\begin{align*}
-\Var\left[\scale \right] \approx \frac{m n (1-p) \left(p^2 \left(m^2+m (2 n+3)+n (n+3)+6\right)-p (m+n+6)+1\right)}{p^3 (m+n)^5}.
-\end{align*}
-\end{theorem}
-```
-
-```{=latex}
-\begin{theorem}
-For $n=|A\cap B|$ and $|A\setminus B|=m$, a third order Taylor series approximation gives
-\begin{align*}
-\Var\left[\scale \right] \approx& s^{-5} (m+n)^{-7} m n (1-s) \Big(s \Big(s^2 (m+n-4) \Big(m^2+2 m (n+2)+n (n+4)+60\Big)\\
-&+ s^3 \Big(m^4+m^3 (4 n+1)+m^2 \Big(6 n^2+3 n+5\Big)+m (n (n (4 n+3)+10)-10)\\
-&+ n \Big(n\Big(n^2+n+5\Big)-10\Big)+120\Big)\\
-&- s (m+n) (2 m+2 n+41)+9 m+9 n+150 s-30\Big)+1\Big).
-\end{align*}
-\end{theorem}
-```
-
-### Asymptotic normality
-
-To show asymptotic normality of $\scale$, we utilize the delta method \cite[section 14.1.3]{agresti2003categorical} combined with the De Moivre-Laplace theorem. Indeed, since
-
-#### Confidence intervals and hypothesis tests
-
-Recall that an {\em approximate $(1-\alpha)$-confidence interval} of a distribution parameter $s$, is an interval which contains $s$ with limiting probability $1 - \alpha$.
-Closely related, an {\em approximate hypothesis test with significance level $(1-\alpha)$} is an interval
-that contains a limiting random variable with probability $1-\alpha$.
-We will omit the word ``approximate'' in the rest of the paper, for brevity and also use the notation $X \in x \pm y$ to mean $X \in [x-y,x+y]$.
-Finally, for $0 < \alpha < 1$, we let $z_\alpha = \Phi^{-1}(1- \alpha/2)$,
-where $\mathrm{\Phi}^{-1}$ is the inverse of the cumulative distribution function of the standard normal distribution.
-
-#### Other stuff
-
-This section is a collection of other observations that might be useful.
-
-First, there is a lot of theory about ratios of independent random variables. Here, however, we have a ratio of correlated random variables, but we do know their covariance.
-
-```{=latex}
-\begin{proposition}
-$\Cov(\X,\X+\Y) = ns(1-s)$.
-\end{proposition}
-\begin{proof}
-\begin{align*}
-    \Cov(\X,\X+\Y) &= \E[\X(\X+\Y)] - \E[\X]\E[\X+\Y] \\
-    &= \E[\X^2] + \E[\X\Y]-\E[\X]\E[\X+\Y]\\
-    &= ns(1+(n-1)s) + n m s^2 - ns(ns + ms)\\
-    &= ns(1-s).
-\end{align*}
-\end{proof}
-```
-Interestingly, this means that the covariance doesn't depend on $\Y$ at all, but rather $\Cov(\X,\X+\Y)=\Cov(\X,\X)=\Var(\X)$.
 
 
 ## References {.page_break_before}
