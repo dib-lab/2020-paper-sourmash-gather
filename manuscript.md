@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@4faed4a](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/4faed4a429f38c3932633d7f8745e93e05e6ddc7)
+from [dib-lab/2020-paper-sourmash-gather@aeb5b6f](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6)
 on December 17, 2021.
 </em></small>
 
@@ -1043,9 +1043,12 @@ at ZZZ.
 
 ## Taxonomy
 
-## Genome retrieval and mapping workflow
+(I guess say what Luiz used, and then repeat this using sourmash taxonomy.)
 
-mapping
+## Read mapping and hybrid mapping pipeline
+
+Metagenome reads were mapped to reference genomes using minimap2 v2.17 (cite)
+with `-x sr` (short single-end read mapping mode). 
 
 The complete workflow, from metagenome download to taxonomic analysis
 and iterative mapping, is implemented in the genome-grist package
@@ -1054,9 +1057,15 @@ a workflow that combines sourmash sketching, metagenome cover
 calculation, and taxonomic analysis with metagenome download from the
 SRA, genome download from GenBank, and read mapping.
 
-The summary results from genome-grist for this paper are available HERE.
+The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
+results was implemented in the `subtract_gather.py` script that is part
+of the genome-grist package.
 
 ## Figures and notebooks for this paper.
+
+## Data accessions
+
+The summary results from genome-grist for this paper are available HERE.
 
 ## Revised theoretical analysis of FracMinHash
 
@@ -1136,12 +1145,12 @@ Then using the moment generating function of the binomial distribution, we have
 
 ```{=latex}
 \begin{align}
-    \E\left[t^\X\right] &= (1-s+st)^{\vert A \cap B \vert}\\
-    \E\left[t^\Y\right] &= (1-s+st)^{\vert A \setminus B \vert}.
+    \mathrm{E}\left[t^\X\right] &= (1-s+st)^{\vert A \cap B \vert}\\
+    \mathrm{E}\left[t^\Y\right] &= (1-s+st)^{\vert A \setminus B \vert}.
 \end{align}
 We also know by continuity that 
 \begin{align}
-    \E\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
+    \mathrm{E}\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
     &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
 \end{align}
 ```
@@ -1153,9 +1162,9 @@ Using these observations, we can then finally calculate that
 
 ```{=latex}
 \begin{align}
-    \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
-    &= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
-    &= \int_0^1 \E\left[\X  \, t^{\X-1}\right] \E\left[t^\Y\right]\,dt\label{line:2}\\
+    \mathrm{E}\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \mathrm{E}\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
+    &= \int_0^1 \mathrm{E}\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
+    &= \int_0^1 \mathrm{E}\left[\X  \, t^{\X-1}\right] \mathrm{E}\left[t^\Y\right]\,dt\label{line:2}\\
     &= \vert A\cap B\vert \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
     &= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
     &= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
@@ -1163,17 +1172,17 @@ Using these observations, we can then finally calculate that
 ```
 
 
-where Fubini's theorem is used in \Cref{line:1} and independence in \Cref{line:2}.
+where Fubini's theorem is used in (line 1) and independence in (line 2).
 
 
 In light of (theorem), we note that \cref{eqn:scaleC} is *not* an unbiased estimate of $C(A,B)$. This may explain the observations in (Luiz thesis) that showed the uncorrected version in (eqn) leads to suboptimal performance for short sequences (e.g viruses). However, for sufficiently large $\vert A \vert$ and $s$, the bias factor $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
 
-The expectation of $\scale$ follows directly from (equation) and (theorem).
+The expectation of $C_\text{frac}(A,B)$ follows directly from (equation) and (theorem).
 
 For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty, the expectation of $\scale$ is given by
 
 $$
-\E [\scale] = \frac{\vert A\cap B \vert}{\vert A \vert}.
+\mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}.
 $$
 
 ## Theoretical analysis of Scaled MinHash
@@ -1224,7 +1233,7 @@ For notational simplicity, we define $X_A := \vert \mathbf{SCALED}_s(A) |$. Obse
 \label{thm:Escaled}
 For $0<s\leq 1$,
 \begin{align*}
-\E\left[\scaleb \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0} \right] =
+\mathrm{E}\left[\scaleb \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0} \right] =
 \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right)
 \end{align*}
 \end{theorem}
