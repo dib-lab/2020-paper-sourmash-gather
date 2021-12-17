@@ -42,7 +42,7 @@ joss
 Koslicki
 Kraken
 Kristoffer
-lca
+LCA
 LINS
 losslessly
 lossy
@@ -54,7 +54,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+mhbt
 microbiome
 microbiomes
 mincode

@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/4faed4a429f38c3932633d7f8745e93e05e6ddc7/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@5898b32](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5898b32574dd78af6adf9938c08be1c533591ec6)
+from [dib-lab/2020-paper-sourmash-gather@4faed4a](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/4faed4a429f38c3932633d7f8745e93e05e6ddc7)
 on December 17, 2021.
 </em></small>
 
@@ -1060,12 +1060,6 @@ The summary results from genome-grist for this paper are available HERE.
 
 ## Revised theoretical analysis of FracMinHash
 
-
-```{=latex}
-\def\scaleb{\hat{C}_\text{frac}(A,B)}
-```
-
-
 Given two arbitrary sets $A$ and $B$ which are subsets of a domain
 $\Omega$, the containment index $C(A,B)$ is defined as
 $C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert}$. Let $h$ be a
@@ -1105,6 +1099,8 @@ expectation of (equation).
 For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty,
 
 ```{=latex}
+\def\scaleb{\hat{C}_\text{frac}(A,B)}
+
 \begin{align*}
 \E\left[\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} \right] =
 \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right).
@@ -1114,9 +1110,15 @@ For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-em
 
 
 Using the notation introduced previously, observe that 
-$$
+
+
+```{=latex}
+\def\scaleb{\hat{C}_\text{frac}(A,B)}
+\begin{align*}
 \scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} = \frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},
-$$
+\end{align*}
+```
+
 
 and that the random variables $\X$ and $\Y$ are independent (which follows directly from the fact that $A \cap B$ is non-empty, and because $A$ and $B$ are distinct, $A \setminus B$ is also non-empty).
 We will use the following fact from standard calculus:
