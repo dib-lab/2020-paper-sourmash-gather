@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-16'
+date-meta: '2021-12-17'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-16" />
-  <meta name="citation_publication_date" content="2021-12-16" />
+  <meta name="dc.date" content="2021-12-17" />
+  <meta name="citation_publication_date" content="2021-12-17" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@36ae9e3](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/36ae9e3243f5e235bd84c174971b2862fbe1d441)
-on December 16, 2021.
+from [dib-lab/2020-paper-sourmash-gather@88ad93b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/88ad93bcb3a6ea5423aedd121b35aab175bfffdf)
+on December 17, 2021.
 </em></small>
 
 ## Authors
@@ -1100,6 +1100,71 @@ $A\cap B = \emptyset$ where both $A$ and $B$ are non-empty sets, then
 $X_A$ and $X_B$ are independent when the probability of success is
 strictly smaller than $1$. Using these notations, we compute the
 expectation of (equation).
+
+
+For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty,
+
+```{=latex}
+\begin{align*}
+\E\left[\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} \right] =
+\frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right).
+\end{align*}
+```
+
+
+
+Using the notation introduced previously, observe that 
+$$
+\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} = \frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},
+$$
+
+and that the random variables $\X$ and $\Y$ are independent (which follows directly from the fact that $A \cap B$ is non-empty, and because $A$ and $B$ are distinct, $A \setminus B$ is also non-empty).
+We will use the following fact from standard calculus:
+
+
+```{=latex}
+\begin{align}
+    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y>0}.
+\end{align}
+```
+
+
+Then using the moment generating function of the binomial distribution, we have
+
+
+```{=latex}
+\begin{align}
+    \E\left[t^\X\right] &= (1-s+st)^{\vert A \cap B \vert}\\
+    \E\left[t^\Y\right] &= (1-s+st)^{\vert A \setminus B \vert}.
+\end{align}
+We also know by continuity that 
+\begin{align}
+    \E\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
+    &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
+\end{align}
+```
+
+
+Using these observations, we can then finally calculate that 
+
+
+
+```{=latex}
+\begin{align}
+    \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
+    &= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
+    &= \int_0^1 \E\left[\X  \, t^{\X-1}\right] \E\left[t^\Y\right]\,dt\label{line:2}\\
+    &= \vert A\cap B\vert \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
+    &= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
+    &= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
+\end{align}
+```
+
+
+where Fubini's theorem is used in \Cref{line:1} and independence in \Cref{line:2}.
+
+
+In light of (theorem), we note that \cref{eqn:scaleC} is *not* an unbiased estimate of $C(A,B)$. This may explain the observations in (Luiz thesis) that showed the uncorrected version in (eqn) leads to suboptimal performance for short sequences (e.g viruses). However, for sufficiently large $\vert A \vert$ and $s$, the bias factor $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
 
 ## Theoretical analysis of Scaled MinHash
 

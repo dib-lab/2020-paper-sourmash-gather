@@ -24,8 +24,10 @@ dkoslicki
 downsampled
 downsampling
 eg
+eqn
 eukaryotic
 FracMinHash
+Fubini’s
 GenBank
 genomic
 GTDB
@@ -71,7 +73,7 @@ reproducibly
 rescaled
 rescaling
 revindex
-runtime
+Runtime
 Sahlin
 saltyscientist
 SBT
@@ -81,6 +83,7 @@ snakemake
 sourmash
 SRA
 SRR
+suboptimal
 subsampled
 summarization
 syncmers
