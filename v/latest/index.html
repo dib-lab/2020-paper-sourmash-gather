@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-16" />
+  <meta name="dcterms.date" content="2021-12-17" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-16" />
-  <meta name="citation_publication_date" content="2021-12-16" />
+  <meta name="dc.date" content="2021-12-17" />
+  <meta name="citation_publication_date" content="2021-12-17" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/36ae9e3243f5e235bd84c174971b2862fbe1d441/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/88ad93bcb3a6ea5423aedd121b35aab175bfffdf/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/36ae9e3243f5e235bd84c174971b2862fbe1d441">dib-lab/2020-paper-sourmash-gather@36ae9e3</a>
-on December 16, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/88ad93bcb3a6ea5423aedd121b35aab175bfffdf">dib-lab/2020-paper-sourmash-gather@88ad93b</a>
+on December 17, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -1006,6 +1006,41 @@ random variable: <span class="math inline">\(X_A \sim {\rm Binom}(|A|, s)\)</spa
 <span class="math inline">\(X_A\)</span> and <span class="math inline">\(X_B\)</span> are independent when the probability of success is
 strictly smaller than <span class="math inline">\(1\)</span>. Using these notations, we compute the
 expectation of (equation).</p>
+<p>For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct sets such that <span class="math inline">\(A \cap B\)</span> is non-empty,</p>
+<span class="math display">\[\begin{align*}
+\E\left[\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert&gt;0} \right] =
+\frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right).
+\end{align*}\]</span>
+<p>Using the notation introduced previously, observe that
+<span class="math display">\[
+\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert&gt;0} = \frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y&gt;0},
+\]</span></p>
+<p>and that the random variables <span class="math inline">\(\X\)</span> and <span class="math inline">\(\Y\)</span> are independent (which follows directly from the fact that <span class="math inline">\(A \cap B\)</span> is non-empty, and because <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are distinct, <span class="math inline">\(A \setminus B\)</span> is also non-empty).
+We will use the following fact from standard calculus:</p>
+<span class="math display">\[\begin{align}
+    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y&gt;0}.
+\end{align}\]</span>
+<p>Then using the moment generating function of the binomial distribution, we have</p>
+<span class="math display">\[\begin{align}
+    \E\left[t^\X\right] &amp;= (1-s+st)^{\vert A \cap B \vert}\\
+    \E\left[t^\Y\right] &amp;= (1-s+st)^{\vert A \setminus B \vert}.
+\end{align}
+We also know by continuity that 
+\begin{align}
+    \E\left[\X \, t^{\X-1}\right] &amp;= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
+    &amp;= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
+\end{align}\]</span>
+<p>Using these observations, we can then finally calculate that</p>
+<span class="math display">\[\begin{align}
+    \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y&gt;0},\right] &amp;= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
+    &amp;= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
+    &amp;= \int_0^1 \E\left[\X  \, t^{\X-1}\right] \E\left[t^\Y\right]\,dt\label{line:2}\\
+    &amp;= \vert A\cap B\vert \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
+    &amp;= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
+    &amp;= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
+\end{align}\]</span>
+<p>where Fubini’s theorem is used in  and independence in .</p>
+<p>In light of (theorem), we note that  is <em>not</em> an unbiased estimate of <span class="math inline">\(C(A,B)\)</span>. This may explain the observations in (Luiz thesis) that showed the uncorrected version in (eqn) leads to suboptimal performance for short sequences (e.g viruses). However, for sufficiently large <span class="math inline">\(\vert A \vert\)</span> and <span class="math inline">\(s\)</span>, the bias factor <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1.</p>
 <h2 id="theoretical-analysis-of-scaled-minhash">Theoretical analysis of Scaled MinHash</h2>
 <h3 id="expectation">Expectation</h3>
 <p>In this section, we aim to study how well</p>
