@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@5f198f8](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5f198f8c6623ea234fcce3304642e544d252e4b5)
+from [dib-lab/2020-paper-sourmash-gather@5fb16bf](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5fb16bf6332c038d564bf5fb99441be7d1ba62ba)
 on December 17, 2021.
 </em></small>
 
@@ -1148,9 +1148,14 @@ Then using the moment generating function of the binomial distribution, we have
 ```{=latex}
 \begin{align}
     \mathrm{E}\left[t^X_{A\cap B}\right] &= (1-s+st)^{\vert A \cap B \vert}\\
-    \mathrm{E}\left[t^X_{A\setminus B}\right] &= (1-s+st)^{\vert A \setminus B \vert}.
+    \mathrm{E}\left[t^X_{A\setminus B}\right] &= (1-s+st)^{\vert A \setminus B \vert}
 \end{align}
+```
+
+
 We also know by continuity that 
+
+```{=latex}
 \begin{align}
     \mathrm{E}\left[X_{A\cap B} \, t^{X_{A\cap B}-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
     &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.

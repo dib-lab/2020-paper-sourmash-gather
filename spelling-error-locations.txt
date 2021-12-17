@@ -469,11 +469,11 @@ content/06.methods.md:93:FracMinHash
 content/06.methods.md:93:FracMinHash
 content/06.methods.md:93:tunable
 content/06.methods.md:103:notational
-content/06.methods.md:180:Fubini's
-content/06.methods.md:183:eqution
-content/06.methods.md:185:eqn
-content/06.methods.md:185:Luiz
-content/06.methods.md:186:suboptimal
+content/06.methods.md:185:Fubini's
+content/06.methods.md:188:eqution
+content/06.methods.md:190:eqn
+content/06.methods.md:190:Luiz
+content/06.methods.md:191:suboptimal
 content/95.appendix.md:1:MinHash
 content/95.appendix.md:3:CTB
 content/95.appendix.md:12:LCA

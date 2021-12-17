@@ -28,7 +28,7 @@ eqution
 eukaryotic
 FracMinHash
 Fubini’s
-GenBank
+genbank
 genomic
 GTDB
 HashSet
