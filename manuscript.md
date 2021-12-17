@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@f996b7c](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684)
+from [dib-lab/2020-paper-sourmash-gather@5898b32](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5898b32574dd78af6adf9938c08be1c533591ec6)
 on December 17, 2021.
 </em></small>
 
@@ -1166,6 +1166,14 @@ where Fubini's theorem is used in \Cref{line:1} and independence in \Cref{line:2
 
 In light of (theorem), we note that \cref{eqn:scaleC} is *not* an unbiased estimate of $C(A,B)$. This may explain the observations in (Luiz thesis) that showed the uncorrected version in (eqn) leads to suboptimal performance for short sequences (e.g viruses). However, for sufficiently large $\vert A \vert$ and $s$, the bias factor $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
 
+The expectation of $\scale$ follows directly from (equation) and (theorem).
+
+For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty, the expectation of $\scale$ is given by
+
+$$
+\E [\scale] = \frac{\vert A\cap B \vert}{\vert A \vert}.
+$$
+
 ## Theoretical analysis of Scaled MinHash
 
 
@@ -1223,7 +1231,6 @@ For $0<s\leq 1$,
 
 
 ```{=latex}
-\begin{proof}
 Using the notation introduced previously, observe that
 $$
 \scaleb \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert>0} = \frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},
@@ -1244,8 +1251,13 @@ We also know by continuity that
     \E\left[\X \, t^{\X-1}\right] &= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
     &= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
 \end{align}
+```
+
 
 Using these observations, we can then finally calculate that
+
+
+```{=latex}
 \begin{align}
     \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y>0},\right] &= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
     &= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
@@ -1254,8 +1266,7 @@ Using these observations, we can then finally calculate that
     &= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
     &= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
 \end{align}
-where Fubini's theorem is used in \cref{line:1} and independence in \cref{line:2}.
-\end{proof}
+where Fubini's theorem is used in (line 1) and independence in (line 2).
 ```
 
 

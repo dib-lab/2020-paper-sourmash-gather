@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5898b32574dd78af6adf9938c08be1c533591ec6/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f996b7c0b9c06f5cc2189def5e1b2ebd62a6b684">dib-lab/2020-paper-sourmash-gather@f996b7c</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5898b32574dd78af6adf9938c08be1c533591ec6">dib-lab/2020-paper-sourmash-gather@5898b32</a>
 on December 17, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -1041,6 +1041,11 @@ We also know by continuity that
 \end{align}\]</span>
 <p>where Fubini’s theorem is used in  and independence in .</p>
 <p>In light of (theorem), we note that  is <em>not</em> an unbiased estimate of <span class="math inline">\(C(A,B)\)</span>. This may explain the observations in (Luiz thesis) that showed the uncorrected version in (eqn) leads to suboptimal performance for short sequences (e.g viruses). However, for sufficiently large <span class="math inline">\(\vert A \vert\)</span> and <span class="math inline">\(s\)</span>, the bias factor <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1.</p>
+<p>The expectation of <span class="math inline">\(\scale\)</span> follows directly from (equation) and (theorem).</p>
+<p>For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct sets such that <span class="math inline">\(A \cap B\)</span> is non-empty, the expectation of <span class="math inline">\(\scale\)</span> is given by</p>
+<p><span class="math display">\[
+\E [\scale] = \frac{\vert A\cap B \vert}{\vert A \vert}.
+\]</span></p>
 <h2 id="theoretical-analysis-of-scaled-minhash">Theoretical analysis of Scaled MinHash</h2>
 <h3 id="expectation">Expectation</h3>
 <p>In this section, we aim to study how well</p>
@@ -1058,6 +1063,16 @@ C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert},
 \mathbf{SCALED}_s(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq \frac{H}{s}\right\}.
 \]</span></p>
 <p>For notational simplicity, we define <span class="math inline">\(X_A := \vert \mathbf{SCALED}_s(A) |\)</span>. Observe that if one views <span class="math inline">\(h\)</span> as a uniformly distributed random variable, we have that <span class="math inline">\(X_A\)</span> is distributed as a binomial random variable: <span class="math inline">\({\rm Binom}(|A|, s)\)</span>. Furthermore, if <span class="math inline">\(A\cap B = \emptyset\)</span>, then <span class="math inline">\(X_A\)</span> and <span class="math inline">\(X_B\)</span> are independent. We then compute the expectation of .</p>
+<p>Using these observations, we can then finally calculate that</p>
+<span class="math display">\[\begin{align}
+    \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y&gt;0},\right] &amp;= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
+    &amp;= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
+    &amp;= \int_0^1 \E\left[\X  \, t^{\X-1}\right] \E\left[t^\Y\right]\,dt\label{line:2}\\
+    &amp;= \vert A\cap B\vert s \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
+    &amp;= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
+    &amp;= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
+\end{align}
+where Fubini&#39;s theorem is used in (line 1) and independence in (line 2).\]</span>
 <p>In light of , we note that  is not an unbiased estimate of , but for <span class="math inline">\(\vert A \vert\)</span> sufficiently large, the bias factor <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1. Alternatively, if <span class="math inline">\(|A|\)</span> is known (or estimated, eg. by using HyperLogLog ), then
 <span class="math display">\[
 \scale := \frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert \left(1-(1-s)^{\vert A\vert}\right)} \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert&gt;0}
