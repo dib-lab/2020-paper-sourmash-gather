@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5f198f8c6623ea234fcce3304642e544d252e4b5/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/aeb5b6fcebb6417f3ebd3a4c007cf6f1de607bc6">dib-lab/2020-paper-sourmash-gather@aeb5b6f</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5f198f8c6623ea234fcce3304642e544d252e4b5">dib-lab/2020-paper-sourmash-gather@5f198f8</a>
 on December 17, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -989,6 +989,7 @@ SRA, genome download from GenBank, and read mapping.</p>
 results was implemented in the <code>subtract_gather.py</code> script that is part
 of the genome-grist package.</p>
 <h2 id="figures-and-notebooks-for-this-paper.">Figures and notebooks for this paper.</h2>
+<p>(point at gather figures repo)</p>
 <h2 id="data-accessions">Data accessions</h2>
 <p>The summary results from genome-grist for this paper are available HERE.</p>
 <h2 id="revised-theoretical-analysis-of-fracminhash">Revised theoretical analysis of FracMinHash</h2>
@@ -1014,94 +1015,44 @@ strictly smaller than <span class="math inline">\(1\)</span>. Using these notati
 expectation of (equation).</p>
 <p>For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct sets such that <span class="math inline">\(A \cap B\)</span> is non-empty,</p>
 <p>Using the notation introduced previously, observe that</p>
-<p>and that the random variables <span class="math inline">\(\X\)</span> and <span class="math inline">\(\Y\)</span> are independent (which follows directly from the fact that <span class="math inline">\(A \cap B\)</span> is non-empty, and because <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are distinct, <span class="math inline">\(A \setminus B\)</span> is also non-empty).
+<p>and that the random variables <span class="math inline">\(X_{A\cap B}\)</span> and <span class="math inline">\(X_{A\setminus B}\)</span> are independent (which follows directly from the fact that <span class="math inline">\(A \cap B\)</span> is non-empty, and because <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are distinct, <span class="math inline">\(A \setminus B\)</span> is also non-empty).
 We will use the following fact from standard calculus:</p>
 <span class="math display">\[\begin{align}
     \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y&gt;0}.
 \end{align}\]</span>
 <p>Then using the moment generating function of the binomial distribution, we have</p>
 <span class="math display">\[\begin{align}
-    \mathrm{E}\left[t^\X\right] &amp;= (1-s+st)^{\vert A \cap B \vert}\\
-    \mathrm{E}\left[t^\Y\right] &amp;= (1-s+st)^{\vert A \setminus B \vert}.
+    \mathrm{E}\left[t^X_{A\cap B}\right] &amp;= (1-s+st)^{\vert A \cap B \vert}\\
+    \mathrm{E}\left[t^X_{A\setminus B}\right] &amp;= (1-s+st)^{\vert A \setminus B \vert}.
 \end{align}
 We also know by continuity that 
 \begin{align}
-    \mathrm{E}\left[\X \, t^{\X-1}\right] &amp;= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
+    \mathrm{E}\left[X_{A\cap B} \, t^{X_{A\cap B}-1}\right] &amp;= \frac{d}{dt} (1-s+st)^{\vert A \cap B \vert}\\
     &amp;= \vert A\cap B \vert s (1-s+st)^{\vert A\cap B\vert-1}.
 \end{align}\]</span>
 <p>Using these observations, we can then finally calculate that</p>
 <span class="math display">\[\begin{align}
-    \mathrm{E}\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y&gt;0},\right] &amp;= \mathrm{E}\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
-    &amp;= \int_0^1 \mathrm{E}\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
-    &amp;= \int_0^1 \mathrm{E}\left[\X  \, t^{\X-1}\right] \mathrm{E}\left[t^\Y\right]\,dt\label{line:2}\\
+    \mathrm{E}\left[\frac{X_{A\cap B}}{X_{A\cap B} + X_{A\setminus B}} \mathbbm{1}_{X_{A\cap B} + X_{A\setminus B}&gt;0},\right] &amp;= \mathrm{E}\left[\int_0^1 X_{A\cap B} \,  t^{X_{A\cap B}+X_{A\setminus B}-1}\,dt\right]\\
+    &amp;= \int_0^1 \mathrm{E}\left[X_{A\cap B}  \, t^{X_{A\cap B}+X_{A\setminus B}-1}\,dt\right]\label{line:1}\\
+    &amp;= \int_0^1 \mathrm{E}\left[X_{A\cap B}  \, t^{X_{A\cap B}-1}\right] \mathrm{E}\left[t^X_{A\setminus B}\right]\,dt\label{line:2}\\
     &amp;= \vert A\cap B\vert \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
     &amp;= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
     &amp;= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
 \end{align}\]</span>
 <p>where Fubini’s theorem is used in (line 1) and independence in (line 2).</p>
-<p>In light of (theorem), we note that  is <em>not</em> an unbiased estimate of <span class="math inline">\(C(A,B)\)</span>. This may explain the observations in (Luiz thesis) that showed the uncorrected version in (eqn) leads to suboptimal performance for short sequences (e.g viruses). However, for sufficiently large <span class="math inline">\(\vert A \vert\)</span> and <span class="math inline">\(s\)</span>, the bias factor <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1.</p>
-<p>The expectation of <span class="math inline">\(C_\text{frac}(A,B)\)</span> follows directly from (equation) and (theorem).</p>
-<p>For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct sets such that <span class="math inline">\(A \cap B\)</span> is non-empty, the expectation of <span class="math inline">\(\scale\)</span> is given by</p>
+<p>In light of (theorem), we note that (eqution) is <em>not</em> an
+unbiased estimate of <span class="math inline">\(C(A,B)\)</span>. This may explain the observations in
+(Luiz thesis) that showed the uncorrected version in (eqn) leads to
+suboptimal performance for short sequences (e.g viruses). However, for
+sufficiently large <span class="math inline">\(\vert A \vert\)</span> and <span class="math inline">\(s\)</span>, the bias factor
+<span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1.</p>
+<p>The expectation of <span class="math inline">\(C_\text{frac}(A,B)\)</span> follows directly from
+(equation) and (theorem): for <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct
+sets such that <span class="math inline">\(A \cap B\)</span> is non-empty, the expectation of <span class="math inline">\(C(A, B)\)</span> is
+given by</p>
 <p><span class="math display">\[
-\mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}.
+\mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}
 \]</span></p>
-<h2 id="theoretical-analysis-of-scaled-minhash">Theoretical analysis of Scaled MinHash</h2>
-<h3 id="expectation">Expectation</h3>
-<p>In this section, we aim to study how well</p>
-<span class="math display">\[\begin{align}
-\scaleb:=\frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert }
-\label{eqn:scaleC}
-\end{align}\]</span>
-<p>approximates the containment index</p>
-<span class="math display">\[\begin{align}
-\label{eqn:C}
-C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert},
-\end{align}\]</span>
-<p>for two arbitrary sets <span class="math inline">\(A,B\)</span> which are subsets of the domain <span class="math inline">\(\Omega\)</span> of the uniform hash function <span class="math inline">\(h:\Omega \rightarrow [0,H]\)</span>. By rescaling, we can assume without loss of generality that <span class="math inline">\(H=1\)</span> and <span class="math inline">\(0&lt;s\leq H\)</span> in the definition
-<span class="math display">\[
-\mathbf{SCALED}_s(A) = \left\{\,h(a) \mid \forall a \in A\ {\rm s.t.}\ h(a) \leq \frac{H}{s}\right\}.
-\]</span></p>
-<p>For notational simplicity, we define <span class="math inline">\(X_A := \vert \mathbf{SCALED}_s(A) |\)</span>. Observe that if one views <span class="math inline">\(h\)</span> as a uniformly distributed random variable, we have that <span class="math inline">\(X_A\)</span> is distributed as a binomial random variable: <span class="math inline">\({\rm Binom}(|A|, s)\)</span>. Furthermore, if <span class="math inline">\(A\cap B = \emptyset\)</span>, then <span class="math inline">\(X_A\)</span> and <span class="math inline">\(X_B\)</span> are independent. We then compute the expectation of .</p>
-<p>Using these observations, we can then finally calculate that</p>
-<span class="math display">\[\begin{align}
-    \E\left[\frac{\X}{\X + \Y} \mathbbm{1}_{\X + \Y&gt;0},\right] &amp;= \E\left[\int_0^1 \X \,  t^{\X+\Y-1}\,dt\right]\\
-    &amp;= \int_0^1 \E\left[\X  \, t^{\X+\Y-1}\,dt\right]\label{line:1}\\
-    &amp;= \int_0^1 \E\left[\X  \, t^{\X-1}\right] \E\left[t^\Y\right]\,dt\label{line:2}\\
-    &amp;= \vert A\cap B\vert s \int_0^1(1-s+st)^{\vert A\cap B \vert + \vert A\setminus B \vert -1}\, dt\\
-    &amp;= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
-    &amp;= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
-\end{align}
-where Fubini&#39;s theorem is used in (line 1) and independence in (line 2).\]</span>
-<p>In light of , we note that  is not an unbiased estimate of , but for <span class="math inline">\(\vert A \vert\)</span> sufficiently large, the bias factor <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1. Alternatively, if <span class="math inline">\(|A|\)</span> is known (or estimated, eg. by using HyperLogLog ), then
-<span class="math display">\[
-\scale := \frac{\vert \mathbf{SCALED}_s(A) \cap \mathbf{SCALED}_s(B)\vert }{\vert \mathbf{SCALED}_s(A)\vert \left(1-(1-s)^{\vert A\vert}\right)} \mathbbm{1}_{\vert \mathbf{SCALED}_s(A) \vert&gt;0}
-\]</span>
-is an unbiased estimate of the containment index.</p>
-<h3 id="variance">Variance</h3>
-<p>We can calculate the variance of <span class="math inline">\(\scale\)</span> directly from the associated multivariate probability mass function. Indeed, if we let <span class="math inline">\(n=|A\cap B|\)</span> and <span class="math inline">\(m=|A\setminus B|\)</span>, since <span class="math inline">\(X_{A\cap B}\sim {\rm Binom}(n, s)\)</span> and <span class="math inline">\(X_{A\setminus B}\sim {\rm Binom}(m, s)\)</span> are independent, the probability mass function is:</p>
-<span class="math display">\[\begin{align*}
-f_{C_\text{scale}}(k, l) = \binom{n}{k} \binom{m}{l} s^{p+k} (1-s)^{m+n-k-l}\quad {\rm for}\ k=0,\dots, n,\ {\rm and}\ l=0,\dots, m.
-\end{align*}\]</span>
-<p>The variance of the unbiased estimator is then computed as:</p>
-<span class="math display">\[\begin{align}
-    \Var\left[\scale \right] &amp;= \E\left[\scale\right]^2 - \E\left[\scale^2\right]\\
-    &amp;= \frac{|A\cap B|^2}{|A|^2} - \left(1-(1-s)^{ \vert A\vert}\right)^{-2} \sum_{k=1}^n \sum_{l=0}^m \frac{k^2}{(k+l)^2} \binom{n}{k} \binom{m}{l} s^{k+l} (1-s)^{n+m-k-l} \label{eqn:double}
-\end{align}\]</span>
-<p>Unfortunately, the double sum in  appears to have no closed form representation. However, in practice, it is easily computed numerically when given particular values of <span class="math inline">\(m\)</span>, <span class="math inline">\(n\)</span> and <span class="math inline">\(s\)</span>. A first order Taylor series approximation of the variance can be computed.</p>
-<p>Proceeding in the same fashion, we can obtain second and third order approximations to the variance. Indeed, series approximations can be had to arbitrarily high order due to the binomial distribution having finite central moments of arbitrary order.</p>
-<h3 id="asymptotic-normality">Asymptotic normality</h3>
-<p>To show asymptotic normality of <span class="math inline">\(\scale\)</span>, we utilize the delta method  combined with the De Moivre-Laplace theorem. Indeed, since</p>
-<h4 id="confidence-intervals-and-hypothesis-tests">Confidence intervals and hypothesis tests</h4>
-<p>Recall that an {} of a distribution parameter <span class="math inline">\(s\)</span>, is an interval which contains <span class="math inline">\(s\)</span> with limiting probability <span class="math inline">\(1 - \alpha\)</span>.
-Closely related, an {} is an interval
-that contains a limiting random variable with probability <span class="math inline">\(1-\alpha\)</span>.
-We will omit the word ``approximate’’ in the rest of the paper, for brevity and also use the notation <span class="math inline">\(X \in x \pm y\)</span> to mean <span class="math inline">\(X \in [x-y,x+y]\)</span>.
-Finally, for <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>, we let <span class="math inline">\(z_\alpha = \Phi^{-1}(1- \alpha/2)\)</span>,
-where <span class="math inline">\(\mathrm{\Phi}^{-1}\)</span> is the inverse of the cumulative distribution function of the standard normal distribution.</p>
-<h4 id="other-stuff">Other stuff</h4>
-<p>This section is a collection of other observations that might be useful.</p>
-<p>First, there is a lot of theory about ratios of independent random variables. Here, however, we have a ratio of correlated random variables, but we do know their covariance.</p>
-<p>Interestingly, this means that the covariance doesn’t depend on <span class="math inline">\(\Y\)</span> at all, but rather <span class="math inline">\(\Cov(\X,\X+\Y)=\Cov(\X,\X)=\Var(\X)\)</span>.</p>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
