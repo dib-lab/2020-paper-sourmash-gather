@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/95b0226603d870dcef9bf1942143377bd4c7dca0">dib-lab/2020-paper-sourmash-gather@95b0226</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/76a258530def68d00a3ea8b2cd509eac127fee15">dib-lab/2020-paper-sourmash-gather@76a2585</a>
 on December 18, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -1013,12 +1013,13 @@ random variable: <span class="math inline">\(X_A \sim {\rm Binom}(|A|, s)\)</spa
 <span class="math inline">\(X_A\)</span> and <span class="math inline">\(X_B\)</span> are independent when the probability of success is
 strictly smaller than <span class="math inline">\(1\)</span>. Using these notations, we compute the
 expectation of (equation).</p>
-<p>For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct sets such that <span class="math inline">\(A \cap B\)</span> is non-empty,</p>
+<p><strong>Theorem 1:</strong>
+For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct sets such that <span class="math inline">\(A \cap B\)</span> is non-empty,</p>
 <span class="math display">\[\begin{align}
 \mathrm{E}\left[\hat{C}_\text{frac}(A,B) \unicode{x1D7D9}_{\vert \mathbf{FRAC}_S(A) \vert&gt;0} \right] =
 \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right).
 \end{align}\]</span>
-<p>Using the notation introduced previously, observe that</p>
+<p><em>Proof.</em> Using the notation introduced previously, observe that</p>
 <span class="math display">\[\begin{align}
 \hat{C}_\text{frac}(A,B) \unicode{x1D7D9}_{\vert \mathbf{FRAC}_S(A) \vert&gt;0} = \frac{X_{A\cap B}}{X_{A\cap B} + X_{A\setminus B}} \unicode{x1D7D9}_{X_{A\cap B} + X_{A\setminus B}&gt;0},
 \end{align}\]</span>
@@ -1046,15 +1047,16 @@ We will use the following fact from standard calculus:</p>
     &amp;= \frac{\vert A \cap B\vert (1-s+st)^{\vert A \vert}}{\vert A \vert}\bigg\rvert_{t=0}^{t=1}\\
     &amp;= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right),
 \end{align}\]</span>
-<p>where Fubini’s theorem is used in (line 1) and independence in (line 2).</p>
-<p>In light of (theorem), we note that (eqution) is <em>not</em> an
+<p>where Fubini’s theorem is used in line 2 and independence in line 3.</p>
+<p>In light of (theorem), we note that (equation) is <em>not</em> an
 unbiased estimate of <span class="math inline">\(C(A,B)\)</span>. This may explain the observations in
 (Luiz thesis) that showed the uncorrected version in (eqn) leads to
 suboptimal performance for short sequences (e.g viruses). However, for
 sufficiently large <span class="math inline">\(\vert A \vert\)</span> and <span class="math inline">\(s\)</span>, the bias factor
 <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1.</p>
 <p>The expectation of <span class="math inline">\(C_\text{frac}(A,B)\)</span> follows directly from
-(equation) and (theorem): for <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct
+(equation) and (theorem).</p>
+<p><strong>Theorem 2:</strong> For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct
 sets such that <span class="math inline">\(A \cap B\)</span> is non-empty, the expectation of <span class="math inline">\(C_\text{frac}(A, B)\)</span> is
 given by</p>
 <p><span class="math display">\[

@@ -470,7 +470,6 @@ content/06.methods.md:93:FracMinHash
 content/06.methods.md:93:tunable
 content/06.methods.md:103:notational
 content/06.methods.md:182:Fubini's
-content/06.methods.md:185:eqution
 content/06.methods.md:187:eqn
 content/06.methods.md:187:Luiz
 content/06.methods.md:188:suboptimal

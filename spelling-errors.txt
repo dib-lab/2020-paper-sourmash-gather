@@ -24,7 +24,6 @@ dkoslicki
 downsampled
 downsampling
 eqn
-eqution
 eukaryotic
 FracMinHash
 Fubini’s
@@ -41,7 +40,7 @@ joss
 Koslicki
 Kraken
 Kristoffer
-LCA
+lca
 LINS
 losslessly
 lossy
@@ -72,7 +71,7 @@ repo
 reproducibly
 rescaled
 revindex
-Runtime
+runtime
 Sahlin
 saltyscientist
 SBT

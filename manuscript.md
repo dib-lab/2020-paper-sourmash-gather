@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,9 +84,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/95b0226603d870dcef9bf1942143377bd4c7dca0/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@95b0226](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/95b0226603d870dcef9bf1942143377bd4c7dca0)
+from [dib-lab/2020-paper-sourmash-gather@76a2585](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/76a258530def68d00a3ea8b2cd509eac127fee15)
 on December 18, 2021.
 </em></small>
 
@@ -1106,7 +1106,7 @@ $X_A$ and $X_B$ are independent when the probability of success is
 strictly smaller than $1$. Using these notations, we compute the
 expectation of (equation).
 
-
+**Theorem 1:**
 For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty,
 
 ```{=latex}
@@ -1118,7 +1118,7 @@ For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-em
 
 
 
-Using the notation introduced previously, observe that 
+*Proof.* Using the notation introduced previously, observe that 
 
 
 ```{=latex}
@@ -1176,10 +1176,10 @@ Using these observations, we can then finally calculate that
 ```
 
 
-where Fubini's theorem is used in (line 1) and independence in (line 2).
+where Fubini's theorem is used in line 2 and independence in line 3.
 
 
-In light of (theorem), we note that (eqution) is *not* an
+In light of (theorem), we note that (equation) is *not* an
 unbiased estimate of $C(A,B)$. This may explain the observations in
 (Luiz thesis) that showed the uncorrected version in (eqn) leads to
 suboptimal performance for short sequences (e.g viruses). However, for
@@ -1187,7 +1187,9 @@ sufficiently large $\vert A \vert$ and $s$, the bias factor
 $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
 
 The expectation of $C_\text{frac}(A,B)$ follows directly from
-(equation) and (theorem): for $0<s<1$, if $A$ and $B$ are two distinct
+(equation) and (theorem).
+
+**Theorem 2:** For $0<s<1$, if $A$ and $B$ are two distinct
 sets such that $A \cap B$ is non-empty, the expectation of $C_\text{frac}(A, B)$ is
 given by
 
