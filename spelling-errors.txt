@@ -28,7 +28,7 @@ eqution
 eukaryotic
 FracMinHash
 Fubini’s
-genbank
+GenBank
 genomic
 GTDB
 HashSet
@@ -53,7 +53,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 microbiome
 microbiomes
 mincode
@@ -72,7 +72,7 @@ repo
 reproducibly
 rescaled
 revindex
-runtime
+Runtime
 Sahlin
 saltyscientist
 SBT
