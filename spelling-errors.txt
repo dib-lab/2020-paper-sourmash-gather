@@ -15,9 +15,10 @@ cardinality
 CMash
 coli
 compositional
+config
 contig
 cov
-CTB
+ctb
 dataset
 datasets
 dkoslicki
@@ -40,7 +41,7 @@ joss
 Koslicki
 Kraken
 Kristoffer
-lca
+LCA
 LINS
 losslessly
 lossy
@@ -71,7 +72,7 @@ repo
 reproducibly
 rescaled
 revindex
-runtime
+Runtime
 Sahlin
 saltyscientist
 SBT

@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/76a258530def68d00a3ea8b2cd509eac127fee15/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/76a258530def68d00a3ea8b2cd509eac127fee15">dib-lab/2020-paper-sourmash-gather@76a2585</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/9463de56fba930df909d416f2d20e13230c17923">dib-lab/2020-paper-sourmash-gather@9463de5</a>
 on December 18, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -939,60 +939,8 @@ opportunities for further exploration and improvement with different
 data structures, alternative approximation algorithms, and additional
 summarization approaches.</p>
 <h1 id="methods">Methods</h1>
-<h2 id="implementation-of-fracminhash-and-min-set-cov">Implementation of FracMinHash and min-set-cov</h2>
-<p>We provide implementations of FracMinHash and min-set-cov in the
-software package <code>sourmash</code>, which is implemented in Python and Rust
-and developed under the BSD license <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">41</a>]</span> (cite
-joss, zenodo latest version, github URL). FracMinHash sketches are
-created for DNA sequence inputs using the <code>sourmash sketch dna</code>
-command with the <code>scaled</code> parameter. Minimum metagenome covers are
-generated using <code>sourmash gather</code> with the sketched metagenome as
-query against a collection of one or more sketched genomes.</p>
-<h2 id="comparison-between-cmash-mash-screen-and-scaled-minhash.">Comparison between CMash, mash screen, and Scaled MinHash.</h2>
-<p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
-supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they were run with
-<span class="math inline">\(n=\{1000, 10000\}\)</span> to evaluate the containment estimates when using
-larger sketches with sizes comparable to the FracMinHash sketches
-with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
-<span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
-Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<a href="#ref-matsakis_rust_2014" role="doc-biblioref"><strong>matsakis_rust_2014?</strong></a>]</span>.</p>
-<p>For <em>Mash Screen</em> the ratio of hashes matched by total hashes is used
-instead of the <em>Containment Score</em>, since the latter uses a <span class="math inline">\(k\)</span>-mer
-survival process modeled as a Poisson process first introduced in
-<span class="citation" data-cites="fan_assembly_2015">[<a href="#ref-fan_assembly_2015" role="doc-biblioref"><strong>fan_assembly_2015?</strong></a>]</span> and later used in the <em>Mash distance</em>
-<span class="citation" data-cites="ondov_mash:_2016">[<a href="#ref-ondov_mash:_2016" role="doc-biblioref"><strong>ondov_mash:_2016?</strong></a>]</span> and <em>Containment score</em> <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span>
-formulations.</p>
-<h2 id="genbank-database-sketching-and-searches">GenBank database sketching and searches</h2>
-<p>Minimum metagenome covers were calculated using a microbial genome
-subset of GenBank (date XYZ, number of genomes ZZZ) using a scaled
-factor of 2000 and a k-mer size of 31. Sketches for all genomes and
-metagenomes were calculated with <code>sourmash sketch dna -p scaled=2000,k=31</code>. The minimum metagenome covers were calculated using
-all genomes sharing 100 hashes with the metagenome (that is, an
-estimated overlap of 100,000 k-mers) with
-<code>sourmash gather --threshold-bp 1e5</code>.
-Overlapping sketches were saved with <code>--save-prefetch</code>
-and matches were saved with <code>--save-matches</code>.</p>
-<p>The GenBank database used is XYZ GB in size and is available for download
-at ZZZ.</p>
-<h2 id="taxonomy">Taxonomy</h2>
-<p>(I guess say what Luiz used, and then repeat this using sourmash taxonomy.)</p>
-<h2 id="read-mapping-and-hybrid-mapping-pipeline">Read mapping and hybrid mapping pipeline</h2>
-<p>Metagenome reads were mapped to reference genomes using minimap2 v2.17 (cite)
-with <code>-x sr</code> (short single-end read mapping mode).</p>
-<p>The complete workflow, from metagenome download to taxonomic analysis
-and iterative mapping, is implemented in the genome-grist package
-(version, doi, etc.). genome-grist uses snakemake (cite) to implement
-a workflow that combines sourmash sketching, metagenome cover
-calculation, and taxonomic analysis with metagenome download from the
-SRA, genome download from GenBank, and read mapping.</p>
-<p>The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
-results was implemented in the <code>subtract_gather.py</code> script that is part
-of the genome-grist package.</p>
-<h2 id="figures-and-notebooks-for-this-paper.">Figures and notebooks for this paper.</h2>
-<p>(point at gather figures repo)</p>
-<h2 id="data-accessions">Data accessions</h2>
-<p>The summary results from genome-grist for this paper are available HERE.</p>
 <h2 id="revised-theoretical-analysis-of-fracminhash">Revised theoretical analysis of FracMinHash</h2>
+<p>CTB: move this up, refer to it properly in the text.</p>
 <p>Given two arbitrary sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> which are subsets of a domain
 <span class="math inline">\(\Omega\)</span>, the containment index <span class="math inline">\(C(A,B)\)</span> is defined as
 <span class="math inline">\(C(A,B):=\frac{\vert A \cap B \vert}{\vert A \vert}\)</span>. Let <span class="math inline">\(h\)</span> be a
@@ -1062,6 +1010,88 @@ given by</p>
 <p><span class="math display">\[
 \mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}
 \]</span></p>
+<h2 id="implementation-of-fracminhash-and-min-set-cov">Implementation of FracMinHash and min-set-cov</h2>
+<p>We provide implementations of FracMinHash and min-set-cov in the
+software package <code>sourmash</code>, which is implemented in Python and Rust
+and developed under the BSD license <span class="citation" data-cites="ExvjTLL3">[<a href="#ref-ExvjTLL3" role="doc-biblioref">41</a>]</span> (cite
+joss, zenodo latest version, github URL). FracMinHash sketches are
+created for DNA sequence inputs using the <code>sourmash sketch dna</code>
+command with the <code>scaled</code> parameter. Minimum metagenome covers are
+generated using <code>sourmash gather</code> with the sketched metagenome as
+query against a collection of one or more sketched genomes.</p>
+<p>The results in this paper were generated with sourmash v4.2.X. (CTB:
+create new release, generate zenodo doi.)</p>
+<h2 id="comparison-between-cmash-mash-screen-and-scaled-minhash.">Comparison between CMash, mash screen, and Scaled MinHash.</h2>
+<p>Experiments use <span class="math inline">\(k=\{21, 31, 51\}\)</span> (except for Mash, which only
+supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they were run with
+<span class="math inline">\(n=\{1000, 10000\}\)</span> to evaluate the containment estimates when using
+larger sketches with sizes comparable to the FracMinHash sketches
+with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
+<span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
+Rust programming language <span class="citation" data-cites="matsakis_rust_2014">[<a href="#ref-matsakis_rust_2014" role="doc-biblioref"><strong>matsakis_rust_2014?</strong></a>]</span>.</p>
+<p>For <em>Mash Screen</em> the ratio of hashes matched by total hashes is used
+instead of the <em>Containment Score</em>, since the latter uses a <span class="math inline">\(k\)</span>-mer
+survival process modeled as a Poisson process first introduced in
+<span class="citation" data-cites="fan_assembly_2015">[<a href="#ref-fan_assembly_2015" role="doc-biblioref"><strong>fan_assembly_2015?</strong></a>]</span> and later used in the <em>Mash distance</em>
+<span class="citation" data-cites="ondov_mash:_2016">[<a href="#ref-ondov_mash:_2016" role="doc-biblioref"><strong>ondov_mash:_2016?</strong></a>]</span> and <em>Containment score</em> <span class="citation" data-cites="ondov_mash_2019">[<a href="#ref-ondov_mash_2019" role="doc-biblioref"><strong>ondov_mash_2019?</strong></a>]</span>
+formulations.</p>
+<h2 id="genbank-database-sketching-and-searches">GenBank database sketching and searches</h2>
+<p>Minimum metagenome covers were calculated using a microbial genome
+subset of GenBank (date XYZ, number of genomes ZZZ) using a scaled
+factor of 2000 and a k-mer size of 31. Sketches for all genomes and
+metagenomes were calculated with <code>sourmash sketch dna -p scaled=2000,k=31</code>. The minimum metagenome covers were calculated using
+all genomes sharing 100 hashes with the metagenome (that is, an
+estimated overlap of 100,000 k-mers) with
+<code>sourmash gather --threshold-bp 1e5</code>.
+Overlapping sketches were saved with <code>--save-prefetch</code>
+and matches were saved with <code>--save-matches</code>.</p>
+<p>The GenBank database used is XYZ GB in size and is available for download
+at ZZZ.</p>
+<h2 id="taxonomy">Taxonomy</h2>
+<p>(I guess say what Luiz used, and then repeat this using sourmash taxonomy.)</p>
+<h2 id="read-mapping-and-hybrid-mapping-pipeline">Read mapping and hybrid mapping pipeline</h2>
+<p>Metagenome reads were mapped to reference genomes using minimap2 v2.17
+<span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q" role="doc-biblioref">42</a>]</span> with short single-end read mapping mode
+(<code>-x sr</code>).</p>
+<p>The complete workflow, from metagenome download to taxonomic analysis
+and iterative mapping, is implemented in the genome-grist package
+<span class="citation" data-cites="FxrJ8rwH">[<a href="#ref-FxrJ8rwH" role="doc-biblioref">43</a>]</span>]. genome-grist uses
+snakemake <span class="citation" data-cites="1Anhy7wy0">[<a href="#ref-1Anhy7wy0" role="doc-biblioref">44</a>]</span> to define and execute
+a workflow that combines sourmash sketching, metagenome cover
+calculation, and taxonomic analysis with metagenome download from the
+SRA, genome download from GenBank, and read mapping. We used
+genome-grist v0.7.3 (CTB: generate DOI!) to generate the results in
+this paper (CTB: mention config file/put in paper data repo).</p>
+<p>(CTB: Cite dependencies:</p>
+<pre><code>    - matplotlib&gt;=3.4.3,&lt;4
+    - notebook&gt;=6,&lt;7
+    - numpy&gt;=1.21.3,&lt;2
+    - pandas&gt;=1.3.4,&lt;2
+    - papermill&gt;=2.1.2,&lt;3
+    - plotly&gt;=4.9.0,&lt;5
+    - sourmash&gt;=4.2.1,&lt;5
+  - bcftools=1.11
+  - bedtools
+  - bioconda
+  - covtobed
+  - minimap2=2.17
+  - samtools=1.10
+ - fastp=0.20.1
+ - khmer=3.0.0a
+ - lxml==4.6.1
+ - pandas&gt;1,&lt;2
+ - screed
+ - seqtk=1.3
+ - snakemake-minimal==6.6.1
+ - sourmash&gt;=4.2.1,&lt;5
+ - sra-tools=2.10.0</code></pre>
+<p>The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
+results was implemented in the <code>subtract_gather.py</code> script that is part
+of the genome-grist package.</p>
+<h2 id="figures-and-notebooks-for-this-paper.">Figures and notebooks for this paper.</h2>
+<p>(point at gather figures repo)</p>
+<h2 id="data-accessions">Data accessions</h2>
+<p>The summary results from genome-grist for this paper are available HERE.</p>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
@@ -1187,6 +1217,15 @@ given by</p>
 </div>
 <div id="ref-ExvjTLL3" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">41. </div><div class="csl-right-inline"><strong>sourmash: a library for MinHash sketching of DNA</strong> <div class="csl-block">C Titus Brown, Luiz Irber</div> <em>The Journal of Open Source Software</em> (2016-09-14) <a href="https://doi.org/ghdrk5">https://doi.org/ghdrk5</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00027">10.21105/joss.00027</a></div></div>
+</div>
+<div id="ref-172cJaw4Q" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">42. </div><div class="csl-right-inline"><strong>Minimap2: pairwise alignment for nucleotide sequences</strong> <div class="csl-block">Heng Li</div> <em>Bioinformatics</em> (2018-09-15) <a href="https://doi.org/gdhbqt">https://doi.org/gdhbqt</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/bty191">10.1093/bioinformatics/bty191</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29750242">29750242</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6137996">PMC6137996</a></div></div>
+</div>
+<div id="ref-FxrJ8rwH" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">43. </div><div class="csl-right-inline"><strong>GitHub - dib-lab/genome-grist: map Illumina metagenomes to GenBank genomes</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/dib-lab/genome-grist">https://github.com/dib-lab/genome-grist</a></div>
+</div>
+<div id="ref-1Anhy7wy0" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">44. </div><div class="csl-right-inline"><strong>Sustainable data analysis with Snakemake</strong> <div class="csl-block">Felix Mölder, Kim Philipp Jablonski, Brice Letcher, Michael B Hall, Christopher H Tomkins-Tinch, Vanessa Sochat, Jan Forster, Soohyun Lee, Sven O Twardziok, Alexander Kanitz, … Johannes Köster</div> <em>F1000Research</em> (2021-04-19) <a href="https://doi.org/gj76rq">https://doi.org/gj76rq</a> <div class="csl-block">DOI: <a href="https://doi.org/10.12688/f1000research.29032.2">10.12688/f1000research.29032.2</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34035898">34035898</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8114187">PMC8114187</a></div></div>
 </div>
 </div>
 <h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
