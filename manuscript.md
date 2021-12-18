@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-17'
+date-meta: '2021-12-18'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-17" />
-  <meta name="citation_publication_date" content="2021-12-17" />
+  <meta name="dc.date" content="2021-12-18" />
+  <meta name="citation_publication_date" content="2021-12-18" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@5fb16bf](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5fb16bf6332c038d564bf5fb99441be7d1ba62ba)
-on December 17, 2021.
+from [dib-lab/2020-paper-sourmash-gather@417967f](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/417967fae471fd636b5485a1280de2aa5c459e2d)
+on December 18, 2021.
 </em></small>
 
 ## Authors
@@ -1110,12 +1110,10 @@ expectation of (equation).
 For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty,
 
 ```{=latex}
-\def\scaleb{\hat{C}_\text{frac}(A,B)}
-
-\begin{align*}
-\E\left[\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} \right] =
+\begin{align}
+\E\left[\hat{C}_\text{frac}(A,B) \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} \right] =
 \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right).
-\end{align*}
+\end{align}
 ```
 
 
@@ -1124,10 +1122,9 @@ Using the notation introduced previously, observe that
 
 
 ```{=latex}
-\def\scaleb{\hat{C}_\text{frac}(A,B)}
-\begin{align*}
-\scaleb \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} = \frac{X_{A\cap B}}{X_{A\cap B} + X_{A\setminus B}} \mathbbm{1}_{X_{A\cap B} + X_{A\setminus B}>0},
-\end{align*}
+\begin{align}
+\hat{C}_\text{frac}(A,B) \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert>0} = \frac{X_{A\cap B}}{X_{A\cap B} + X_{A\setminus B}} \mathbbm{1}_{X_{A\cap B} + X_{A\setminus B}>0},
+\end{align}
 ```
 
 
@@ -1137,7 +1134,7 @@ We will use the following fact from standard calculus:
 
 ```{=latex}
 \begin{align}
-    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y>0}.
+    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \unicode{x1D7D9}_{x+y>0}.
 \end{align}
 ```
 
@@ -1191,7 +1188,7 @@ $\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
 
 The expectation of $C_\text{frac}(A,B)$ follows directly from
 (equation) and (theorem): for $0<s<1$, if $A$ and $B$ are two distinct
-sets such that $A \cap B$ is non-empty, the expectation of $C(A, B)$ is
+sets such that $A \cap B$ is non-empty, the expectation of $C_\text{frac}(A, B)$ is
 given by
 
 $$

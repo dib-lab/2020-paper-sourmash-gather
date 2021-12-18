@@ -53,7 +53,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-MHBT
+mhbt
 microbiome
 microbiomes
 mincode
