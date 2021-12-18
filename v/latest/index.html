@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-17" />
+  <meta name="dcterms.date" content="2021-12-18" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-17" />
-  <meta name="citation_publication_date" content="2021-12-17" />
+  <meta name="dc.date" content="2021-12-18" />
+  <meta name="citation_publication_date" content="2021-12-18" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/5fb16bf6332c038d564bf5fb99441be7d1ba62ba/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/417967fae471fd636b5485a1280de2aa5c459e2d/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/5fb16bf6332c038d564bf5fb99441be7d1ba62ba">dib-lab/2020-paper-sourmash-gather@5fb16bf</a>
-on December 17, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/417967fae471fd636b5485a1280de2aa5c459e2d">dib-lab/2020-paper-sourmash-gather@417967f</a>
+on December 18, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -1014,11 +1014,18 @@ random variable: <span class="math inline">\(X_A \sim {\rm Binom}(|A|, s)\)</spa
 strictly smaller than <span class="math inline">\(1\)</span>. Using these notations, we compute the
 expectation of (equation).</p>
 <p>For <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct sets such that <span class="math inline">\(A \cap B\)</span> is non-empty,</p>
+<span class="math display">\[\begin{align}
+\E\left[\hat{C}_\text{frac}(A,B) \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert&gt;0} \right] =
+\frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right).
+\end{align}\]</span>
 <p>Using the notation introduced previously, observe that</p>
+<span class="math display">\[\begin{align}
+\hat{C}_\text{frac}(A,B) \mathbbm{1}_{\vert \mathbf{FRAC}_S(A) \vert&gt;0} = \frac{X_{A\cap B}}{X_{A\cap B} + X_{A\setminus B}} \mathbbm{1}_{X_{A\cap B} + X_{A\setminus B}&gt;0},
+\end{align}\]</span>
 <p>and that the random variables <span class="math inline">\(X_{A\cap B}\)</span> and <span class="math inline">\(X_{A\setminus B}\)</span> are independent (which follows directly from the fact that <span class="math inline">\(A \cap B\)</span> is non-empty, and because <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are distinct, <span class="math inline">\(A \setminus B\)</span> is also non-empty).
 We will use the following fact from standard calculus:</p>
 <span class="math display">\[\begin{align}
-    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \mathbbm{1}_{x+y&gt;0}.
+    \int_0^1 x t^{x+y-1}\, dt = \frac{x}{x+y} \unicode{x1D7D9}_{x+y&gt;0}.
 \end{align}\]</span>
 <p>Then using the moment generating function of the binomial distribution, we have</p>
 <span class="math display">\[\begin{align}
@@ -1048,7 +1055,7 @@ sufficiently large <span class="math inline">\(\vert A \vert\)</span> and <span 
 <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1.</p>
 <p>The expectation of <span class="math inline">\(C_\text{frac}(A,B)\)</span> follows directly from
 (equation) and (theorem): for <span class="math inline">\(0&lt;s&lt;1\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two distinct
-sets such that <span class="math inline">\(A \cap B\)</span> is non-empty, the expectation of <span class="math inline">\(C(A, B)\)</span> is
+sets such that <span class="math inline">\(A \cap B\)</span> is non-empty, the expectation of <span class="math inline">\(C_\text{frac}(A, B)\)</span> is
 given by</p>
 <p><span class="math display">\[
 \mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}
