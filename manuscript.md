@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-18'
+date-meta: '2021-12-19'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-18" />
-  <meta name="citation_publication_date" content="2021-12-18" />
+  <meta name="dc.date" content="2021-12-19" />
+  <meta name="citation_publication_date" content="2021-12-19" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@9463de5](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/9463de56fba930df909d416f2d20e13230c17923)
-on December 18, 2021.
+from [dib-lab/2020-paper-sourmash-gather@ab6d170](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ab6d1701d639d054e097e6d974f74c918353c0d4)
+on December 19, 2021.
 </em></small>
 
 ## Authors
@@ -1184,6 +1184,10 @@ Metagenome reads were mapped to reference genomes using minimap2 v2.17
 [@doi:10.1093/bioinformatics/bty191] with short single-end read mapping mode
 (`-x sr`).
 
+The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
+results was implemented in the `subtract_gather.py` script that is part
+of the genome-grist package.
+
 The complete workflow, from metagenome download to taxonomic analysis
 and iterative mapping, is implemented in the genome-grist package
 @url:https://github.com/dib-lab/genome-grist].  genome-grist uses
@@ -1191,41 +1195,24 @@ snakemake [@doi:10.12688/f1000research.29032.2] to define and execute
 a workflow that combines sourmash sketching, metagenome cover
 calculation, and taxonomic analysis with metagenome download from the
 SRA, genome download from GenBank, and read mapping.  We used
-genome-grist v0.7.3 (CTB: generate DOI!) to generate the results in
+genome-grist v0.7.4 [@doi:10.5281/zenodo.5792144] to generate the results in
 this paper (CTB: mention config file/put in paper data repo).
+genome-grist relies on matplotlib [@doi:10.1109/MCSE.2007.55],
+Jupyter Notebook [@doi:10.3233/978-1-61499-649-1-87],
+numpy [@doi:10.1038/s41586-020-2649-2], pandas [@doi:10.5281/zenodo.3509134],
+papermill, plotly [@doi:doi.org/10.1111/biom.13474],
+samtools [@doi:10.1093/bioinformatics/btp352],
+bedtools [@doi:10.1093/bioinformatics/btq033],
+fastp [@doi:10.1093/bioinformatics/bty560],
+khmer [@doi:10.21105/joss.00272],
+screed [@url:https://screed.readthedocs.io], 
+seqtk [@url:https://github.com/lh3/seqtk],
+and sra-tools [@url:https://github.com/ncbi/sra-tools].
+These tools are all installed and managed in snakemake via
+conda [@url:https://docs.anaconda.com/]
+and bioconda [@doi:10.1038/s41592-018-0046-7].
 
-(CTB: Cite dependencies:
-
-```
-    - matplotlib>=3.4.3,<4
-    - notebook>=6,<7
-    - numpy>=1.21.3,<2
-    - pandas>=1.3.4,<2
-    - papermill>=2.1.2,<3
-    - plotly>=4.9.0,<5
-    - sourmash>=4.2.1,<5
-  - bcftools=1.11
-  - bedtools
-  - bioconda
-  - covtobed
-  - minimap2=2.17
-  - samtools=1.10
- - fastp=0.20.1
- - khmer=3.0.0a
- - lxml==4.6.1
- - pandas>1,<2
- - screed
- - seqtk=1.3
- - snakemake-minimal==6.6.1
- - sourmash>=4.2.1,<5
- - sra-tools=2.10.0
-```
-
-The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
-results was implemented in the `subtract_gather.py` script that is part
-of the genome-grist package.
-
-## Figures and notebooks for this paper.
+## Notebooks to generate figures
 
 (point at gather figures repo)
 
