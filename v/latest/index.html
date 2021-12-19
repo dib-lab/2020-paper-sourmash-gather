@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-18" />
+  <meta name="dcterms.date" content="2021-12-19" />
   <meta name="keywords" content="k-mers, MinHash" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-18" />
-  <meta name="citation_publication_date" content="2021-12-18" />
+  <meta name="dc.date" content="2021-12-19" />
+  <meta name="citation_publication_date" content="2021-12-19" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/9463de56fba930df909d416f2d20e13230c17923/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/9463de56fba930df909d416f2d20e13230c17923">dib-lab/2020-paper-sourmash-gather@9463de5</a>
-on December 18, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ab6d1701d639d054e097e6d974f74c918353c0d4">dib-lab/2020-paper-sourmash-gather@ab6d170</a>
+on December 19, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -1053,6 +1053,9 @@ at ZZZ.</p>
 <p>Metagenome reads were mapped to reference genomes using minimap2 v2.17
 <span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q" role="doc-biblioref">42</a>]</span> with short single-end read mapping mode
 (<code>-x sr</code>).</p>
+<p>The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
+results was implemented in the <code>subtract_gather.py</code> script that is part
+of the genome-grist package.</p>
 <p>The complete workflow, from metagenome download to taxonomic analysis
 and iterative mapping, is implemented in the genome-grist package
 <span class="citation" data-cites="FxrJ8rwH">[<a href="#ref-FxrJ8rwH" role="doc-biblioref">43</a>]</span>]. genome-grist uses
@@ -1060,35 +1063,23 @@ snakemake <span class="citation" data-cites="1Anhy7wy0">[<a href="#ref-1Anhy7wy0
 a workflow that combines sourmash sketching, metagenome cover
 calculation, and taxonomic analysis with metagenome download from the
 SRA, genome download from GenBank, and read mapping. We used
-genome-grist v0.7.3 (CTB: generate DOI!) to generate the results in
-this paper (CTB: mention config file/put in paper data repo).</p>
-<p>(CTB: Cite dependencies:</p>
-<pre><code>    - matplotlib&gt;=3.4.3,&lt;4
-    - notebook&gt;=6,&lt;7
-    - numpy&gt;=1.21.3,&lt;2
-    - pandas&gt;=1.3.4,&lt;2
-    - papermill&gt;=2.1.2,&lt;3
-    - plotly&gt;=4.9.0,&lt;5
-    - sourmash&gt;=4.2.1,&lt;5
-  - bcftools=1.11
-  - bedtools
-  - bioconda
-  - covtobed
-  - minimap2=2.17
-  - samtools=1.10
- - fastp=0.20.1
- - khmer=3.0.0a
- - lxml==4.6.1
- - pandas&gt;1,&lt;2
- - screed
- - seqtk=1.3
- - snakemake-minimal==6.6.1
- - sourmash&gt;=4.2.1,&lt;5
- - sra-tools=2.10.0</code></pre>
-<p>The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
-results was implemented in the <code>subtract_gather.py</code> script that is part
-of the genome-grist package.</p>
-<h2 id="figures-and-notebooks-for-this-paper.">Figures and notebooks for this paper.</h2>
+genome-grist v0.7.4 <span class="citation" data-cites="6zeuMzGB">[<a href="#ref-6zeuMzGB" role="doc-biblioref">45</a>]</span> to generate the results in
+this paper (CTB: mention config file/put in paper data repo).
+genome-grist relies on matplotlib <span class="citation" data-cites="1026Gxdsi">[<a href="#ref-1026Gxdsi" role="doc-biblioref">46</a>]</span>,
+Jupyter Notebook <span class="citation" data-cites="doi:10.3233/978-1-61499-649-1-87">[<a href="#ref-doi:10.3233/978-1-61499-649-1-87" role="doc-biblioref"><strong>doi:10.3233/978-1-61499-649-1-87?</strong></a>]</span>,
+numpy <span class="citation" data-cites="1LexfAxj">[<a href="#ref-1LexfAxj" role="doc-biblioref">47</a>]</span>, pandas <span class="citation" data-cites="2z2qDwzz">[<a href="#ref-2z2qDwzz" role="doc-biblioref">48</a>]</span>,
+papermill, plotly <span class="citation" data-cites="1A4GWgC1D">[<a href="#ref-1A4GWgC1D" role="doc-biblioref">49</a>]</span>,
+samtools <span class="citation" data-cites="IPc8cy7s">[<a href="#ref-IPc8cy7s" role="doc-biblioref">50</a>]</span>,
+bedtools <span class="citation" data-cites="1HWiAHnIw">[<a href="#ref-1HWiAHnIw" role="doc-biblioref">51</a>]</span>,
+fastp <span class="citation" data-cites="pt9vlq4w">[<a href="#ref-pt9vlq4w" role="doc-biblioref">52</a>]</span>,
+khmer <span class="citation" data-cites="546wIWN1">[<a href="#ref-546wIWN1" role="doc-biblioref">53</a>]</span>,
+screed <span class="citation" data-cites="E2l7FRQa">[<a href="#ref-E2l7FRQa" role="doc-biblioref">54</a>]</span>,
+seqtk <span class="citation" data-cites="XMRcIKYj">[<a href="#ref-XMRcIKYj" role="doc-biblioref">55</a>]</span>,
+and sra-tools <span class="citation" data-cites="PcQSCqic">[<a href="#ref-PcQSCqic" role="doc-biblioref">56</a>]</span>.
+These tools are all installed and managed in snakemake via
+conda <span class="citation" data-cites="Ht6yPhIB">[<a href="#ref-Ht6yPhIB" role="doc-biblioref">57</a>/]</span>
+and bioconda <span class="citation" data-cites="sYguBb3Q">[<a href="#ref-sYguBb3Q" role="doc-biblioref">58</a>]</span>.</p>
+<h2 id="notebooks-to-generate-figures">Notebooks to generate figures</h2>
 <p>(point at gather figures repo)</p>
 <h2 id="data-accessions">Data accessions</h2>
 <p>The summary results from genome-grist for this paper are available HERE.</p>
@@ -1226,6 +1217,48 @@ of the genome-grist package.</p>
 </div>
 <div id="ref-1Anhy7wy0" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">44. </div><div class="csl-right-inline"><strong>Sustainable data analysis with Snakemake</strong> <div class="csl-block">Felix Mölder, Kim Philipp Jablonski, Brice Letcher, Michael B Hall, Christopher H Tomkins-Tinch, Vanessa Sochat, Jan Forster, Soohyun Lee, Sven O Twardziok, Alexander Kanitz, … Johannes Köster</div> <em>F1000Research</em> (2021-04-19) <a href="https://doi.org/gj76rq">https://doi.org/gj76rq</a> <div class="csl-block">DOI: <a href="https://doi.org/10.12688/f1000research.29032.2">10.12688/f1000research.29032.2</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34035898">34035898</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8114187">PMC8114187</a></div></div>
+</div>
+<div id="ref-6zeuMzGB" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">45. </div><div class="csl-right-inline"><strong>dib-lab/genome-grist: v0.7.4</strong> <div class="csl-block">C. Titus Brown, Tessa Pierce Ward, Mohamed Abuelanin, Marisa Lim</div> <em>Zenodo</em> (2021-12-19) <a href="https://doi.org/gntbpw">https://doi.org/gntbpw</a> <div class="csl-block">DOI: <a href="https://doi.org/10.5281/zenodo.5792144">10.5281/zenodo.5792144</a></div></div>
+</div>
+<div id="ref-1026Gxdsi" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">46. </div><div class="csl-right-inline"><strong>Matplotlib: A 2D Graphics Environment</strong> <div class="csl-block">John D Hunter</div> <em>Computing in Science &amp; Engineering</em> (2007) <a href="https://doi.org/drbjhg">https://doi.org/drbjhg</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/mcse.2007.55">10.1109/mcse.2007.55</a></div></div>
+</div>
+<div id="ref-1LexfAxj" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">47. </div><div class="csl-right-inline"><strong>Array programming with NumPy</strong> <div class="csl-block">Charles R Harris, KJarrod Millman, Stéfan J van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J Smith, … Travis E Oliphant</div> <em>Nature</em> (2020-09-16) <a href="https://doi.org/ghbzf2">https://doi.org/ghbzf2</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-020-2649-2">10.1038/s41586-020-2649-2</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32939066">32939066</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7759461">PMC7759461</a></div></div>
+</div>
+<div id="ref-2z2qDwzz" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">48. </div><div class="csl-right-inline"><strong>pandas-dev/pandas: Pandas 1.3.5</strong> <div class="csl-block">Jeff Reback, Jbrockmendel, Wes McKinney, Joris Van Den Bossche, Tom Augspurger, Phillip Cloud, Simon Hawkins, Matthew Roeschke, Gfyoung, Sinhrks, … Skipper Seabold</div> <em>Zenodo</em> (2021-12-12) <a href="https://doi.org/ggt8bh">https://doi.org/ggt8bh</a> <div class="csl-block">DOI: <a href="https://doi.org/10.5281/zenodo.3509134">10.5281/zenodo.3509134</a></div></div>
+</div>
+<div id="ref-1A4GWgC1D" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">49. </div><div class="csl-right-inline"><strong>Interactive web‐based data visualization with R, plotly, and shiny (Carson Sievert)</strong> <div class="csl-block">Ran Li, Usama Bilal</div> <em>Biometrics</em> (2021-06) <a href="https://doi.org/gntbpx">https://doi.org/gntbpx</a> <div class="csl-block">DOI: <a href="https://doi.org/doi.org/10.1111/biom.13474">doi.org/10.1111/biom.13474</a></div></div>
+</div>
+<div id="ref-IPc8cy7s" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">50. </div><div class="csl-right-inline"><strong>The Sequence Alignment/Map format and SAMtools</strong> <div class="csl-block">H Li, B Handsaker, A Wysoker, T Fennell, J Ruan, N Homer, G Marth, G Abecasis, R Durbin, 1000 Genome Project Data Processing Subgroup</div> <em>Bioinformatics</em> (2009-06-08) <a href="https://doi.org/ff6426">https://doi.org/ff6426</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btp352">10.1093/bioinformatics/btp352</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/19505943">19505943</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2723002">PMC2723002</a></div></div>
+</div>
+<div id="ref-1HWiAHnIw" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">51. </div><div class="csl-right-inline"><strong>BEDTools: a flexible suite of utilities for comparing genomic features</strong> <div class="csl-block">Aaron R Quinlan, Ira M Hall</div> <em>Bioinformatics</em> (2010-03-15) <a href="https://doi.org/cmrms3">https://doi.org/cmrms3</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btq033">10.1093/bioinformatics/btq033</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/20110278">20110278</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2832824">PMC2832824</a></div></div>
+</div>
+<div id="ref-pt9vlq4w" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">52. </div><div class="csl-right-inline"><strong>fastp: an ultra-fast all-in-one FASTQ preprocessor</strong> <div class="csl-block">Shifu Chen, Yanqing Zhou, Yaru Chen, Jia Gu</div> <em>Bioinformatics</em> (2018-09-01) <a href="https://doi.org/gd9mrb">https://doi.org/gd9mrb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/bty560">10.1093/bioinformatics/bty560</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30423086">30423086</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6129281">PMC6129281</a></div></div>
+</div>
+<div id="ref-546wIWN1" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">53. </div><div class="csl-right-inline"><strong>khmer release v2.1: software for biological sequence analysis</strong> <div class="csl-block">Daniel Standage, Ali yari, Lisa J. Cohen, Michael R. Crusoe, Tim Head, Luiz Irber, Shannon EK Joslin, N B. Kingsley, Kevin D. Murray, Russell Neches, … C Titus Brown</div> <em>The Journal of Open Source Software</em> (2017-07-03) <a href="https://doi.org/gntbpv">https://doi.org/gntbpv</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00272">10.21105/joss.00272</a></div></div>
+</div>
+<div id="ref-E2l7FRQa" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">54. </div><div class="csl-right-inline"><strong>screed - short read sequence utils — screed 1.0 documentation</strong> <a href="https://screed.readthedocs.io/en/v1.0/">https://screed.readthedocs.io/en/v1.0/</a></div>
+</div>
+<div id="ref-XMRcIKYj" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">55. </div><div class="csl-right-inline"><strong>GitHub - lh3/seqtk: Toolkit for processing sequences in FASTA/Q formats</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/lh3/seqtk">https://github.com/lh3/seqtk</a></div>
+</div>
+<div id="ref-PcQSCqic" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">56. </div><div class="csl-right-inline"><strong>GitHub - ncbi/sra-tools: SRA Tools</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/ncbi/sra-tools">https://github.com/ncbi/sra-tools</a></div>
+</div>
+<div id="ref-Ht6yPhIB" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">57. </div><div class="csl-right-inline"><strong>Anaconda Documentation — Anaconda documentation</strong> <a href="https://docs.anaconda.com/">https://docs.anaconda.com/</a></div>
+</div>
+<div id="ref-sYguBb3Q" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">58. </div><div class="csl-right-inline"><strong>Bioconda: sustainable and comprehensive software distribution for the life sciences</strong> <div class="csl-block">Björn Grüning, Ryan Dale, Andreas Sjödin, Brad A Chapman, Jillian Rowe, Christopher H Tomkins-Tinch, Renan Valieris, Johannes Köster, The Bioconda Team</div> <em>Nature Methods</em> (2018-07-02) <a href="https://doi.org/gd2xzp">https://doi.org/gd2xzp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41592-018-0046-7">10.1038/s41592-018-0046-7</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29967506">29967506</a></div></div>
 </div>
 </div>
 <h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
