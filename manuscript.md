@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-19'
+date-meta: '2021-12-20'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-19" />
-  <meta name="citation_publication_date" content="2021-12-19" />
+  <meta name="dc.date" content="2021-12-20" />
+  <meta name="citation_publication_date" content="2021-12-20" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/ab6d1701d639d054e097e6d974f74c918353c0d4/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@ab6d170](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ab6d1701d639d054e097e6d974f74c918353c0d4)
-on December 19, 2021.
+from [dib-lab/2020-paper-sourmash-gather@0174fcd](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/0174fcd16ce75b05c421fcf504521a16a3e2e5c1)
+on December 20, 2021.
 </em></small>
 
 ## Authors
@@ -282,11 +282,25 @@ $h(x)$ and $\frac{H}{s}$ is the *maximum hash value* allowed in the
 FracMinHash sketch.
 
 The FracMinHash is a mix of MinHash and ModHash
-[@doi:10.1109/SEQUEN.1997.666900].  It keeps the selection of the
-smallest elements from MinHash, while using the dynamic size from
-ModHash to allow containment estimation.  However, instead of taking
-$0 \mod m$ elements like $\mathbf{MOD}_m(W)$, a FracMinHash uses the
-parameter $s$ to select a subset of $W$.
+[@doi:10.1186/s13059-016-0997-x; @doi:10.1109/SEQUEN.1997.666900].  It
+keeps the selection of the smallest elements from MinHash, while using
+the dynamic size from ModHash to allow containment estimation.
+However, instead of taking $0 \mod m$ elements like
+$\mathbf{MOD}_m(W)$, a FracMinHash uses the parameter $s$ to select a
+subset of $W$.
+
+Like ModHash (but not MinHash), FracMinHash supports estimation
+of the containment index:
+
+
+```{=latex}
+\begin{equation}
+    \hat{C}_\text{scale}(A,B):=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert}.
+\end{equation}
+```
+
+
+See Methods for details.
 
 <!--
 
@@ -558,10 +572,10 @@ to eliminate genomes with only small overlaps (see Methods).
 
 | data set | genomes >= 100k overlap | min-set-cov | % k-mers identified |
 | -------- | -------- | -------- | ------- | 
-| `zymo mock` (SRR12324253) | 405,839 | 19 | 47.1% |
-| `podar mock` (SRR606249) | 5800 | 74 | 54.8% |
-| `gut real` (SRR5650070)  | 96,423     | 99     | 36.0% |
-| `oil well real` (SRR1976948) | 1235 | 135 | 14.9% |
+| `zymo mock` | 405,839 | 19 | 47.1% |
+| `podar mock` | 5800 | 74 | 54.8% |
+| `gut real` | 96,423     | 99     | 36.0% |
+| `oil well real` | 1235 | 135 | 14.9% |
 
 Table: Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank. {#tbl:genbank-cover}
 
@@ -682,7 +696,7 @@ that were preferentially mapped to *S. baltica OS223*, rank 8.
 Below, we discuss the features and drawbacks of using FracMinHash and
 minimum metagenome covers to analyze metagenome datasets.
 
-(CTB: probably want to talk a bit about long reads below, too.)
+<!-- (CTB: probably want to talk a bit about long reads below, too.) -->
 
 ## FracMinHash provides efficient containment queries for large data sets.
 
@@ -692,8 +706,6 @@ elements in the set to be sketched are hashed, and any hash values
 below a certain fixed boundary value are kept for the sketch. This
 fixed boundary value is determined by the desired accuracy for the
 sketch operations, with clear space/time constraint tradeoffs.
-
-(CTB: re-evaluate this claim.)
 
 Intuitively, FracMinHash can be viewed as performing density sampling
 at a rate of 1 $k$-mer per $s$ distinct k-mers seen, where $s$ is used
@@ -710,8 +722,8 @@ competitive in accuracy with extant MinHash-based techniques for
 containment analysis, while also supporting Jaccard similarity.
 
 We note that the FracMinHash technique has been used under a number of
-different names, including FracMinHash
-[@doi:10.12688/f1000research.19675.1)] (cite Luiz thesis),
+different names, including Scaled MinHash
+[@doi:10.12688/f1000research.19675.1;@doi:10.5281/zenodo.4057151],
 universe minimizers [@doi:10.1016/j.cels.2021.08.009], Shasta
 markers [@doi:10.1038/s41587-020-0503-6], and mincode syncmers [@doi:10.7717/peerj.10805].  The name FracMinHash was
 coined by Kristoffer Sahlin in an online discussion on Twitter
@@ -765,10 +777,11 @@ to FracMinHash sketches when the maximum hash value in the MinHash
 sketch is larger than $H / s$.
 
 Finally, because FracMinHash sketches are simply collections of
-hashes, existing k-mer indexing approaches can be applied to
-sketches to support fast search with both similarity and containment
-estimators; several index types, including Sequence Bloom Trees (CTB: cite) and
-reverse indices, are provided in the sourmash software.
+hashes, existing k-mer indexing approaches can be applied to sketches
+to support fast search with both similarity and containment
+estimators; several index types, including Sequence Bloom Trees
+[@doi:10.1038/nbt.3442] and reverse indices, are provided in the
+sourmash software.
 
 In exchange for these many conveniences, FracMinHash sketches
 have limited sensitivity for small data sets where the k-mer
@@ -799,10 +812,10 @@ shared between the metagenome and the database. We show that
 this can be resolved efficiently for real-world data sets; implementing
 a greedy min-set-cov approximation algorithm on top of FracMinHash,
 we provide an approach that
-readily scales to 700,000 genomes on current hardware (performance in
-appendix: CTB). We show that in practice this procedure reduces the number of genomes
+readily scales to 700,000 genomes on current hardware. We show that in practice this procedure reduces the number of genomes
 under consideration to $\approx 100$ for several mock and real
 metagenomes.
+<!-- CTB: performance should be added to appendix -->
 
 The development of a small list of relevant genomes is particularly
 useful for large reference databases containing many redundant
@@ -817,12 +830,12 @@ approaches for identifying relevant genomes.  LCA-based approaches
 such as Kraken label individual k-mers based on taxonomic lineages in
 a database, and then use the resulting database of annotated k-mers to
 assign taxonomy to reads. Mapping- and homology-based approaches such
-as Diamond use read mapping to genomes or read alignment to
-gene sequences in order to assign taxonomy and function (cite). These
-approaches typically focus on assigning *individual* k-mers or reads.
-In contrast, here we analyze the entire collection of k-mers and
-assign them _in aggregate_ to the _best_ genome match, and then repeat
-until no matches remain.
+as Diamond use read mapping to genomes or read alignment to gene
+sequences in order to assign taxonomy and function
+[@doi:10.1002/cpz1.59]. These approaches typically focus on assigning
+*individual* k-mers or reads.  In contrast, here we analyze the entire
+collection of k-mers and assign them _in aggregate_ to the _best_
+genome match, and then repeat until no matches remain.
 
 The resulting minimum metagenome cover can then be used as part of further
 analyses, including both taxonomic content analysis and read mapping.
@@ -997,9 +1010,7 @@ summarization approaches.
 
 # Methods
 
-## Revised theoretical analysis of FracMinHash
-
-CTB: move this up, refer to it properly in the text.
+## Analytical analysis of FracMinHash
 
 Given two arbitrary sets $A$ and $B$ which are subsets of a domain
 $\Omega$, the containment index $C(A,B)$ is defined as
@@ -1109,15 +1120,15 @@ Using these observations, we can then finally calculate that
 where Fubini's theorem is used in line 2 and independence in line 3.
 
 
-In light of (theorem), we note that (equation) is *not* an
-unbiased estimate of $C(A,B)$. This may explain the observations in
-(Luiz thesis) that showed the uncorrected version in (eqn) leads to
-suboptimal performance for short sequences (e.g viruses). However, for
-sufficiently large $\vert A \vert$ and $s$, the bias factor
-$\left(1-(1-s)^{\vert A\vert}\right)$ is sufficiently close to 1.
+In light of Theorem 1, we note that (equation) is *not* an unbiased
+estimate of $C(A,B)$. This may explain the observations in
+[@doi:10.5281/zenodo.4057151] that show suboptimal performance for
+short sequences (e.g. viruses). However, for sufficiently large $\vert
+A \vert$ and $s$, the bias factor $\left(1-(1-s)^{\vert
+A\vert}\right)$ is sufficiently close to 1.
 
 The expectation of $C_\text{frac}(A,B)$ follows directly from
-(equation) and (theorem).
+(equation) and Theorem 1.
 
 **Theorem 2:** For $0<s<1$, if $A$ and $B$ are two distinct
 sets such that $A \cap B$ is non-empty, the expectation of $C_\text{frac}(A, B)$ is
@@ -1131,14 +1142,16 @@ $$
 
 We provide implementations of FracMinHash and min-set-cov in the
 software package `sourmash`, which is implemented in Python and Rust
-and developed under the BSD license [@doi:10.21105/joss.00027] (cite
-joss, zenodo latest version, github URL). FracMinHash sketches are
-created for DNA sequence inputs using the `sourmash sketch dna`
-command with the `scaled` parameter. Minimum metagenome covers are
-generated using `sourmash gather` with the sketched metagenome as
-query against a collection of one or more sketched genomes.
+and developed under the BSD license
+[@doi:10.21105/joss.00027]. FracMinHash sketches were created for DNA
+sequence inputs using the `sourmash sketch dna` command with the
+`scaled` parameter. Minimum metagenome covers were generated using
+`sourmash gather` with the sketched metagenome as query against a
+collection of one or more sketched genomes.
 
-The results in this paper were generated with sourmash v4.2.X. (CTB:
+sourmash is available at
+[github.com/sourmash-bio/sourmash](https://github.com/sourmash-bio/sourmash/). The
+results in this paper were generated with sourmash v4.2.X. (CTB:
 create new release, generate zenodo doi.)
 
 ## Comparison between CMash, mash screen, and Scaled MinHash.
@@ -1149,14 +1162,17 @@ $n=\{1000, 10000\}$ to evaluate the containment estimates when using
 larger sketches with sizes comparable to the FracMinHash sketches
 with $scaled=1000$.  The truth set is calculated using an exact
 $k$-mer counter implemented with a _HashSet_ data structure in the
-Rust programming language [@matsakis_rust_2014].
+Rust programming language [@doi:10.1145/2692956.2663188].
 
 For _Mash Screen_ the ratio of hashes matched by total hashes is used
 instead of the _Containment Score_, since the latter uses a $k$-mer
 survival process modeled as a Poisson process first introduced in
-[@fan_assembly_2015] and later used in the _Mash distance_
-[@ondov_mash:_2016] and _Containment score_ [@ondov_mash_2019]
+[@doi:10.1186/s12864-015-1647-5] and later used in the _Mash distance_
+[@doi:10.1186/s13059-016-0997-x] 
+and _Containment score_ [@doi:10.1186/s13059-019-1841-x]
 formulations.
+
+CTB: include performance information.
 
 ## GenBank database sketching and searches
 
@@ -1174,9 +1190,13 @@ and matches were saved with `--save-matches`.
 The GenBank database used is XYZ GB in size and is available for download
 at ZZZ.
 
+CTB: include performance information.
+
 ## Taxonomy
 
-(I guess say what Luiz used, and then repeat this using sourmash taxonomy.)
+The CAMI evaluations were run with the sourmash CAMI pipeline
+[@url:https://github.com/luizirber/2020-cami/], which generated
+Open-community Profiling Assessment (OPAL) compatible output.
 
 ## Read mapping and hybrid mapping pipeline
 
@@ -1212,14 +1232,24 @@ These tools are all installed and managed in snakemake via
 conda [@url:https://docs.anaconda.com/]
 and bioconda [@doi:10.1038/s41592-018-0046-7].
 
-## Notebooks to generate figures
+## Intermediate data products and figure generation
 
-(point at gather figures repo)
+All figures were generated using the Jupyter Notebooks from v0.1 of
+the github.com/dib-lab/2021-paper-sourmash-gather-pipelines repository
+[@doi:10.5281/zenodo.5793387]. This repository also contains the
+intermediate data products necessary for figure generation.
 
-## Data accessions
+## Metagenome data set accessions
 
-The summary results from genome-grist for this paper are available HERE.
+The accessions for the metagenome data sets in Table
+@tbl:genbank-cover are:
 
+| data set | SRA accession |
+| -------- | ------------- |
+| `zymo mock` | SRR12324253 |
+| `podar mock` | SRR606249 |
+| `gut real` | SRR5650070  |
+| `oil well real`  | SRR1976948 |
 
 
 ## References {.page_break_before}

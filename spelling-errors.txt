@@ -27,12 +27,11 @@ datasets
 dkoslicki
 downsampled
 downsampling
-eqn
 eukaryotic
 fastp
 FracMinHash
 Fubini’s
-genbank
+GenBank
 genomic
 GTDB
 HashSet
@@ -41,7 +40,6 @@ Illumina
 Irber
 iteratively
 Jaccard
-joss
 Jupyter
 Koslicki
 Kraken
@@ -59,7 +57,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-mhbt
+MHBT
 microbiome
 microbiomes
 mincode
@@ -91,7 +89,7 @@ seqtk
 Shewanella
 snakemake
 sourmash
-sra
+SRA
 SRR
 suboptimal
 subsampled
