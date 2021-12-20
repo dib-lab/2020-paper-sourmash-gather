@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +106,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/0174fcd16ce75b05c421fcf504521a16a3e2e5c1/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/0174fcd16ce75b05c421fcf504521a16a3e2e5c1">dib-lab/2020-paper-sourmash-gather@0174fcd</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/16ba211bd5d2c87f474058173472733aabeb0d01">dib-lab/2020-paper-sourmash-gather@16ba211</a>
 on December 20, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -176,9 +176,9 @@ Department of Population Health and Reproduction, UC Davis
 <p>The assignment of reference genomes and taxonomy to metagenome data underlies
 many microbiome studies. Here we describe two algorithms for
 compositional analysis of metagenome sequencing data. We first investigate
-the <em>FracMinHash</em> sketching technique, a derivative of modulo hash that
+the FracMinHash sketching technique, a derivative of modulo hash that
 supports Jaccard containment estimation between sets of different size.
-We implement <em>FracMinHash</em> in the sourmash software, evaluate its
+We implement FracMinHash in the sourmash software, evaluate its
 accuracy, and demonstrate
 large-scale containment searches of metagenomes using all 700,000 currently
 available microbial reference genomes.
@@ -187,7 +187,7 @@ metagenome compositional analysis as the problem of finding a minimum
 collection of reference genomes that “cover” the known k-mers in a metagenome,
 a minimum set cover problem.
 We implement a greedy
-approximate solution using <em>FracMinHash</em> sketches, and evaluate
+approximate solution using FracMinHash sketches, and evaluate
 its accuracy in taxonomic assignment using a CAMI community benchmark.
 Finally, we show that the minimum metagenome cover can be used to guide the
 select of reference genomes for read mapping.
@@ -229,40 +229,8 @@ method for taxonomic classification of metagenome data. Our
 implementation in the open source <code>sourmash</code> software works with
 reference databases containing a million or more microbial genomes and
 supports multiple taxonomies and private databases.</p>
-<!--
-
-We first describe _FracMinHash_, a sketching technique based on
-mod-hash (cite Broder), 
-that supports containment estimation for metagenome
-datasets using k-mers.  We implement _FracMinHash_ in a Python and
-Rust package, `sourmash`, and demonstrate that it is competitive in
-accuracy with other containment estimation approaches.
-
-We next frame reference-based metagenome content analysis as a
-min-set-cov problem, where we determine the _minimum_ number of
-genomes from a reference database needed to cover the identifiable
-genomic content from a metagenome.  We implement a
-best-polynomial-time greedy approximation to the min-set-cov problem
-using _FracMinHash_ in `sourmash`. This technique provides an
-iterative decomposition of metagenomes into genome matches.
-
-To evaluate the accuracy of our min-set-cov procedure, we implement a
-simple taxonomic classification approach in which we use the taxonomy
-of the genomes in the set cover to define the taxonomy of the
-metagenome content. We show that this permits precise and lightweight
-classification of metagenome content across all taxonomic levels.
-
-Finally, we show that the minimum set covers for several metagenomes
-contain only a small subset of reference genomes even when using very
-large and redundant databases, and demonstrate that this subset can be
-used to map the metagenome reads in concordance with the estimates
-from _FracMinHash_. Thus, _FracMinHash_ combined with
-min-set-cov provides a lightweight, accurate, and scalable way to
-estimate the composition of metagenomes using a large reference
-database.
--->
 <h1 id="results">Results</h1>
-<p>We first describe <em>FracMinHash</em>, a sketching technique that supports
+<p>We first describe FracMinHash, a sketching technique that supports
 containment estimation for metagenome datasets using k-mers. We next
 frame reference-based metagenome content analysis as the problem of
 finding a <em>minimum set cover</em> for a metagenome using a collection of
@@ -1323,235 +1291,7 @@ intermediate data products necessary for figure generation.</p>
 <div class="csl-left-margin">65. </div><div class="csl-right-inline"><strong>dib-lab/2021-paper-sourmash-gather-pipeline: v0.1</strong> <div class="csl-block">C. Titus Brown</div> <em>Zenodo</em> (2021-12-20) <a href="https://doi.org/gntjvd">https://doi.org/gntjvd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.5281/zenodo.5793387">10.5281/zenodo.5793387</a></div></div>
 </div>
 </div>
-<h2 id="scaled-minhash-sketches-support-efficient-indexing-for-large-scale-containment-queries">Scaled MinHash sketches support efficient indexing for large-scale containment queries</h2>
-<p>CTB: Additional points to raise:</p>
-<ul>
-<li>in-memory representation of sketches
-may be too big (!!), goal here is on disk storage/low minimum memory
-for “extremely large data” situation.</li>
-<li>Also/in addition, want ability
-to do incremental loading of things.</li>
-<li>Note we are not talking here
-about situations where the indices themselves are too big to download.</li>
-<li>I think rename LCA to revindex. Or make up a new name.</li>
-</ul>
-<p>We provide two index data structures for rapid estimation of
-containment in large databases. The first, the MinHash Bloom Tree (MHBT),
-is a specialization of the Sequence Bloom Tree <span class="citation" data-cites="solomon_fast_2016">[<a href="#ref-solomon_fast_2016" role="doc-biblioref"><strong>solomon_fast_2016?</strong></a>]</span>,
-and implements a <span class="math inline">\(k\)</span>-mer aggregative method with explicit representation of
-datasets based on hierarchical indices. The second is LCA, an
-inverted index into sketches, a color-aggregative method with implicit
-representation of the sketches.</p>
-<p>We evaluated the MHBT and LCA databases by constructing and searching
-a GenBank snapshot from July 18, 2020,
-containing 725,331 assembled genomes (
-5,282 Archaea,
-673,414 Bacteria,
-6,601 Fungi
-933 Protozoa and
-39,101 Viral). <!-- TODO add total data size here? need to calculate... -->
-MHBT indices were built with <span class="math inline">\(scaled=1000\)</span>,
-and LCA indices used <span class="math inline">\(scaled=10000\)</span>.
-Table <a href="#tbl:lca-index">2</a> shows the indexing results for the LCA index,
-and Table <a href="#tbl:mhbt-index">3</a> for the MHBT index.</p>
-<div id="tbl:lca-index" class="tablenos">
-<table id="tbl:lca-index">
-<caption><span>Table 2:</span> Results for LCA indexing, with <span class="math inline">\(scaled=10000\)</span> and
-<span class="math inline">\(k=21\)</span>. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Domain</th>
-<th style="text-align: right;">Runtime (s)</th>
-<th style="text-align: right;">Memory (MB)</th>
-<th style="text-align: right;">Size (MB)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Viral</td>
-<td style="text-align: right;">57</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Archaea</td>
-<td style="text-align: right;">58</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Protozoa</td>
-<td style="text-align: right;">231</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Fungi</td>
-<td style="text-align: right;">999</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bacteria</td>
-<td style="text-align: right;">12,717</td>
-<td style="text-align: right;">857</td>
-<td style="text-align: right;">446</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl:mhbt-index" class="tablenos">
-<table id="tbl:mhbt-index">
-<caption><span>Table 3:</span> Results for MHBT indexing,
-with <span class="math inline">\(scaled=1000\)</span>, <span class="math inline">\(k=21\)</span> and internal nodes (Bloom Filters)
-using 10000 slots for storage. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Domain</th>
-<th style="text-align: right;">Runtime (s)</th>
-<th style="text-align: right;">Memory (MB)</th>
-<th style="text-align: right;">Size (MB)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Viral</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">326</td>
-<td style="text-align: right;">77</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Archaea</td>
-<td style="text-align: right;">111</td>
-<td style="text-align: right;">217</td>
-<td style="text-align: right;">100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Protozoa</td>
-<td style="text-align: right;">206</td>
-<td style="text-align: right;">753</td>
-<td style="text-align: right;">302</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Fungi</td>
-<td style="text-align: right;">1,161</td>
-<td style="text-align: right;">3,364</td>
-<td style="text-align: right;">1,585</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bacteria</td>
-<td style="text-align: right;">32,576</td>
-<td style="text-align: right;">47,445</td>
-<td style="text-align: right;">24,639</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Index sizes are more affected by the number of genomes inserted than
-the individual <em>Scaled MinHash</em> sizes. Despite Protozoan and Fungal
-<em>Scaled MinHash</em> sketches being larger individually, the Bacterial
-indices are an order of magnitude larger for both indices since they
-contain two orders of magnitude more genomes.</p>
-<p>Comparing between LCA and MHBT index sizes must account for their
-different scaled parameters, but as shown in Chapter <a href="#chp-scaled">1</a>
-a <em>Scaled MinHash</em> with <span class="math inline">\(scaled=1000\)</span> when downsampled to
-<span class="math inline">\(scaled=10000\)</span> is expected to be ten times smaller. Even so, MHBT
-indices are more than ten times larger than their LCA counterparts,
-since they store extra caching information (the internal nodes) to
-avoid loading all the data to memory during search. LCA indices also
-contain extra data (the list of datasets containing a hash), but this
-is lower than the storage requirements for the MHBT internal nodes.</p>
-<p>We next executed similarity searches on each database using
-appropriate queries for each domain. All queries were selected from
-the relevant domain and queried against both MHBT (<span class="math inline">\(scaled=1000\)</span>) and
-LCA (<span class="math inline">\(scaled=10000\)</span>), for <span class="math inline">\(k=21\)</span>.</p>
-<div id="tbl:search-runtime" class="tablenos">
-<table id="tbl:search-runtime">
-<caption><span>Table 4:</span> Running time in seconds for similarity search using LCA
-(<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
-indices. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Viral</th>
-<th style="text-align: right;">Archaea</th>
-<th style="text-align: right;">Protozoa</th>
-<th style="text-align: right;">Fungi</th>
-<th style="text-align: right;">Bacteria</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">LCA</td>
-<td style="text-align: right;">1.06</td>
-<td style="text-align: right;">1.42</td>
-<td style="text-align: right;">5.40</td>
-<td style="text-align: right;">26.92</td>
-<td style="text-align: right;">231.26</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SBT</td>
-<td style="text-align: right;">1.32</td>
-<td style="text-align: right;">3.77</td>
-<td style="text-align: right;">43.51</td>
-<td style="text-align: right;">244.77</td>
-<td style="text-align: right;">3,185.88</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl:search-memory" class="tablenos">
-<table id="tbl:search-memory">
-<caption><span>Table 5:</span> Memory consumption in megabytes for similarity search using LCA
-(<span class="math inline">\(scaled=10000\)</span>) and MHBT (<span class="math inline">\(scaled=1000\)</span>)
-indices. </caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Viral</th>
-<th style="text-align: right;">Archaea</th>
-<th style="text-align: right;">Protozoa</th>
-<th style="text-align: right;">Fungi</th>
-<th style="text-align: right;">Bacteria</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">LCA</td>
-<td style="text-align: right;">223</td>
-<td style="text-align: right;">240</td>
-<td style="text-align: right;">798</td>
-<td style="text-align: right;">3,274</td>
-<td style="text-align: right;">20,926</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SBT</td>
-<td style="text-align: right;">163</td>
-<td style="text-align: right;">125</td>
-<td style="text-align: right;">332</td>
-<td style="text-align: right;">1,656</td>
-<td style="text-align: right;">2,290</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Table <a href="#tbl:search-runtime">4</a> shows running time for both indices.
-For small indices (Viral and Archaea) the LCA running time is
-dominated by loading the index in memory, but for larger indices the
-cost is amortized due to the faster running times. This situation is
-clearer for the Bacteria indices, where the LCA search completes in 3
-minutes and 51 seconds, while the SBT search takes 54 minutes.</p>
-<p>When comparing memory consumption, the situation is reversed. Table
-<a href="#tbl:search-memory">5</a> shows how the LCA index consistently uses
-twice the memory for all domains, but for larger indices like Bacteria
-it uses as much as 10 times the memory as the MHBT index for the same
-data.</p>
-<p>For both runtime and memory consumption, it is worth pointing that the
-LCA index is a tenth of the data indexed by the MHBT. This highlights
-the trade-off between speed and memory consumption for both
-approaches, especially for larger indices.</p>
-<p>Notes:
-* new genomes can be added quickly to SBT.</p>
+<h2 id="appendix">Appendix</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
