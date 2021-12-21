@@ -4,7 +4,7 @@ keywords:
 - k-mers
 - MinHash
 lang: en-US
-date-meta: '2021-12-20'
+date-meta: '2021-12-21'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-20" />
-  <meta name="citation_publication_date" content="2021-12-20" />
+  <meta name="dc.date" content="2021-12-21" />
+  <meta name="citation_publication_date" content="2021-12-21" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +60,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +84,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/16ba211bd5d2c87f474058173472733aabeb0d01/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@16ba211](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/16ba211bd5d2c87f474058173472733aabeb0d01)
-on December 20, 2021.
+from [dib-lab/2020-paper-sourmash-gather@f3cd7e3](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f3cd7e322e081276ae4512cc8375b343b29f8d2a)
+on December 21, 2021.
 </em></small>
 
 ## Authors
@@ -314,9 +314,7 @@ Screen` with $n=10000$ has the smallest difference to ground truth for
 $k=\{21, 31\}$, followed by `FracMinHash` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
 
-CTB TODO:
-
-* switch figure to use sourmash; update description to reference sourmash.
+<!-- CTB: switch caption to use sourmash; update description to reference sourmash. Rescale figure. -->
 
 ## We can use FracMinHash to construct a minimum set cover for metagenomes
 
@@ -451,8 +449,7 @@ Methods rankings and scores obtained for the different metrics over all samples 
 
 In Figures @fig:spider and @fig:scores we show an updated version of
 Figure 6 from [@doi:10.1038/s41596-020-00480-3] that includes our
-method, implemented in the `sourmash` software (CTB: what databases
-are used?). Here we compare 10 different methods for taxonomic
+method, implemented in the `sourmash` software. Here we compare 10 different methods for taxonomic
 profiling and their characteristics at each taxonomic rank.  While
 previous methods show reduced completeness -- the ratio of taxa
 correctly identified in the ground truth -- below the genus level,
@@ -461,13 +458,10 @@ highest purity (the ratio of correctly predicted taxa over all
 predicted taxa) across all methods: 95.9\% when filtering predictions
 below 1\% abundance, and 97\% for unfiltered results.  `sourmash` also
 has the second lowest L1-norm error,
-<!-- (the sum of the absolute difference
-between the true and predicted abundances at a specific taxonomic
-rank) -->
 the highest number of true positives and the lowest number of
 false positives.
-<!-- TR: it looks like mOTU has hte lowest L1-norm, not sourmash? -->
-<!-- runtimes/memory are mentioned in the discussion saying they're in the appendix,
+
+<!-- CTB: runtimes/memory are mentioned in the discussion saying they're in the appendix,
 I think it would be nice to mention that they're in the appendix here -->
 
 <!--
@@ -644,24 +638,22 @@ usually map one way or another.)
 ![
 **Hash-based k-mer decomposition of a metagenome into constituent
 genomes compares well to bases covered by read mapping.** 
-(CTB: add more description here.)
 Plots for each of four metagenomes showing estimated k-mer overlap per
 genome, along
 with bases covered by read mapping.
 The reference genomes are rank ordered along the x axis (as in Figure @fig:gather0), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
-The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
+The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled to match.
 Decreases in mapping (green peaks) occur for genomes which are not
 exact matches to the genomes of the organisms used to build the mock
 community; for example, in plot (a), the peak at rank 33, *S. baltica OS185* represents reads
 that were preferentially mapped to *S. baltica OS223*, rank 8.
-[@doi:10.1101/155358;@doi:10.1186/s13059-016-0997-x].
 ](images/gather-podar.svg "gather results for podar"){#fig:mapping}
 
 
 # Discussion
 
-Below, we discuss the features and drawbacks of using FracMinHash and
-minimum metagenome covers to analyze metagenome datasets.
+Below, we discuss the use of FracMinHash and minimum metagenome covers
+to analyze metagenome datasets.
 
 <!-- (CTB: probably want to talk a bit about long reads below, too.) -->
 
@@ -1118,8 +1110,9 @@ collection of one or more sketched genomes.
 
 sourmash is available at
 [github.com/sourmash-bio/sourmash](https://github.com/sourmash-bio/sourmash/). The
-results in this paper were generated with sourmash v4.2.X. (CTB:
-create new release, generate zenodo doi.)
+results in this paper were generated with sourmash v4.2.3.
+
+<!-- CTB: put DOI in when zenodo is fixed -->
 
 ## Comparison between CMash, mash screen, and Scaled MinHash.
 
@@ -1139,31 +1132,33 @@ survival process modeled as a Poisson process first introduced in
 and _Containment score_ [@doi:10.1186/s13059-019-1841-x]
 formulations.
 
-CTB: include performance information.
+<!-- CTB: include performance information. -->
 
 ## GenBank database sketching and searches
 
 Minimum metagenome covers were calculated using a microbial genome
-subset of GenBank (date XYZ, number of genomes ZZZ) using a scaled
+subset of GenBank (July 2020, 725,339 genomes) using a scaled
 factor of 2000 and a k-mer size of 31. Sketches for all genomes and
 metagenomes were calculated with `sourmash sketch dna -p
 scaled=2000,k=31`. The minimum metagenome covers were calculated using
-all genomes sharing 100 hashes with the metagenome (that is, an
+all genomes sharing 50 hashes with the metagenome (that is, an
 estimated overlap of 100,000 k-mers) with
 `sourmash gather --threshold-bp 1e5`.
 Overlapping sketches were saved with `--save-prefetch`
 and matches were saved with `--save-matches`.
 
-The GenBank database used is XYZ GB in size and is available for download
-at ZZZ.
+The GenBank database used is 24 GB in size and is available for download
+through the sourmash project.
 
-CTB: include performance information.
+<!-- CTB: include performance information. -->
 
 ## Taxonomy
 
 The CAMI evaluations were run with the sourmash CAMI pipeline
-[@url:https://github.com/luizirber/2020-cami/], which generated
-Open-community Profiling Assessment (OPAL) compatible output.
+[@url:https://github.com/luizirber/2020-cami], which generated
+Open-community Profiling Assessment (OPAL) compatible output
+[@doi:10.1038/nmeth.4458].
+This output was then processed with the standard CAMI tools.
 
 ## Read mapping and hybrid mapping pipeline
 
@@ -1172,8 +1167,8 @@ Metagenome reads were mapped to reference genomes using minimap2 v2.17
 (`-x sr`).
 
 The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
-results was implemented in the `subtract_gather.py` script that is part
-of the genome-grist package.
+results was implemented in the `subtract_gather.py` script
+in the genome-grist package.
 
 The complete workflow, from metagenome download to taxonomic analysis
 and iterative mapping, is implemented in the genome-grist package
@@ -1183,9 +1178,10 @@ a workflow that combines sourmash sketching, metagenome cover
 calculation, and taxonomic analysis with metagenome download from the
 SRA, genome download from GenBank, and read mapping.  We used
 genome-grist v0.7.4 [@doi:10.5281/zenodo.5792144] to generate the results in
-this paper (CTB: mention config file/put in paper data repo).
+this paper; see `conf-paper.yml` in the pipeline repository.
+
 genome-grist relies on matplotlib [@doi:10.1109/MCSE.2007.55],
-Jupyter Notebook [@doi:10.3233/978-1-61499-649-1-87],
+Jupyter Notebook [@url:https://dx.doi.org/10.3233/978-1-61499-649-1-87],
 numpy [@doi:10.1038/s41586-020-2649-2], pandas [@doi:10.5281/zenodo.3509134],
 papermill, plotly [@doi:doi.org/10.1111/biom.13474],
 samtools [@doi:10.1093/bioinformatics/btp352],
@@ -1196,13 +1192,13 @@ screed [@url:https://screed.readthedocs.io],
 seqtk [@url:https://github.com/lh3/seqtk],
 and sra-tools [@url:https://github.com/ncbi/sra-tools].
 These tools are all installed and managed in snakemake via
-conda [@url:https://docs.anaconda.com/]
+conda [@url:https://docs.anaconda.com]
 and bioconda [@doi:10.1038/s41592-018-0046-7].
 
 ## Intermediate data products and figure generation
 
 All figures were generated using the Jupyter Notebooks from v0.1 of
-the github.com/dib-lab/2021-paper-sourmash-gather-pipelines repository
+the github.com/dib-lab/2021-paper-sourmash-gather-pipeline repository
 [@doi:10.5281/zenodo.5793387]. This repository also contains the
 intermediate data products necessary for figure generation.
 

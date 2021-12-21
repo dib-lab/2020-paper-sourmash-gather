@@ -16,7 +16,6 @@ CMash
 coli
 compositional
 conda
-config
 contig
 cov
 ctb
@@ -50,7 +49,7 @@ luizirber
 matplotlib
 mer
 mers
-Metagenome
+metagenome
 metagenomes
 metagenomic
 metagenomics
@@ -71,7 +70,6 @@ papermill
 plotly
 Reiter
 ReiterTaylor
-repo
 reproducibly
 rescaled
 Sahlin
@@ -89,11 +87,8 @@ subsampled
 summarization
 syncmers
 taylorreiter
-TODO
 tradeoffs
 tunable
 UC
 unmapped
 XXXXXXXX
-XYZ
-zenodo
