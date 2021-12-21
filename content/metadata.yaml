@@ -3,6 +3,7 @@ title: "Lightweight compositional analysis of metagenomes with sourmash gather"
 keywords:
   - k-mers
   - MinHash
+  - @CTB
 lang: en-US
 authors:
   - github: luizirber
@@ -15,7 +16,8 @@ authors:
       - Graduate Group in Computer Science, UC Davis
       - Department of Population Health and Reproduction, UC Davis
     funders:
-      - Grant XXXXXXXX
+      - Grant GBMF4551 from the Gordon and Betty Moore Foundation
+      - @CTB: R01
   - github: brooksph
     name: Phillip T. Brooks
     initials: PTB
@@ -24,6 +26,8 @@ authors:
     email: philliptbrooks@gmail.com
     affiliations:
       - Department of Population Health and Reproduction, UC Davis
+    funders:
+      - Grant GBMF4551 from the Gordon and Betty Moore Foundation
   - github: taylorreiter
     name: Taylor Reiter
     initials: TER
@@ -33,6 +37,8 @@ authors:
     affiliations:
       - Graduate Group in Food Science, UC Davis
       - Department of Population Health and Reproduction, UC Davis
+    funders:
+      - Grant GBMF4551 from the Gordon and Betty Moore Foundation
   - github: bluegenes
     name: N. Tessa Pierce
     initials: NTP
@@ -41,7 +47,10 @@ authors:
     email: ntpierce@ucdavis.edu
     affiliations:
      - Department of Population Health and Reproduction, UC Davis
-    funders: NSF 1711984
+    funders:
+      - NSF 1711984
+      - Grant GBMF4551 from the Gordon and Betty Moore Foundation
+      - @CTB: NSF Genomerxiv      
   - github: dkoslicki
     name: David Koslicki
     initials: DK
@@ -56,3 +65,7 @@ authors:
     email: ctbrown@ucdavis.edu
     affiliations:
       - Department of Population Health and Reproduction, UC Davis
+    funders:
+      - Grant GBMF4551 from the Gordon and Betty Moore Foundation
+      - @CTB: NIH R01
+      - @CTB: NSF Genomerxiv
