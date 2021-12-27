@@ -3,8 +3,9 @@ title: Lightweight compositional analysis of metagenomes with sourmash gather
 keywords:
 - k-mers
 - MinHash
+- CTB
 lang: en-US
-date-meta: '2021-12-21'
+date-meta: '2021-12-27'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -22,8 +23,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-21" />
-  <meta name="citation_publication_date" content="2021-12-21" />
+  <meta name="dc.date" content="2021-12-27" />
+  <meta name="citation_publication_date" content="2021-12-27" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -60,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -84,10 +85,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f3cd7e322e081276ae4512cc8375b343b29f8d2a/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@f3cd7e3](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f3cd7e322e081276ae4512cc8375b343b29f8d2a)
-on December 21, 2021.
+from [dib-lab/2020-paper-sourmash-gather@a1a86eb](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d)
+on December 27, 2021.
 </em></small>
 
 ## Authors
@@ -103,7 +104,7 @@ on December 21, 2021.
     [luizirber](https://twitter.com/luizirber)<br>
   <small>
      Graduate Group in Computer Science, UC Davis; Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant XXXXXXXX
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; {'CTB': 'R01'}
   </small>
 
 + **Phillip T. Brooks**<br>
@@ -115,6 +116,7 @@ on December 21, 2021.
     [brooksph](https://twitter.com/brooksph)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation
   </small>
 
 + **Taylor Reiter**<br>
@@ -126,6 +128,7 @@ on December 21, 2021.
     [ReiterTaylor](https://twitter.com/ReiterTaylor)<br>
   <small>
      Graduate Group in Food Science, UC Davis; Department of Population Health and Reproduction, UC Davis
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation
   </small>
 
 + **N. Tessa Pierce**<br>
@@ -137,7 +140,7 @@ on December 21, 2021.
     [saltyscientist](https://twitter.com/saltyscientist)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
-     · Funded by NSF 1711984
+     · Funded by NSF 1711984; Grant GBMF4551 from the Gordon and Betty Moore Foundation; {'CTB': 'NSF Genomerxiv'}
   </small>
 
 + **David Koslicki**<br>
@@ -156,6 +159,7 @@ on December 21, 2021.
     [ctb](https://github.com/ctb)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; {'CTB': 'NIH R01'}; {'CTB': 'NSF Genomerxiv'}
   </small>
 
 

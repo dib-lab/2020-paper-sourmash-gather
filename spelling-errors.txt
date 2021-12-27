@@ -18,7 +18,7 @@ compositional
 conda
 contig
 cov
-ctb
+CTB
 dataset
 datasets
 dkoslicki
@@ -27,7 +27,9 @@ eukaryotic
 fastp
 FracMinHash
 Fubini’s
-genbank
+GBMF
+GenBank
+Genomerxiv
 genomic
 GTDB
 HashSet
@@ -80,7 +82,7 @@ seqtk
 Shewanella
 snakemake
 sourmash
-SRA
+sra
 SRR
 suboptimal
 subsampled
@@ -91,4 +93,3 @@ tradeoffs
 tunable
 UC
 unmapped
-XXXXXXXX
