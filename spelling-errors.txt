@@ -28,7 +28,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-GenBank
+genbank
 Genomerxiv
 genomic
 GTDB

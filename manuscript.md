@@ -5,7 +5,7 @@ keywords:
 - MinHash
 - CTB
 lang: en-US
-date-meta: '2021-12-27'
+date-meta: '2021-12-28'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -23,8 +23,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-27" />
-  <meta name="citation_publication_date" content="2021-12-27" />
+  <meta name="dc.date" content="2021-12-28" />
+  <meta name="citation_publication_date" content="2021-12-28" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,10 +85,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@a1a86eb](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a1a86ebb6ad60786f96c35c2fc435cbbbae68d4d)
-on December 27, 2021.
+from [dib-lab/2020-paper-sourmash-gather@d072cd4](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d072cd43f8f1d366872f8fe91a87c0e5dcccd247)
+on December 28, 2021.
 </em></small>
 
 ## Authors
@@ -368,8 +368,7 @@ lower rank matches.
 
 As one example of metagenome k-mers shared with multiple matches,
 genomes from two strains of *Shewanella baltica* are present in the
-mock metagenome.  These genomes have an approximately 50% overlap in
-k-mer content, and these shared k-mers are first claimed by
+mock metagenome.  These genomes overlap in k-er content by approximately 50%, and these shared k-mers are first claimed by
 *Shewanella baltica* OS223 -- compare *S. baltica* OS223, rank
 8, with *S. baltica* OS185, rank 33 in Figure
 @fig:gather0. Here the difference between the red circles and green
