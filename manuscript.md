@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +85,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d072cd43f8f1d366872f8fe91a87c0e5dcccd247/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@d072cd4](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d072cd43f8f1d366872f8fe91a87c0e5dcccd247)
+from [dib-lab/2020-paper-sourmash-gather@f45e448](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f45e448d0064169e24c2608257ce393339676ed7)
 on December 28, 2021.
 </em></small>
 

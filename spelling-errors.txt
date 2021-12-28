@@ -82,7 +82,7 @@ seqtk
 Shewanella
 snakemake
 sourmash
-sra
+SRA
 SRR
 suboptimal
 subsampled
