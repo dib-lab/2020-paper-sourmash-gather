@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +85,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f45e448d0064169e24c2608257ce393339676ed7/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@f45e448](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f45e448d0064169e24c2608257ce393339676ed7)
+from [dib-lab/2020-paper-sourmash-gather@6c1ac8b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/6c1ac8bc68456abb53585988b05576226544b6ac)
 on December 28, 2021.
 </em></small>
 
@@ -618,8 +618,6 @@ actual metagenomes, there is more variation between mapping and hash
 assignments.  Further work is needed to evaluate rates of variation across
 a larger number of metagenomes.
 
-CTB: update figure to contain all four metagenomes! Fix axis labels, symbols.
-
 <!--
 (belongs in discussion)
 This suggests that metagenome reads are being mapped to different
@@ -644,11 +642,11 @@ genomes compares well to bases covered by read mapping.**
 Plots for each of four metagenomes showing estimated k-mer overlap per
 genome, along
 with bases covered by read mapping.
-The reference genomes are rank ordered along the x axis (as in Figure @fig:gather0), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
-The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled to match.
-Decreases in mapping (green peaks) occur for genomes which are not
+The reference genomes are rank ordered along the x axis (as in the y axis for Figure @fig:gather0), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
+The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
+Decreases in mapping (peaks in blue lines) occur for genomes which are not
 exact matches to the genomes of the organisms used to build the mock
-community; for example, in plot (a), the peak at rank 33, *S. baltica OS185* represents reads
+community; for example, in plot (a), the peak at rank 33 of `podar mock` is for *S. baltica OS185*, and represents reads
 that were preferentially mapped to *S. baltica OS223*, rank 8.
 ](images/gather-podar.svg "gather results for podar"){#fig:mapping}
 
