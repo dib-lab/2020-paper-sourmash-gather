@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2021-12-28" />
+  <meta name="dcterms.date" content="2021-12-29" />
   <meta name="keywords" content="k-mers, MinHash, CTB" />
   <title>Lightweight compositional analysis of metagenomes with sourmash gather</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-28" />
-  <meta name="citation_publication_date" content="2021-12-28" />
+  <meta name="dc.date" content="2021-12-29" />
+  <meta name="citation_publication_date" content="2021-12-29" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/6c1ac8bc68456abb53585988b05576226544b6ac/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/6c1ac8bc68456abb53585988b05576226544b6ac">dib-lab/2020-paper-sourmash-gather@6c1ac8b</a>
-on December 28, 2021.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ee0575bc2f2aa232fd7d96b2b05def2423d541ba">dib-lab/2020-paper-sourmash-gather@ee0575b</a>
+on December 29, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -590,17 +590,24 @@ the minimum set cover, because it is computationally intractable to map
 reads to the entire GenBank database. (CTB: check centrifuge.) 
 (CTB: provide versions of figure 1 here as Suppl Figure?) 
 --></p>
-<p>Figure <a href="#fig:mapping">5</a> compares hash assignment rates
-and mapping rates for the four evaluation metagenomes in Table
+<p>Figure <a href="#fig:mapping">5</a> compares k-mer assignment rates and mapping rates
+for the four evaluation metagenomes in Table
 <a href="#tbl:genbank-cover">1</a>. Broadly speaking, we see that k-mer-based
 estimates of metagenome composition agree closely with the number of
-bases covered by mapped reads: the y axis has not been re-scaled, so hash matches and read mapping coverage correspond well. This suggests that the k-mer-based min-set-cov
-approach effectively selects reference genomes for metagenome read mapping.</p>
-<p>For mock metagenomes (panels X and Y), there appears to be a close
-correspondence between mapping and hash assignment rates, while for
-actual metagenomes, there is more variation between mapping and hash
-assignments. Further work is needed to evaluate rates of variation across
-a larger number of metagenomes.</p>
+bases covered by mapped reads: the y axis has not been re-scaled, so
+k-mer matches and read mapping coverage correspond well. This suggests
+that the k-mer-based min-set-cov approach effectively selects
+reference genomes for metagenome read mapping.</p>
+<p>For mock metagenomes (Figure <a href="#fig:mapping">5</a> (A) and (B)), there is a
+close correspondence between mapping and k-mer assignment rates, while
+for actual metagenomes, mapping assignment rains tend to be more
+higher. This may be because the mock metagenomes are largely
+constructed from strains with known genomes, so most 31-mers match
+exactly; while the gut and oil well metagenomes contain a number of
+strains where only the species is present in the database, and so
+exact k-mer matching is less forgiving than mapping. Further work is
+needed to evaluate rates of variation across a larger number of
+metagenomes.</p>
 <!--
 (belongs in discussion)
 This suggests that metagenome reads are being mapped to different
@@ -620,16 +627,16 @@ usually map one way or another.)
 -->
 <div id="fig:mapping" class="fignos">
 <figure>
-<img src="images/gather-podar.svg" alt="Figure 5: Hash-based k-mer decomposition of a metagenome into constituent genomes compares well to bases covered by read mapping. Plots for each of four metagenomes showing estimated k-mer overlap per genome, along with bases covered by read mapping. The reference genomes are rank ordered along the x axis (as in the y axis for Figure 2), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing. The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled. Decreases in mapping (peaks in blue lines) occur for genomes which are not exact matches to the genomes of the organisms used to build the mock community; for example, in plot (a), the peak at rank 33 of podar mock is for S. baltica OS185, and represents reads that were preferentially mapped to S. baltica OS223, rank 8." /><figcaption aria-hidden="true"><span>Figure 5:</span> <strong>Hash-based k-mer decomposition of a metagenome into constituent
+<img src="images/gather-podar.svg" alt="Figure 5: Hash-based k-mer decomposition of a metagenome into constituent genomes compares well to bases covered by read mapping. Plots for each of four metagenomes showing estimated k-mer overlap per genome, along with bases covered by read mapping. The reference genomes are rank ordered along the x axis (as in the y axis for Figure 2), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing. The y axis shows estimated number of k-mers classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled. Decreases in mapping (peaks in blue lines) occur for genomes which are not exact matches to the genomes of the organisms used to build the mock community; for example, in (A), the peak at rank 33 of podar mock is for S. baltica OS185, and represents reads that were preferentially mapped to S. baltica OS223, rank 8." /><figcaption aria-hidden="true"><span>Figure 5:</span> <strong>Hash-based k-mer decomposition of a metagenome into constituent
 genomes compares well to bases covered by read mapping.</strong>
 Plots for each of four metagenomes showing estimated k-mer overlap per
 genome, along
 with bases covered by read mapping.
 The reference genomes are rank ordered along the x axis (as in the y axis for Figure <a href="#fig:gather0">2</a>), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
-The y axis shows number of hashes (k-mers) classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
+The y axis shows estimated number of k-mers classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
 Decreases in mapping (peaks in blue lines) occur for genomes which are not
 exact matches to the genomes of the organisms used to build the mock
-community; for example, in plot (a), the peak at rank 33 of <code>podar mock</code> is for <em>S. baltica OS185</em>, and represents reads
+community; for example, in (A), the peak at rank 33 of <code>podar mock</code> is for <em>S. baltica OS185</em>, and represents reads
 that were preferentially mapped to <em>S. baltica OS223</em>, rank 8.</figcaption>
 </figure>
 </div>
@@ -765,6 +772,13 @@ other current approaches and has several additional conveniences
 (discussed in detail below). The comparison of hash-based estimation
 of containment to mapping results in Figure <a href="#fig:mapping">5</a> suggests that
 this approach is an accurate proxy for systematic mapping.</p>
+<p>There is one significant drawback to assigning minimum metagenome
+covers based on k-mers: because k-mers are not a perfect proxy for
+mapping (see Figure <a href="#fig:mapping">5</a>, blue lines), using k-mers to
+identify the best genome for <em>mapping</em> may sometimes lead to
+inaccurate assignments. The extent and impact of this kind of false
+negative remains to be evaluated but is likely to only affect strain-
+and species-level assignments.</p>
 <p>Our implementation of the min-set-cov algorithm in sourmash also
 readily supports using custom reference databases as well as updating
 minimum metagenome covers with the addition of new reference genomes. When
@@ -808,6 +822,10 @@ databases, it is straightforward to support taxonomic analysis using
 potentially useful for projects that are generating many new genomes
 and wish to use them for metagenome analysis. sourmash natively
 supports this functionality.</p>
+<p>Our current implementation of taxonomic assignment in sourmash does not
+provide read-level assignment. However, it is a straightforward (if
+computationally expensive) exercise to use the read mapping approach
+developed in this paper to provide read-level taxonomic assignment.</p>
 <!--
 ## Simple algorithms support performant implementations
 
