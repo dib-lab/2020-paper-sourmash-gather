@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +85,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/ee0575bc2f2aa232fd7d96b2b05def2423d541ba/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@ee0575b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ee0575bc2f2aa232fd7d96b2b05def2423d541ba)
+from [dib-lab/2020-paper-sourmash-gather@25126c7](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/25126c7623662872ca85486390d77c3a2a28dfc1)
 on December 29, 2021.
 </em></small>
 
@@ -615,13 +615,12 @@ that the k-mer-based min-set-cov approach effectively selects
 reference genomes for metagenome read mapping.
 
 For mock metagenomes (Figure @fig:mapping (A) and (B)), there is a
-close correspondence between mapping and k-mer assignment rates, while
-for actual metagenomes, mapping assignment rains tend to be more
-higher. This may be because the mock metagenomes are largely
+close correspondence between mapping and k-mer coverage, while
+for real metagenomes (Figure @fig:mapping (C) and (D)), mapping coverage tends to be higher. This may be because the mock metagenomes are largely
 constructed from strains with known genomes, so most 31-mers match
-exactly; while the gut and oil well metagenomes contain a number of
+exactly, while the gut and oil well metagenomes contain a number of
 strains where only the species is present in the database, and so
-exact k-mer matching is less forgiving than mapping.  Further work is
+mapping performs better.  Further work is
 needed to evaluate rates of variation across a larger number of
 metagenomes.
 
