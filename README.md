@@ -1,4 +1,4 @@
-# Lightweight compositional analysis of metagenomes with sourmash gather
+# Lightweight compositional analysis of metagenomes with minimum metagenome covers
 
 <!-- usage note: edit the H1 title above to personalize the manuscript -->
 

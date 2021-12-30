@@ -1,5 +1,5 @@
 ---
-title: "Lightweight compositional analysis of metagenomes with sourmash gather"
+title: "Lightweight compositional analysis of metagenomes with minimum metagenome covers"
 keywords:
   - k-mers
   - MinHash
@@ -17,7 +17,7 @@ authors:
       - Department of Population Health and Reproduction, UC Davis
     funders:
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
-      - CTB: R01
+      - CTB R01
   - github: brooksph
     name: Phillip T. Brooks
     initials: PTB
@@ -50,7 +50,7 @@ authors:
     funders:
       - NSF 1711984
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
-      - CTB: NSF Genomerxiv      
+      - CTB NSF Genomerxiv      
   - github: dkoslicki
     name: David Koslicki
     initials: DK
@@ -67,5 +67,5 @@ authors:
       - Department of Population Health and Reproduction, UC Davis
     funders:
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
-      - CTB: NIH R01
-      - CTB: NSF Genomerxiv
+      - CTB NIH R01
+      - CTB NSF Genomerxiv
