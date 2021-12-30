@@ -28,7 +28,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-genbank
+GenBank
 Genomerxiv
 genomic
 GTDB
@@ -81,6 +81,7 @@ scalable
 seqtk
 Shewanella
 snakemake
+softare
 sourmash
 SRA
 SRR

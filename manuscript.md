@@ -1,11 +1,11 @@
 ---
-title: Lightweight compositional analysis of metagenomes with sourmash gather
+title: Lightweight compositional analysis of metagenomes with minimum metagenome covers
 keywords:
 - k-mers
 - MinHash
 - CTB
 lang: en-US
-date-meta: '2021-12-29'
+date-meta: '2021-12-30'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -19,12 +19,12 @@ header-includes: |-
   Suggest improvements at https://github.com/manubot/manubot/blob/main/manubot/process/header-includes-template.html
   -->
   <meta name="dc.format" content="text/html" />
-  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with sourmash gather" />
-  <meta name="dc.date" content="2021-12-29" />
-  <meta name="citation_publication_date" content="2021-12-29" />
+  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
+  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
+  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
+  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
+  <meta name="dc.date" content="2021-12-30" />
+  <meta name="citation_publication_date" content="2021-12-30" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,10 +85,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/25126c7623662872ca85486390d77c3a2a28dfc1/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@25126c7](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/25126c7623662872ca85486390d77c3a2a28dfc1)
-on December 29, 2021.
+from [dib-lab/2020-paper-sourmash-gather@d8dada1](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d8dada128303da79308fa3e31aae2057dbfd8486)
+on December 30, 2021.
 </em></small>
 
 ## Authors
@@ -104,7 +104,7 @@ on December 29, 2021.
     [luizirber](https://twitter.com/luizirber)<br>
   <small>
      Graduate Group in Computer Science, UC Davis; Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; {'CTB': 'R01'}
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB R01
   </small>
 
 + **Phillip T. Brooks**<br>
@@ -140,7 +140,7 @@ on December 29, 2021.
     [saltyscientist](https://twitter.com/saltyscientist)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
-     · Funded by NSF 1711984; Grant GBMF4551 from the Gordon and Betty Moore Foundation; {'CTB': 'NSF Genomerxiv'}
+     · Funded by NSF 1711984; Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB NSF Genomerxiv
   </small>
 
 + **David Koslicki**<br>
@@ -159,7 +159,7 @@ on December 29, 2021.
     [ctb](https://github.com/ctb)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; {'CTB': 'NIH R01'}; {'CTB': 'NSF Genomerxiv'}
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB NIH R01; CTB NSF Genomerxiv
   </small>
 
 
@@ -293,12 +293,13 @@ operations on the sketches, including iterative downsampling of FracMinHash sket
 
 ## A FracMinHash implementation accurately estimates containment between sets of different sizes
 
-We compare the FracMinHash method to CMash (_Containment
-MinHash_) [@doi:10.1101/184150] and Mash Screen (_Containment Score_)
-[@doi:10.1186/s13059-019-1841-x] for containment queries in data from a
-mock bacterial and archaeal community where the
-reference genomes are largely known [@doi:10.1111/1462-2920.12086].
-This data set has been used in several methods evaluations
+We compare the FracMinHash method, implemented in the sourmash softare
+[@doi:10.21105/joss.00027], to CMash (_Containment MinHash_)
+[@doi:10.1101/184150] and Mash Screen (_Containment Score_)
+[@doi:10.1186/s13059-019-1841-x] for containment queries in data from
+a mock bacterial and archaeal community where the reference genomes
+are largely known [@doi:10.1111/1462-2920.12086].  This data set has
+been used in several methods evaluations
 [@doi:10.1093/bioinformatics/btu395;@doi:10.1101/gr.213959.116;@doi:10.1101/155358;@doi:10.1186/s13059-019-1841-x].
 
 ![
@@ -306,7 +307,7 @@ This data set has been used in several methods evaluations
 differences from containment estimate to ground truth (exact).**
 Each method is evaluated for $k=\{21,31,51\}$,
 except for `Mash` with $k=51$, which is unsupported.
-](images/containment.svg "Containment estimation between FracMinHash, CMash, and mash screen"){#fig:containment}
+](images/containment.svg "Containment estimation between sourmash, CMash, and mash screen"){#fig:containment}
 
 Figure @fig:containment shows containment analysis of genomes in this metagenome, with low-coverage and
 contaminant genomes (as described in [@doi:10.1101/155358] and
@@ -315,10 +316,8 @@ All methods are within 1\% of the exact containment on average (Figure
 @fig:containment), with `CMash` consistently underestimating
 the containment for large $k$ and overestimating for small $k$.  `Mash
 Screen` with $n=10000$ has the smallest difference to ground truth for
-$k=\{21, 31\}$, followed by `FracMinHash` with `scaled=1000` and `Mash
+$k=\{21, 31\}$, followed by `sourmash` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
-
-<!-- CTB: switch caption to use sourmash; update description to reference sourmash. Rescale figure. -->
 
 ## We can use FracMinHash to construct a minimum set cover for metagenomes
 
@@ -353,8 +352,7 @@ the algorithm itself.
 
 In Figure @fig:gather0, we show an example of this iterative
 classification of k-mers by matching GenBank genome for the mock metagenome from 
-[@doi:10.1111/1462-2920.12086], which we term `podar mock` (see
-Table @tbl:genbank-cover, row 2). The matching genomes are provided
+[@doi:10.1111/1462-2920.12086], `podar mock` (Table @tbl:genbank-cover, row 2). The matching genomes are provided
 in the order found by the greedy algorithm, i.e. by overlap with remaining k-mers in the metagenome.
 The
 high rank (early) matches reflect large and/or mostly-covered genomes
@@ -419,7 +417,6 @@ and 549 species.
 with 91.8 genomes present on each sample on average.
 Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
-(CTB: check citations / content of latest actual CAMI pub, https://www.biorxiv.org/content/10.1101/2021.07.12.451567v1)
 
 Since min-set-cov yields only a collection of genomes, it must be
 converted into a taxonomy for benchmarking with CAMI.
@@ -813,11 +810,16 @@ this approach is an accurate proxy for systematic mapping.
 
 There is one significant drawback to assigning minimum metagenome
 covers based on k-mers: because k-mers are not a perfect proxy for
-mapping (see Figure @fig:mapping, blue lines), using k-mers to
+mapping (e.g. see Figure @fig:mapping, blue lines), using k-mers to
 identify the best genome for *mapping* may sometimes lead to
-inaccurate assignments. The extent and impact of this kind of false
-negative remains to be evaluated but is likely to only affect strain-
-and species-level assignments.
+inaccurate assignments. Note that long k-mers are generally more
+stringent and specific than mapping, so e.g. 51-mer overlaps can be
+used to identify candidate genomes for mapping, but not all candidate
+genomes will be found using 51-mer overlaps.  The extent and impact of
+this kind of false negative in the min-set-cov approach remains to be
+evaluated but is likely to only affect strain- and species-level
+assignments, since nucleotide similarity measures lose sensitivity
+across more distant taxonomic ranks [@doi:10.1128/mSystems.00020-16].
 
 Our implementation of the min-set-cov algorithm in sourmash also
 readily supports using custom reference databases as well as updating
@@ -834,12 +836,15 @@ approach.
 
 ## Minimum metagenome covers support accurate and flexible taxonomic assignment
 
-We can build a taxonomic classifier on top of minimum metagenome covers
-by reporting the taxonomies of the constituent genomes,
+We can build a taxonomic classifier on top of minimum metagenome
+covers by reporting the taxonomies of the constituent genomes,
 weighted by distinct overlap and aggregated at the relevant taxonomic
-level using an LCA approach.  Our CAMI-based taxonomic benchmarking shows
-that this approach is competitive for all metrics across all taxonomic
-levels (Figures @fig:spider and @fig:scores).
+level using an LCA approach.  Our CAMI-based taxonomic benchmarking
+shows that this approach is competitive with extant approaches for all
+metrics across all taxonomic levels (Figures @fig:spider and
+@fig:scores). This accuracy also suggests that minimum metagenome covers
+themselves are likely to be accurate, since choosing the
+correct set of genomes is required for accurate taxonomic assignment.
 
 One convenient feature of this approach to taxonomic analysis is that
 new or changed taxonomies can be readily incorporated by assigning
@@ -872,7 +877,8 @@ supports this functionality.
 Our current implementation of taxonomic assignment in sourmash does not
 provide read-level assignment. However, it is a straightforward (if
 computationally expensive) exercise to use the read mapping approach
-developed in this paper to provide read-level taxonomic assignment.
+developed in this paper to provide read-level taxonomic assignment along
+with genome abundance estimation.
 
 <!--
 ## Simple algorithms support performant implementations
