@@ -10,7 +10,7 @@ doi:10.1093/bib/bbx120	doi:10.1093/bib/bbx120	doi:10.1093/bib/bbx120	wXphq8MN
 biobakery3	doi:10.7554/eLife.65088	doi:10.7554/elife.65088	wfjpVLUe
 meganlr	doi:10.1186/s13062-018-0208-7	doi:10.1186/s13062-018-0208-7	1Ch2YQf42
 mmseqs2	doi:10.1093/bioinformatics/btab184	doi:10.1093/bioinformatics/btab184	ZeDGX6j5
-eggnog	doi:10.1093/nar/gky1085]	doi:10.1093/nar/gky1085]	xmdBQsY3
+eggnog	doi:10.1093/nar/gky1085	doi:10.1093/nar/gky1085	MqG4Noz7
 kraken2	doi:10.1186/s13059-019-1891-0	doi:10.1186/s13059-019-1891-0	wfp4mBcT
 kaiju	doi:10.1038/ncomms11257	doi:10.1038/ncomms11257	P2zJQDwU
 ganon	doi:10.1093/bioinformatics/btaa458	doi:10.1093/bioinformatics/btaa458	RXtzuNS6
@@ -63,8 +63,7 @@ url:https://dx.doi.org/10.5281/zenodo.5792144	url:https://dx.doi.org/10.5281/zen
 doi:10.1109/MCSE.2007.55	doi:10.1109/MCSE.2007.55	doi:10.1109/mcse.2007.55	1026Gxdsi
 url:https://dx.doi.org/10.3233/978-1-61499-649-1-87	url:https://dx.doi.org/10.3233/978-1-61499-649-1-87	url:https://dx.doi.org/10.3233/978-1-61499-649-1-87	DkIBfLeK
 doi:10.1038/s41586-020-2649-2	doi:10.1038/s41586-020-2649-2	doi:10.1038/s41586-020-2649-2	1LexfAxj
-doi:10.5281/zenodo.3509134	doi:10.5281/zenodo.3509134	doi:10.5281/zenodo.3509134	2z2qDwzz
-doi:doi.org/10.1111/biom.13474	doi:doi.org/10.1111/biom.13474	doi:doi.org/10.1111/biom.13474	1A4GWgC1D
+url:https://dx.doi.org/10.5281/zenodo.3509134	url:https://dx.doi.org/10.5281/zenodo.3509134	url:https://dx.doi.org/10.5281/zenodo.3509134	xjE4KaFA
 doi:10.1093/bioinformatics/btp352	doi:10.1093/bioinformatics/btp352	doi:10.1093/bioinformatics/btp352	IPc8cy7s
 doi:10.1093/bioinformatics/btq033	doi:10.1093/bioinformatics/btq033	doi:10.1093/bioinformatics/btq033	1HWiAHnIw
 doi:10.1093/bioinformatics/bty560	doi:10.1093/bioinformatics/bty560	doi:10.1093/bioinformatics/bty560	pt9vlq4w
@@ -74,4 +73,4 @@ url:https://github.com/lh3/seqtk	url:https://github.com/lh3/seqtk	url:https://gi
 url:https://github.com/ncbi/sra-tools	url:https://github.com/ncbi/sra-tools	url:https://github.com/ncbi/sra-tools	PcQSCqic
 url:https://docs.anaconda.com	url:https://docs.anaconda.com	url:https://docs.anaconda.com	Ht6yPhIB
 doi:10.1038/s41592-018-0046-7	doi:10.1038/s41592-018-0046-7	doi:10.1038/s41592-018-0046-7	sYguBb3Q
-doi:10.5281/zenodo.5793387	doi:10.5281/zenodo.5793387	doi:10.5281/zenodo.5793387	30WeYloD
+url:https://dx.doi.org/10.5281/zenodo.5793387	url:https://dx.doi.org/10.5281/zenodo.5793387	url:https://dx.doi.org/10.5281/zenodo.5793387	hf9TkDeF

@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c4a2c4b84d9ec8e9db4ee20ddf4c73f95c964e4c/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c4a2c4b84d9ec8e9db4ee20ddf4c73f95c964e4c/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c4a2c4b84d9ec8e9db4ee20ddf4c73f95c964e4c/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +85,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c4a2c4b84d9ec8e9db4ee20ddf4c73f95c964e4c/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@c4a2c4b](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c4a2c4b84d9ec8e9db4ee20ddf4c73f95c964e4c)
+from [dib-lab/2020-paper-sourmash-gather@bb929a1](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bb929a1dcabb2ea33f39a13a24768872d0103521)
 on January 1, 2022.
 </em></small>
 
@@ -185,7 +185,7 @@ its accuracy for taxonomic assignment using a CAMI community benchmark.
 Finally, we show that the minimum metagenome cover can be used to guide the
 select of reference genomes for read mapping.
 sourmash is available as open source under the
-BSD 3-Clause license at github.com/dib-lab/sourmash/.
+BSD 3-Clause license at [github.com/dib-lab/sourmash/](https://github.com/dib-lab/sourmash/).
 
 
 # Introduction
@@ -542,7 +542,7 @@ to eliminate genomes with only small overlaps (see Methods).
 | `gut real` | 96,423     | 99     | 36.0% |
 | `oil well real` | 1235 | 135 | 14.9% |
 
-Table: Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank. Overlap and % k-mers are estimated from FracMinHash sketch size. {#tbl:genbank-cover}
+Table: Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank. Overlap and % k-mers identified are estimated from FracMinHash sketch size. {#tbl:genbank-cover}
 
 In Table @tbl:genbank-cover, we show the minimum metagenome cover
 for four metagenomes against GenBank - two mock communities 
@@ -582,7 +582,7 @@ of the sample is not represented in the database.
 
 Mapping metagenome reads to representative genomes is an important
 step in many microbiome analysis pipelines, but mapping approaches
-struggle with large, redundant databases [@ganon, @metalign].  One specific use for a minimum
+struggle with large, redundant databases [@ganon;@metalign].  One specific use for a minimum
 metagenome cover could be to select a small set of representative genomes
 for mapping.  We therefore developed a hybrid selection and
 mapping pipeline that uses the rank-ordered min-set-cov results to
@@ -646,7 +646,7 @@ usually map one way or another.)
 genomes compares well to bases covered by read mapping.** 
 Plots for each of four metagenomes showing estimated k-mer overlap per
 genome, along
-with bases covered by read mapping.
+with bases covered by read mapping, for the first 36 genomes in the minimum metagenome cover.
 The reference genomes are rank ordered along the X axis (as in the Y axis for Figure @fig:gather0), based on the largest number of hashes from the metagenome specific to that genome; hence the number of hashes classified for each genome (red circles) is monotonically decreasing.
 The Y axis shows estimated number of k-mers classified to this genome (red circles) or total number of bases in the reference covered by mapped reads (blue stars); the numbers have not been rescaled.
 Decreases in mapping (peaks in blue lines) occur for genomes which are not
@@ -821,8 +821,8 @@ mapping (e.g. see Figure @fig:mapping, blue lines), using k-mers to
 identify the best genome for *mapping* may sometimes lead to
 inaccurate assignments. Note that long k-mers are generally more
 stringent and specific than mapping, so e.g. 51-mer overlaps can be
-used to identify candidate genomes for mapping, but not all candidate
-genomes will be found using 51-mer overlaps.  The extent and impact of
+used to identify *some* candidate genomes for mapping, but not *all* candidate
+genomes will necessarily be found using 51-mer overlaps.  The extent and impact of
 this kind of false negative in the min-set-cov approach remains to be
 evaluated but is likely to only affect strain- and species-level
 assignments, since nucleotide similarity measures lose sensitivity
@@ -833,7 +833,7 @@ readily supports using custom reference databases as well as updating
 minimum metagenome covers with the addition of new reference genomes. When
 updating metagenome covers with new reference genomes, the first stage of
 calculating overlaps can be updated with the new genomes (column 2 of
-Table @tbl:genbank-cover), while the actual calculation a the *minimum*
+Table @tbl:genbank-cover), while the actual calculation of a *minimum*
 set cover must be redone each time.
 
 Minimum set cover approaches may provide opportunities beyond those
@@ -846,17 +846,17 @@ approach.
 We can build a taxonomic classifier on top of minimum metagenome
 covers by reporting the taxonomies of the constituent genomes,
 weighted by distinct overlap and aggregated at the relevant taxonomic
-level using an LCA approach.  Our CAMI-based taxonomic benchmarking
+levels using an LCA approach.  Our CAMI-based taxonomic benchmarking
 shows that this approach is competitive with several extant approaches for all
 metrics across all taxonomic levels (Figures @fig:spider and
-@fig:scores). This accuracy also suggests that minimum metagenome covers
-themselves are likely to be accurate, since choosing the
-correct set of genomes is required for accurate taxonomic assignment.
+@fig:scores). This taxonomic accuracy also suggests that minimum metagenome covers
+themselves are likely to be accurate, since the taxonomic assignment is
+built solely on the metagenome cover.
 
 One convenient feature of this approach to taxonomic analysis is that
 new or changed taxonomies can be readily incorporated by assigning
 them directly to genome identifiers; the majority of the computational
-work is involved in finding the reference genomes, which can have
+work here is involved in finding the reference genomes, which can have
 assignments in multiple taxonomic frameworks. For example, sourmash
 already supports GTDB [@doi:10.1093/nar/gkab776] natively, and will
 also support the emerging LINS framework
@@ -1182,7 +1182,7 @@ Overlapping sketches were saved with `--save-prefetch`
 and matches were saved with `--save-matches`.
 
 The GenBank database used is 24 GB in size and is available for download
-through the sourmash project, [@url:https://sourmash.bio].
+through the sourmash project [@url:https://sourmash.bio].
 
 <!-- CTB: include performance information. -->
 
@@ -1215,27 +1215,31 @@ We used genome-grist v0.7.4
 results in this paper; see `conf-paper.yml` in the pipeline
 repository.
 
-genome-grist relies on matplotlib [@doi:10.1109/MCSE.2007.55],
-Jupyter Notebook [@url:https://dx.doi.org/10.3233/978-1-61499-649-1-87],
-numpy [@doi:10.1038/s41586-020-2649-2], pandas [@doi:10.5281/zenodo.3509134],
-papermill, plotly [@doi:doi.org/10.1111/biom.13474],
-samtools [@doi:10.1093/bioinformatics/btp352],
-bedtools [@doi:10.1093/bioinformatics/btq033],
-fastp [@doi:10.1093/bioinformatics/bty560],
-khmer [@doi:10.21105/joss.00272],
-screed [@url:https://screed.readthedocs.io], 
-seqtk [@url:https://github.com/lh3/seqtk],
-and sra-tools [@url:https://github.com/ncbi/sra-tools].
-These tools are all installed and managed in snakemake via
-conda [@url:https://docs.anaconda.com]
-and bioconda [@doi:10.1038/s41592-018-0046-7].
+genome-grist relies on matplotlib [@doi:10.1109/MCSE.2007.55], Jupyter
+Notebook [@url:https://dx.doi.org/10.3233/978-1-61499-649-1-87], numpy
+[@doi:10.1038/s41586-020-2649-2], pandas
+[@url:https://dx.doi.org/10.5281/zenodo.3509134], papermill, samtools
+[@doi:10.1093/bioinformatics/btp352], bedtools
+[@doi:10.1093/bioinformatics/btq033], fastp
+[@doi:10.1093/bioinformatics/bty560], khmer
+[@doi:10.21105/joss.00272], screed
+[@url:https://screed.readthedocs.io], seqtk
+[@url:https://github.com/lh3/seqtk], and sra-tools
+[@url:https://github.com/ncbi/sra-tools].  These tools are all
+installed and managed in snakemake via conda
+[@url:https://docs.anaconda.com] and bioconda
+[@doi:10.1038/s41592-018-0046-7].  genome-grist itself is developed under
+the BSD 3-clause open source license, and is available at
+[github.com/dib-lab/genome-grist/](https://github.com/dib-lab/genome-grist/).
 
 ## Intermediate data products and figure generation
 
 All figures were generated using the Jupyter Notebooks from v0.1 of
-the github.com/dib-lab/2021-paper-sourmash-gather-pipeline repository
-[@doi:10.5281/zenodo.5793387]. This repository also contains the
-intermediate data products necessary for figure generation.
+the
+[github.com/dib-lab/2021-paper-sourmash-gather-pipeline](github.com/dib-lab/2021-paper-sourmash-gather-pipeline)
+repository [@url:https://dx.doi.org/10.5281/zenodo.5793387]. This
+repository also contains the intermediate data products necessary for
+figure generation.
 
 ## Metagenome data set accessions
 
@@ -1260,7 +1264,7 @@ The accessions for the metagenome data sets in Table
 
 [@mmseqs2]: doi:10.1093/bioinformatics/btab184
 
-[@eggnog]: doi:10.1093/nar/gky1085]
+[@eggnog]: doi:10.1093/nar/gky1085
 
 [@kraken2]: doi:10.1186/s13059-019-1891-0
 

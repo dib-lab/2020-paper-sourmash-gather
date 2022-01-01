@@ -19,7 +19,7 @@ compositional
 conda
 contig
 cov
-CTB
+ctb
 dataset
 datasets
 dkoslicki
@@ -29,7 +29,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-genbank
+GenBank
 Genomerxiv
 genomic
 GTDB
@@ -71,7 +71,6 @@ notational
 numpy
 PacBio
 papermill
-plotly
 Reiter
 ReiterTaylor
 reproducibly
@@ -84,7 +83,7 @@ seqtk
 Shewanella
 snakemake
 sourmash
-sra
+SRA
 SRR
 suboptimal
 subsampled
