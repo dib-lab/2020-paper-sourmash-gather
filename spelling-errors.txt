@@ -19,10 +19,11 @@ compositional
 conda
 contig
 cov
-ctb
+CTB
 dataset
 datasets
 dkoslicki
+DMS
 downsampling
 eukaryotic
 fastp
@@ -56,7 +57,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-metalign
+Metalign
 microbiome
 microbiomes
 mincode

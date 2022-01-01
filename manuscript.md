@@ -50,7 +50,7 @@ header-includes: |-
   <meta name="citation_author_orcid" content="0000-0002-2942-5331" />
   <meta name="twitter:creator" content="@saltyscientist" />
   <meta name="citation_author" content="David Koslicki" />
-  <meta name="citation_author_institution" content="Computer Science and Engineering, Pennsylvania State University" />
+  <meta name="citation_author_institution" content="Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University" />
   <meta name="citation_author_orcid" content="0000-0002-0640-954X" />
   <meta name="citation_author" content="C. Titus Brown" />
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +85,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb929a1dcabb2ea33f39a13a24768872d0103521/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@bb929a1](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bb929a1dcabb2ea33f39a13a24768872d0103521)
+from [dib-lab/2020-paper-sourmash-gather@55f20be](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/55f20bebd767f97c867776ee8338015092f1e697)
 on January 1, 2022.
 </em></small>
 
@@ -149,7 +149,8 @@ on January 1, 2022.
     · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
     [dkoslicki](https://github.com/dkoslicki)<br>
   <small>
-     Computer Science and Engineering, Pennsylvania State University
+     Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University
+     · Funded by NSF DMS-1664803
   </small>
 
 + **C. Titus Brown**<br>
@@ -166,26 +167,24 @@ on January 1, 2022.
 
 ## Abstract {.page_break_before}
 
-The assignment of reference genomes and taxonomy to metagenome data underlies
-many microbiome studies. Here we describe two algorithms for
-compositional analysis of metagenome sequencing data. We first investigate
-the FracMinHash sketching technique, a derivative of modulo hash that
-supports Jaccard containment estimation between sets of different size.
-We implement FracMinHash in the sourmash software, evaluate its
-accuracy, and demonstrate
-large-scale containment searches of metagenomes using 700,000
-microbial reference genomes.
-We next frame shotgun
-metagenome compositional analysis as the problem of finding a minimum
-collection of reference genomes that "cover" the known k-mers in a metagenome,
-a minimum set cover problem.
-We implement a greedy
-approximate solution using  FracMinHash sketches, and evaluate
-its accuracy for taxonomic assignment using a CAMI community benchmark.
-Finally, we show that the minimum metagenome cover can be used to guide the
-select of reference genomes for read mapping.
-sourmash is available as open source under the
-BSD 3-Clause license at [github.com/dib-lab/sourmash/](https://github.com/dib-lab/sourmash/).
+The identification of reference genomes and taxonomic labels from
+metagenome data underlies many microbiome studies. Here we describe
+two algorithms for compositional analysis of metagenome sequencing
+data. We first investigate the FracMinHash sketching technique, a
+derivative of modulo hash that supports Jaccard containment estimation
+between sets of different size.  We implement FracMinHash in the
+sourmash software, evaluate its accuracy, and demonstrate large-scale
+containment searches of metagenomes using 700,000 microbial reference
+genomes.  We next frame shotgun metagenome compositional analysis as
+the problem of finding a minimum collection of reference genomes that
+"cover" the known k-mers in a metagenome, a minimum set cover problem.
+We implement a greedy approximate solution using FracMinHash sketches,
+and evaluate its accuracy for taxonomic assignment using a CAMI
+community benchmark.  Finally, we show that the minimum metagenome
+cover can be used to guide the select of reference genomes for read
+mapping.  sourmash is available as open source under the BSD 3-Clause
+license at
+[github.com/dib-lab/sourmash/](https://github.com/dib-lab/sourmash/).
 
 
 # Introduction
@@ -201,9 +200,9 @@ However, this characterization relies critically on the methods and
 databases used to interpret the sequencing data
 [@doi:10.1038/d41586-019-01654-0; @doi:10.1038/s41592-021-01141-3; @doi:10.1101/2021.07.12.451567; @doi:10.1093/bib/bbx120].
 
-Metagenome function and taxonomy is typically inferred from available
+Metagenome function and taxonomy are typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-[@biobakery3;@meganlr], large-scale protein search [@mmseqs2;@eggnog],
+[@biobakery3;@meganlr], large-scale protein search [@mmseqs2;@motu2;@eggnog],
 or k-mer matches [@kraken2;@kaiju].  For many of these methods, the
 substantial increase in the number of available microbial reference
 genomes (1.1m in GenBank as of November 2021) presents a significant
@@ -295,7 +294,7 @@ operations on the sketches, including iterative downsampling of FracMinHash sket
 ## A FracMinHash implementation accurately estimates containment between sets of different sizes
 
 We compare the FracMinHash method, implemented in the sourmash
-software [@sourmash_joss], to CMash (_Containment MinHash_) [@cmash]
+software [@sourmash_joss], to _Containment MinHash_ [@cmash]
 and Mash Screen (_Containment Score_) [@mash_screen] for containment
 queries in data from the `podar mock` community, a mock bacterial and
 archaeal community where the reference genomes are largely known
@@ -315,7 +314,7 @@ contaminant genomes (as described in [@awad_podar] and
 [@mash_screen]) removed from the database.
 All methods are within 1\% of the exact containment on average (Figure
 @fig:containment), with `CMash` consistently underestimating
-the containment for large $k$ and overestimating for small $k$.  `Mash
+the containment.  `Mash
 Screen` with $n=10000$ has the smallest difference to ground truth for
 $k=\{21, 31\}$, followed by `sourmash` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
@@ -390,7 +389,7 @@ real but unknown community members.
 **K-mer decomposition of a metagenome into constituent genomes.**
 A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover
 of the `podar mock` synthetic metagenome [@shakya_podar],
-calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designated name of the
+calculated using 700,000 genomes from GenBank with scaled=2000, k=31. The Y axis is labeled with the NCBI-designated name of the
 genome.
 In the left plot, the X axis represents the estimated number of k-mers shared
 between each genome and the metagenome. The red circles indicate the number
@@ -447,7 +446,7 @@ Performance per method at all major taxonomic ranks, with the shaded bands showi
 -->
 
 ![
-Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks.  For score calculation, all metrics were weighted equally.
+Methods rankings and scores obtained for the different metrics over all samples and taxonomic ranks.  For score calculation, all metrics were weighted equally. A scaled value of 2000 and a k-mer size of 31 was used.
 ](images/scores.svg){#fig:scores}
 
 
@@ -535,14 +534,14 @@ containment, and used an overlap threshold of 100,000 k-mers in order
 to eliminate genomes with only small overlaps (see Methods).
 -->
 
-| data set | genomes >= 100k overlap | min-set-cov | % k-mers identified |
+| data set | genomes >= 100k overlap | min-set-cov | % 31-mers identified |
 | -------- | -------- | -------- | ------- | 
 | `zymo mock` | 405,839 | 19 | 47.1% |
 | `podar mock` | 5800 | 74 | 54.8% |
 | `gut real` | 96,423     | 99     | 36.0% |
 | `oil well real` | 1235 | 135 | 14.9% |
 
-Table: Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank. Overlap and % k-mers identified are estimated from FracMinHash sketch size. {#tbl:genbank-cover}
+Table: Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank, with scaled=2000 and k=31. Overlap and % 31-mers identified are estimated from FracMinHash sketch size. {#tbl:genbank-cover}
 
 In Table @tbl:genbank-cover, we show the minimum metagenome cover
 for four metagenomes against GenBank - two mock communities 
@@ -1299,6 +1298,8 @@ The accessions for the metagenome data sets in Table
 [@cami_tutorial]: doi:10.1038/s41596-020-00480-3
 
 [@luiz_thesis]: url:http://dx.doi.org/10.5281/zenodo.4057151
+
+[@motu2]: doi:10.1038/s41467-019-08844-4
 
 
 ## References {.page_break_before}
