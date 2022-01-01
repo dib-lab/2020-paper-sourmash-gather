@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +85,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/55f20bebd767f97c867776ee8338015092f1e697/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@55f20be](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/55f20bebd767f97c867776ee8338015092f1e697)
+from [dib-lab/2020-paper-sourmash-gather@432a22e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/432a22eeb73f0d18ed43aed4919a6342562c2a6e)
 on January 1, 2022.
 </em></small>
 
@@ -318,6 +318,8 @@ the containment.  `Mash
 Screen` with $n=10000$ has the smallest difference to ground truth for
 $k=\{21, 31\}$, followed by `sourmash` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
+The sourmash sketch sizes varied between 431 hashes and 9540 hashes,
+with a median of 2741 hashes.
 
 <!-- CTB: discuss cmash consistently underestimating...-->
 

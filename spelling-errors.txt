@@ -19,7 +19,7 @@ compositional
 conda
 contig
 cov
-CTB
+ctb
 dataset
 datasets
 dkoslicki
@@ -30,7 +30,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-GenBank
+genbank
 Genomerxiv
 genomic
 GTDB
