@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/1073a6f96dedb2dbc0c24987695138c6ea9b7b70/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/1073a6f96dedb2dbc0c24987695138c6ea9b7b70/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/1073a6f96dedb2dbc0c24987695138c6ea9b7b70/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +85,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/1073a6f96dedb2dbc0c24987695138c6ea9b7b70/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@b28cd15](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/b28cd15e17a395bf81650ba5544fe226d7f3eac0)
+from [dib-lab/2020-paper-sourmash-gather@1073a6f](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/1073a6f96dedb2dbc0c24987695138c6ea9b7b70)
 on January 1, 2022.
 </em></small>
 
@@ -191,39 +191,37 @@ BSD 3-Clause license at github.com/dib-lab/sourmash/.
 # Introduction
 
 Shotgun DNA sequencing of microbial communities is an important
-technique for studying host-associated and environmental microbiomes 
-[@doi:10.1038/s41587-020-0718-6; @doi:10.1111/1462-2920.15314].
-By sampling the genomic content of microbial communities, shotgun
+technique for studying host-associated and environmental microbiomes
+[@doi:10.1038/s41587-020-0718-6; @doi:10.1111/1462-2920.15314].  By
+sampling the genomic content of microbial communities, shotgun
 metagenomics enables the taxonomic and functional characterization of
-microbiomes [@doi:10.1038/s41586-019-1238-8; @doi:10.1126/science.1261359]. 
-However, this characterization relies critically on the methods and 
-databases used to interpret the sequencing data 
-[@doi:10.1038/d41586-019-01654-0; @doi:10.1038/s41592-021-01141-3; 
-@doi:10.1101/2021.07.12.451567; @doi:10.1093/bib/bbx120].
+microbiomes
+[@doi:10.1038/s41586-019-1238-8; @doi:10.1126/science.1261359].
+However, this characterization relies critically on the methods and
+databases used to interpret the sequencing data
+[@doi:10.1038/d41586-019-01654-0; @doi:10.1038/s41592-021-01141-3; @doi:10.1101/2021.07.12.451567; @doi:10.1093/bib/bbx120].
 
 Metagenome function and taxonomy is typically inferred from available
 reference genomes and gene catalogs, via direct genomic alignment
-[@doi:10.7554/eLife.65088;@doi:10.1186/s13062-018-0208-7], large-scale
-protein search
-[@doi:10.1093/bioinformatics/btab184;@doi:10.1093/nar/gky1085], or
-k-mer matches
-[@doi:10.1186/s13059-019-1891-0;@doi:10.1038/ncomms11257].  For many
-of these methods, the substantial increase in the number of available
-microbial reference genomes (1.1m in GenBank as of November 2021)
-presents a significant practical obstacle to comprehensive
-compositional analyses, and most methods choose representative subsets
-of available genomic information to analyze; for example, bioBakery 3
-provides a database containing 99.2k reference genomes
-[@doi:10.7554/eLife.65088]. Scaling metagenome analysis approaches to
-make use of the rapidly increasing size of GenBank is an activate
-endeavor in the field [@ganon, @metalign].
+[@biobakery3;@meganlr], large-scale protein search [@mmseqs2;@eggnog],
+or k-mer matches [@kraken2;@kaiju].  For many of these methods, the
+substantial increase in the number of available microbial reference
+genomes (1.1m in GenBank as of November 2021) presents a significant
+practical obstacle to comprehensive compositional analyses, and most
+methods choose representative subsets of available genomic information
+to analyze; for example, bioBakery 3 provides a database containing
+99.2k reference genomes [@biobakery3].  Scaling metagenome analysis
+approaches to make use of the rapidly increasing size of GenBank is an
+active endeavor in the field [@ganon; @metalign].
 
 Here, we describe a lightweight and scalable approach to compositional
 analysis of shotgun metagenome data based on finding the minimum set
 of reference genomes that accounts for all known k-mers in a
-metagenome - a "minimum metagenome cover".  We use a mod-hash based sketching approach for k-mers to
-reduce memory requirements [@doi:10.1109/SEQUEN.1997.666900], and implement a polynomial-time greedy
-approximation algorithm for the minimum set cover analysis.
+metagenome - a "minimum metagenome cover".  We use a mod-hash based
+sketching approach for k-mers to reduce memory requirements
+[@broder_minhash], and implement a polynomial-time greedy
+approximation algorithm for the minimum set cover analysis
+[@polynomial_minsetcov].
 
 Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
@@ -255,12 +253,11 @@ $h(x)$ and $\frac{H}{s}$ is the *maximum hash value* allowed in the
 FracMinHash sketch.
 
 The FracMinHash is a mix of MinHash and ModHash
-[@doi:10.1186/s13059-016-0997-x; @doi:10.1109/SEQUEN.1997.666900].  It
-keeps the selection of the smallest elements from MinHash, while using
-the dynamic size from ModHash to allow containment estimation.
-However, instead of taking $0 \mod m$ elements like
-$\mathbf{MOD}_m(W)$, a FracMinHash uses the parameter $s$ to select a
-subset of $W$.
+[@mash; @broder_minhash].  It keeps the selection of the smallest
+elements from MinHash, while using the dynamic size from ModHash to
+allow containment estimation.  However, instead of taking $0 \mod m$
+elements like $\mathbf{MOD}_m(W)$, a FracMinHash uses the parameter
+$s$ to select a subset of $W$.
 
 Like ModHash (but not MinHash), FracMinHash supports estimation
 of the containment index:
@@ -297,15 +294,13 @@ operations on the sketches, including iterative downsampling of FracMinHash sket
 
 ## A FracMinHash implementation accurately estimates containment between sets of different sizes
 
-We compare the FracMinHash method, implemented in the sourmash softare
-[@doi:10.21105/joss.00027], to CMash (_Containment MinHash_)
-[@doi:10.1101/184150] and Mash Screen (_Containment Score_)
-[@doi:10.1186/s13059-019-1841-x] for containment queries in data from
-the `podar mock` community, a mock bacterial and archaeal community
-where the reference genomes are largely known
-[@doi:10.1111/1462-2920.12086]; see also Table @tbl:genbank-cover, row 2.
-This data set has been used in
-several methods evaluations
+We compare the FracMinHash method, implemented in the sourmash
+software [@sourmash_joss], to CMash (_Containment MinHash_) [@cmash]
+and Mash Screen (_Containment Score_) [@mash_screen] for containment
+queries in data from the `podar mock` community, a mock bacterial and
+archaeal community where the reference genomes are largely known
+[@shakya_podar]; see also Table @tbl:genbank-cover, row 2.  This data
+set has been used in several methods evaluations
 [@doi:10.1093/bioinformatics/btu395;@doi:10.1101/gr.213959.116;@doi:10.1101/155358;@doi:10.1186/s13059-019-1841-x].
 
 ![
@@ -316,8 +311,8 @@ except for `Mash` with $k=51$, which is unsupported.
 ](images/containment.svg "Containment estimation between sourmash, CMash, and mash screen"){#fig:containment}
 
 Figure @fig:containment shows containment analysis of genomes in this metagenome, with low-coverage and
-contaminant genomes (as described in [@doi:10.1101/155358] and
-[@doi:10.1186/s13059-016-0997-x]) removed from the database.
+contaminant genomes (as described in [@awad_podar] and
+[@mash_screen]) removed from the database.
 All methods are within 1\% of the exact containment on average (Figure
 @fig:containment), with `CMash` consistently underestimating
 the containment for large $k$ and overestimating for small $k$.  `Mash
@@ -341,7 +336,7 @@ $\{ G_n \}$ of genomes in $D$ such that, for the k-mer decomposition $k()$,
 $$ k(M) \cap k(D) = \bigcup_n \{ k(M) \cap k(G_n) \} $$
 
 This is a *minimum set covering* problem, for which there is a
-polynomial-time approximation [@doi:10.1007/978-0-387-30162-4_175]:
+polynomial-time approximation [@polynomial_minsetcov]:
 
 1. Initialize $C \leftarrow \emptyset$
 2. Define $f(C) = \vert \cup_{s \in C} \{ s \} \vert$
@@ -394,7 +389,7 @@ real but unknown community members.
 ![
 **K-mer decomposition of a metagenome into constituent genomes.**
 A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover
-of the `podar mock` synthetic metagenome [@doi:10.1111/1462-2920.12086],
+of the `podar mock` synthetic metagenome [@shakya_podar],
 calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designated name of the
 genome.
 In the left plot, the X axis represents the estimated number of k-mers shared
@@ -551,7 +546,7 @@ Table: Four metagenomes and the number of genomes in the estimated minimum metag
 
 In Table @tbl:genbank-cover, we show the minimum metagenome cover
 for four metagenomes against GenBank - two mock communities 
-[@https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards;@doi:10.1111/1462-2920.12086], a human gut microbiome data set
+[@https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards;@shakya_podar], a human gut microbiome data set
 from iHMP [@doi:10.1038/s41586-019-1238-8], and an oil well sample
 [@doi:10.1128/mBio.01669-15].  Our implementation provides estimates
 for both the *total* number of genomes with substantial overlap to a
@@ -695,7 +690,7 @@ containment analysis, while also supporting Jaccard similarity.
 
 We note that the FracMinHash technique has been used under a number of
 different names, including Scaled MinHash
-[@doi:10.12688/f1000research.19675.1;@doi:10.5281/zenodo.4057151],
+[@sourmash_f1000;@doi:10.5281/zenodo.4057151],
 universe minimizers [@doi:10.1016/j.cels.2021.08.009], Shasta
 markers [@doi:10.1038/s41587-020-0503-6], and mincode syncmers [@doi:10.7717/peerj.10805].  The name FracMinHash was
 coined by Kristoffer Sahlin in an online discussion on Twitter
@@ -728,12 +723,12 @@ post-processing and filtering without revisiting the original data
 set. This includes unions and intersections.  Although possible for
 MinHash, in practice this requires oversampling (using a larger $n$)
 to account for possibly having fewer than $n$ values after filtering,
-e.g. see the approach taken in Finch [@doi:10.21105/joss.00505].
+e.g. see the approach taken in Finch [@finch].
 
 When the multiplicity of hashes in the original data is retained,
 FracMinHash sketches can be filtered on abundance.  This allows
 removing low-abundance values, as implemented in Finch
-[@doi:10.21105/joss.00505].  Filtering values that only appear once
+[@finch].  Filtering values that only appear once
 was implemented in Mash by using a Bloom filter and only adding values
 after they were seen once; later versions also implemented an
 extra counter array to keep track of counts for each value in the
@@ -778,7 +773,7 @@ Notes from DK: do these belong in this section?
 Many metagenome content analysis approaches use reference genomes to
 interpret the metagenome content, but most such approaches rely on
 choosing a list of reduced-redundancy genomes from a much larger database
-(e.g. bioBakery 3 selects approximately 100,000 genomes [@doi:10.7554/eLife.65088]).  Here, we do this reduction automatically by searching the complete database for
+(e.g. bioBakery 3 selects approximately 100,000 genomes [@biobakery3]).  Here, we do this reduction automatically by searching the complete database for
 a *minimum* set of reference genomes necessary to account for all k-mers
 shared between the metagenome and the database. We show that
 this can be resolved efficiently for real-world data sets; implementing
@@ -828,7 +823,7 @@ genomes will be found using 51-mer overlaps.  The extent and impact of
 this kind of false negative in the min-set-cov approach remains to be
 evaluated but is likely to only affect strain- and species-level
 assignments, since nucleotide similarity measures lose sensitivity
-across more distant taxonomic ranks [@doi:10.1128/mSystems.00020-16].
+across more distant taxonomic ranks [@metapalette].
 
 Our implementation of the min-set-cov algorithm in sourmash also
 readily supports using custom reference databases as well as updating
@@ -924,7 +919,7 @@ reference are being utilized for matching at lower ranks. In reality,
 there will usually be a different mixture of strains in the metagenome
 than is present in the reference database. Methods for updating references from
 metagenome data sets may provide an opportunity for generating
-metagenome-specific references [@doi:10.1186/s13059-020-02066-4].
+metagenome-specific references [@spacegraphcats].
 
 The approach presented here chooses arbitrarily between
 matches with equivalent numbers of contained k-mers. There are specific
@@ -1253,6 +1248,42 @@ The accessions for the metagenome data sets in Table
 [@ganon]: doi:10.1093/bioinformatics/btaa458
 
 [@metalign]: doi:10.1186/s13059-020-02159-0
+
+[@biobakery3]: doi:10.7554/eLife.65088
+
+[@meganlr]: doi:10.1186/s13062-018-0208-7
+
+[@mmseqs2]: doi:10.1093/bioinformatics/btab184
+
+[@eggnog]: doi:10.1093/nar/gky1085]
+
+[@kraken2]: doi:10.1186/s13059-019-1891-0
+
+[@kaiju]: doi:10.1038/ncomms11257
+
+[@broder_minhash]: doi:10.1109/SEQUEN.1997.666900
+
+[@polynomial_minsetcov]: doi:10.1007/978-0-387-30162-4_175
+
+[@mash]: doi:10.1186/s13059-016-0997-x
+
+[@mash_screen]: doi:10.1186/s13059-019-1841-x
+
+[@sourmash_joss]: doi:10.21105/joss.00027
+
+[@sourmash_f1000]: doi:10.12688/f1000research.19675.1
+
+[@cmash]: doi:10.1101/184150
+
+[@shakya_podar]: doi:10.1111/1462-2920.12086
+
+[@awad_podar]: doi:10.1101/155358
+
+[@finch]: doi:10.21105/joss.00505
+
+[@metapalette]: doi:10.1128/mSystems.00020-16
+
+[@spacegraphcats]: doi:10.1186/s13059-020-02066-4
 
 
 ## References {.page_break_before}

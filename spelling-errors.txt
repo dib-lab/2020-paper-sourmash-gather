@@ -7,6 +7,7 @@ benchmarking
 bioBakery
 bioconda
 bluegenes
+broder
 brooksph
 CAMI
 CAMISIM
@@ -82,7 +83,6 @@ scalable
 seqtk
 Shewanella
 snakemake
-softare
 sourmash
 SRA
 SRR
