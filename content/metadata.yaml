@@ -57,7 +57,9 @@ authors:
     orcid: 0000-0002-0640-954X
     email: dmk333@psu.edu
     affiliations:
-      - Computer Science and Engineering, Pennsylvania State University
+      - Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University
+    funders:
+      - NSF DMS-1664803
   - github: ctb
     name: C. Titus Brown
     initials: CTB
