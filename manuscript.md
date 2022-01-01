@@ -5,7 +5,7 @@ keywords:
 - MinHash
 - CTB
 lang: en-US
-date-meta: '2021-12-30'
+date-meta: '2022-01-01'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -23,8 +23,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="dc.date" content="2021-12-30" />
-  <meta name="citation_publication_date" content="2021-12-30" />
+  <meta name="dc.date" content="2022-01-01" />
+  <meta name="citation_publication_date" content="2022-01-01" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,10 +85,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d8dada128303da79308fa3e31aae2057dbfd8486/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/b28cd15e17a395bf81650ba5544fe226d7f3eac0/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@d8dada1](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d8dada128303da79308fa3e31aae2057dbfd8486)
-on December 30, 2021.
+from [dib-lab/2020-paper-sourmash-gather@b28cd15](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/b28cd15e17a395bf81650ba5544fe226d7f3eac0)
+on January 1, 2022.
 </em></small>
 
 ## Authors
@@ -173,15 +173,15 @@ the FracMinHash sketching technique, a derivative of modulo hash that
 supports Jaccard containment estimation between sets of different size.
 We implement FracMinHash in the sourmash software, evaluate its
 accuracy, and demonstrate
-large-scale containment searches of metagenomes using all 700,000 currently
-available microbial reference genomes.
+large-scale containment searches of metagenomes using 700,000
+microbial reference genomes.
 We next frame shotgun
 metagenome compositional analysis as the problem of finding a minimum
 collection of reference genomes that "cover" the known k-mers in a metagenome,
 a minimum set cover problem.
 We implement a greedy
 approximate solution using  FracMinHash sketches, and evaluate
-its accuracy in taxonomic assignment using a CAMI community benchmark.
+its accuracy for taxonomic assignment using a CAMI community benchmark.
 Finally, we show that the minimum metagenome cover can be used to guide the
 select of reference genomes for read mapping.
 sourmash is available as open source under the
@@ -193,7 +193,7 @@ BSD 3-Clause license at github.com/dib-lab/sourmash/.
 Shotgun DNA sequencing of microbial communities is an important
 technique for studying host-associated and environmental microbiomes 
 [@doi:10.1038/s41587-020-0718-6; @doi:10.1111/1462-2920.15314].
-By sampling the DNA sequence content of microbial communities, shotgun
+By sampling the genomic content of microbial communities, shotgun
 metagenomics enables the taxonomic and functional characterization of
 microbiomes [@doi:10.1038/s41586-019-1238-8; @doi:10.1126/science.1261359]. 
 However, this characterization relies critically on the methods and 
@@ -214,7 +214,9 @@ presents a significant practical obstacle to comprehensive
 compositional analyses, and most methods choose representative subsets
 of available genomic information to analyze; for example, bioBakery 3
 provides a database containing 99.2k reference genomes
-[@doi:10.7554/eLife.65088].
+[@doi:10.7554/eLife.65088]. Scaling metagenome analysis approaches to
+make use of the rapidly increasing size of GenBank is an activate
+endeavor in the field [@ganon, @metalign].
 
 Here, we describe a lightweight and scalable approach to compositional
 analysis of shotgun metagenome data based on finding the minimum set
@@ -226,7 +228,7 @@ approximation algorithm for the minimum set cover analysis.
 Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
 method for taxonomic classification of metagenome data.  Our
-implementation in the open source `sourmash` software works with
+implementation in the `sourmash` open source software works with
 reference databases containing a million or more microbial genomes and
 supports multiple taxonomies and private databases.
 
@@ -234,13 +236,13 @@ supports multiple taxonomies and private databases.
 # Results
 
 We first describe FracMinHash, a sketching technique that supports
-containment estimation for metagenome datasets using k-mers. We next
-frame reference-based metagenome content analysis as the problem of
-finding a _minimum set cover_ for a metagenome using a collection of
-reference genomes. We then evaluate the accuracy of this approach
-using a taxonomic classification benchmark. Finally, we demonstrate
-the utility of this approach by using the genomes from the minimum metagenome
-cover as reference genomes for read mapping.
+containment and overlap estimation for DNA sequencing datasets using
+k-mers. We next frame reference-based metagenome content analysis as
+the problem of finding a _minimum set cover_ for a metagenome using a
+collection of reference genomes. We then evaluate the accuracy of this
+approach using a taxonomic classification benchmark. Finally, we
+demonstrate the utility of this approach by using the genomes from the
+minimum metagenome cover as reference genomes for read mapping.
 
 ## FracMinHash sketches support accurate containment operations
 
@@ -273,6 +275,8 @@ of the containment index:
 
 See Methods for details.
 
+<!-- CTB: do we want to discuss overlap? -->
+
 <!--
 
 FracMinHash supports containment estimation with high accuracy and
@@ -297,9 +301,11 @@ We compare the FracMinHash method, implemented in the sourmash softare
 [@doi:10.21105/joss.00027], to CMash (_Containment MinHash_)
 [@doi:10.1101/184150] and Mash Screen (_Containment Score_)
 [@doi:10.1186/s13059-019-1841-x] for containment queries in data from
-a mock bacterial and archaeal community where the reference genomes
-are largely known [@doi:10.1111/1462-2920.12086].  This data set has
-been used in several methods evaluations
+the `podar mock` community, a mock bacterial and archaeal community
+where the reference genomes are largely known
+[@doi:10.1111/1462-2920.12086]; see also Table @tbl:genbank-cover, row 2.
+This data set has been used in
+several methods evaluations
 [@doi:10.1093/bioinformatics/btu395;@doi:10.1101/gr.213959.116;@doi:10.1101/155358;@doi:10.1186/s13059-019-1841-x].
 
 ![
@@ -318,6 +324,10 @@ the containment for large $k$ and overestimating for small $k$.  `Mash
 Screen` with $n=10000$ has the smallest difference to ground truth for
 $k=\{21, 31\}$, followed by `sourmash` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
+
+<!-- CTB: discuss cmash consistently underestimating...-->
+
+<!-- CTB: add sketch sizes for the figure; maybe note conversion -->
 
 ## We can use FracMinHash to construct a minimum set cover for metagenomes
 
@@ -350,9 +360,8 @@ equivalent matches are available for a given rank, a match is chosen
 at random. This is an implementation decision that is not intrinsic to
 the algorithm itself.
 
-In Figure @fig:gather0, we show an example of this iterative
-classification of k-mers by matching GenBank genome for the mock metagenome from 
-[@doi:10.1111/1462-2920.12086], `podar mock` (Table @tbl:genbank-cover, row 2). The matching genomes are provided
+In Figure @fig:gather0, we show an example of this progressive
+classification of k-mers by matching GenBank genome for `podar mock`. The matching genomes are provided
 in the order found by the greedy algorithm, i.e. by overlap with remaining k-mers in the metagenome.
 The
 high rank (early) matches reflect large and/or mostly-covered genomes
@@ -366,7 +375,7 @@ lower rank matches.
 
 As one example of metagenome k-mers shared with multiple matches,
 genomes from two strains of *Shewanella baltica* are present in the
-mock metagenome.  These genomes overlap in k-er content by approximately 50%, and these shared k-mers are first claimed by
+mock metagenome.  These genomes overlap in k-mer content by approximately 50%, and these shared k-mers are first claimed by
 *Shewanella baltica* OS223 -- compare *S. baltica* OS223, rank
 8, with *S. baltica* OS185, rank 33 in Figure
 @fig:gather0. Here the difference between the red circles and green
@@ -379,14 +388,14 @@ For this mock metagenome, 205m (54.8%) of 375m k-mers were found in
 GenBank
 (see
 Table @tbl:genbank-cover, row 2).  The remaining 169m (45.2%) k-mers had no matches, and
-represent either k-mers introduced by sequencing errors or unknown k-mers from
-real community members.
+represent either k-mers introduced by sequencing errors or k-mers from
+real but unknown community members.
 
 ![
 **K-mer decomposition of a metagenome into constituent genomes.**
 A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover
 of the `podar mock` synthetic metagenome [@doi:10.1111/1462-2920.12086],
-calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designed name of the
+calculated using 700,000 genomes from GenBank. The Y axis is labeled with the NCBI-designated name of the
 genome.
 In the left plot, the X axis represents the estimated number of k-mers shared
 between each genome and the metagenome. The red circles indicate the number
@@ -1239,6 +1248,11 @@ The accessions for the metagenome data sets in Table
 | `podar mock` | SRR606249 |
 | `gut real` | SRR5650070  |
 | `oil well real`  | SRR1976948 |
+
+
+[@ganon]: doi:10.1093/bioinformatics/btaa458
+
+[@metalign]: doi:10.1186/s13059-020-02159-0
 
 
 ## References {.page_break_before}
