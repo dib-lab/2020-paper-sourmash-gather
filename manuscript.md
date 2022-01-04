@@ -5,7 +5,7 @@ keywords:
 - MinHash
 - CTB
 lang: en-US
-date-meta: '2022-01-01'
+date-meta: '2022-01-04'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -23,8 +23,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="dc.date" content="2022-01-01" />
-  <meta name="citation_publication_date" content="2022-01-01" />
+  <meta name="dc.date" content="2022-01-04" />
+  <meta name="citation_publication_date" content="2022-01-04" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,10 +85,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@432a22e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/432a22eeb73f0d18ed43aed4919a6342562c2a6e)
-on January 1, 2022.
+from [dib-lab/2020-paper-sourmash-gather@d555c69](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d555c69e391ea18bb7df6b4ea40364d943c7a24c)
+on January 4, 2022.
 </em></small>
 
 ## Authors
@@ -172,7 +172,7 @@ metagenome data underlies many microbiome studies. Here we describe
 two algorithms for compositional analysis of metagenome sequencing
 data. We first investigate the FracMinHash sketching technique, a
 derivative of modulo hash that supports Jaccard containment estimation
-between sets of different size.  We implement FracMinHash in the
+between sets of different sizes.  We implement FracMinHash in the
 sourmash software, evaluate its accuracy, and demonstrate large-scale
 containment searches of metagenomes using 700,000 microbial reference
 genomes.  We next frame shotgun metagenome compositional analysis as
@@ -181,7 +181,7 @@ the problem of finding a minimum collection of reference genomes that
 We implement a greedy approximate solution using FracMinHash sketches,
 and evaluate its accuracy for taxonomic assignment using a CAMI
 community benchmark.  Finally, we show that the minimum metagenome
-cover can be used to guide the select of reference genomes for read
+cover can be used to guide the selection of reference genomes for read
 mapping.  sourmash is available as open source under the BSD 3-Clause
 license at
 [github.com/dib-lab/sourmash/](https://github.com/dib-lab/sourmash/).
@@ -325,7 +325,7 @@ with a median of 2741 hashes.
 
 <!-- CTB: add sketch sizes for the figure; maybe note conversion -->
 
-## We can use FracMinHash to construct a minimum set cover for metagenomes
+## FracMinHash can be used to construct a minimum set cover for metagenomes
 
 We next ask: what is the smallest collection of genomes in a database
 that contains all of the known k-mers in a metagenome?
@@ -398,7 +398,7 @@ between each genome and the metagenome. The red circles indicate the number
 of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers.
 In the right plot, the X axis represents the estimated k-mer coverage of that
 genome.  The red circles indicate the percentage of the genome covered by k-mers remaining at
-that rank, while the green triangle symbols indicate overlap between
+that rank, while the green triangles indicate overlap between
 the genome and the entire metagenome, including those already assigned at previous ranks.
 ](images/gathergram-SRR606249.hashes.svg "minimum metagenome cover for podar"){#fig:gather0}
 
@@ -418,7 +418,7 @@ representing 8 phyla,
 50 families,
 157 genera,
 and 549 species.
-64 samples were generated with _CAMISIM_,
+Sixty-four samples were generated with _CAMISIM_,
 with 91.8 genomes present in each sample on average.
 Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
@@ -539,9 +539,9 @@ to eliminate genomes with only small overlaps (see Methods).
 | data set | genomes >= 100k overlap | min-set-cov | % 31-mers identified |
 | -------- | -------- | -------- | ------- | 
 | `zymo mock` | 405,839 | 19 | 47.1% |
-| `podar mock` | 5800 | 74 | 54.8% |
+| `podar mock` | 5,800 | 74 | 54.8% |
 | `gut real` | 96,423     | 99     | 36.0% |
-| `oil well real` | 1235 | 135 | 14.9% |
+| `oil well real` | 1,235 | 135 | 14.9% |
 
 Table: Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank, with scaled=2000 and k=31. Overlap and % 31-mers identified are estimated from FracMinHash sketch size. {#tbl:genbank-cover}
 
