@@ -10,7 +10,7 @@
   <meta name="author" content="N. Tessa Pierce" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2022-01-01" />
+  <meta name="dcterms.date" content="2022-01-04" />
   <meta name="keywords" content="k-mers, MinHash, CTB" />
   <title>Lightweight compositional analysis of metagenomes with minimum metagenome covers</title>
   <style>
@@ -52,8 +52,8 @@
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="dc.date" content="2022-01-01" />
-  <meta name="citation_publication_date" content="2022-01-01" />
+  <meta name="dc.date" content="2022-01-04" />
+  <meta name="citation_publication_date" content="2022-01-04" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -90,9 +90,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,10 +106,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/432a22eeb73f0d18ed43aed4919a6342562c2a6e/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/432a22eeb73f0d18ed43aed4919a6342562c2a6e">dib-lab/2020-paper-sourmash-gather@432a22e</a>
-on January 1, 2022.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d555c69e391ea18bb7df6b4ea40364d943c7a24c">dib-lab/2020-paper-sourmash-gather@d555c69</a>
+on January 4, 2022.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -182,7 +182,7 @@ metagenome data underlies many microbiome studies. Here we describe
 two algorithms for compositional analysis of metagenome sequencing
 data. We first investigate the FracMinHash sketching technique, a
 derivative of modulo hash that supports Jaccard containment estimation
-between sets of different size. We implement FracMinHash in the
+between sets of different sizes. We implement FracMinHash in the
 sourmash software, evaluate its accuracy, and demonstrate large-scale
 containment searches of metagenomes using 700,000 microbial reference
 genomes. We next frame shotgun metagenome compositional analysis as
@@ -191,7 +191,7 @@ the problem of finding a minimum collection of reference genomes that
 We implement a greedy approximate solution using FracMinHash sketches,
 and evaluate its accuracy for taxonomic assignment using a CAMI
 community benchmark. Finally, we show that the minimum metagenome
-cover can be used to guide the select of reference genomes for read
+cover can be used to guide the selection of reference genomes for read
 mapping. sourmash is available as open source under the BSD 3-Clause
 license at
 <a href="https://github.com/dib-lab/sourmash/">github.com/dib-lab/sourmash/</a>.</p>
@@ -305,7 +305,7 @@ The sourmash sketch sizes varied between 431 hashes and 9540 hashes,
 with a median of 2741 hashes.</p>
 <!-- CTB: discuss cmash consistently underestimating...-->
 <!-- CTB: add sketch sizes for the figure; maybe note conversion -->
-<h2 id="we-can-use-fracminhash-to-construct-a-minimum-set-cover-for-metagenomes">We can use FracMinHash to construct a minimum set cover for metagenomes</h2>
+<h2 id="fracminhash-can-be-used-to-construct-a-minimum-set-cover-for-metagenomes">FracMinHash can be used to construct a minimum set cover for metagenomes</h2>
 <p>We next ask: what is the smallest collection of genomes in a database
 that contains all of the known k-mers in a metagenome?
 Formally, for a
@@ -359,7 +359,7 @@ represent either k-mers introduced by sequencing errors or k-mers from
 real but unknown community members.</p>
 <div id="fig:gather0" class="fignos">
 <figure>
-<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover of the podar mock synthetic metagenome [24], calculated using 700,000 genomes from GenBank with scaled=2000, k=31. The Y axis is labeled with the NCBI-designated name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the percentage of the genome covered by k-mers remaining at that rank, while the green triangle symbols indicate overlap between the genome and the entire metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
+<img src="images/gathergram-SRR606249.hashes.svg" alt="Figure 2: K-mer decomposition of a metagenome into constituent genomes. A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover of the podar mock synthetic metagenome [24], calculated using 700,000 genomes from GenBank with scaled=2000, k=31. The Y axis is labeled with the NCBI-designated name of the genome. In the left plot, the X axis represents the estimated number of k-mers shared between each genome and the metagenome. The red circles indicate the number of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers. In the right plot, the X axis represents the estimated k-mer coverage of that genome. The red circles indicate the percentage of the genome covered by k-mers remaining at that rank, while the green triangles indicate overlap between the genome and the entire metagenome, including those already assigned at previous ranks." /><figcaption aria-hidden="true"><span>Figure 2:</span> <strong>K-mer decomposition of a metagenome into constituent genomes.</strong>
 A rank ordering by remaining containment for the first 36 genomes from the minimum metagenome cover
 of the <code>podar mock</code> synthetic metagenome <span class="citation" data-cites="9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">24</a>]</span>,
 calculated using 700,000 genomes from GenBank with scaled=2000, k=31. The Y axis is labeled with the NCBI-designated name of the
@@ -369,7 +369,7 @@ between each genome and the metagenome. The red circles indicate the number
 of matching k-mers that were not matched at previous ranks, while the green triangle symbols indicate all matching k-mers.
 In the right plot, the X axis represents the estimated k-mer coverage of that
 genome. The red circles indicate the percentage of the genome covered by k-mers remaining at
-that rank, while the green triangle symbols indicate overlap between
+that rank, while the green triangles indicate overlap between
 the genome and the entire metagenome, including those already assigned at previous ranks.</figcaption>
 </figure>
 </div>
@@ -388,7 +388,7 @@ representing 8 phyla,
 50 families,
 157 genera,
 and 549 species.
-64 samples were generated with <em>CAMISIM</em>,
+Sixty-four samples were generated with <em>CAMISIM</em>,
 with 91.8 genomes present in each sample on average.
 Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.</p>
@@ -519,7 +519,7 @@ to eliminate genomes with only small overlaps (see Methods).
 </tr>
 <tr class="even">
 <td><code>podar mock</code></td>
-<td>5800</td>
+<td>5,800</td>
 <td>74</td>
 <td>54.8%</td>
 </tr>
@@ -531,7 +531,7 @@ to eliminate genomes with only small overlaps (see Methods).
 </tr>
 <tr class="even">
 <td><code>oil well real</code></td>
-<td>1235</td>
+<td>1,235</td>
 <td>135</td>
 <td>14.9%</td>
 </tr>
@@ -1244,7 +1244,7 @@ figure generation.</p>
 <div class="csl-left-margin">40. </div><div class="csl-right-inline"><strong>Fast search of thousands of short-read sequencing experiments</strong> <div class="csl-block">Brad Solomon, Carl Kingsford</div> <em>Nature Biotechnology</em> (2016-03) <a href="https://doi.org/f8ddk3">https://doi.org/f8ddk3</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/nbt.3442">10.1038/nbt.3442</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26854477">26854477</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4804353">PMC4804353</a></div></div>
 </div>
 <div id="ref-l5ETl8yA" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">41. </div><div class="csl-right-inline"><strong>DIAMOND+MEGAN: Fast and Easy Taxonomic and Functional Analysis of Short and Long Microbiome Sequences</strong> <div class="csl-block">Caner Bağcı, Sascha Patz, Daniel H Huson</div> <em>Current Protocols</em> (2021-03-03) <a href="https://doi.org/gjhfck">https://doi.org/gjhfck</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1002/cpz1.59">10.1002/cpz1.59</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33656283">33656283</a></div></div>
+<div class="csl-left-margin">41. </div><div class="csl-right-inline"><strong>DIAMOND+MEGAN: Fast and Easy Taxonomic and Functional Analysis of Short and Long Microbiome Sequences</strong> <div class="csl-block">Caner Bağcı, Sascha Patz, Daniel H Huson</div> <em>Current Protocols</em> (2021-03) <a href="https://doi.org/gjhfck">https://doi.org/gjhfck</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1002/cpz1.59">10.1002/cpz1.59</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33656283">33656283</a></div></div>
 </div>
 <div id="ref-mAjlUXL2" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">42. </div><div class="csl-right-inline"><strong>MetaPalette: a &lt;i&gt;k&lt;/i&gt; -mer Painting Approach for Metagenomic Taxonomic Profiling and Quantification of Novel Strain Variation</strong> <div class="csl-block">David Koslicki, Daniel Falush</div> <em>mSystems</em> (2016-06-28) <a href="https://doi.org/gg3gbd">https://doi.org/gg3gbd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1128/msystems.00020-16">10.1128/msystems.00020-16</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27822531">27822531</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5069763">PMC5069763</a></div></div>
