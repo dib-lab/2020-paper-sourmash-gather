@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7660766f5163903175b5ed24d4ae90c4c7a86000/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7660766f5163903175b5ed24d4ae90c4c7a86000/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7660766f5163903175b5ed24d4ae90c4c7a86000/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,9 +95,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/7660766f5163903175b5ed24d4ae90c4c7a86000/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@7660766](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7660766f5163903175b5ed24d4ae90c4c7a86000)
+from [dib-lab/2020-paper-sourmash-gather@13cf070](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/13cf07076987133e4161a93866f519c75d3e108b)
 on January 10, 2022.
 </em></small>
 
@@ -266,10 +266,10 @@ minimum metagenome cover as reference genomes for read mapping.
 ## FracMinHash sketches support accurate containment operations
 
 We define the *fractional MinHash*, or FracMinHash as follows: for a
-hash function $h: \Omega \rightarrow [O, H]$, on an input of hash
-values $W \subset \Omega$ and for any $0 <= s <= H$,
+hash function $h: \Omega \rightarrow [O, H]$, on an input set of hash
+values $W \subseteq \Omega$ and for any $0 <= s <= H$,
 
-$$\mathbf{FRAC}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
+$$\mathbf{FRAC}_s(W) = \{\,h(w) \leq \frac{H}{s} \mid \forall w \in
 W\,\}$$ where $H$ is the largest possible value in the domain of
 $h(x)$ and $\frac{H}{s}$ is the *maximum hash value* allowed in the
 FracMinHash sketch.
@@ -363,8 +363,8 @@ This is a *minimum set covering* problem, for which there is a
 polynomial-time approximation [@polynomial_minsetcov]:
 
 1. Initialize $C \leftarrow \emptyset$
-2. While $k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)$ is nonempty:
-3. $C \leftarrow C \bigcup \left\{\rm argmax}_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \right\}$
+2. While $k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cap k(G))$ is nonempty:
+3. $C \leftarrow C \bigcup \left\{ \arg\max}_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \right\}$
 4. return $C$
 
 This greedy algorithm iteratively chooses reference genomes from $D$
@@ -448,7 +448,7 @@ Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
 
 Since min-set-cov yields only a collection of genomes, this collection must be
-converted into a taxonomy and relative abundances for benchmarking with CAMI.
+converted into a taxonomy with relative abundances for benchmarking with CAMI.
 We developed the following procedure for
 generating a taxonomic profile from a given metagenome
 cover. For each genome match, we note
@@ -1152,7 +1152,7 @@ A\vert}\right)$ is sufficiently close to 1.
 Hence we can define:
 
 $$
-C}_\text{frac}(A,B)
+C_\text{frac}(A,B)
 = \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right)
 $$
 which will have expectation
