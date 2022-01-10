@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ae2df04c1fc7584b4701483c0240f197b16370a1/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ae2df04c1fc7584b4701483c0240f197b16370a1/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/ae2df04c1fc7584b4701483c0240f197b16370a1/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,9 +95,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/ae2df04c1fc7584b4701483c0240f197b16370a1/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@c603d0e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c603d0e1a377a7f31f898436f415bd8814674cfa)
+from [dib-lab/2020-paper-sourmash-gather@ae2df04](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/ae2df04c1fc7584b4701483c0240f197b16370a1)
 on January 10, 2022.
 </em></small>
 
@@ -265,8 +265,9 @@ minimum metagenome cover as reference genomes for read mapping.
 
 ## FracMinHash sketches support accurate containment operations
 
-We define the *fractional MinHash*, or FracMinHash, on an input domain
-of hash values $W$, as follows:
+We define the *fractional MinHash*, or FracMinHash as follows: for a
+hash function $h: \Omega \rightarrow [O, H]$, on an input of hash
+values $W \subset \Omega$ and for any $0 <= s <= H$,
 
 $$\mathbf{FRAC}_s(W) = \{\,w \leq \frac{H}{s} \mid \forall w \in
 W\,\}$$ where $H$ is the largest possible value in the domain of
@@ -338,7 +339,7 @@ All methods are within 1\% of the exact containment on average (Figure
 @fig:containment), with `CMash` consistently underestimating
 the containment.  `Mash
 Screen` with $n=10000$ has the smallest difference to ground truth for
-$k=\{21, 31\}$, followed by `sourmash` with `scaled=1000` and `Mash
+$k=\{21, 31\}$, followed by `FracMinHash` with `scaled=1000` and `Mash
 Screen` with $n=1000$.
 The sourmash sketch sizes varied between 431 hashes and 9540 hashes,
 with a median of 2741 hashes.
@@ -362,16 +363,17 @@ This is a *minimum set covering* problem, for which there is a
 polynomial-time approximation [@polynomial_minsetcov]:
 
 1. Initialize $C \leftarrow \emptyset$
-2. Define $f(C) = \vert \cup_{s \in C} \{ s \} \vert$
-3. Repeat until $f(C) = f(M \cap D)$:
-   4. Choose $s \in G$ maximizing the contribution of the element $f(C \cup \{ s \}) - f(C)$
-   5. Let $C \leftarrow C \cup \{ s \}$
-6. Return $C$
+2. While $k(M) \cap k(D) \\ \bigcup_{G \in C} (k(M) \cup G)$ is nonempty:
+3. $C \leftarrow C \bigcup \{\rm argmax}_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \\ \bigcup_{G \in C} (k(M) \cup G)) \}$
+4. return $C$
 
 This greedy algorithm iteratively chooses reference genomes from $D$
-in order of largest remaining overlap with $M$.  This results in a
+in order of largest remaining overlap with $M$, where overlap is in
+terms of number of k-mers.  This results in a
 progressive classification of the known k-mers in the
-metagenome to specific genomes.[^equivalent]
+metagenome to specific genomes.[^equivalent] Note it is classically
+known that this greedy heuristic results in a logarithmic approximation
+factor to the optimal set cover solution [@polynomial_minsetcov].
 
 [^equivalent]: In our current implementation in `sourmash`, when
 equivalent matches are available for a given rank, a match is chosen
@@ -379,7 +381,7 @@ at random. This is an implementation decision that is not intrinsic to
 the algorithm itself.
 
 In Figure @fig:gather0, we show an example of this progressive
-classification of k-mers by matching GenBank genome for `podar mock`. The matching genomes are provided
+classification of 31-mers by matching GenBank genome for `podar mock`. The matching genomes are provided
 in the order found by the greedy algorithm, i.e. by overlap with remaining k-mers in the metagenome.
 The
 high rank (early) matches reflect large and/or mostly-covered genomes
@@ -446,14 +448,16 @@ Each sample is 5 GB in size, and both short-read (Illumina) and
 long-read (PacBio) simulated sequencing data is available.
 
 Since min-set-cov yields only a collection of genomes, this collection must be
-converted into a taxonomy for benchmarking with CAMI.
+converted into a taxonomy and relative abundances for benchmarking with CAMI.
 We developed the following procedure for
 generating a taxonomic profile from a given metagenome
 cover. For each genome match, we note
 the species designation in the NCBI taxonomy for that genome. Then, we
 calculate the fraction of the genome remaining in the metagenome
 after k-mers belonging to higher-rank genomes have been removed (i.e. red
-circles in Figure @fig:gather0 (a)). We use this fraction to weight
+circles in Figure @fig:gather0 (a)). We multiply this fraction by the
+median abundance of the hashes in the sketch
+to weight
 the contribution of the genome's species designation to the
 metagenome taxonomy. This procedure produces an estimate of that
 species' taxonomic contribution to the metagenome, normalized by the
@@ -1058,10 +1062,12 @@ For notational simplicity, we define $X_A := \vert \mathbf{FRAC}_S(A)
 \vert$. Observe that if one views $h$ as a uniformly distributed
 random variable, we have that $X_A$ is distributed as a binomial
 random variable: $X_A \sim {\rm Binom}(|A|, s)$. Furthermore, if
-$A\cap B = \emptyset$ where both $A$ and $B$ are non-empty sets, then
+$A\cap B \neq \emptyset$ where both $A$ and $B$ are non-empty sets, then
 $X_A$ and $X_B$ are independent when the probability of success is
 strictly smaller than $1$. Using these notations, we compute the
 expectation of $\hat{C}_\text{frac}(A,B)$.
+
+<!-- CTB: where does comment ,\hat{s}, come in? -->
 
 **Theorem 1:**
 For $0<s<1$, if $A$ and $B$ are two distinct sets such that $A \cap B$ is non-empty,
@@ -1102,7 +1108,7 @@ Then using the moment generating function of the binomial distribution, we have
 ```{=latex}
 \begin{align}
     \mathrm{E}\left[t^X_{A\cap B}\right] &= (1-s+st)^{\vert A \cap B \vert}\\
-    \mathrm{E}\left[t^X_{A\setminus B}\right] &= (1-s+st)^{\vert A \setminus B \vert}
+    \mathrm{E}\left[t^X_{A\setminus B}\right] &= (1-s+st)^{\vert A \setminus B \vert}.
 \end{align}
 ```
 
@@ -1133,26 +1139,28 @@ Using these observations, we can then finally calculate that
 ```
 
 
-where Fubini's theorem is used in line 2 and independence in line 3.
+using Fubini's theorem and independence.
 
 
-In light of Theorem 1, we note that (equation) is *not* an unbiased
+In light of Theorem 1, we note that $\hat{C}_\text{frac}(A,B)$ is *not* an unbiased
 estimate of $C(A,B)$. This may explain the observations in
 [@luiz_thesis] that show suboptimal performance for
 short sequences (e.g. viruses). However, for sufficiently large $\vert
 A \vert$ and $s$, the bias factor $\left(1-(1-s)^{\vert
 A\vert}\right)$ is sufficiently close to 1.
 
-The expectation of $C_\text{frac}(A,B)$ follows directly from
-(equation) and Theorem 1.
+Hence we can define:
 
-**Theorem 2:** For $0<s<1$, if $A$ and $B$ are two distinct
-sets such that $A \cap B$ is non-empty, the expectation of $C_\text{frac}(A, B)$ is
-given by
+$$
+C}_\text{frac}(A,B)
+= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right)
+$$
+which will have expectation
 
 $$
 \mathrm{E} [C_\text{frac}(A,B)] = \frac{\vert A\cap B \vert}{\vert A \vert}
 $$
+by Theorem 1.
 
 ## Implementation of FracMinHash and min-set-cov
 
@@ -1296,7 +1304,7 @@ The accessions for the metagenome data sets in Table
 
 [@broder_minhash]: doi:10.1109/SEQUEN.1997.666900
 
-[@polynomial_minsetcov]: doi:10.1007/978-0-387-30162-4_175
+[@polynomial_minsetcov]: doi:10.1287/moor.4.3.233
 
 [@mash]: doi:10.1186/s13059-016-0997-x
 

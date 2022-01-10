@@ -31,7 +31,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-GenBank
+genbank
 genomic
 GTDB
 HashSet
@@ -60,11 +60,11 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-Metalign
+metalign
 microbiome
 microbiomes
 mincode
-MinHash
+minhash
 minimap
 minimizers
 mis
@@ -89,7 +89,7 @@ seqtk
 Shewanella
 snakemake
 sourmash
-sra
+SRA
 SRR
 suboptimal
 subsampled
