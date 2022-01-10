@@ -5,8 +5,6 @@
 [![HTML Manuscript](https://img.shields.io/badge/manuscript-HTML-blue.svg)](https://dib-lab.github.io/2020-paper-sourmash-gather/)
 [![PDF Manuscript](https://img.shields.io/badge/manuscript-PDF-blue.svg)](https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf)
 [![GitHub Actions Status](https://github.com/dib-lab/2020-paper-sourmash-gather/workflows/Manubot/badge.svg)](https://github.com/dib-lab/2020-paper-sourmash-gather/actions)
-[![Travis Build Status](https://travis-ci.com/dib-lab/2020-paper-sourmash-gather.svg?branch=master)](https://travis-ci.com/dib-lab/2020-paper-sourmash-gather)
-<!-- usage note: delete CI badges above for services not used by your manuscript -->
 
 ## Manuscript description
 
@@ -84,7 +82,7 @@ The `gh-pages` branch uses [GitHub Pages](https://pages.github.com/) to host the
 + **HTML manuscript** at https://dib-lab.github.io/2020-paper-sourmash-gather/
 + **PDF manuscript** at https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf
 
-For continuous integration configuration details, see [`.github/workflows/manubot.yaml`](.github/workflows/manubot.yaml) if using GitHub Actions or [`.travis.yml`](.travis.yml) if using Travis CI.
+For continuous integration configuration details, see [`.github/workflows/manubot.yaml`](.github/workflows/manubot.yaml).
 
 ## License
 
