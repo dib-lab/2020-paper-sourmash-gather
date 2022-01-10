@@ -3,7 +3,10 @@ title: "Lightweight compositional analysis of metagenomes with minimum metagenom
 keywords:
   - k-mers
   - MinHash
-  - CTB
+  - FracMinHash
+  - sketch
+  - metagenomics
+  - taxonomy
 lang: en-US
 authors:
   - github: luizirber
@@ -17,7 +20,7 @@ authors:
       - Department of Population Health and Reproduction, UC Davis
     funders:
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
-      - CTB R01
+      - Grant R01HG007513 from the NIH NHGRI
   - github: brooksph
     name: Phillip T. Brooks
     initials: PTB
@@ -39,6 +42,7 @@ authors:
       - Department of Population Health and Reproduction, UC Davis
     funders:
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
+      - Grant R03OD030596 from the NIH Common Fund
   - github: bluegenes
     name: N. Tessa Pierce-Ward
     initials: NTP
@@ -48,18 +52,30 @@ authors:
     affiliations:
      - Department of Population Health and Reproduction, UC Davis
     funders:
-      - NSF 1711984
+      - Grant #1711984 from the NSF
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
-      - CTB NSF Genomerxiv      
+      - Grant #2018911 from the NSF
+  - github: mahmudhera
+    name: Mahmudur Rahman Hera
+    initials: MRH
+    twitter: HeraMahmudur
+    email: mbr5797@psu.edu
+    affiliations:
+      - Department of Computer Science and Engineering, Penn State University
+    funders:
+      - Grant #2029170 from the NSF
   - github: dkoslicki
     name: David Koslicki
     initials: DK
     orcid: 0000-0002-0640-954X
+    twitter: DavidKoslicki
     email: dmk333@psu.edu
     affiliations:
-      - Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University
+      - Department of Computer Science and Engineering, Penn State University
+      - Department of Biology, Penn State University
+      - Huck Institutes of the Life Sciences, Penn State University
     funders:
-      - NSF DMS-1664803
+      - Grant #2029170 from the NSF
   - github: ctb
     name: C. Titus Brown
     initials: CTB
@@ -69,5 +85,6 @@ authors:
       - Department of Population Health and Reproduction, UC Davis
     funders:
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
-      - CTB NIH R01
-      - CTB NSF Genomerxiv
+      - Grant R01HG007513 from the NIH NHGRI
+      - Grant #2018911 from the NSF
+      - Grant R03OD030596 from the NIH Common Fund
