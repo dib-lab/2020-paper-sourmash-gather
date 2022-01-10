@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,9 +95,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@7e8b7b4](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7e8b7b4aaf0daeb31c04d18f938681e5c158d904)
+from [dib-lab/2020-paper-sourmash-gather@381e215](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/381e21592ddd3509f43665a2df71ebadd5058573)
 on January 10, 2022.
 </em></small>
 
@@ -365,8 +365,6 @@ polynomial-time approximation [@polynomial_minsetcov]:
 1. Initialize $C \leftarrow \emptyset$
 2. While $k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cap k(G))$ is nonempty:
 3. $C \leftarrow C \bigcup \left\{ \arg\max_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \vert\right\}$
-4. $C \leftarrow C \bigcup \left\{ \arg\max_{G \in D}$
-5. $\vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \vert$
 4. return $C$
 
 This greedy algorithm iteratively chooses reference genomes from $D$
