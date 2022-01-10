@@ -8,10 +8,11 @@
   <meta name="author" content="Phillip T. Brooks" />
   <meta name="author" content="Taylor Reiter" />
   <meta name="author" content="N. Tessa Pierce-Ward" />
+  <meta name="author" content="Mahmudur Rahman Hera" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
   <meta name="dcterms.date" content="2022-01-10" />
-  <meta name="keywords" content="k-mers, MinHash, CTB" />
+  <meta name="keywords" content="k-mers, MinHash, FracMinHash, sketch, metagenomics, taxonomy" />
   <title>Lightweight compositional analysis of metagenomes with minimum metagenome covers</title>
   <style>
     code{white-space: pre-wrap;}
@@ -78,9 +79,15 @@
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0002-2942-5331" />
   <meta name="twitter:creator" content="@saltyscientist" />
+  <meta name="citation_author" content="Mahmudur Rahman Hera" />
+  <meta name="citation_author_institution" content="Department of Computer Science and Engineering, Penn State University" />
+  <meta name="twitter:creator" content="@HeraMahmudur" />
   <meta name="citation_author" content="David Koslicki" />
-  <meta name="citation_author_institution" content="Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University" />
+  <meta name="citation_author_institution" content="Department of Computer Science and Engineering, Penn State University" />
+  <meta name="citation_author_institution" content="Department of Biology, Penn State University" />
+  <meta name="citation_author_institution" content="Huck Institutes of the Life Sciences, Penn State University" />
   <meta name="citation_author_orcid" content="0000-0002-0640-954X" />
+  <meta name="twitter:creator" content="@DavidKoslicki" />
   <meta name="citation_author" content="C. Titus Brown" />
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0001-6001-2677" />
@@ -90,9 +97,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -106,9 +113,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bb92e76004b646679464c142ed3818312df29bc0">dib-lab/2020-paper-sourmash-gather@bb92e76</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c250821095c807ba9c9c0a3c68f5dbb4e49e4018">dib-lab/2020-paper-sourmash-gather@c250821</a>
 on January 10, 2022.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -122,7 +129,7 @@ on January 10, 2022.
 <a href="https://twitter.com/luizirber">luizirber</a><br>
 <small>
 Graduate Group in Computer Science, UC Davis; Department of Population Health and Reproduction, UC Davis
-· Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB R01
+· Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R01HG007513 from the NIH NHGRI
 </small></p></li>
 <li><p><strong>Phillip T. Brooks</strong><br>
 <img src="images/orcid.svg" class="inline_icon" width="16" height="16" alt="ORCID icon" />
@@ -144,7 +151,7 @@ Department of Population Health and Reproduction, UC Davis
 <a href="https://twitter.com/ReiterTaylor">ReiterTaylor</a><br>
 <small>
 Graduate Group in Food Science, UC Davis; Department of Population Health and Reproduction, UC Davis
-· Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation
+· Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R03OD030596 from the NIH Common Fund
 </small></p></li>
 <li><p><strong>N. Tessa Pierce-Ward</strong><br>
 <img src="images/orcid.svg" class="inline_icon" width="16" height="16" alt="ORCID icon" />
@@ -155,16 +162,27 @@ Graduate Group in Food Science, UC Davis; Department of Population Health and Re
 <a href="https://twitter.com/saltyscientist">saltyscientist</a><br>
 <small>
 Department of Population Health and Reproduction, UC Davis
-· Funded by NSF 1711984; Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB NSF Genomerxiv
+· Funded by Grant; Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant
+</small></p></li>
+<li><p><strong>Mahmudur Rahman Hera</strong><br>
+· <img src="images/github.svg" class="inline_icon" width="16" height="16" alt="GitHub icon" />
+<a href="https://github.com/mahmudhera">mahmudhera</a>
+· <img src="images/twitter.svg" class="inline_icon" width="16" height="16" alt="Twitter icon" />
+<a href="https://twitter.com/HeraMahmudur">HeraMahmudur</a><br>
+<small>
+Department of Computer Science and Engineering, Penn State University
+· Funded by Grant
 </small></p></li>
 <li><p><strong>David Koslicki</strong><br>
 <img src="images/orcid.svg" class="inline_icon" width="16" height="16" alt="ORCID icon" />
 <a href="https://orcid.org/0000-0002-0640-954X">0000-0002-0640-954X</a>
 · <img src="images/github.svg" class="inline_icon" width="16" height="16" alt="GitHub icon" />
-<a href="https://github.com/dkoslicki">dkoslicki</a><br>
+<a href="https://github.com/dkoslicki">dkoslicki</a>
+· <img src="images/twitter.svg" class="inline_icon" width="16" height="16" alt="Twitter icon" />
+<a href="https://twitter.com/DavidKoslicki">DavidKoslicki</a><br>
 <small>
-Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University
-· Funded by NSF DMS-1664803
+Department of Computer Science and Engineering, Penn State University; Department of Biology, Penn State University; Huck Institutes of the Life Sciences, Penn State University
+· Funded by Grant
 </small></p></li>
 <li><p><strong>C. Titus Brown</strong><br>
 <img src="images/orcid.svg" class="inline_icon" width="16" height="16" alt="ORCID icon" />
@@ -173,7 +191,7 @@ Computer Science and Engineering, Biology, and the Huck Institute of the Life Sc
 <a href="https://github.com/ctb">ctb</a><br>
 <small>
 Department of Population Health and Reproduction, UC Davis
-· Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB NIH R01; CTB NSF Genomerxiv
+· Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R01HG007513 from the NIH NHGRI; Grant; Grant R03OD030596 from the NIH Common Fund
 </small></p></li>
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
@@ -212,7 +230,7 @@ reference genomes and gene catalogs, via direct genomic alignment
 or k-mer matches <span class="citation" data-cites="wfp4mBcT P2zJQDwU">[<a href="#ref-wfp4mBcT" role="doc-biblioref">14</a>,<a href="#ref-P2zJQDwU" role="doc-biblioref">15</a>]</span>. For many of these methods, the
 substantial increase in the number of available microbial reference
 genomes (1.1m in GenBank as of November 2021) presents a significant
-practical obstacle to comprehensive compositional analyses, and most
+practical obstacle to comprehensive compositional analyses. Most
 methods choose representative subsets of available genomic information
 to analyze; for example, bioBakery 3 provides a database containing
 99.2k reference genomes <span class="citation" data-cites="wfjpVLUe">[<a href="#ref-wfjpVLUe" role="doc-biblioref">9</a>]</span>. Scaling metagenome analysis
@@ -229,7 +247,7 @@ approximation algorithm for the minimum set cover analysis
 <p>Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
 method for taxonomic classification of metagenome data. Our
-implementation in the <code>sourmash</code> open source software works with
+implementation in the <code>sourmash</code> open source software package works with
 reference databases containing a million or more microbial genomes and
 supports multiple taxonomies and private databases.</p>
 <h1 id="results">Results</h1>
@@ -257,7 +275,7 @@ elements like <span class="math inline">\(\mathbf{MOD}_m(W)\)</span>, a FracMinH
 <p>Like ModHash (but not MinHash), FracMinHash supports estimation
 of the containment index:</p>
 <span class="math display">\[\begin{equation}
-    \hat{C}_\text{scale}(A,B):=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert}.
+    \hat{C}_\text{frac}(A,B):=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert}.
 \end{equation}\]</span>
 <p>See Methods for details.</p>
 <!-- CTB: do we want to discuss overlap? -->
@@ -422,7 +440,8 @@ Performance per method at all major taxonomic ranks, with the shaded bands showi
 </div>
 <p>In Figures <a href="#fig:spider">3</a> and <a href="#fig:scores">4</a> we show an updated version of
 Figure 6 from <span class="citation" data-cites="hWQhTndz">[<a href="#ref-hWQhTndz" role="doc-biblioref">30</a>]</span> that includes our
-method, implemented in the <code>sourmash</code> software. Here we compare 10 different methods for taxonomic
+method, implemented in the <code>sourmash</code> software and benchmarked using
+OPAL <span class="citation" data-cites="pE6VYRg6">[<a href="#ref-pE6VYRg6" role="doc-biblioref">31</a>]</span>. Here we compare 10 different methods for taxonomic
 profiling and their characteristics at each taxonomic rank. While
 previous methods show reduced completeness – the ratio of taxa
 correctly identified in the ground truth – below the genus level,
@@ -502,11 +521,17 @@ to eliminate genomes with only small overlaps (see Methods).
 <div id="tbl:genbank-cover" class="tablenos">
 <table id="tbl:genbank-cover">
 <caption><span>Table 1:</span> Four metagenomes and the number of genomes in the estimated minimum metagenome cover from GenBank, with scaled=2000 and k=31. Overlap and % 31-mers identified are estimated from FracMinHash sketch size. </caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 22%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>data set</th>
-<th>genomes &gt;= 100k overlap</th>
-<th>min-set-cov</th>
+<th>genomes &gt;= 100k 31-mer overlap</th>
+<th>size of min-set-cov</th>
 <th>% 31-mers identified</th>
 </tr>
 </thead>
@@ -540,9 +565,9 @@ to eliminate genomes with only small overlaps (see Methods).
 </div>
 <p>In Table <a href="#tbl:genbank-cover">1</a>, we show the minimum metagenome cover
 for four metagenomes against GenBank - two mock communities
-<span class="citation" data-cites="10okJq2cm 9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">24</a>,<a href="#ref-10okJq2cm" role="doc-biblioref">31</a>]</span>, a human gut microbiome data set
+<span class="citation" data-cites="10okJq2cm 9vd6Zfxs">[<a href="#ref-9vd6Zfxs" role="doc-biblioref">24</a>,<a href="#ref-10okJq2cm" role="doc-biblioref">32</a>]</span>, a human gut microbiome data set
 from iHMP <span class="citation" data-cites="UotiKLjf">[<a href="#ref-UotiKLjf" role="doc-biblioref">3</a>]</span>, and an oil well sample
-<span class="citation" data-cites="11WCsPgdk">[<a href="#ref-11WCsPgdk" role="doc-biblioref">32</a>]</span>. Our implementation provides estimates
+<span class="citation" data-cites="11WCsPgdk">[<a href="#ref-11WCsPgdk" role="doc-biblioref">33</a>]</span>. Our implementation provides estimates
 for both the <em>total</em> number of genomes with substantial overlap to a
 query genome, and the minimum set of genomes that account for k-mers
 with overlap in the query metagenome. Note that only matches estimated
@@ -650,7 +675,7 @@ fixed boundary value is determined by the desired accuracy for the
 sketch operations, with clear space/time constraint tradeoffs.</p>
 <p>Intuitively, FracMinHash can be viewed as performing density sampling
 at a rate of 1 <span class="math inline">\(k\)</span>-mer per <span class="math inline">\(s\)</span> distinct k-mers seen, where <span class="math inline">\(s\)</span> is used
-to define define a boundary value <span class="math inline">\(\frac{H}{s}\)</span> for the bottom sketch.
+to define a boundary value <span class="math inline">\(\frac{H}{s}\)</span> for the bottom sketch.
 FracMinHash can also be viewed as a type of lossy compression,
 with a fixed compression ratio of <span class="math inline">\(s\)</span>: for values of <span class="math inline">\(s\)</span> used here (<span class="math inline">\(s \approx 1000\)</span>), k-mer sets are reduced in cardinality by 1000-fold.</p>
 <p>Unlike MinHash, FracMinHash supports containment estimation between
@@ -661,12 +686,12 @@ competitive in accuracy with extant MinHash-based techniques for
 containment analysis, while also supporting Jaccard similarity.</p>
 <p>We note that the FracMinHash technique has been used under a number of
 different names, including Scaled MinHash
-<span class="citation" data-cites="ART4gJKs TLIGyfJa">[<a href="#ref-ART4gJKs" role="doc-biblioref">33</a>,<a href="#ref-TLIGyfJa" role="doc-biblioref">34</a>]</span>, universe minimizers
-<span class="citation" data-cites="BdFEIcmk">[<a href="#ref-BdFEIcmk" role="doc-biblioref">35</a>]</span>, Shasta markers
-<span class="citation" data-cites="1D79NE6aS">[<a href="#ref-1D79NE6aS" role="doc-biblioref">36</a>]</span>, and mincode syncmers
-<span class="citation" data-cites="7LNduNIm">[<a href="#ref-7LNduNIm" role="doc-biblioref">37</a>]</span>. The name FracMinHash was coined by
+<span class="citation" data-cites="ART4gJKs TLIGyfJa">[<a href="#ref-ART4gJKs" role="doc-biblioref">34</a>,<a href="#ref-TLIGyfJa" role="doc-biblioref">35</a>]</span>, universe minimizers
+<span class="citation" data-cites="BdFEIcmk">[<a href="#ref-BdFEIcmk" role="doc-biblioref">36</a>]</span>, Shasta markers
+<span class="citation" data-cites="1D79NE6aS">[<a href="#ref-1D79NE6aS" role="doc-biblioref">37</a>]</span>, and mincode syncmers
+<span class="citation" data-cites="7LNduNIm">[<a href="#ref-7LNduNIm" role="doc-biblioref">38</a>]</span>. The name FracMinHash was coined by
 Kristoffer Sahlin in an online discussion on Twitter
-<span class="citation" data-cites="J8wNXpvP">[<a href="#ref-J8wNXpvP" role="doc-biblioref">38</a>]</span> and
+<span class="citation" data-cites="J8wNXpvP">[<a href="#ref-J8wNXpvP" role="doc-biblioref">39</a>]</span> and
 chosen by discussants as the least ambiguous option. We use it here
 accordingly.</p>
 <p>FracMinHash offers several conveniences over MinHash. No hash is ever
@@ -692,11 +717,11 @@ post-processing and filtering without revisiting the original data
 set. This includes unions and intersections. Although possible for
 MinHash, in practice this requires oversampling (using a larger <span class="math inline">\(n\)</span>)
 to account for possibly having fewer than <span class="math inline">\(n\)</span> values after filtering,
-e.g. see the approach taken in Finch <span class="citation" data-cites="lThwIYBH">[<a href="#ref-lThwIYBH" role="doc-biblioref">39</a>]</span>.</p>
+e.g. see the approach taken in Finch <span class="citation" data-cites="lThwIYBH">[<a href="#ref-lThwIYBH" role="doc-biblioref">40</a>]</span>.</p>
 <p>When the multiplicity of hashes in the original data is retained,
 FracMinHash sketches can be filtered on abundance. This allows
 removing low-abundance values, as implemented in Finch
-<span class="citation" data-cites="lThwIYBH">[<a href="#ref-lThwIYBH" role="doc-biblioref">39</a>]</span>. Filtering values that only appear once
+<span class="citation" data-cites="lThwIYBH">[<a href="#ref-lThwIYBH" role="doc-biblioref">40</a>]</span>. Filtering values that only appear once
 was implemented in Mash by using a Bloom filter and only adding values
 after they were seen once; later versions also implemented an
 extra counter array to keep track of counts for each value in the
@@ -710,10 +735,10 @@ the FracMinHash sketch. Likewise, MinHash sketches can be losslessly converted
 to FracMinHash sketches when the maximum hash value in the MinHash
 sketch is larger than <span class="math inline">\(H / s\)</span>.</p>
 <p>Finally, because FracMinHash sketches are simply collections of
-hashes, existing k-mer indexing approaches can be applied to sketches
-to support fast search with both similarity and containment
-estimators; several index types, including Sequence Bloom Trees
-<span class="citation" data-cites="DfZvKOpG">[<a href="#ref-DfZvKOpG" role="doc-biblioref">40</a>]</span> and reverse indices, are provided in the
+hashes, existing hash-based k-mer indexing approaches can be applied
+to sketches to support fast search with both similarity and
+containment estimators; several index types, including Sequence Bloom
+Trees <span class="citation" data-cites="DfZvKOpG">[<a href="#ref-DfZvKOpG" role="doc-biblioref">41</a>]</span> and reverse indices, are provided in the
 sourmash software.</p>
 <p>In exchange for these many conveniences, FracMinHash sketches
 have limited sensitivity for small data sets where the k-mer
@@ -762,7 +787,7 @@ a database, and then use the resulting database of annotated k-mers to
 assign taxonomy to reads. Mapping- and homology-based approaches such
 as Diamond use read mapping to genomes or read alignment to gene
 sequences in order to assign taxonomy and function
-<span class="citation" data-cites="l5ETl8yA">[<a href="#ref-l5ETl8yA" role="doc-biblioref">41</a>]</span>. These approaches typically focus on assigning
+<span class="citation" data-cites="l5ETl8yA">[<a href="#ref-l5ETl8yA" role="doc-biblioref">42</a>]</span>. These approaches typically focus on assigning
 <em>individual</em> k-mers or reads. In contrast, here we analyze the entire
 collection of k-mers and assign them <em>in aggregate</em> to the <em>best</em>
 genome match, and then repeat until no matches remain.</p>
@@ -785,7 +810,7 @@ genomes will necessarily be found using 51-mer overlaps. The extent and impact o
 this kind of false negative in the min-set-cov approach remains to be
 evaluated but is likely to only affect strain- and species-level
 assignments, since nucleotide similarity measures lose sensitivity
-across more distant taxonomic ranks <span class="citation" data-cites="mAjlUXL2">[<a href="#ref-mAjlUXL2" role="doc-biblioref">42</a>]</span>.</p>
+across more distant taxonomic ranks <span class="citation" data-cites="mAjlUXL2">[<a href="#ref-mAjlUXL2" role="doc-biblioref">43</a>]</span>.</p>
 <p>Our implementation of the min-set-cov algorithm in sourmash also
 readily supports using custom reference databases as well as updating
 minimum metagenome covers with the addition of new reference genomes. When
@@ -812,16 +837,16 @@ new or changed taxonomies can be readily incorporated by assigning
 them directly to genome identifiers; the majority of the computational
 work here is involved in finding the reference genomes, which can have
 assignments in multiple taxonomic frameworks. For example, sourmash
-already supports GTDB <span class="citation" data-cites="vFApiGX2">[<a href="#ref-vFApiGX2" role="doc-biblioref">43</a>]</span> natively, and will
+already supports GTDB <span class="citation" data-cites="vFApiGX2">[<a href="#ref-vFApiGX2" role="doc-biblioref">44</a>]</span> natively, and will
 also support the emerging LINS framework
-<span class="citation" data-cites="jf4f1xTA">[<a href="#ref-jf4f1xTA" role="doc-biblioref">44</a>]</span>. sourmash can also readily
+<span class="citation" data-cites="jf4f1xTA">[<a href="#ref-jf4f1xTA" role="doc-biblioref">45</a>]</span>. sourmash can also readily
 incorporate updates to taxonomies, e.g. the frequent updates to the
 NCBI taxonomy, without requiring expensive reanalysis of the primary
 metagenome data or even regenerating the minimum metagenome cover.</p>
 <p>Interestingly, this framing of taxonomic classification as a minimum
 set cover problem may also avoid the loss of taxonomic resolution that
 affects k-mer- and read-based approaches on large databases
-<span class="citation" data-cites="j7nehrZT">[<a href="#ref-j7nehrZT" role="doc-biblioref">45</a>]</span>; this is because we apply LCA
+<span class="citation" data-cites="j7nehrZT">[<a href="#ref-j7nehrZT" role="doc-biblioref">46</a>]</span>; this is because we apply LCA
 <em>after</em> reads and k-mers have been assigned to individual genomes, and
 choose entire <em>genomes</em> based on a greedy best-match-first approach.
 This minimizes the impact of individual k-mers that may be common to
@@ -870,7 +895,7 @@ reference are being utilized for matching at lower ranks. In reality,
 there will usually be a different mixture of strains in the metagenome
 than is present in the reference database. Methods for updating references from
 metagenome data sets may provide an opportunity for generating
-metagenome-specific references <span class="citation" data-cites="VsLophuT">[<a href="#ref-VsLophuT" role="doc-biblioref">46</a>]</span>.</p>
+metagenome-specific references <span class="citation" data-cites="VsLophuT">[<a href="#ref-VsLophuT" role="doc-biblioref">47</a>]</span>.</p>
 <p>The approach presented here chooses arbitrarily between
 matches with equivalent numbers of contained k-mers. There are specific
 genomic circumstances where this approach could usefully be refined with
@@ -902,7 +927,7 @@ For example, a simple <em>set</em>
 of the <span class="math inline">\(k\)</span>-mer composition of the query supports element removal, and
 calculating containment can be done with regular set operations.
 Approximate membership query (AMQ) sketches like the Counting
-Quotient Filter <span class="citation" data-cites="ZT2VOiwV">[<a href="#ref-ZT2VOiwV" role="doc-biblioref">47</a>]</span> can also be used, with
+Quotient Filter <span class="citation" data-cites="ZT2VOiwV">[<a href="#ref-ZT2VOiwV" role="doc-biblioref">48</a>]</span> can also be used, with
 the benefit of reduced storage and memory usage.</p>
 <p>In turn, this means that limitations of our current implementation,
 such as insensitivity to small genomes when <span class="math inline">\(s\)</span> is approximately the
@@ -916,7 +941,7 @@ eukaryotic genomes.
 Both the multiple match as well as the abundance counts issues can benefit from
 existing solutions taken by other methods,
 like the <em>species score</em> (for disambiguation) and <em>Expectation-Maximization</em> (for abundance analysis)
-approaches from Centrifuge <span class="citation" data-cites="1DB8QGIqc">[<a href="#ref-1DB8QGIqc" role="doc-biblioref">48</a>]</span>.</p>
+approaches from Centrifuge <span class="citation" data-cites="1DB8QGIqc">[<a href="#ref-1DB8QGIqc" role="doc-biblioref">49</a>]</span>.</p>
 <!-- David comment: could use a compressive sensing approach here:
 $ min \norm{x}^2_1 + \lambda \norm{Ax - y}^2_2, x \ge 0$
 Y_i = count of hash i in sample
@@ -992,7 +1017,7 @@ We will use the following fact from standard calculus:</p>
 <p>where Fubini’s theorem is used in line 2 and independence in line 3.</p>
 <p>In light of Theorem 1, we note that (equation) is <em>not</em> an unbiased
 estimate of <span class="math inline">\(C(A,B)\)</span>. This may explain the observations in
-<span class="citation" data-cites="TLIGyfJa">[<a href="#ref-TLIGyfJa" role="doc-biblioref">34</a>]</span> that show suboptimal performance for
+<span class="citation" data-cites="TLIGyfJa">[<a href="#ref-TLIGyfJa" role="doc-biblioref">35</a>]</span> that show suboptimal performance for
 short sequences (e.g. viruses). However, for sufficiently large <span class="math inline">\(\vert A \vert\)</span> and <span class="math inline">\(s\)</span>, the bias factor <span class="math inline">\(\left(1-(1-s)^{\vert A\vert}\right)\)</span> is sufficiently close to 1.</p>
 <p>The expectation of <span class="math inline">\(C_\text{frac}(A,B)\)</span> follows directly from
 (equation) and Theorem 1.</p>
@@ -1022,12 +1047,12 @@ supports <span class="math inline">\(k \le 32\)</span>). For Mash and CMash they
 larger sketches with sizes comparable to the FracMinHash sketches
 with <span class="math inline">\(scaled=1000\)</span>. The truth set is calculated using an exact
 <span class="math inline">\(k\)</span>-mer counter implemented with a <em>HashSet</em> data structure in the
-Rust programming language <span class="citation" data-cites="aOtTOlpD">[<a href="#ref-aOtTOlpD" role="doc-biblioref">49</a>]</span>.
+Rust programming language <span class="citation" data-cites="aOtTOlpD">[<a href="#ref-aOtTOlpD" role="doc-biblioref">50</a>]</span>.
 The sourmash results were generated with <code>sourmash search --containment</code>.</p>
 <p>For <em>Mash Screen</em> the ratio of hashes matched by total hashes is used
 instead of the <em>Containment Score</em>, since the latter uses a <span class="math inline">\(k\)</span>-mer
 survival process modeled as a Poisson process first introduced in
-<span class="citation" data-cites="JkctHcv5">[<a href="#ref-JkctHcv5" role="doc-biblioref">50</a>]</span> and later used in the <em>Mash distance</em>
+<span class="citation" data-cites="JkctHcv5">[<a href="#ref-JkctHcv5" role="doc-biblioref">51</a>]</span> and later used in the <em>Mash distance</em>
 <span class="citation" data-cites="mH9pzoIn">[<a href="#ref-mH9pzoIn" role="doc-biblioref">20</a>]</span>
 and <em>Containment score</em> <span class="citation" data-cites="19AP1jyqE">[<a href="#ref-19AP1jyqE" role="doc-biblioref">23</a>]</span>
 formulations.</p>
@@ -1043,52 +1068,52 @@ estimated overlap of 100,000 k-mers) with
 Overlapping sketches were saved with <code>--save-prefetch</code>
 and matches were saved with <code>--save-matches</code>.</p>
 <p>The GenBank database used is 24 GB in size and is available for download
-through the sourmash project <span class="citation" data-cites="YDJmnouz">[<a href="#ref-YDJmnouz" role="doc-biblioref">51</a>]</span>.</p>
+through the sourmash project <span class="citation" data-cites="YDJmnouz">[<a href="#ref-YDJmnouz" role="doc-biblioref">52</a>]</span>.</p>
 <!-- CTB: include performance information. -->
 <h2 id="taxonomy">Taxonomy</h2>
 <p>The CAMI evaluations were run with the sourmash CAMI pipeline
-<span class="citation" data-cites="bBFGq7Sm">[<a href="#ref-bBFGq7Sm" role="doc-biblioref">52</a>]</span>, which generated
+<span class="citation" data-cites="bBFGq7Sm">[<a href="#ref-bBFGq7Sm" role="doc-biblioref">53</a>]</span>, which generated
 Open-community Profiling Assessment (OPAL) compatible output
 <span class="citation" data-cites="lsbnKJf8">[<a href="#ref-lsbnKJf8" role="doc-biblioref">29</a>]</span>.
 This output was then processed with the standard CAMI tools.</p>
 <h2 id="read-mapping-and-hybrid-mapping-pipeline">Read mapping and hybrid mapping pipeline</h2>
 <p>Metagenome reads were mapped to reference genomes using minimap2 v2.17
-<span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q" role="doc-biblioref">53</a>]</span> with short single-end read mapping mode
+<span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q" role="doc-biblioref">54</a>]</span> with short single-end read mapping mode
 (<code>-x sr</code>).</p>
 <p>The hybrid selection and mapping pipeline using the rank-ordered min-set-cov
 results was implemented in the <code>subtract_gather.py</code> script
-in the genome-grist package <span class="citation" data-cites="FxrJ8rwH">[<a href="#ref-FxrJ8rwH" role="doc-biblioref">54</a>]</span>.</p>
+in the genome-grist package <span class="citation" data-cites="FxrJ8rwH">[<a href="#ref-FxrJ8rwH" role="doc-biblioref">55</a>]</span>.</p>
 <p>The complete workflow, from metagenome download to taxonomic analysis
 and iterative mapping, is implemented in the genome-grist package.
-genome-grist uses snakemake <span class="citation" data-cites="1Anhy7wy0">[<a href="#ref-1Anhy7wy0" role="doc-biblioref">55</a>]</span> to
+genome-grist uses snakemake <span class="citation" data-cites="1Anhy7wy0">[<a href="#ref-1Anhy7wy0" role="doc-biblioref">56</a>]</span> to
 define and execute a workflow that combines sourmash sketching,
 metagenome cover calculation, and taxonomic analysis with metagenome
 download from the SRA, genome download from GenBank, and read mapping.
 We used genome-grist v0.7.4
-<span class="citation" data-cites="UlAWIFGE">[<a href="#ref-UlAWIFGE" role="doc-biblioref">56</a>]</span> to generate the
+<span class="citation" data-cites="UlAWIFGE">[<a href="#ref-UlAWIFGE" role="doc-biblioref">57</a>]</span> to generate the
 results in this paper; see <code>conf-paper.yml</code> in the pipeline
 repository.</p>
-<p>genome-grist relies on matplotlib <span class="citation" data-cites="1026Gxdsi">[<a href="#ref-1026Gxdsi" role="doc-biblioref">57</a>]</span>, Jupyter
-Notebook <span class="citation" data-cites="DkIBfLeK">[<a href="#ref-DkIBfLeK" role="doc-biblioref">58</a>]</span>, numpy
-<span class="citation" data-cites="1LexfAxj">[<a href="#ref-1LexfAxj" role="doc-biblioref">59</a>]</span>, pandas
-<span class="citation" data-cites="xjE4KaFA">[<a href="#ref-xjE4KaFA" role="doc-biblioref">60</a>]</span>, papermill, samtools
-<span class="citation" data-cites="IPc8cy7s">[<a href="#ref-IPc8cy7s" role="doc-biblioref">61</a>]</span>, bedtools
-<span class="citation" data-cites="1HWiAHnIw">[<a href="#ref-1HWiAHnIw" role="doc-biblioref">62</a>]</span>, fastp
-<span class="citation" data-cites="pt9vlq4w">[<a href="#ref-pt9vlq4w" role="doc-biblioref">63</a>]</span>, khmer
-<span class="citation" data-cites="546wIWN1">[<a href="#ref-546wIWN1" role="doc-biblioref">64</a>]</span>, screed
-<span class="citation" data-cites="E2l7FRQa">[<a href="#ref-E2l7FRQa" role="doc-biblioref">65</a>]</span>, seqtk
-<span class="citation" data-cites="XMRcIKYj">[<a href="#ref-XMRcIKYj" role="doc-biblioref">66</a>]</span>, and sra-tools
-<span class="citation" data-cites="PcQSCqic">[<a href="#ref-PcQSCqic" role="doc-biblioref">67</a>]</span>. These tools are all
+<p>genome-grist relies on matplotlib <span class="citation" data-cites="1026Gxdsi">[<a href="#ref-1026Gxdsi" role="doc-biblioref">58</a>]</span>, Jupyter
+Notebook <span class="citation" data-cites="DkIBfLeK">[<a href="#ref-DkIBfLeK" role="doc-biblioref">59</a>]</span>, numpy
+<span class="citation" data-cites="1LexfAxj">[<a href="#ref-1LexfAxj" role="doc-biblioref">60</a>]</span>, pandas
+<span class="citation" data-cites="xjE4KaFA">[<a href="#ref-xjE4KaFA" role="doc-biblioref">61</a>]</span>, papermill, samtools
+<span class="citation" data-cites="IPc8cy7s">[<a href="#ref-IPc8cy7s" role="doc-biblioref">62</a>]</span>, bedtools
+<span class="citation" data-cites="1HWiAHnIw">[<a href="#ref-1HWiAHnIw" role="doc-biblioref">63</a>]</span>, fastp
+<span class="citation" data-cites="pt9vlq4w">[<a href="#ref-pt9vlq4w" role="doc-biblioref">64</a>]</span>, khmer
+<span class="citation" data-cites="546wIWN1">[<a href="#ref-546wIWN1" role="doc-biblioref">65</a>]</span>, screed
+<span class="citation" data-cites="E2l7FRQa">[<a href="#ref-E2l7FRQa" role="doc-biblioref">66</a>]</span>, seqtk
+<span class="citation" data-cites="XMRcIKYj">[<a href="#ref-XMRcIKYj" role="doc-biblioref">67</a>]</span>, and sra-tools
+<span class="citation" data-cites="PcQSCqic">[<a href="#ref-PcQSCqic" role="doc-biblioref">68</a>]</span>. These tools are all
 installed and managed in snakemake via conda
-<span class="citation" data-cites="Ht6yPhIB">[<a href="#ref-Ht6yPhIB" role="doc-biblioref">68</a>]</span> and bioconda
-<span class="citation" data-cites="sYguBb3Q">[<a href="#ref-sYguBb3Q" role="doc-biblioref">69</a>]</span>. genome-grist itself is developed under
+<span class="citation" data-cites="Ht6yPhIB">[<a href="#ref-Ht6yPhIB" role="doc-biblioref">69</a>]</span> and bioconda
+<span class="citation" data-cites="sYguBb3Q">[<a href="#ref-sYguBb3Q" role="doc-biblioref">70</a>]</span>. genome-grist itself is developed under
 the BSD 3-clause open source license, and is available at
 <a href="https://github.com/dib-lab/genome-grist/">github.com/dib-lab/genome-grist/</a>.</p>
 <h2 id="intermediate-data-products-and-figure-generation">Intermediate data products and figure generation</h2>
 <p>All figures were generated using the Jupyter Notebooks from v0.1 of
 the
 <a href="github.com/dib-lab/2021-paper-sourmash-gather-pipeline">github.com/dib-lab/2021-paper-sourmash-gather-pipeline</a>
-repository <span class="citation" data-cites="hf9TkDeF">[<a href="#ref-hf9TkDeF" role="doc-biblioref">70</a>]</span>. This
+repository <span class="citation" data-cites="hf9TkDeF">[<a href="#ref-hf9TkDeF" role="doc-biblioref">71</a>]</span>. This
 repository also contains the intermediate data products necessary for
 figure generation.</p>
 <h2 id="metagenome-data-set-accessions">Metagenome data set accessions</h2>
@@ -1127,7 +1152,7 @@ figure generation.</p>
 <div class="csl-left-margin">1. </div><div class="csl-right-inline"><strong>A genomic catalog of Earth’s microbiomes</strong> <div class="csl-block">Stephen Nayfach, Simon Roux, Rekha Seshadri, Daniel Udwary, Neha Varghese, Frederik Schulz, Dongying Wu, David Paez-Espino, I-Min Chen, Marcel Huntemann, … Emiley A Eloe-Fadrosh</div> <em>Nature Biotechnology</em> (2021-04) <a href="https://doi.org/ghjh4b">https://doi.org/ghjh4b</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41587-020-0718-6">10.1038/s41587-020-0718-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33169036">33169036</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8041624">PMC8041624</a></div></div>
 </div>
 <div id="ref-LJ9K03qs" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline"><strong>Metagenomic assessment of the global diversity and distribution of bacteria and fungi</strong> <div class="csl-block">Mohammad Bahram, Tarquin Netherway, Clémence Frioux, Pamela Ferretti, Luis Pedro Coelho, Stefan Geisen, Peer Bork, Falk Hildebrand</div> <em>Environmental Microbiology</em> (2020-12-02) <a href="https://doi.org/gjcw9f">https://doi.org/gjcw9f</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1111/1462-2920.15314">10.1111/1462-2920.15314</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33185929">33185929</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7898879">PMC7898879</a></div></div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline"><strong>Metagenomic assessment of the global diversity and distribution of bacteria and fungi</strong> <div class="csl-block">Mohammad Bahram, Tarquin Netherway, Clémence Frioux, Pamela Ferretti, Luis Pedro Coelho, Stefan Geisen, Peer Bork, Falk Hildebrand</div> <em>Environmental Microbiology</em> (2021-01) <a href="https://doi.org/gjcw9f">https://doi.org/gjcw9f</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1111/1462-2920.15314">10.1111/1462-2920.15314</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33185929">33185929</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7898879">PMC7898879</a></div></div>
 </div>
 <div id="ref-UotiKLjf" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">3. </div><div class="csl-right-inline"><strong>The Integrative Human Microbiome Project</strong> <div class="csl-block">The Integrative HMP (iHMP) Research Network Consortium</div> <em>Nature</em> (2019-05-29) <a href="https://doi.org/gf3wp9">https://doi.org/gf3wp9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-019-1238-8">10.1038/s41586-019-1238-8</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142853">31142853</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6784865">PMC6784865</a></div></div>
@@ -1213,125 +1238,128 @@ figure generation.</p>
 <div id="ref-hWQhTndz" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">30. </div><div class="csl-right-inline"><strong>Tutorial: assessing metagenomics software with the CAMI benchmarking toolkit</strong> <div class="csl-block">Fernando Meyer, Till-Robin Lesker, David Koslicki, Adrian Fritz, Alexey Gurevich, Aaron E Darling, Alexander Sczyrba, Andreas Bremges, Alice C McHardy</div> <em>Nature Protocols</em> (2021-03-01) <a href="https://doi.org/gh77rh">https://doi.org/gh77rh</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41596-020-00480-3">10.1038/s41596-020-00480-3</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33649565">33649565</a></div></div>
 </div>
+<div id="ref-pE6VYRg6" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">31. </div><div class="csl-right-inline"><strong>Assessing taxonomic metagenome profilers with OPAL</strong> <div class="csl-block">Fernando Meyer, Andreas Bremges, Peter Belmann, Stefan Janssen, Alice C McHardy, David Koslicki</div> <em>Genome Biology</em> (2019-12) <a href="https://doi.org/gf9vbw">https://doi.org/gf9vbw</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-019-1646-y">10.1186/s13059-019-1646-y</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30832730">30832730</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6398228">PMC6398228</a></div></div>
+</div>
 <div id="ref-10okJq2cm" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">31. </div><div class="csl-right-inline"><strong>ZymoBIOMICS Microbial Community Standards</strong> <div class="csl-block">ZYMO RESEARCH</div> <a href="https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards">https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards</a></div>
+<div class="csl-left-margin">32. </div><div class="csl-right-inline"><strong>ZymoBIOMICS Microbial Community Standards</strong> <div class="csl-block">ZYMO RESEARCH</div> <a href="https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards">https://www.zymoresearch.com/collections/zymobiomics-microbial-community-standards</a></div>
 </div>
 <div id="ref-11WCsPgdk" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">32. </div><div class="csl-right-inline"><strong>Genome-Resolved Metagenomic Analysis Reveals Roles for Candidate Phyla and Other Microbial Community Members in Biogeochemical Transformations in Oil Reservoirs</strong> <div class="csl-block">Ping Hu, Lauren Tom, Andrea Singh, Brian C Thomas, Brett J Baker, Yvette M Piceno, Gary L Andersen, Jillian F Banfield</div> <em>mBio</em> (2016-03-02) <a href="https://doi.org/f8j5xr">https://doi.org/f8j5xr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1128/mbio.01669-15">10.1128/mbio.01669-15</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26787827">26787827</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4725000">PMC4725000</a></div></div>
+<div class="csl-left-margin">33. </div><div class="csl-right-inline"><strong>Genome-Resolved Metagenomic Analysis Reveals Roles for Candidate Phyla and Other Microbial Community Members in Biogeochemical Transformations in Oil Reservoirs</strong> <div class="csl-block">Ping Hu, Lauren Tom, Andrea Singh, Brian C Thomas, Brett J Baker, Yvette M Piceno, Gary L Andersen, Jillian F Banfield</div> <em>mBio</em> (2016-03-02) <a href="https://doi.org/f8j5xr">https://doi.org/f8j5xr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1128/mbio.01669-15">10.1128/mbio.01669-15</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26787827">26787827</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4725000">PMC4725000</a></div></div>
 </div>
 <div id="ref-ART4gJKs" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">33. </div><div class="csl-right-inline"><strong>Large-scale sequence comparisons with sourmash</strong> <div class="csl-block">NTessa Pierce, Luiz Irber, Taylor Reiter, Phillip Brooks, CTitus Brown</div> <em>F1000Research</em> (2019-07-04) <a href="https://doi.org/gf9v84">https://doi.org/gf9v84</a> <div class="csl-block">DOI: <a href="https://doi.org/10.12688/f1000research.19675.1">10.12688/f1000research.19675.1</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31508216">31508216</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6720031">PMC6720031</a></div></div>
+<div class="csl-left-margin">34. </div><div class="csl-right-inline"><strong>Large-scale sequence comparisons with sourmash</strong> <div class="csl-block">NTessa Pierce, Luiz Irber, Taylor Reiter, Phillip Brooks, CTitus Brown</div> <em>F1000Research</em> (2019-07-04) <a href="https://doi.org/gf9v84">https://doi.org/gf9v84</a> <div class="csl-block">DOI: <a href="https://doi.org/10.12688/f1000research.19675.1">10.12688/f1000research.19675.1</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31508216">31508216</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6720031">PMC6720031</a></div></div>
 </div>
 <div id="ref-TLIGyfJa" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">34. </div><div class="csl-right-inline"><strong>luizirber/phd 2020.09.28</strong> <div class="csl-block">Luiz Irber, CTitus Brown, Gabriel Marcondes</div> <em>Zenodo</em> (2020-09-28) <a href="https://zenodo.org/record/4057151">https://zenodo.org/record/4057151</a></div>
+<div class="csl-left-margin">35. </div><div class="csl-right-inline"><strong>luizirber/phd 2020.09.28</strong> <div class="csl-block">Luiz Irber, CTitus Brown, Gabriel Marcondes</div> <em>Zenodo</em> (2020-09-28) <a href="https://zenodo.org/record/4057151">https://zenodo.org/record/4057151</a></div>
 </div>
 <div id="ref-BdFEIcmk" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">35. </div><div class="csl-right-inline"><strong>Minimizer-space de Bruijn graphs: Whole-genome assembly of long reads in minutes on a personal computer</strong> <div class="csl-block">Barış Ekim, Bonnie Berger, Rayan Chikhi</div> <em>Cell Systems</em> (2021-10) <a href="https://doi.org/gmtsjc">https://doi.org/gmtsjc</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1016/j.cels.2021.08.009">10.1016/j.cels.2021.08.009</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34525345">34525345</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8562525">PMC8562525</a></div></div>
+<div class="csl-left-margin">36. </div><div class="csl-right-inline"><strong>Minimizer-space de Bruijn graphs: Whole-genome assembly of long reads in minutes on a personal computer</strong> <div class="csl-block">Barış Ekim, Bonnie Berger, Rayan Chikhi</div> <em>Cell Systems</em> (2021-10) <a href="https://doi.org/gmtsjc">https://doi.org/gmtsjc</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1016/j.cels.2021.08.009">10.1016/j.cels.2021.08.009</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34525345">34525345</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8562525">PMC8562525</a></div></div>
 </div>
 <div id="ref-1D79NE6aS" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">36. </div><div class="csl-right-inline"><strong>Nanopore sequencing and the Shasta toolkit enable efficient de novo assembly of eleven human genomes</strong> <div class="csl-block">Kishwar Shafin, Trevor Pesout, Ryan Lorig-Roach, Marina Haukness, Hugh E Olsen, Colleen Bosworth, Joel Armstrong, Kristof Tigyi, Nicholas Maurer, Sergey Koren, … Benedict Paten</div> <em>Nature Biotechnology</em> (2020-05-04) <a href="https://doi.org/ggvsn4">https://doi.org/ggvsn4</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41587-020-0503-6">10.1038/s41587-020-0503-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32686750">32686750</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7483855">PMC7483855</a></div></div>
+<div class="csl-left-margin">37. </div><div class="csl-right-inline"><strong>Nanopore sequencing and the Shasta toolkit enable efficient de novo assembly of eleven human genomes</strong> <div class="csl-block">Kishwar Shafin, Trevor Pesout, Ryan Lorig-Roach, Marina Haukness, Hugh E Olsen, Colleen Bosworth, Joel Armstrong, Kristof Tigyi, Nicholas Maurer, Sergey Koren, … Benedict Paten</div> <em>Nature Biotechnology</em> (2020-09) <a href="https://doi.org/ggvsn4">https://doi.org/ggvsn4</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41587-020-0503-6">10.1038/s41587-020-0503-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32686750">32686750</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7483855">PMC7483855</a></div></div>
 </div>
 <div id="ref-7LNduNIm" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">37. </div><div class="csl-right-inline"><strong>Syncmers are more sensitive than minimizers for selecting conserved &lt;i&gt;k&lt;/i&gt; ‑mers in biological sequences</strong> <div class="csl-block">Robert Edgar</div> <em>PeerJ</em> (2021-02-05) <a href="https://doi.org/gm7pzp">https://doi.org/gm7pzp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.7717/peerj.10805">10.7717/peerj.10805</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33604186">33604186</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7869670">PMC7869670</a></div></div>
+<div class="csl-left-margin">38. </div><div class="csl-right-inline"><strong>Syncmers are more sensitive than minimizers for selecting conserved &lt;i&gt;k&lt;/i&gt; ‑mers in biological sequences</strong> <div class="csl-block">Robert Edgar</div> <em>PeerJ</em> (2021-02-05) <a href="https://doi.org/gm7pzp">https://doi.org/gm7pzp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.7717/peerj.10805">10.7717/peerj.10805</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33604186">33604186</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7869670">PMC7869670</a></div></div>
 </div>
 <div id="ref-J8wNXpvP" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">38. </div><div class="csl-right-inline"><strong>https://twitter.com/krsahlin/status/1463169988689285125</strong> <div class="csl-block">Twitter</div> <a href="https://twitter.com/krsahlin/status/1463169988689285125">https://twitter.com/krsahlin/status/1463169988689285125</a></div>
+<div class="csl-left-margin">39. </div><div class="csl-right-inline"><strong>https://twitter.com/krsahlin/status/1463169988689285125</strong> <div class="csl-block">Twitter</div> <a href="https://twitter.com/krsahlin/status/1463169988689285125">https://twitter.com/krsahlin/status/1463169988689285125</a></div>
 </div>
 <div id="ref-lThwIYBH" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">39. </div><div class="csl-right-inline"><strong>Finch: a tool adding dynamic abundance filtering to genomic MinHashing</strong> <div class="csl-block">Roderick Bovee, Nick Greenfield</div> <em>The Journal of Open Source Software</em> (2018-02-01) <a href="https://doi.org/gm85dx">https://doi.org/gm85dx</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00505">10.21105/joss.00505</a></div></div>
+<div class="csl-left-margin">40. </div><div class="csl-right-inline"><strong>Finch: a tool adding dynamic abundance filtering to genomic MinHashing</strong> <div class="csl-block">Roderick Bovee, Nick Greenfield</div> <em>The Journal of Open Source Software</em> (2018-02-01) <a href="https://doi.org/gm85dx">https://doi.org/gm85dx</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00505">10.21105/joss.00505</a></div></div>
 </div>
 <div id="ref-DfZvKOpG" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">40. </div><div class="csl-right-inline"><strong>Fast search of thousands of short-read sequencing experiments</strong> <div class="csl-block">Brad Solomon, Carl Kingsford</div> <em>Nature Biotechnology</em> (2016-03) <a href="https://doi.org/f8ddk3">https://doi.org/f8ddk3</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/nbt.3442">10.1038/nbt.3442</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26854477">26854477</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4804353">PMC4804353</a></div></div>
+<div class="csl-left-margin">41. </div><div class="csl-right-inline"><strong>Fast search of thousands of short-read sequencing experiments</strong> <div class="csl-block">Brad Solomon, Carl Kingsford</div> <em>Nature Biotechnology</em> (2016-03) <a href="https://doi.org/f8ddk3">https://doi.org/f8ddk3</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/nbt.3442">10.1038/nbt.3442</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26854477">26854477</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4804353">PMC4804353</a></div></div>
 </div>
 <div id="ref-l5ETl8yA" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">41. </div><div class="csl-right-inline"><strong>DIAMOND+MEGAN: Fast and Easy Taxonomic and Functional Analysis of Short and Long Microbiome Sequences</strong> <div class="csl-block">Caner Bağcı, Sascha Patz, Daniel H Huson</div> <em>Current Protocols</em> (2021-03) <a href="https://doi.org/gjhfck">https://doi.org/gjhfck</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1002/cpz1.59">10.1002/cpz1.59</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33656283">33656283</a></div></div>
+<div class="csl-left-margin">42. </div><div class="csl-right-inline"><strong>DIAMOND+MEGAN: Fast and Easy Taxonomic and Functional Analysis of Short and Long Microbiome Sequences</strong> <div class="csl-block">Caner Bağcı, Sascha Patz, Daniel H Huson</div> <em>Current Protocols</em> (2021-03) <a href="https://doi.org/gjhfck">https://doi.org/gjhfck</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1002/cpz1.59">10.1002/cpz1.59</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33656283">33656283</a></div></div>
 </div>
 <div id="ref-mAjlUXL2" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">42. </div><div class="csl-right-inline"><strong>MetaPalette: a &lt;i&gt;k&lt;/i&gt; -mer Painting Approach for Metagenomic Taxonomic Profiling and Quantification of Novel Strain Variation</strong> <div class="csl-block">David Koslicki, Daniel Falush</div> <em>mSystems</em> (2016-06-28) <a href="https://doi.org/gg3gbd">https://doi.org/gg3gbd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1128/msystems.00020-16">10.1128/msystems.00020-16</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27822531">27822531</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5069763">PMC5069763</a></div></div>
+<div class="csl-left-margin">43. </div><div class="csl-right-inline"><strong>MetaPalette: a &lt;i&gt;k&lt;/i&gt; -mer Painting Approach for Metagenomic Taxonomic Profiling and Quantification of Novel Strain Variation</strong> <div class="csl-block">David Koslicki, Daniel Falush</div> <em>mSystems</em> (2016-06-28) <a href="https://doi.org/gg3gbd">https://doi.org/gg3gbd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1128/msystems.00020-16">10.1128/msystems.00020-16</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27822531">27822531</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5069763">PMC5069763</a></div></div>
 </div>
 <div id="ref-vFApiGX2" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">43. </div><div class="csl-right-inline"><strong>GTDB: an ongoing census of bacterial and archaeal diversity through a phylogenetically consistent, rank normalized and complete genome-based taxonomy</strong> <div class="csl-block">Donovan H Parks, Maria Chuvochina, Christian Rinke, Aaron J Mussig, Pierre-Alain Chaumeil, Philip Hugenholtz</div> <em>Nucleic Acids Research</em> (2021-09-14) <a href="https://doi.org/gm97d8">https://doi.org/gm97d8</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/nar/gkab776">10.1093/nar/gkab776</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34520557">34520557</a></div></div>
+<div class="csl-left-margin">44. </div><div class="csl-right-inline"><strong>GTDB: an ongoing census of bacterial and archaeal diversity through a phylogenetically consistent, rank normalized and complete genome-based taxonomy</strong> <div class="csl-block">Donovan H Parks, Maria Chuvochina, Christian Rinke, Aaron J Mussig, Pierre-Alain Chaumeil, Philip Hugenholtz</div> <em>Nucleic Acids Research</em> (2021-09-14) <a href="https://doi.org/gm97d8">https://doi.org/gm97d8</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/nar/gkab776">10.1093/nar/gkab776</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34520557">34520557</a></div></div>
 </div>
 <div id="ref-jf4f1xTA" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">44. </div><div class="csl-right-inline"><strong>A Proposal for a Genome Similarity-Based Taxonomy for Plant-Pathogenic Bacteria that Is Sufficiently Precise to Reflect Phylogeny, Host Range, and Outbreak Affiliation Applied to &lt;i&gt;Pseudomonas syringae sensu lato&lt;/i&gt; as a Proof of Concept</strong> <div class="csl-block">Boris A Vinatzer, Alexandra J Weisberg, Caroline L Monteil, Haitham A Elmarakeby, Samuel K Sheppard, Lenwood S Heath</div> <em>Phytopathology®</em> (2017-01) <a href="https://doi.org/gg78hd">https://doi.org/gg78hd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1094/phyto-07-16-0252-r">10.1094/phyto-07-16-0252-r</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27552324">27552324</a></div></div>
+<div class="csl-left-margin">45. </div><div class="csl-right-inline"><strong>A Proposal for a Genome Similarity-Based Taxonomy for Plant-Pathogenic Bacteria that Is Sufficiently Precise to Reflect Phylogeny, Host Range, and Outbreak Affiliation Applied to &lt;i&gt;Pseudomonas syringae sensu lato&lt;/i&gt; as a Proof of Concept</strong> <div class="csl-block">Boris A Vinatzer, Alexandra J Weisberg, Caroline L Monteil, Haitham A Elmarakeby, Samuel K Sheppard, Lenwood S Heath</div> <em>Phytopathology®</em> (2017-01) <a href="https://doi.org/gg78hd">https://doi.org/gg78hd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1094/phyto-07-16-0252-r">10.1094/phyto-07-16-0252-r</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27552324">27552324</a></div></div>
 </div>
 <div id="ref-j7nehrZT" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">45. </div><div class="csl-right-inline"><strong>RefSeq database growth influences the accuracy of k-mer-based lowest common ancestor species identification</strong> <div class="csl-block">Daniel J Nasko, Sergey Koren, Adam M Phillippy, Todd J Treangen</div> <em>Genome Biology</em> (2018-10-30) <a href="https://doi.org/ggc9db">https://doi.org/ggc9db</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-018-1554-6">10.1186/s13059-018-1554-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30373669">30373669</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6206640">PMC6206640</a></div></div>
+<div class="csl-left-margin">46. </div><div class="csl-right-inline"><strong>RefSeq database growth influences the accuracy of k-mer-based lowest common ancestor species identification</strong> <div class="csl-block">Daniel J Nasko, Sergey Koren, Adam M Phillippy, Todd J Treangen</div> <em>Genome Biology</em> (2018-10-30) <a href="https://doi.org/ggc9db">https://doi.org/ggc9db</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-018-1554-6">10.1186/s13059-018-1554-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30373669">30373669</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6206640">PMC6206640</a></div></div>
 </div>
 <div id="ref-VsLophuT" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">46. </div><div class="csl-right-inline"><strong>Exploring neighborhoods in large metagenome assembly graphs using spacegraphcats reveals hidden sequence diversity</strong> <div class="csl-block">CTitus Brown, Dominik Moritz, Michael P O’Brien, Felix Reidl, Taylor Reiter, Blair D Sullivan</div> <em>Genome Biology</em> (2020-07-06) <a href="https://doi.org/d4bb">https://doi.org/d4bb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-020-02066-4">10.1186/s13059-020-02066-4</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32631445">32631445</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7336657">PMC7336657</a></div></div>
+<div class="csl-left-margin">47. </div><div class="csl-right-inline"><strong>Exploring neighborhoods in large metagenome assembly graphs using spacegraphcats reveals hidden sequence diversity</strong> <div class="csl-block">CTitus Brown, Dominik Moritz, Michael P O’Brien, Felix Reidl, Taylor Reiter, Blair D Sullivan</div> <em>Genome Biology</em> (2020-07-06) <a href="https://doi.org/d4bb">https://doi.org/d4bb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-020-02066-4">10.1186/s13059-020-02066-4</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32631445">32631445</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7336657">PMC7336657</a></div></div>
 </div>
 <div id="ref-ZT2VOiwV" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">47. </div><div class="csl-right-inline"><strong>A General-Purpose Counting Filter</strong> <div class="csl-block">Prashant Pandey, Michael A Bender, Rob Johnson, Rob Patro</div> <em>Association for Computing Machinery (ACM)</em> (2017-05-09) <a href="https://doi.org/gg29n9">https://doi.org/gg29n9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/3035918.3035963">10.1145/3035918.3035963</a></div></div>
+<div class="csl-left-margin">48. </div><div class="csl-right-inline"><strong>A General-Purpose Counting Filter</strong> <div class="csl-block">Prashant Pandey, Michael A Bender, Rob Johnson, Rob Patro</div> <em>Association for Computing Machinery (ACM)</em> (2017-05-09) <a href="https://doi.org/gg29n9">https://doi.org/gg29n9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/3035918.3035963">10.1145/3035918.3035963</a></div></div>
 </div>
 <div id="ref-1DB8QGIqc" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">48. </div><div class="csl-right-inline"><strong>Centrifuge: rapid and sensitive classification of metagenomic sequences</strong> <div class="csl-block">Daehwan Kim, Li Song, Florian P Breitwieser, Steven L Salzberg</div> <em>Genome Research</em> (2016-12) <a href="https://doi.org/f9fnrr">https://doi.org/f9fnrr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.210641.116">10.1101/gr.210641.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27852649">27852649</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5131823">PMC5131823</a></div></div>
+<div class="csl-left-margin">49. </div><div class="csl-right-inline"><strong>Centrifuge: rapid and sensitive classification of metagenomic sequences</strong> <div class="csl-block">Daehwan Kim, Li Song, Florian P Breitwieser, Steven L Salzberg</div> <em>Genome Research</em> (2016-12) <a href="https://doi.org/f9fnrr">https://doi.org/f9fnrr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.210641.116">10.1101/gr.210641.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27852649">27852649</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5131823">PMC5131823</a></div></div>
 </div>
 <div id="ref-aOtTOlpD" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">49. </div><div class="csl-right-inline"><strong>The rust language</strong> <div class="csl-block">Nicholas D Matsakis, Felix S Klock</div> <em>ACM SIGAda Ada Letters</em> (2014-11-26) <a href="https://doi.org/gntjvb">https://doi.org/gntjvb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/2692956.2663188">10.1145/2692956.2663188</a></div></div>
+<div class="csl-left-margin">50. </div><div class="csl-right-inline"><strong>The rust language</strong> <div class="csl-block">Nicholas D Matsakis, Felix S Klock</div> <em>ACM SIGAda Ada Letters</em> (2014-11-26) <a href="https://doi.org/gntjvb">https://doi.org/gntjvb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/2692956.2663188">10.1145/2692956.2663188</a></div></div>
 </div>
 <div id="ref-JkctHcv5" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">50. </div><div class="csl-right-inline"><strong>An assembly and alignment-free method of phylogeny reconstruction from next-generation sequencing data</strong> <div class="csl-block">Huan Fan, Anthony R Ives, Yann Surget-Groba, Charles H Cannon</div> <em>BMC Genomics</em> (2015-12) <a href="https://doi.org/f7s6tp">https://doi.org/f7s6tp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s12864-015-1647-5">10.1186/s12864-015-1647-5</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26169061">26169061</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4501066">PMC4501066</a></div></div>
+<div class="csl-left-margin">51. </div><div class="csl-right-inline"><strong>An assembly and alignment-free method of phylogeny reconstruction from next-generation sequencing data</strong> <div class="csl-block">Huan Fan, Anthony R Ives, Yann Surget-Groba, Charles H Cannon</div> <em>BMC Genomics</em> (2015-12) <a href="https://doi.org/f7s6tp">https://doi.org/f7s6tp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s12864-015-1647-5">10.1186/s12864-015-1647-5</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26169061">26169061</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4501066">PMC4501066</a></div></div>
 </div>
 <div id="ref-YDJmnouz" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">51. </div><div class="csl-right-inline"><strong>Welcome to sourmash! — sourmash 4.2.3.dev12+g73aeb155.d20211121 documentation</strong> <a href="https://sourmash.readthedocs.io/en/latest/">https://sourmash.readthedocs.io/en/latest/</a></div>
+<div class="csl-left-margin">52. </div><div class="csl-right-inline"><strong>Welcome to sourmash! — sourmash 4.2.3.dev12+g73aeb155.d20211121 documentation</strong> <a href="https://sourmash.readthedocs.io/en/latest/">https://sourmash.readthedocs.io/en/latest/</a></div>
 </div>
 <div id="ref-bBFGq7Sm" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">52. </div><div class="csl-right-inline"><strong>GitHub - luizirber/2020-cami: Preparing sourmash for CAMI 2 evaluations</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/luizirber/2020-cami">https://github.com/luizirber/2020-cami</a></div>
+<div class="csl-left-margin">53. </div><div class="csl-right-inline"><strong>GitHub - luizirber/2020-cami: Preparing sourmash for CAMI 2 evaluations</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/luizirber/2020-cami">https://github.com/luizirber/2020-cami</a></div>
 </div>
 <div id="ref-172cJaw4Q" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">53. </div><div class="csl-right-inline"><strong>Minimap2: pairwise alignment for nucleotide sequences</strong> <div class="csl-block">Heng Li</div> <em>Bioinformatics</em> (2018-09-15) <a href="https://doi.org/gdhbqt">https://doi.org/gdhbqt</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/bty191">10.1093/bioinformatics/bty191</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29750242">29750242</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6137996">PMC6137996</a></div></div>
+<div class="csl-left-margin">54. </div><div class="csl-right-inline"><strong>Minimap2: pairwise alignment for nucleotide sequences</strong> <div class="csl-block">Heng Li</div> <em>Bioinformatics</em> (2018-09-15) <a href="https://doi.org/gdhbqt">https://doi.org/gdhbqt</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/bty191">10.1093/bioinformatics/bty191</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29750242">29750242</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6137996">PMC6137996</a></div></div>
 </div>
 <div id="ref-FxrJ8rwH" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">54. </div><div class="csl-right-inline"><strong>GitHub - dib-lab/genome-grist: map Illumina metagenomes to GenBank genomes</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/dib-lab/genome-grist">https://github.com/dib-lab/genome-grist</a></div>
+<div class="csl-left-margin">55. </div><div class="csl-right-inline"><strong>GitHub - dib-lab/genome-grist: map Illumina metagenomes to GenBank genomes</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/dib-lab/genome-grist">https://github.com/dib-lab/genome-grist</a></div>
 </div>
 <div id="ref-1Anhy7wy0" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">55. </div><div class="csl-right-inline"><strong>Sustainable data analysis with Snakemake</strong> <div class="csl-block">Felix Mölder, Kim Philipp Jablonski, Brice Letcher, Michael B Hall, Christopher H Tomkins-Tinch, Vanessa Sochat, Jan Forster, Soohyun Lee, Sven O Twardziok, Alexander Kanitz, … Johannes Köster</div> <em>F1000Research</em> (2021-04-19) <a href="https://doi.org/gj76rq">https://doi.org/gj76rq</a> <div class="csl-block">DOI: <a href="https://doi.org/10.12688/f1000research.29032.2">10.12688/f1000research.29032.2</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34035898">34035898</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8114187">PMC8114187</a></div></div>
+<div class="csl-left-margin">56. </div><div class="csl-right-inline"><strong>Sustainable data analysis with Snakemake</strong> <div class="csl-block">Felix Mölder, Kim Philipp Jablonski, Brice Letcher, Michael B Hall, Christopher H Tomkins-Tinch, Vanessa Sochat, Jan Forster, Soohyun Lee, Sven O Twardziok, Alexander Kanitz, … Johannes Köster</div> <em>F1000Research</em> (2021-04-19) <a href="https://doi.org/gj76rq">https://doi.org/gj76rq</a> <div class="csl-block">DOI: <a href="https://doi.org/10.12688/f1000research.29032.2">10.12688/f1000research.29032.2</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34035898">34035898</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8114187">PMC8114187</a></div></div>
 </div>
 <div id="ref-UlAWIFGE" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">56. </div><div class="csl-right-inline"><strong>dib-lab/genome-grist: v0.7.4</strong> <div class="csl-block">CTitus Brown, Tessa Pierce Ward, Mohamed Abuelanin, Marisa Lim</div> <em>Zenodo</em> (2021-12-19) <a href="https://zenodo.org/record/5792144">https://zenodo.org/record/5792144</a></div>
+<div class="csl-left-margin">57. </div><div class="csl-right-inline"><strong>dib-lab/genome-grist: v0.7.4</strong> <div class="csl-block">CTitus Brown, Tessa Pierce Ward, Mohamed Abuelanin, Marisa Lim</div> <em>Zenodo</em> (2021-12-19) <a href="https://zenodo.org/record/5792144">https://zenodo.org/record/5792144</a></div>
 </div>
 <div id="ref-1026Gxdsi" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">57. </div><div class="csl-right-inline"><strong>Matplotlib: A 2D Graphics Environment</strong> <div class="csl-block">John D Hunter</div> <em>Computing in Science &amp; Engineering</em> (2007) <a href="https://doi.org/drbjhg">https://doi.org/drbjhg</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/mcse.2007.55">10.1109/mcse.2007.55</a></div></div>
+<div class="csl-left-margin">58. </div><div class="csl-right-inline"><strong>Matplotlib: A 2D Graphics Environment</strong> <div class="csl-block">John D Hunter</div> <em>Computing in Science &amp; Engineering</em> (2007) <a href="https://doi.org/drbjhg">https://doi.org/drbjhg</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1109/mcse.2007.55">10.1109/mcse.2007.55</a></div></div>
 </div>
 <div id="ref-DkIBfLeK" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">58. </div><div class="csl-right-inline"><strong>Jupyter Notebooks – a publishing format for reproducible computational workflows</strong> <div class="csl-block">Thomas Kluyver, Benjamin Ragan-Kelley, P&amp;#233, Fernando Rez, Brian Granger, Matthias Bussonnier, Jonathan Frederic, Kyle Kelley, Jessica Hamrick, Jason Grout, … Jupyter Development Team</div> <em>Positioning and Power in Academic Publishing: Players, Agents and Agendas</em> (2016) <a href="https://ebooks.iospress.nl/doi/10.3233/978-1-61499-649-1-87">https://ebooks.iospress.nl/doi/10.3233/978-1-61499-649-1-87</a> <div class="csl-block">DOI: <a href="https://doi.org/10.3233/978-1-61499-649-1-87">10.3233/978-1-61499-649-1-87</a></div></div>
+<div class="csl-left-margin">59. </div><div class="csl-right-inline"><strong>Jupyter Notebooks – a publishing format for reproducible computational workflows</strong> <div class="csl-block">Thomas Kluyver, Benjamin Ragan-Kelley, P&amp;#233, Fernando Rez, Brian Granger, Matthias Bussonnier, Jonathan Frederic, Kyle Kelley, Jessica Hamrick, Jason Grout, … Jupyter Development Team</div> <em>Positioning and Power in Academic Publishing: Players, Agents and Agendas</em> (2016) <a href="https://ebooks.iospress.nl/doi/10.3233/978-1-61499-649-1-87">https://ebooks.iospress.nl/doi/10.3233/978-1-61499-649-1-87</a> <div class="csl-block">DOI: <a href="https://doi.org/10.3233/978-1-61499-649-1-87">10.3233/978-1-61499-649-1-87</a></div></div>
 </div>
 <div id="ref-1LexfAxj" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">59. </div><div class="csl-right-inline"><strong>Array programming with NumPy</strong> <div class="csl-block">Charles R Harris, KJarrod Millman, Stéfan J van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J Smith, … Travis E Oliphant</div> <em>Nature</em> (2020-09-17) <a href="https://doi.org/ghbzf2">https://doi.org/ghbzf2</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-020-2649-2">10.1038/s41586-020-2649-2</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32939066">32939066</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7759461">PMC7759461</a></div></div>
+<div class="csl-left-margin">60. </div><div class="csl-right-inline"><strong>Array programming with NumPy</strong> <div class="csl-block">Charles R Harris, KJarrod Millman, Stéfan J van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J Smith, … Travis E Oliphant</div> <em>Nature</em> (2020-09-17) <a href="https://doi.org/ghbzf2">https://doi.org/ghbzf2</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-020-2649-2">10.1038/s41586-020-2649-2</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32939066">32939066</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7759461">PMC7759461</a></div></div>
 </div>
 <div id="ref-xjE4KaFA" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">60. </div><div class="csl-right-inline"><strong>pandas-dev/pandas: Pandas 1.4.0rc0</strong> <div class="csl-block">Jeff Reback, jbrockmendel, Wes McKinney, Joris Van den Bossche, Tom Augspurger, Phillip Cloud, Simon Hawkins, Matthew Roeschke, gfyoung, Sinhrks, … Skipper Seabold</div> <em>Zenodo</em> (2022-01-06) <a href="https://zenodo.org/record/5824773">https://zenodo.org/record/5824773</a></div>
+<div class="csl-left-margin">61. </div><div class="csl-right-inline"><strong>pandas-dev/pandas: Pandas 1.4.0rc0</strong> <div class="csl-block">Jeff Reback, jbrockmendel, Wes McKinney, Joris Van den Bossche, Tom Augspurger, Phillip Cloud, Simon Hawkins, Matthew Roeschke, gfyoung, Sinhrks, … Skipper Seabold</div> <em>Zenodo</em> (2022-01-06) <a href="https://zenodo.org/record/5824773">https://zenodo.org/record/5824773</a></div>
 </div>
 <div id="ref-IPc8cy7s" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">61. </div><div class="csl-right-inline"><strong>The Sequence Alignment/Map format and SAMtools</strong> <div class="csl-block">H Li, B Handsaker, A Wysoker, T Fennell, J Ruan, N Homer, G Marth, G Abecasis, R Durbin, 1000 Genome Project Data Processing Subgroup</div> <em>Bioinformatics</em> (2009-08-15) <a href="https://doi.org/ff6426">https://doi.org/ff6426</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btp352">10.1093/bioinformatics/btp352</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/19505943">19505943</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2723002">PMC2723002</a></div></div>
+<div class="csl-left-margin">62. </div><div class="csl-right-inline"><strong>The Sequence Alignment/Map format and SAMtools</strong> <div class="csl-block">H Li, B Handsaker, A Wysoker, T Fennell, J Ruan, N Homer, G Marth, G Abecasis, R Durbin, 1000 Genome Project Data Processing Subgroup</div> <em>Bioinformatics</em> (2009-08-15) <a href="https://doi.org/ff6426">https://doi.org/ff6426</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btp352">10.1093/bioinformatics/btp352</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/19505943">19505943</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2723002">PMC2723002</a></div></div>
 </div>
 <div id="ref-1HWiAHnIw" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">62. </div><div class="csl-right-inline"><strong>BEDTools: a flexible suite of utilities for comparing genomic features</strong> <div class="csl-block">Aaron R Quinlan, Ira M Hall</div> <em>Bioinformatics</em> (2010-03-15) <a href="https://doi.org/cmrms3">https://doi.org/cmrms3</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btq033">10.1093/bioinformatics/btq033</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/20110278">20110278</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2832824">PMC2832824</a></div></div>
+<div class="csl-left-margin">63. </div><div class="csl-right-inline"><strong>BEDTools: a flexible suite of utilities for comparing genomic features</strong> <div class="csl-block">Aaron R Quinlan, Ira M Hall</div> <em>Bioinformatics</em> (2010-03-15) <a href="https://doi.org/cmrms3">https://doi.org/cmrms3</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btq033">10.1093/bioinformatics/btq033</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/20110278">20110278</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2832824">PMC2832824</a></div></div>
 </div>
 <div id="ref-pt9vlq4w" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">63. </div><div class="csl-right-inline"><strong>fastp: an ultra-fast all-in-one FASTQ preprocessor</strong> <div class="csl-block">Shifu Chen, Yanqing Zhou, Yaru Chen, Jia Gu</div> <em>Bioinformatics</em> (2018-09-01) <a href="https://doi.org/gd9mrb">https://doi.org/gd9mrb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/bty560">10.1093/bioinformatics/bty560</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30423086">30423086</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6129281">PMC6129281</a></div></div>
+<div class="csl-left-margin">64. </div><div class="csl-right-inline"><strong>fastp: an ultra-fast all-in-one FASTQ preprocessor</strong> <div class="csl-block">Shifu Chen, Yanqing Zhou, Yaru Chen, Jia Gu</div> <em>Bioinformatics</em> (2018-09-01) <a href="https://doi.org/gd9mrb">https://doi.org/gd9mrb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/bty560">10.1093/bioinformatics/bty560</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30423086">30423086</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6129281">PMC6129281</a></div></div>
 </div>
 <div id="ref-546wIWN1" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">64. </div><div class="csl-right-inline"><strong>khmer release v2.1: software for biological sequence analysis</strong> <div class="csl-block">Daniel Standage, Ali yari, Lisa J. Cohen, Michael R. Crusoe, Tim Head, Luiz Irber, Shannon EK Joslin, N B. Kingsley, Kevin D. Murray, Russell Neches, … C Titus Brown</div> <em>The Journal of Open Source Software</em> (2017-07-03) <a href="https://doi.org/gntbpv">https://doi.org/gntbpv</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00272">10.21105/joss.00272</a></div></div>
+<div class="csl-left-margin">65. </div><div class="csl-right-inline"><strong>khmer release v2.1: software for biological sequence analysis</strong> <div class="csl-block">Daniel Standage, Ali yari, Lisa J. Cohen, Michael R. Crusoe, Tim Head, Luiz Irber, Shannon EK Joslin, N B. Kingsley, Kevin D. Murray, Russell Neches, … C Titus Brown</div> <em>The Journal of Open Source Software</em> (2017-07-03) <a href="https://doi.org/gntbpv">https://doi.org/gntbpv</a> <div class="csl-block">DOI: <a href="https://doi.org/10.21105/joss.00272">10.21105/joss.00272</a></div></div>
 </div>
 <div id="ref-E2l7FRQa" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">65. </div><div class="csl-right-inline"><strong>screed - short read sequence utils — screed 1.0 documentation</strong> <a href="https://screed.readthedocs.io/en/v1.0/">https://screed.readthedocs.io/en/v1.0/</a></div>
+<div class="csl-left-margin">66. </div><div class="csl-right-inline"><strong>screed - short read sequence utils — screed 1.0 documentation</strong> <a href="https://screed.readthedocs.io/en/v1.0/">https://screed.readthedocs.io/en/v1.0/</a></div>
 </div>
 <div id="ref-XMRcIKYj" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">66. </div><div class="csl-right-inline"><strong>GitHub - lh3/seqtk: Toolkit for processing sequences in FASTA/Q formats</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/lh3/seqtk">https://github.com/lh3/seqtk</a></div>
+<div class="csl-left-margin">67. </div><div class="csl-right-inline"><strong>GitHub - lh3/seqtk: Toolkit for processing sequences in FASTA/Q formats</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/lh3/seqtk">https://github.com/lh3/seqtk</a></div>
 </div>
 <div id="ref-PcQSCqic" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">67. </div><div class="csl-right-inline"><strong>GitHub - ncbi/sra-tools: SRA Tools</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/ncbi/sra-tools">https://github.com/ncbi/sra-tools</a></div>
+<div class="csl-left-margin">68. </div><div class="csl-right-inline"><strong>GitHub - ncbi/sra-tools: SRA Tools</strong> <div class="csl-block">GitHub</div> <a href="https://github.com/ncbi/sra-tools">https://github.com/ncbi/sra-tools</a></div>
 </div>
 <div id="ref-Ht6yPhIB" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">68. </div><div class="csl-right-inline"><strong>Anaconda Documentation — Anaconda documentation</strong> <a href="https://docs.anaconda.com/">https://docs.anaconda.com/</a></div>
+<div class="csl-left-margin">69. </div><div class="csl-right-inline"><strong>Anaconda Documentation — Anaconda documentation</strong> <a href="https://docs.anaconda.com/">https://docs.anaconda.com/</a></div>
 </div>
 <div id="ref-sYguBb3Q" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">69. </div><div class="csl-right-inline"><strong>Bioconda: sustainable and comprehensive software distribution for the life sciences</strong> <div class="csl-block">The Bioconda Team, Björn Grüning, Ryan Dale, Andreas Sjödin, Brad A Chapman, Jillian Rowe, Christopher H Tomkins-Tinch, Renan Valieris, Johannes Köster</div> <em>Nature Methods</em> (2018-07) <a href="https://doi.org/gd2xzp">https://doi.org/gd2xzp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41592-018-0046-7">10.1038/s41592-018-0046-7</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29967506">29967506</a></div></div>
+<div class="csl-left-margin">70. </div><div class="csl-right-inline"><strong>Bioconda: sustainable and comprehensive software distribution for the life sciences</strong> <div class="csl-block">The Bioconda Team, Björn Grüning, Ryan Dale, Andreas Sjödin, Brad A Chapman, Jillian Rowe, Christopher H Tomkins-Tinch, Renan Valieris, Johannes Köster</div> <em>Nature Methods</em> (2018-07) <a href="https://doi.org/gd2xzp">https://doi.org/gd2xzp</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41592-018-0046-7">10.1038/s41592-018-0046-7</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29967506">29967506</a></div></div>
 </div>
 <div id="ref-hf9TkDeF" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">70. </div><div class="csl-right-inline"><strong>dib-lab/2021-paper-sourmash-gather-pipeline: v0.1</strong> <div class="csl-block">CTitus Brown</div> <em>Zenodo</em> (2021-12-20) <a href="https://zenodo.org/record/5793387">https://zenodo.org/record/5793387</a></div>
+<div class="csl-left-margin">71. </div><div class="csl-right-inline"><strong>dib-lab/2021-paper-sourmash-gather-pipeline: v0.1</strong> <div class="csl-block">CTitus Brown</div> <em>Zenodo</em> (2021-12-20) <a href="https://zenodo.org/record/5793387">https://zenodo.org/record/5793387</a></div>
 </div>
 </div>
 <h2 id="appendix">Appendix</h2>
