@@ -97,9 +97,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -113,9 +113,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/13cf07076987133e4161a93866f519c75d3e108b/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/7e8b7b4aaf0daeb31c04d18f938681e5c158d904/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/13cf07076987133e4161a93866f519c75d3e108b">dib-lab/2020-paper-sourmash-gather@13cf070</a>
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/7e8b7b4aaf0daeb31c04d18f938681e5c158d904">dib-lab/2020-paper-sourmash-gather@7e8b7b4</a>
 on January 10, 2022.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -338,7 +338,9 @@ polynomial-time approximation <span class="citation" data-cites="Sf40Smkk">[<a h
 <ol type="1">
 <li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span></li>
 <li>While <span class="math inline">\(k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cap k(G))\)</span> is nonempty:</li>
-<li><span class="math inline">\(C \leftarrow C \bigcup \left\{ \arg\max}_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \right\}\)</span></li>
+<li><span class="math inline">\(C \leftarrow C \bigcup \left\{ \arg\max_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \vert\right\}\)</span></li>
+<li><span class="math inline">\(C \leftarrow C \bigcup \left\{ \arg\max_{G \in D}\)</span></li>
+<li><span class="math inline">\(\vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \vert\)</span></li>
 <li>return <span class="math inline">\(C\)</span></li>
 </ol>
 <p>This greedy algorithm iteratively chooses reference genomes from <span class="math inline">\(D\)</span>
@@ -1229,7 +1231,7 @@ figure generation.</p>
 <div class="csl-left-margin">25. </div><div class="csl-right-inline"><strong>Omega: an Overlap-graph de novo Assembler for Metagenomics</strong> <div class="csl-block">Bahlul Haider, Tae-Hyuk Ahn, Brian Bushnell, Juanjuan Chai, Alex Copeland, Chongle Pan</div> <em>Bioinformatics</em> (2014-06-19) <a href="https://doi.org/f6kt42">https://doi.org/f6kt42</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btu395">10.1093/bioinformatics/btu395</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24947750">24947750</a></div></div>
 </div>
 <div id="ref-KP5SjPXN" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">26. </div><div class="csl-right-inline"><strong>metaSPAdes: a new versatile metagenomic assembler</strong> <div class="csl-block">Sergey Nurk, Dmitry Meleshko, Anton Korobeynikov, Pavel A Pevzner</div> <em>Genome Research</em> (2017-03-15) <a href="https://doi.org/f97jkv">https://doi.org/f97jkv</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.213959.116">10.1101/gr.213959.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28298430">28298430</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5411777">PMC5411777</a></div></div>
+<div class="csl-left-margin">26. </div><div class="csl-right-inline"><strong>metaSPAdes: a new versatile metagenomic assembler</strong> <div class="csl-block">Sergey Nurk, Dmitry Meleshko, Anton Korobeynikov, Pavel A Pevzner</div> <em>Genome Research</em> (2017-05) <a href="https://doi.org/f97jkv">https://doi.org/f97jkv</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.213959.116">10.1101/gr.213959.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28298430">28298430</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5411777">PMC5411777</a></div></div>
 </div>
 <div id="ref-18UKYqh4i" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">27. </div><div class="csl-right-inline"><strong>Evaluating Metagenome Assembly on a Simple Defined Community with Many Strain Variants</strong> <div class="csl-block">Sherine Awad, Luiz Irber, CTitus Brown</div> <em>Cold Spring Harbor Laboratory</em> (2017-06-25) <a href="https://doi.org/ghvn6x">https://doi.org/ghvn6x</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/155358">10.1101/155358</a></div></div>
