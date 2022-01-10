@@ -52,9 +52,9 @@ authors:
     affiliations:
      - Department of Population Health and Reproduction, UC Davis
     funders:
-      - Grant #1711984 from the NSF
+      - Grant 1711984 from the NSF
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
-      - Grant #2018911 from the NSF
+      - Grant 2018911 from the NSF
   - github: mahmudhera
     name: Mahmudur Rahman Hera
     initials: MRH
@@ -63,7 +63,7 @@ authors:
     affiliations:
       - Department of Computer Science and Engineering, Penn State University
     funders:
-      - Grant #2029170 from the NSF
+      - Grant 2029170 from the NSF
   - github: dkoslicki
     name: David Koslicki
     initials: DK
@@ -75,7 +75,7 @@ authors:
       - Department of Biology, Penn State University
       - Huck Institutes of the Life Sciences, Penn State University
     funders:
-      - Grant #2029170 from the NSF
+      - Grant 2029170 from the NSF
   - github: ctb
     name: C. Titus Brown
     initials: CTB
@@ -86,5 +86,5 @@ authors:
     funders:
       - Grant GBMF4551 from the Gordon and Betty Moore Foundation
       - Grant R01HG007513 from the NIH NHGRI
-      - Grant #2018911 from the NSF
+      - Grant 2018911 from the NSF
       - Grant R03OD030596 from the NIH Common Fund
