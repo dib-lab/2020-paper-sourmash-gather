@@ -31,7 +31,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-genbank
+GenBank
 genomic
 GTDB
 HashSet
@@ -56,15 +56,15 @@ Mahmudur
 matplotlib
 mer
 mers
-metagenome
+Metagenome
 metagenomes
 metagenomic
 metagenomics
-metalign
+Metalign
 microbiome
 microbiomes
 mincode
-minhash
+MinHash
 minimap
 minimizers
 mis
