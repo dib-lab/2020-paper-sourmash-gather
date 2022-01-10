@@ -1,5 +1,5 @@
 ---
-title: "Lightweight compositional analysis of metagenomes with minimum metagenome covers"
+title: "Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome cover"
 keywords:
   - k-mers
   - MinHash
