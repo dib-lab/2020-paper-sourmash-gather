@@ -5,12 +5,12 @@ keywords:
 - MinHash
 - CTB
 lang: en-US
-date-meta: '2022-01-04'
+date-meta: '2022-01-10'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
 - Taylor Reiter
-- N. Tessa Pierce
+- N. Tessa Pierce-Ward
 - David Koslicki
 - C. Titus Brown
 header-includes: |-
@@ -23,8 +23,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="dc.date" content="2022-01-04" />
-  <meta name="citation_publication_date" content="2022-01-04" />
+  <meta name="dc.date" content="2022-01-10" />
+  <meta name="citation_publication_date" content="2022-01-10" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -45,7 +45,7 @@ header-includes: |-
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0002-7388-421X" />
   <meta name="twitter:creator" content="@ReiterTaylor" />
-  <meta name="citation_author" content="N. Tessa Pierce" />
+  <meta name="citation_author" content="N. Tessa Pierce-Ward" />
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0002-2942-5331" />
   <meta name="twitter:creator" content="@saltyscientist" />
@@ -61,9 +61,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,10 +85,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/d555c69e391ea18bb7df6b4ea40364d943c7a24c/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@d555c69](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/d555c69e391ea18bb7df6b4ea40364d943c7a24c)
-on January 4, 2022.
+from [dib-lab/2020-paper-sourmash-gather@bb92e76](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bb92e76004b646679464c142ed3818312df29bc0)
+on January 10, 2022.
 </em></small>
 
 ## Authors
@@ -131,7 +131,7 @@ on January 4, 2022.
      · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation
   </small>
 
-+ **N. Tessa Pierce**<br>
++ **N. Tessa Pierce-Ward**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
     [0000-0002-2942-5331](https://orcid.org/0000-0002-2942-5331)
     · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
