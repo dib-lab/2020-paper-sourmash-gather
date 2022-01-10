@@ -60,7 +60,7 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-metalign
+Metalign
 microbiome
 microbiomes
 mincode
@@ -89,7 +89,7 @@ seqtk
 Shewanella
 snakemake
 sourmash
-SRA
+sra
 SRR
 suboptimal
 subsampled

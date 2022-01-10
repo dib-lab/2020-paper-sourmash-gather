@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,9 +95,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c603d0e1a377a7f31f898436f415bd8814674cfa/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@c250821](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c250821095c807ba9c9c0a3c68f5dbb4e49e4018)
+from [dib-lab/2020-paper-sourmash-gather@c603d0e](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c603d0e1a377a7f31f898436f415bd8814674cfa)
 on January 10, 2022.
 </em></small>
 
@@ -150,7 +150,7 @@ on January 10, 2022.
     [saltyscientist](https://twitter.com/saltyscientist)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant; Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant
+     · Funded by Grant 1711984 from the NSF; Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant 2018911 from the NSF
   </small>
 
 + **Mahmudur Rahman Hera**<br>
@@ -160,7 +160,7 @@ on January 10, 2022.
     [HeraMahmudur](https://twitter.com/HeraMahmudur)<br>
   <small>
      Department of Computer Science and Engineering, Penn State University
-     · Funded by Grant
+     · Funded by Grant 2029170 from the NSF
   </small>
 
 + **David Koslicki**<br>
@@ -172,7 +172,7 @@ on January 10, 2022.
     [DavidKoslicki](https://twitter.com/DavidKoslicki)<br>
   <small>
      Department of Computer Science and Engineering, Penn State University; Department of Biology, Penn State University; Huck Institutes of the Life Sciences, Penn State University
-     · Funded by Grant
+     · Funded by Grant 2029170 from the NSF
   </small>
 
 + **C. Titus Brown**<br>
@@ -182,7 +182,7 @@ on January 10, 2022.
     [ctb](https://github.com/ctb)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R01HG007513 from the NIH NHGRI; Grant; Grant R03OD030596 from the NIH Common Fund
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R01HG007513 from the NIH NHGRI; Grant 2018911 from the NSF; Grant R03OD030596 from the NIH Common Fund
   </small>
 
 
@@ -204,7 +204,7 @@ We implement a greedy approximate solution using FracMinHash sketches,
 and evaluate its accuracy for taxonomic assignment using a CAMI
 community benchmark.  Finally, we show that the minimum metagenome
 cover can be used to guide the selection of reference genomes for read
-mapping.  sourmash is available as open source under the BSD 3-Clause
+mapping.  sourmash is available as open source software under the BSD 3-Clause
 license at
 [github.com/dib-lab/sourmash/](https://github.com/dib-lab/sourmash/).
 
