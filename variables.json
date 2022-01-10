@@ -4,7 +4,10 @@
     "keywords": [
       "k-mers",
       "MinHash",
-      "CTB"
+      "FracMinHash",
+      "sketch",
+      "metagenomics",
+      "taxonomy"
     ],
     "lang": "en-US",
     "date-meta": "2022-01-10",
@@ -13,10 +16,11 @@
       "Phillip T. Brooks",
       "Taylor Reiter",
       "N. Tessa Pierce-Ward",
+      "Mahmudur Rahman Hera",
       "David Koslicki",
       "C. Titus Brown"
     ],
-    "header-includes": "<!--\nManubot generated metadata rendered from header-includes-template.html.\nSuggest improvements at https://github.com/manubot/manubot/blob/main/manubot/process/header-includes-template.html\n-->\n<meta name=\"dc.format\" content=\"text/html\" />\n<meta name=\"dc.title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta name=\"citation_title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta property=\"og:title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta property=\"twitter:title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta name=\"dc.date\" content=\"2022-01-10\" />\n<meta name=\"citation_publication_date\" content=\"2022-01-10\" />\n<meta name=\"dc.language\" content=\"en-US\" />\n<meta name=\"citation_language\" content=\"en-US\" />\n<meta name=\"dc.relation.ispartof\" content=\"Manubot\" />\n<meta name=\"dc.publisher\" content=\"Manubot\" />\n<meta name=\"citation_journal_title\" content=\"Manubot\" />\n<meta name=\"citation_technical_report_institution\" content=\"Manubot\" />\n<meta name=\"citation_author\" content=\"Luiz Irber\" />\n<meta name=\"citation_author_institution\" content=\"Graduate Group in Computer Science, UC Davis\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0003-4371-9659\" />\n<meta name=\"twitter:creator\" content=\"@luizirber\" />\n<meta name=\"citation_author\" content=\"Phillip T. Brooks\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0003-3987-244X\" />\n<meta name=\"twitter:creator\" content=\"@brooksph\" />\n<meta name=\"citation_author\" content=\"Taylor Reiter\" />\n<meta name=\"citation_author_institution\" content=\"Graduate Group in Food Science, UC Davis\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0002-7388-421X\" />\n<meta name=\"twitter:creator\" content=\"@ReiterTaylor\" />\n<meta name=\"citation_author\" content=\"N. Tessa Pierce-Ward\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0002-2942-5331\" />\n<meta name=\"twitter:creator\" content=\"@saltyscientist\" />\n<meta name=\"citation_author\" content=\"David Koslicki\" />\n<meta name=\"citation_author_institution\" content=\"Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0002-0640-954X\" />\n<meta name=\"citation_author\" content=\"C. Titus Brown\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0001-6001-2677\" />\n<link rel=\"canonical\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"og:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"twitter:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_fulltext_html_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_pdf_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"application/pdf\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"text/html\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/\" />\n<meta name=\"manubot_html_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/\" />\n<meta name=\"manubot_pdf_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/manuscript.pdf\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"twitter:card\" content=\"summary_large_image\" />\n<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"https://manubot.org/favicon-192x192.png\" />\n<link rel=\"mask-icon\" href=\"https://manubot.org/safari-pinned-tab.svg\" color=\"#ad1457\" />\n<meta name=\"theme-color\" content=\"#ad1457\" />\n<!-- end Manubot generated metadata -->",
+    "header-includes": "<!--\nManubot generated metadata rendered from header-includes-template.html.\nSuggest improvements at https://github.com/manubot/manubot/blob/main/manubot/process/header-includes-template.html\n-->\n<meta name=\"dc.format\" content=\"text/html\" />\n<meta name=\"dc.title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta name=\"citation_title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta property=\"og:title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta property=\"twitter:title\" content=\"Lightweight compositional analysis of metagenomes with minimum metagenome covers\" />\n<meta name=\"dc.date\" content=\"2022-01-10\" />\n<meta name=\"citation_publication_date\" content=\"2022-01-10\" />\n<meta name=\"dc.language\" content=\"en-US\" />\n<meta name=\"citation_language\" content=\"en-US\" />\n<meta name=\"dc.relation.ispartof\" content=\"Manubot\" />\n<meta name=\"dc.publisher\" content=\"Manubot\" />\n<meta name=\"citation_journal_title\" content=\"Manubot\" />\n<meta name=\"citation_technical_report_institution\" content=\"Manubot\" />\n<meta name=\"citation_author\" content=\"Luiz Irber\" />\n<meta name=\"citation_author_institution\" content=\"Graduate Group in Computer Science, UC Davis\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0003-4371-9659\" />\n<meta name=\"twitter:creator\" content=\"@luizirber\" />\n<meta name=\"citation_author\" content=\"Phillip T. Brooks\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0003-3987-244X\" />\n<meta name=\"twitter:creator\" content=\"@brooksph\" />\n<meta name=\"citation_author\" content=\"Taylor Reiter\" />\n<meta name=\"citation_author_institution\" content=\"Graduate Group in Food Science, UC Davis\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0002-7388-421X\" />\n<meta name=\"twitter:creator\" content=\"@ReiterTaylor\" />\n<meta name=\"citation_author\" content=\"N. Tessa Pierce-Ward\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0002-2942-5331\" />\n<meta name=\"twitter:creator\" content=\"@saltyscientist\" />\n<meta name=\"citation_author\" content=\"Mahmudur Rahman Hera\" />\n<meta name=\"citation_author_institution\" content=\"Department of Computer Science and Engineering, Penn State University\" />\n<meta name=\"twitter:creator\" content=\"@HeraMahmudur\" />\n<meta name=\"citation_author\" content=\"David Koslicki\" />\n<meta name=\"citation_author_institution\" content=\"Department of Computer Science and Engineering, Penn State University\" />\n<meta name=\"citation_author_institution\" content=\"Department of Biology, Penn State University\" />\n<meta name=\"citation_author_institution\" content=\"Huck Institutes of the Life Sciences, Penn State University\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0002-0640-954X\" />\n<meta name=\"twitter:creator\" content=\"@DavidKoslicki\" />\n<meta name=\"citation_author\" content=\"C. Titus Brown\" />\n<meta name=\"citation_author_institution\" content=\"Department of Population Health and Reproduction, UC Davis\" />\n<meta name=\"citation_author_orcid\" content=\"0000-0001-6001-2677\" />\n<link rel=\"canonical\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"og:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta property=\"twitter:url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_fulltext_html_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/\" />\n<meta name=\"citation_pdf_url\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"application/pdf\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf\" />\n<link rel=\"alternate\" type=\"text/html\" href=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/\" />\n<meta name=\"manubot_html_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/\" />\n<meta name=\"manubot_pdf_url_versioned\" content=\"https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/manuscript.pdf\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"twitter:card\" content=\"summary_large_image\" />\n<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"https://manubot.org/favicon-192x192.png\" />\n<link rel=\"mask-icon\" href=\"https://manubot.org/safari-pinned-tab.svg\" color=\"#ad1457\" />\n<meta name=\"theme-color\" content=\"#ad1457\" />\n<!-- end Manubot generated metadata -->",
     "bibliography": [
       "content/manual-references.json"
     ],
@@ -41,7 +45,7 @@
         ],
         "funders": [
           "Grant GBMF4551 from the Gordon and Betty Moore Foundation",
-          "CTB R01"
+          "Grant R01HG007513 from the NIH NHGRI"
         ],
         "affiliation_numbers": [
           1,
@@ -77,7 +81,8 @@
           "Department of Population Health and Reproduction, UC Davis"
         ],
         "funders": [
-          "Grant GBMF4551 from the Gordon and Betty Moore Foundation"
+          "Grant GBMF4551 from the Gordon and Betty Moore Foundation",
+          "Grant R03OD030596 from the NIH Common Fund"
         ],
         "affiliation_numbers": [
           2,
@@ -95,12 +100,28 @@
           "Department of Population Health and Reproduction, UC Davis"
         ],
         "funders": [
-          "NSF 1711984",
+          "Grant",
           "Grant GBMF4551 from the Gordon and Betty Moore Foundation",
-          "CTB NSF Genomerxiv"
+          "Grant"
         ],
         "affiliation_numbers": [
           2
+        ]
+      },
+      {
+        "github": "mahmudhera",
+        "name": "Mahmudur Rahman Hera",
+        "initials": "MRH",
+        "twitter": "HeraMahmudur",
+        "email": "mbr5797@psu.edu",
+        "affiliations": [
+          "Department of Computer Science and Engineering, Penn State University"
+        ],
+        "funders": [
+          "Grant"
+        ],
+        "affiliation_numbers": [
+          4
         ]
       },
       {
@@ -108,15 +129,20 @@
         "name": "David Koslicki",
         "initials": "DK",
         "orcid": "0000-0002-0640-954X",
+        "twitter": "DavidKoslicki",
         "email": "dmk333@psu.edu",
         "affiliations": [
-          "Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University"
+          "Department of Computer Science and Engineering, Penn State University",
+          "Department of Biology, Penn State University",
+          "Huck Institutes of the Life Sciences, Penn State University"
         ],
         "funders": [
-          "NSF DMS-1664803"
+          "Grant"
         ],
         "affiliation_numbers": [
-          4
+          4,
+          5,
+          6
         ]
       },
       {
@@ -130,8 +156,9 @@
         ],
         "funders": [
           "Grant GBMF4551 from the Gordon and Betty Moore Foundation",
-          "CTB NIH R01",
-          "CTB NSF Genomerxiv"
+          "Grant R01HG007513 from the NIH NHGRI",
+          "Grant",
+          "Grant R03OD030596 from the NIH Common Fund"
         ],
         "affiliation_numbers": [
           2
@@ -152,8 +179,16 @@
         "affiliation_number": 3
       },
       {
-        "affiliation": "Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University",
+        "affiliation": "Department of Computer Science and Engineering, Penn State University",
         "affiliation_number": 4
+      },
+      {
+        "affiliation": "Department of Biology, Penn State University",
+        "affiliation_number": 5
+      },
+      {
+        "affiliation": "Huck Institutes of the Life Sciences, Penn State University",
+        "affiliation_number": 6
       }
     ],
     "ci_source": {
@@ -161,19 +196,19 @@
       "repo_slug": "dib-lab/2020-paper-sourmash-gather",
       "repo_owner": "dib-lab",
       "repo_name": "2020-paper-sourmash-gather",
-      "commit": "bb92e76004b646679464c142ed3818312df29bc0",
-      "triggering_commit": "bb92e76004b646679464c142ed3818312df29bc0",
-      "build_url": "https://github.com/dib-lab/2020-paper-sourmash-gather/commit/bb92e76004b646679464c142ed3818312df29bc0/checks",
-      "job_url": "https://github.com/dib-lab/2020-paper-sourmash-gather/actions/runs/1675469554"
+      "commit": "c250821095c807ba9c9c0a3c68f5dbb4e49e4018",
+      "triggering_commit": "c250821095c807ba9c9c0a3c68f5dbb4e49e4018",
+      "build_url": "https://github.com/dib-lab/2020-paper-sourmash-gather/commit/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/checks",
+      "job_url": "https://github.com/dib-lab/2020-paper-sourmash-gather/actions/runs/1675509803"
     },
     "html_url": "https://dib-lab.github.io/2020-paper-sourmash-gather/",
     "pdf_url": "https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf",
-    "html_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/",
-    "pdf_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/manuscript.pdf",
+    "html_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/",
+    "pdf_url_versioned": "https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/manuscript.pdf",
     "manubot_version": "0.5.1",
     "rootstock_commit": "9a448fe6edb477fb98065d5b83d206b1ca489cee",
     "manuscript_stats": {
-      "word_count": 8007
+      "word_count": 8015
     }
   }
 }

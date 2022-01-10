@@ -3,7 +3,10 @@ title: Lightweight compositional analysis of metagenomes with minimum metagenome
 keywords:
 - k-mers
 - MinHash
-- CTB
+- FracMinHash
+- sketch
+- metagenomics
+- taxonomy
 lang: en-US
 date-meta: '2022-01-10'
 author-meta:
@@ -11,6 +14,7 @@ author-meta:
 - Phillip T. Brooks
 - Taylor Reiter
 - N. Tessa Pierce-Ward
+- Mahmudur Rahman Hera
 - David Koslicki
 - C. Titus Brown
 header-includes: |-
@@ -49,9 +53,15 @@ header-includes: |-
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0002-2942-5331" />
   <meta name="twitter:creator" content="@saltyscientist" />
+  <meta name="citation_author" content="Mahmudur Rahman Hera" />
+  <meta name="citation_author_institution" content="Department of Computer Science and Engineering, Penn State University" />
+  <meta name="twitter:creator" content="@HeraMahmudur" />
   <meta name="citation_author" content="David Koslicki" />
-  <meta name="citation_author_institution" content="Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University" />
+  <meta name="citation_author_institution" content="Department of Computer Science and Engineering, Penn State University" />
+  <meta name="citation_author_institution" content="Department of Biology, Penn State University" />
+  <meta name="citation_author_institution" content="Huck Institutes of the Life Sciences, Penn State University" />
   <meta name="citation_author_orcid" content="0000-0002-0640-954X" />
+  <meta name="twitter:creator" content="@DavidKoslicki" />
   <meta name="citation_author" content="C. Titus Brown" />
   <meta name="citation_author_institution" content="Department of Population Health and Reproduction, UC Davis" />
   <meta name="citation_author_orcid" content="0000-0001-6001-2677" />
@@ -61,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -85,9 +95,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/bb92e76004b646679464c142ed3818312df29bc0/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/c250821095c807ba9c9c0a3c68f5dbb4e49e4018/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@bb92e76](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/bb92e76004b646679464c142ed3818312df29bc0)
+from [dib-lab/2020-paper-sourmash-gather@c250821](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/c250821095c807ba9c9c0a3c68f5dbb4e49e4018)
 on January 10, 2022.
 </em></small>
 
@@ -104,7 +114,7 @@ on January 10, 2022.
     [luizirber](https://twitter.com/luizirber)<br>
   <small>
      Graduate Group in Computer Science, UC Davis; Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB R01
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R01HG007513 from the NIH NHGRI
   </small>
 
 + **Phillip T. Brooks**<br>
@@ -128,7 +138,7 @@ on January 10, 2022.
     [ReiterTaylor](https://twitter.com/ReiterTaylor)<br>
   <small>
      Graduate Group in Food Science, UC Davis; Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R03OD030596 from the NIH Common Fund
   </small>
 
 + **N. Tessa Pierce-Ward**<br>
@@ -140,17 +150,29 @@ on January 10, 2022.
     [saltyscientist](https://twitter.com/saltyscientist)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
-     · Funded by NSF 1711984; Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB NSF Genomerxiv
+     · Funded by Grant; Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant
+  </small>
+
++ **Mahmudur Rahman Hera**<br>
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [mahmudhera](https://github.com/mahmudhera)
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
+    [HeraMahmudur](https://twitter.com/HeraMahmudur)<br>
+  <small>
+     Department of Computer Science and Engineering, Penn State University
+     · Funded by Grant
   </small>
 
 + **David Koslicki**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
     [0000-0002-0640-954X](https://orcid.org/0000-0002-0640-954X)
     · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
-    [dkoslicki](https://github.com/dkoslicki)<br>
+    [dkoslicki](https://github.com/dkoslicki)
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
+    [DavidKoslicki](https://twitter.com/DavidKoslicki)<br>
   <small>
-     Computer Science and Engineering, Biology, and the Huck Institute of the Life Sciences, Pennsylvania State University
-     · Funded by NSF DMS-1664803
+     Department of Computer Science and Engineering, Penn State University; Department of Biology, Penn State University; Huck Institutes of the Life Sciences, Penn State University
+     · Funded by Grant
   </small>
 
 + **C. Titus Brown**<br>
@@ -160,7 +182,7 @@ on January 10, 2022.
     [ctb](https://github.com/ctb)<br>
   <small>
      Department of Population Health and Reproduction, UC Davis
-     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; CTB NIH R01; CTB NSF Genomerxiv
+     · Funded by Grant GBMF4551 from the Gordon and Betty Moore Foundation; Grant R01HG007513 from the NIH NHGRI; Grant; Grant R03OD030596 from the NIH Common Fund
   </small>
 
 
@@ -206,7 +228,7 @@ reference genomes and gene catalogs, via direct genomic alignment
 or k-mer matches [@kraken2;@kaiju].  For many of these methods, the
 substantial increase in the number of available microbial reference
 genomes (1.1m in GenBank as of November 2021) presents a significant
-practical obstacle to comprehensive compositional analyses, and most
+practical obstacle to comprehensive compositional analyses. Most
 methods choose representative subsets of available genomic information
 to analyze; for example, bioBakery 3 provides a database containing
 99.2k reference genomes [@biobakery3].  Scaling metagenome analysis
@@ -225,7 +247,7 @@ approximation algorithm for the minimum set cover analysis
 Our approach tackles the selection of appropriate reference genomes
 for downstream analysis and provides a computationally efficient
 method for taxonomic classification of metagenome data.  Our
-implementation in the `sourmash` open source software works with
+implementation in the `sourmash` open source software package works with
 reference databases containing a million or more microbial genomes and
 supports multiple taxonomies and private databases.
 
@@ -264,7 +286,7 @@ of the containment index:
 
 ```{=latex}
 \begin{equation}
-    \hat{C}_\text{scale}(A,B):=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert}.
+    \hat{C}_\text{frac}(A,B):=\frac{\vert \mathbf{FRAC}_S(A) \cap \mathbf{FRAC}_S(B)\vert }{\vert \mathbf{FRAC}_S(A)\vert}.
 \end{equation}
 ```
 
@@ -454,7 +476,8 @@ Methods rankings and scores obtained for the different metrics over all samples 
 
 In Figures @fig:spider and @fig:scores we show an updated version of
 Figure 6 from [@doi:10.1038/s41596-020-00480-3] that includes our
-method, implemented in the `sourmash` software. Here we compare 10 different methods for taxonomic
+method, implemented in the `sourmash` software and benchmarked using 
+OPAL [@doi:10.1186/s13059-019-1646-y]. Here we compare 10 different methods for taxonomic
 profiling and their characteristics at each taxonomic rank.  While
 previous methods show reduced completeness -- the ratio of taxa
 correctly identified in the ground truth -- below the genus level,
@@ -536,7 +559,7 @@ containment, and used an overlap threshold of 100,000 k-mers in order
 to eliminate genomes with only small overlaps (see Methods).
 -->
 
-| data set | genomes >= 100k overlap | min-set-cov | % 31-mers identified |
+| data set | genomes >= 100k 31-mer overlap | size of min-set-cov | % 31-mers identified |
 | -------- | -------- | -------- | ------- | 
 | `zymo mock` | 405,839 | 19 | 47.1% |
 | `podar mock` | 5,800 | 74 | 54.8% |
@@ -675,7 +698,7 @@ sketch operations, with clear space/time constraint tradeoffs.
 
 Intuitively, FracMinHash can be viewed as performing density sampling
 at a rate of 1 $k$-mer per $s$ distinct k-mers seen, where $s$ is used
-to define define a boundary value $\frac{H}{s}$ for the bottom sketch.
+to define a boundary value $\frac{H}{s}$ for the bottom sketch.
 FracMinHash can also be viewed as a type of lossy compression,
 with a fixed compression ratio of $s$: for values of $s$ used here ($s
 \approx 1000$), k-mer sets are reduced in cardinality by 1000-fold.
@@ -744,10 +767,10 @@ to FracMinHash sketches when the maximum hash value in the MinHash
 sketch is larger than $H / s$.
 
 Finally, because FracMinHash sketches are simply collections of
-hashes, existing k-mer indexing approaches can be applied to sketches
-to support fast search with both similarity and containment
-estimators; several index types, including Sequence Bloom Trees
-[@doi:10.1038/nbt.3442] and reverse indices, are provided in the
+hashes, existing hash-based k-mer indexing approaches can be applied
+to sketches to support fast search with both similarity and
+containment estimators; several index types, including Sequence Bloom
+Trees [@doi:10.1038/nbt.3442] and reverse indices, are provided in the
 sourmash software.
 
 In exchange for these many conveniences, FracMinHash sketches
