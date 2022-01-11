@@ -1,5 +1,5 @@
 ---
-title: Lightweight compositional analysis of metagenomes with minimum metagenome covers
+title: Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers
 keywords:
 - k-mers
 - MinHash
@@ -8,7 +8,7 @@ keywords:
 - metagenomics
 - taxonomy
 lang: en-US
-date-meta: '2022-01-10'
+date-meta: '2022-01-11'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -23,12 +23,12 @@ header-includes: |-
   Suggest improvements at https://github.com/manubot/manubot/blob/main/manubot/process/header-includes-template.html
   -->
   <meta name="dc.format" content="text/html" />
-  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="dc.date" content="2022-01-10" />
-  <meta name="citation_publication_date" content="2022-01-10" />
+  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta name="dc.date" content="2022-01-11" />
+  <meta name="citation_publication_date" content="2022-01-11" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,10 +95,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@381e215](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/381e21592ddd3509f43665a2df71ebadd5058573)
-on January 10, 2022.
+from [dib-lab/2020-paper-sourmash-gather@f868277](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f86827725bb7a7986c08cf3f89a880e39200751d)
+on January 11, 2022.
 </em></small>
 
 ## Authors
@@ -364,16 +364,16 @@ polynomial-time approximation [@polynomial_minsetcov]:
 
 1. Initialize $C \leftarrow \emptyset$
 2. While $k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cap k(G))$ is nonempty:
-3. $C \leftarrow C \bigcup \left\{ \arg\max_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \vert\right\}$
+3. $C \leftarrow C \bigcup \left\{ \arg\max_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup k(G))) \vert\right\}$
 4. return $C$
 
 This greedy algorithm iteratively chooses reference genomes from $D$
 in order of largest remaining overlap with $M$, where overlap is in
-terms of number of k-mers.  This results in a
+terms of number of k-mers. This results in a
 progressive classification of the known k-mers in the
 metagenome to specific genomes.[^equivalent] Note it is classically
 known that this greedy heuristic results in a logarithmic approximation
-factor to the optimal set cover solution [@polynomial_minsetcov].
+factor to the optimal set cover solution [@polynomial_minsetcov]. This algorithm is implemented as sourmash `gather`.
 
 [^equivalent]: In our current implementation in `sourmash`, when
 equivalent matches are available for a given rank, a match is chosen
@@ -398,8 +398,8 @@ genomes from two strains of *Shewanella baltica* are present in the
 mock metagenome.  These genomes overlap in k-mer content by approximately 50%, and these shared k-mers are first claimed by
 *Shewanella baltica* OS223 -- compare *S. baltica* OS223, rank
 8, with *S. baltica* OS185, rank 33 in Figure
-@fig:gather0. Here the difference between the red circles and green
-triangles for *S. baltica* OS185 represents the k-mers claimed by
+@fig:gather0. Here the difference between the green
+triangles (all matched k-mers) and red circles (min-set-cov matched k-mers) for *S. baltica* OS185 represents the k-mers claimed by
 *S. baltica* OS223 .
 
 <!-- (CTB: maybe indicate or highlight these genomes in the figure?) -->
@@ -874,7 +874,7 @@ approach.
 We can build a taxonomic classifier on top of minimum metagenome
 covers by reporting the taxonomies of the constituent genomes,
 weighted by distinct overlap and aggregated at the relevant taxonomic
-levels using an LCA approach.  Our CAMI-based taxonomic benchmarking
+levels.  Our CAMI-based taxonomic benchmarking
 shows that this approach is competitive with several extant approaches for all
 metrics across all taxonomic levels (Figures @fig:spider and
 @fig:scores). This taxonomic accuracy also suggests that minimum metagenome covers
@@ -896,7 +896,7 @@ metagenome data or even regenerating the minimum metagenome cover.
 Interestingly, this framing of taxonomic classification as a minimum
 set cover problem may also avoid the loss of taxonomic resolution that
 affects k-mer- and read-based approaches on large databases
-[@doi:10.1186/s13059-018-1554-6]; this is because we apply LCA
+[@doi:10.1186/s13059-018-1554-6]; this is because we incorporate taxonomy
 _after_ reads and k-mers have been assigned to individual genomes, and
 choose entire *genomes* based on a greedy best-match-first approach.
 This minimizes the impact of individual k-mers that may be common to

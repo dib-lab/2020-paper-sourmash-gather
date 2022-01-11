@@ -93,6 +93,7 @@ content/03.results.md:116:iteratively
 content/03.results.md:118:mers
 content/03.results.md:119:mers
 content/03.results.md:120:metagenome
+content/03.results.md:122:sourmash
 content/03.results.md:124:sourmash
 content/03.results.md:130:GenBank
 content/03.results.md:130:mers
@@ -115,6 +116,9 @@ content/03.results.md:145:baltica
 content/03.results.md:145:Shewanella
 content/03.results.md:146:baltica
 content/03.results.md:148:baltica
+content/03.results.md:148:cov
+content/03.results.md:148:mers
+content/03.results.md:148:mers
 content/03.results.md:148:mers
 content/03.results.md:149:baltica
 content/03.results.md:151:CTB
@@ -365,7 +369,6 @@ content/04.discussion.md:186:metagenome
 content/04.discussion.md:188:metagenome
 content/04.discussion.md:191:benchmarking
 content/04.discussion.md:191:CAMI
-content/04.discussion.md:191:LCA
 content/04.discussion.md:194:metagenome
 content/04.discussion.md:196:metagenome
 content/04.discussion.md:202:sourmash
@@ -377,7 +380,6 @@ content/04.discussion.md:207:NCBI
 content/04.discussion.md:208:metagenome
 content/04.discussion.md:208:metagenome
 content/04.discussion.md:212:mer
-content/04.discussion.md:213:LCA
 content/04.discussion.md:214:mers
 content/04.discussion.md:216:mers
 content/04.discussion.md:217:mis
