@@ -11,9 +11,9 @@
   <meta name="author" content="Mahmudur Rahman Hera" />
   <meta name="author" content="David Koslicki" />
   <meta name="author" content="C. Titus Brown" />
-  <meta name="dcterms.date" content="2022-01-10" />
+  <meta name="dcterms.date" content="2022-01-11" />
   <meta name="keywords" content="k-mers, MinHash, FracMinHash, sketch, metagenomics, taxonomy" />
-  <title>Lightweight compositional analysis of metagenomes with minimum metagenome covers</title>
+  <title>Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -49,12 +49,12 @@
   Suggest improvements at https://github.com/manubot/manubot/blob/main/manubot/process/header-includes-template.html
   -->
   <meta name="dc.format" content="text/html" />
-  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with minimum metagenome covers" />
-  <meta name="dc.date" content="2022-01-10" />
-  <meta name="citation_publication_date" content="2022-01-10" />
+  <meta name="dc.title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta property="og:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
+  <meta name="dc.date" content="2022-01-11" />
+  <meta name="citation_publication_date" content="2022-01-11" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -97,9 +97,9 @@
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -109,14 +109,14 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Lightweight compositional analysis of metagenomes with minimum metagenome covers</h1>
+<h1 class="title">Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers</h1>
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/381e21592ddd3509f43665a2df71ebadd5058573/">permalink</a>)
+(<a href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/381e21592ddd3509f43665a2df71ebadd5058573">dib-lab/2020-paper-sourmash-gather@381e215</a>
-on January 10, 2022.
+from <a href="https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f86827725bb7a7986c08cf3f89a880e39200751d">dib-lab/2020-paper-sourmash-gather@f868277</a>
+on January 11, 2022.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -338,7 +338,7 @@ polynomial-time approximation <span class="citation" data-cites="Sf40Smkk">[<a h
 <ol type="1">
 <li>Initialize <span class="math inline">\(C \leftarrow \emptyset\)</span></li>
 <li>While <span class="math inline">\(k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cap k(G))\)</span> is nonempty:</li>
-<li><span class="math inline">\(C \leftarrow C \bigcup \left\{ \arg\max_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup G)) \vert\right\}\)</span></li>
+<li><span class="math inline">\(C \leftarrow C \bigcup \left\{ \arg\max_{G \in D} \vert k(G) \cup (k(M) \cap k(D) \setminus \bigcup_{G \in C} (k(M) \cup k(G))) \vert\right\}\)</span></li>
 <li>return <span class="math inline">\(C\)</span></li>
 </ol>
 <p>This greedy algorithm iteratively chooses reference genomes from <span class="math inline">\(D\)</span>
@@ -347,7 +347,7 @@ terms of number of k-mers. This results in a
 progressive classification of the known k-mers in the
 metagenome to specific genomes.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Note it is classically
 known that this greedy heuristic results in a logarithmic approximation
-factor to the optimal set cover solution <span class="citation" data-cites="Sf40Smkk">[<a href="#ref-Sf40Smkk" role="doc-biblioref">19</a>]</span>.</p>
+factor to the optimal set cover solution <span class="citation" data-cites="Sf40Smkk">[<a href="#ref-Sf40Smkk" role="doc-biblioref">19</a>]</span>. This algorithm is implemented as sourmash <code>gather</code>.</p>
 <p>In Figure <a href="#fig:gather0">2</a>, we show an example of this progressive
 classification of 31-mers by matching GenBank genome for <code>podar mock</code>. The matching genomes are provided
 in the order found by the greedy algorithm, i.e. by overlap with remaining k-mers in the metagenome.
@@ -365,8 +365,8 @@ genomes from two strains of <em>Shewanella baltica</em> are present in the
 mock metagenome. These genomes overlap in k-mer content by approximately 50%, and these shared k-mers are first claimed by
 <em>Shewanella baltica</em> OS223 – compare <em>S. baltica</em> OS223, rank
 8, with <em>S. baltica</em> OS185, rank 33 in Figure
-<a href="#fig:gather0">2</a>. Here the difference between the red circles and green
-triangles for <em>S. baltica</em> OS185 represents the k-mers claimed by
+<a href="#fig:gather0">2</a>. Here the difference between the green
+triangles (all matched k-mers) and red circles (min-set-cov matched k-mers) for <em>S. baltica</em> OS185 represents the k-mers claimed by
 <em>S. baltica</em> OS223 .</p>
 <!-- (CTB: maybe indicate or highlight these genomes in the figure?) -->
 <p>For this mock metagenome, 205m (54.8%) of 375m k-mers were found in
@@ -828,7 +828,7 @@ approach.</p>
 <p>We can build a taxonomic classifier on top of minimum metagenome
 covers by reporting the taxonomies of the constituent genomes,
 weighted by distinct overlap and aggregated at the relevant taxonomic
-levels using an LCA approach. Our CAMI-based taxonomic benchmarking
+levels. Our CAMI-based taxonomic benchmarking
 shows that this approach is competitive with several extant approaches for all
 metrics across all taxonomic levels (Figures <a href="#fig:spider">3</a> and
 <a href="#fig:scores">4</a>). This taxonomic accuracy also suggests that minimum metagenome covers
@@ -848,7 +848,7 @@ metagenome data or even regenerating the minimum metagenome cover.</p>
 <p>Interestingly, this framing of taxonomic classification as a minimum
 set cover problem may also avoid the loss of taxonomic resolution that
 affects k-mer- and read-based approaches on large databases
-<span class="citation" data-cites="j7nehrZT">[<a href="#ref-j7nehrZT" role="doc-biblioref">46</a>]</span>; this is because we apply LCA
+<span class="citation" data-cites="j7nehrZT">[<a href="#ref-j7nehrZT" role="doc-biblioref">46</a>]</span>; this is because we incorporate taxonomy
 <em>after</em> reads and k-mers have been assigned to individual genomes, and
 choose entire <em>genomes</em> based on a greedy best-match-first approach.
 This minimizes the impact of individual k-mers that may be common to
@@ -1163,7 +1163,7 @@ figure generation.</p>
 <div class="csl-left-margin">3. </div><div class="csl-right-inline"><strong>The Integrative Human Microbiome Project</strong> <em>Nature</em> (2019-05) <a href="https://doi.org/gf3wp9">https://doi.org/gf3wp9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-019-1238-8">10.1038/s41586-019-1238-8</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142853">31142853</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6784865">PMC6784865</a></div></div>
 </div>
 <div id="ref-EIgqGxWw" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline"><strong>Structure and function of the global ocean microbiome</strong> <div class="csl-block">Shinichi Sunagawa, Luis Pedro Coelho, Samuel Chaffron, Jens Roat Kultima, Karine Labadie, Guillem Salazar, Bardya Djahanschiri, Georg Zeller, Daniel R Mende, Adriana Alberti, … </div> <em>Science</em> (2015-05-22) <a href="https://doi.org/4tr">https://doi.org/4tr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1126/science.1261359">10.1126/science.1261359</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/25999513">25999513</a></div></div>
+<div class="csl-left-margin">4. </div><div class="csl-right-inline"><strong>Structure and function of the global ocean microbiome</strong> <div class="csl-block">Shinichi Sunagawa, Luis Pedro Coelho, Samuel Chaffron, Jens Roat Kultima, Karine Labadie, Guillem Salazar, Bardya Djahanschiri, Georg Zeller, Daniel R Mende, Adriana Alberti, … Tara Oceans coordinators</div> <em>Science</em> (2015-05-22) <a href="https://doi.org/4tr">https://doi.org/4tr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1126/science.1261359">10.1126/science.1261359</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/25999513">25999513</a></div></div>
 </div>
 <div id="ref-OBZeBS9O" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">5. </div><div class="csl-right-inline"><strong>Priorities for the next 10 years of human microbiome research</strong> <div class="csl-block">Lita Proctor</div> <em>Nature</em> (2019-05) <a href="https://doi.org/gnnprk">https://doi.org/gnnprk</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/d41586-019-01654-0">10.1038/d41586-019-01654-0</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31142863">31142863</a></div></div>
@@ -1226,7 +1226,7 @@ figure generation.</p>
 <div class="csl-left-margin">24. </div><div class="csl-right-inline"><strong>Comparative metagenomic and rRNA microbial diversity characterization using archaeal and bacterial synthetic communities</strong> <div class="csl-block">Migun Shakya, Christopher Quince, James H Campbell, Zamin K Yang, Christopher W Schadt, Mircea Podar</div> <em>Environmental Microbiology</em> (2013-02-06) <a href="https://doi.org/f42ccr">https://doi.org/f42ccr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1111/1462-2920.12086">10.1111/1462-2920.12086</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/23387867">23387867</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3665634">PMC3665634</a></div></div>
 </div>
 <div id="ref-TmjXG9kb" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">25. </div><div class="csl-right-inline"><strong>Omega: an Overlap-graph de novo Assembler for Metagenomics</strong> <div class="csl-block">Bahlul Haider, Tae-Hyuk Ahn, Brian Bushnell, Juanjuan Chai, Alex Copeland, Chongle Pan</div> <em>Bioinformatics</em> (2014-10) <a href="https://doi.org/f6kt42">https://doi.org/f6kt42</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btu395">10.1093/bioinformatics/btu395</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24947750">24947750</a></div></div>
+<div class="csl-left-margin">25. </div><div class="csl-right-inline"><strong>Omega: an Overlap-graph de novo Assembler for Metagenomics</strong> <div class="csl-block">Bahlul Haider, Tae-Hyuk Ahn, Brian Bushnell, Juanjuan Chai, Alex Copeland, Chongle Pan</div> <em>Bioinformatics</em> (2014-06-19) <a href="https://doi.org/f6kt42">https://doi.org/f6kt42</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btu395">10.1093/bioinformatics/btu395</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24947750">24947750</a></div></div>
 </div>
 <div id="ref-KP5SjPXN" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">26. </div><div class="csl-right-inline"><strong>metaSPAdes: a new versatile metagenomic assembler</strong> <div class="csl-block">Sergey Nurk, Dmitry Meleshko, Anton Korobeynikov, Pavel A Pevzner</div> <em>Genome Research</em> (2017-03-15) <a href="https://doi.org/f97jkv">https://doi.org/f97jkv</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.213959.116">10.1101/gr.213959.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28298430">28298430</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5411777">PMC5411777</a></div></div>
@@ -1288,7 +1288,7 @@ k
 <div class="csl-left-margin">44. </div><div class="csl-right-inline"><strong>GTDB: an ongoing census of bacterial and archaeal diversity through a phylogenetically consistent, rank normalized and complete genome-based taxonomy</strong> <div class="csl-block">Donovan H Parks, Maria Chuvochina, Christian Rinke, Aaron J Mussig, Pierre-Alain Chaumeil, Philip Hugenholtz</div> <em>Nucleic Acids Research</em> (2021-09-14) <a href="https://doi.org/gm97d8">https://doi.org/gm97d8</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/nar/gkab776">10.1093/nar/gkab776</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34520557">34520557</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8728215">PMC8728215</a></div></div>
 </div>
 <div id="ref-jf4f1xTA" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">45. </div><div class="csl-right-inline"><strong>A Proposal for a Genome Similarity-Based Taxonomy for Plant-Pathogenic Bacteria that Is Sufficiently Precise to Reflect Phylogeny, Host Range, and Outbreak Affiliation Applied to &lt;i&gt;Pseudomonas syringae sensu lato&lt;/i&gt; as a Proof of Concept</strong> <div class="csl-block">Boris A Vinatzer, Alexandra J Weisberg, Caroline L Monteil, Haitham A Elmarakeby, Samuel K Sheppard, Lenwood S Heath</div> <em>Phytopathology®</em> (2017-01) <a href="https://doi.org/gg78hd">https://doi.org/gg78hd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1094/phyto-07-16-0252-r">10.1094/phyto-07-16-0252-r</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27552324">27552324</a></div></div>
+<div class="csl-left-margin">45. </div><div class="csl-right-inline"><strong>A Proposal for a Genome Similarity-Based Taxonomy for Plant-Pathogenic Bacteria that Is Sufficiently Precise to Reflect Phylogeny, Host Range, and Outbreak Affiliation Applied to Pseudomonas syringae sensu lato as a Proof of Concept</strong> <div class="csl-block">Boris A Vinatzer, Alexandra J Weisberg, Caroline L Monteil, Haitham A Elmarakeby, Samuel K Sheppard, Lenwood S Heath</div> <em>Phytopathology®</em> (2017-01) <a href="https://doi.org/gg78hd">https://doi.org/gg78hd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1094/phyto-07-16-0252-r">10.1094/phyto-07-16-0252-r</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27552324">27552324</a></div></div>
 </div>
 <div id="ref-j7nehrZT" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">46. </div><div class="csl-right-inline"><strong>RefSeq database growth influences the accuracy of k-mer-based lowest common ancestor species identification</strong> <div class="csl-block">Daniel J Nasko, Sergey Koren, Adam M Phillippy, Todd J Treangen</div> <em>Genome Biology</em> (2018-10-30) <a href="https://doi.org/ggc9db">https://doi.org/ggc9db</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-018-1554-6">10.1186/s13059-018-1554-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30373669">30373669</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6206640">PMC6206640</a></div></div>
@@ -1300,7 +1300,7 @@ k
 <div class="csl-left-margin">48. </div><div class="csl-right-inline"><strong>A General-Purpose Counting Filter</strong> <div class="csl-block">Prashant Pandey, Michael A Bender, Rob Johnson, Rob Patro</div> <em>Proceedings of the 2017 ACM International Conference on Management of Data</em> (2017-05-09) <a href="https://doi.org/gg29n9">https://doi.org/gg29n9</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/3035918.3035963">10.1145/3035918.3035963</a></div></div>
 </div>
 <div id="ref-1DB8QGIqc" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">49. </div><div class="csl-right-inline"><strong>Centrifuge: rapid and sensitive classification of metagenomic sequences</strong> <div class="csl-block">Daehwan Kim, Li Song, Florian P Breitwieser, Steven L Salzberg</div> <em>Genome Research</em> (2016-10-17) <a href="https://doi.org/f9fnrr">https://doi.org/f9fnrr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.210641.116">10.1101/gr.210641.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27852649">27852649</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5131823">PMC5131823</a></div></div>
+<div class="csl-left-margin">49. </div><div class="csl-right-inline"><strong>Centrifuge: rapid and sensitive classification of metagenomic sequences</strong> <div class="csl-block">Daehwan Kim, Li Song, Florian P Breitwieser, Steven L Salzberg</div> <em>Genome Research</em> (2016-12) <a href="https://doi.org/f9fnrr">https://doi.org/f9fnrr</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.210641.116">10.1101/gr.210641.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27852649">27852649</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5131823">PMC5131823</a></div></div>
 </div>
 <div id="ref-aOtTOlpD" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">50. </div><div class="csl-right-inline"><strong>The rust language</strong> <div class="csl-block">Nicholas D Matsakis, Felix S Klock II</div> <em>ACM SIGAda Ada Letters</em> (2014-11-26) <a href="https://doi.org/gntjvb">https://doi.org/gntjvb</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1145/2692956.2663188">10.1145/2692956.2663188</a></div></div>
