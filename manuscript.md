@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,9 +95,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/f86827725bb7a7986c08cf3f89a880e39200751d/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@f868277](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/f86827725bb7a7986c08cf3f89a880e39200751d)
+from [dib-lab/2020-paper-sourmash-gather@89c973f](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/89c973f170c56583d1bc6f495e696f7acfd6464d)
 on January 11, 2022.
 </em></small>
 
@@ -1153,7 +1153,7 @@ Hence we can define:
 
 $$
 C_\text{frac}(A,B)
-= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right)
+= \frac{\vert A\cap B \vert}{\vert A \vert} \left(1-(1-s)^{\vert A\vert}\right)^{-1}
 $$
 which will have expectation
 

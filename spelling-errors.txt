@@ -31,7 +31,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-genbank
+GenBank
 genomic
 GTDB
 HashSet
