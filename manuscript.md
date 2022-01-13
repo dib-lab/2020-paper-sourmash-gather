@@ -8,7 +8,7 @@ keywords:
 - metagenomics
 - taxonomy
 lang: en-US
-date-meta: '2022-01-11'
+date-meta: '2022-01-13'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -27,8 +27,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
-  <meta name="dc.date" content="2022-01-11" />
-  <meta name="citation_publication_date" content="2022-01-11" />
+  <meta name="dc.date" content="2022-01-13" />
+  <meta name="citation_publication_date" content="2022-01-13" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,10 +95,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/89c973f170c56583d1bc6f495e696f7acfd6464d/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@89c973f](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/89c973f170c56583d1bc6f495e696f7acfd6464d)
-on January 11, 2022.
+from [dib-lab/2020-paper-sourmash-gather@a236caa](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a236caa427c912c2722152b16d5f867dbe0bc744)
+on January 13, 2022.
 </em></small>
 
 ## Authors
@@ -313,6 +313,11 @@ $\vert W \vert$.  The main difference is the range of possible values
 in the hash space, since the FracMinHash range is contiguous and
 the ModHash range is not.  This permits a variety of convenient
 operations on the sketches, including iterative downsampling of FracMinHash sketches as well as conversion to MinHash sketches.
+Beyond accurate containment operations, FracMinHash can be used to
+estimate evolutionary distance between pairs of sequences undergoing a
+mutation model, similar to but more accurately than the MinHash
+derived method in [@mash]. See [@dk_fracminhash] for these and other
+analytical details.
 
 ## A FracMinHash implementation accurately estimates containment between sets of different sizes
 
@@ -713,6 +718,7 @@ used efficiently and effectively for compositional analysis of shotgun
 metagenome data sets with k-mers. In particular, FracMinHash is
 competitive in accuracy with extant MinHash-based techniques for
 containment analysis, while also supporting Jaccard similarity.
+In addition, FracMinHash can be used to obtain point estimates of and confidence intervals around mutation rates and evolutionary distances; see [@dk_fracminhash] for these and other analytical results.
 
 We note that the FracMinHash technique has been used under a number of
 different names, including Scaled MinHash
@@ -1285,6 +1291,8 @@ The accessions for the metagenome data sets in Table
 | `gut real` | SRR5650070  |
 | `oil well real`  | SRR1976948 |
 
+
+[@dk_fracminhash]: doi:10.1101/2022.01.11.475870
 
 [@ganon]: doi:10.1093/bioinformatics/btaa458
 
