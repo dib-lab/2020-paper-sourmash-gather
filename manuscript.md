@@ -8,7 +8,7 @@ keywords:
 - metagenomics
 - taxonomy
 lang: en-US
-date-meta: '2022-01-13'
+date-meta: '2022-01-17'
 author-meta:
 - Luiz Irber
 - Phillip T. Brooks
@@ -27,8 +27,8 @@ header-includes: |-
   <meta name="citation_title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
   <meta property="og:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
   <meta property="twitter:title" content="Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers" />
-  <meta name="dc.date" content="2022-01-13" />
-  <meta name="citation_publication_date" content="2022-01-13" />
+  <meta name="dc.date" content="2022-01-17" />
+  <meta name="citation_publication_date" content="2022-01-17" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -71,9 +71,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/" />
   <meta name="citation_pdf_url" content="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://dib-lab.github.io/2020-paper-sourmash-gather/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/" />
-  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/" />
-  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b2b79b86dc15762eb9e4567983b5c0b155809c89/" />
+  <meta name="manubot_html_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b2b79b86dc15762eb9e4567983b5c0b155809c89/" />
+  <meta name="manubot_pdf_url_versioned" content="https://dib-lab.github.io/2020-paper-sourmash-gather/v/b2b79b86dc15762eb9e4567983b5c0b155809c89/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -95,10 +95,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/a236caa427c912c2722152b16d5f867dbe0bc744/))
+([permalink](https://dib-lab.github.io/2020-paper-sourmash-gather/v/b2b79b86dc15762eb9e4567983b5c0b155809c89/))
 was automatically generated
-from [dib-lab/2020-paper-sourmash-gather@a236caa](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/a236caa427c912c2722152b16d5f867dbe0bc744)
-on January 13, 2022.
+from [dib-lab/2020-paper-sourmash-gather@b2b79b8](https://github.com/dib-lab/2020-paper-sourmash-gather/tree/b2b79b86dc15762eb9e4567983b5c0b155809c89)
+on January 17, 2022.
 </em></small>
 
 ## Authors
@@ -486,7 +486,10 @@ Methods rankings and scores obtained for the different metrics over all samples 
 In Figures @fig:spider and @fig:scores we show an updated version of
 Figure 6 from [@doi:10.1038/s41596-020-00480-3] that includes our
 method, implemented in the `sourmash` software and benchmarked using 
-OPAL [@doi:10.1186/s13059-019-1646-y]. Here we compare 10 different methods for taxonomic
+OPAL [@doi:10.1186/s13059-019-1646-y]. The minimum metagenome cover
+was calculated against the Jan 8, 2019 snapshot of RefSeq provided by the CAMI
+project.
+Here we compare 10 different methods for taxonomic
 profiling and their characteristics at each taxonomic rank.  While
 previous methods show reduced completeness -- the ratio of taxa
 correctly identified in the ground truth -- below the genus level,
@@ -1227,7 +1230,8 @@ through the sourmash project [@url:https://sourmash.bio].
 ## Taxonomy
 
 The CAMI evaluations were run with the sourmash CAMI pipeline
-[@url:https://github.com/luizirber/2020-cami], which generated
+[@url:https://github.com/luizirber/2020-cami] against
+the Jan 8, 2019 RefSeq snapshot provided by CAMI.  This pipeline generated
 Open-community Profiling Assessment (OPAL) compatible output
 [@doi:10.1038/nmeth.4458].
 This output was then processed with the standard CAMI tools.

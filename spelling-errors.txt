@@ -31,7 +31,7 @@ fastp
 FracMinHash
 Fubini’s
 GBMF
-genbank
+GenBank
 genomic
 GTDB
 HashSet
@@ -60,11 +60,11 @@ metagenome
 metagenomes
 metagenomic
 metagenomics
-metalign
+Metalign
 microbiome
 microbiomes
 mincode
-minhash
+MinHash
 minimap
 minimizers
 mis
@@ -77,6 +77,7 @@ numpy
 PacBio
 papermill
 Rahman
+RefSeq
 Reiter
 ReiterTaylor
 reproducibly
