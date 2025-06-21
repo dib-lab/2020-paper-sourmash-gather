@@ -246,8 +246,14 @@ One tip is to embed the date `references.json` was generated into the frozen man
 
 [`content/metadata.yaml`](content/metadata.yaml) contains manuscript metadata that gets passed through to Pandoc, via a [`yaml_metadata_block`](https://pandoc.org/MANUAL.html#extension-yaml_metadata_block).
 `metadata.yaml` should contain the manuscript `title`, `authors` list, `keywords`, and `lang` ([language tag](https://www.w3.org/International/articles/language-tags/ "W3C: Language tags in HTML and XML")).
-Additional metadata, such as `date`, will automatically be created by the Manubot.
-Manubot uses the [timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) specified in [`build.sh`](build/build.sh) for setting the manuscript's date.
+
+When the `date` field is missing or null,
+Manubot uses the current time for the publication date.
+This is ideal for manuscripts that are being actively written,
+but once complete it might make sense to set an explicit date (ISO-format like '2022-10-31'),
+such that future minor changes do not update the publication date.
+The generated date will still reflect the time of the Manubot build.
+Manubot uses the [timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) specified in [`build.sh`](build/build.sh) for the generated date.
 For example, setting the `TZ` environment variable to `Etc/UTC` directs the Manubot to use Coordinated Universal Time.
 
 We recommend authors add themselves to `metadata.yaml` via pull request (when requested by a maintainer), thereby signaling that they've read and approved the manuscript.
@@ -259,7 +265,10 @@ name: Daniel S. Himmelstein  # mandatory
 initials: DSH  # optional
 orcid: 0000-0002-3012-7446  # mandatory
 twitter: dhimmel  # optional
+mastodon: dhimmel  # optional: mastodon username
+mastodon-server: genomic.social  # optional: mastodon server (instance)
 email: daniel.himmelstein@gmail.com  # suggested
+corresponding: true  # optional, if set to true displays author's email for correspondence
 affiliations:  # as a list, strongly suggested
   - Department of Systems Pharmacology and Translational Therapeutics, University of Pennsylvania
   - Department of Biological & Medical Informatics, University of California, San Francisco
@@ -313,12 +322,26 @@ metadata:
   csl: https://github.com/citation-style-language/styles/raw/906cd6d43d0c136190ecfbb12f6af0ca794e3c5b/peerj.csl
 ```
 
+Instructions for generating additional manuscript output formats such as DOCX can be found in [`build/README.md`](build/README.md).
+
 ## Spellchecking
 
 When the `SPELLCHECK` environment variable is `true`, the pandoc [spellcheck filter](https://github.com/pandoc/lua-filters/tree/master/spellcheck) is run.
 Potential spelling errors will be printed in the continuous integration log along with the files and line numbers in which they appeared.
 Words in `build/assets/custom-dictionary.txt` are ignored during spellchecking.
 Spellchecking is currently only supported for English language manuscripts.
+
+## AI-assisted authoring
+
+Manubot features a powerful integrated _AI Editor_ that can proofread and revise your manuscript.
+It can fix lower-level issues such as spelling and grammar errors, but can also make higher-level improvements like simplifying sentence structure, increasing clarity, refining writing style, and more.
+You can also customize how it revises your writing in different sections of your manuscript.
+
+Running the AI Editor is _fully in your control_.
+It will only run if you manually trigger the workflow [`ai-revision`](.github/workflows/ai-revision.yaml).
+The workflow will generate a pull request with suggested revisions for you to review and either accept or reject.
+
+For _full documentation and support_, see the separate [`manubot-ai-editor` repo](https://github.com/manubot/manubot-ai-editor) and [our manuscript](https://doi.org/10.1093/jamia/ocae139).
 
 ## Manubot feedback
 
@@ -334,6 +357,14 @@ Daniel S. Himmelstein, Vincent Rubinetti, David R. Slochower, Dongbo Hu, Venkat 
 DOI: [10.1371/journal.pcbi.1007128](https://doi.org/10.1371/journal.pcbi.1007128) · PMID: [31233491](https://www.ncbi.nlm.nih.gov/pubmed/31233491)
 
 The Manubot version of this manuscript is available at <https://greenelab.github.io/meta-review/>.
+
+To cite the Manubot AI Editor or for more information on its design, see `@doi:10.1093/jamia/ocae139`:
+
+> **A publishing infrastructure for Artificial Intelligence (AI)-assisted academic authoring**<br>
+Milton Pividori, Casey S. Greene<br>
+*Journal of the American Medical Informatics Association* (2024) <https://doi.org/gtw9d3><br>
+DOI: [10.1093/jamia/ocae139](https://doi.org/10.1093/jamia/ocae139)
+
 
 ## Acknowledgments
 
